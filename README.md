@@ -58,16 +58,16 @@
 예시
 ```
 
-## Built With / 누구랑 만들었나요?
+## 구성원
 
 * 조용훈 [개발자] - 기획 및 개발
 * 홍원우 [디자이너] - 기획 및 디자인
 
-## License / 라이센스
+## 라이센스
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://gist.github.com/PurpleBooth/LICENSE.md) file for details / 이 프로젝트는 MIT 라이센스로 라이센스가 부여되어 있습니다. 자세한 내용은 LICENSE.md 파일을 참고하세요.
 
-## Acknowledgments / 감사의 말
+## 감사의 말
 
 * 열심히 고생해준 우리 디자이너분께 감사드리고, 옆에서 피드백 해준 개발자 친구들한테 감사를 표합니다.
 * 피드백 - zjaqld@naver.com
