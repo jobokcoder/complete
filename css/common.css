@@ -1,0 +1,27 @@
+/* 사이트 컬러시스템 CSS */
+/* Noto Sans 굵기 : 100;300;400;500;700;900 */
+:root{
+    --main-color1: #2EA0AA;
+    --main-color2: #FFE600;
+    --main-color3: #1E3470;
+    --main-white: #ffffff;
+    --main-black1: #3A3A3C;
+    --main-black2: #707070;
+}
+
+
+/* 초기화 CSS */
+*{ margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; list-style: none; font-family: 'Noto Sans KR', sans-serif; color: var(--main-black1); font-size: 100%; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; color: var(--main-black1); outline: none; border: none; background-color: transparent; }
+html::-webkit-scrollbar{ width: 6px; background-color: var(--main-white); }
+html::-webkit-scrollbar-thumb{ background-color: var(--main-color1); }
+.wrapper{ min-height: 100vh; position: relative; width: 100%; }
+input[type='checkbox']{ position: absolute; width: 0; height: 0; }
+input[type='radio']{ position: absolute; width: 0; height: 0; }
+.modal{ position: fixed; left: 0; top: 0; z-index: 20; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; }
+
+/* 헤더 CSS */
+.header{ position: fixed; z-index: 10; left: 0; top: 0; padding: 14.4px 40.9px; width: 100%; display: flex; justify-content: space-between; align-items: center; background-color: var(--main-color3); }
+.header__logo{ display: flex; justify-self: start; }
+.header__right{ display: flex; justify-content: center; align-items: center; }
+.header__icons{ justify-self: end; display: flex; justify-content: center; align-items: center; }
+.header__icons--item{ margin: 0px 15.8px; color: var(--main-white); font-size: 16px; font-weight: 400; }
