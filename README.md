@@ -14,13 +14,14 @@
 <h3 align='center'>🔨 Design Tool</h3>
 <p align='center'>
   
-  <img src="https://img.shields.io/badge/InDesign-FF61F6?style=flat-square&logo=InDesign&logoColor=white"/>
+  <img src="https://img.shields.io/badge/adobexd-FF61F6?style=flat-square&logo=adobexd&logoColor=white"/>
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
   <img src="https://img.shields.io/badge/JavaScript-e9d24e?style=flat-square&logo=JavaScript&logoColor=white"/>
   <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=PHP&logoColor=white"/>
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
 </p>
 <br>
+
 ## 소개
 
 ### Complete 무슨 웹 플랫폼인가?
@@ -49,7 +50,9 @@
 
 ‘좋은 이웃 사회’라는 더불어 살아가는 사회로 발전에 도움이 된다.
 
-### Prerequisites / 선행 조건
+## 후기
+
+### 좋았던 점
 
 아래 사항들이 설치가 되어있어야합니다.
 
@@ -57,27 +60,9 @@
 예시
 ```
 
-### Installing / 설치
+### 아쉬운 점
 
 아래 사항들로 현 프로젝트에 관한 모듈들을 설치할 수 있습니다.
-
-```
-예시
-```
-
-## Running the tests / 테스트의 실행
-
-어떻게 테스트가 이 시스템에서 돌아가는지에 대한 설명을 합니다
-
-### 테스트는 이런 식으로 동작합니다
-
-왜 이렇게 동작하는지, 설명합니다
-
-```
-예시
-```
-
-### 테스트는 이런 식으로 작성하시면 됩니다
 
 ```
 예시
