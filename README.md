@@ -28,7 +28,7 @@
 
 집주변 쓰레기 정리 등 어떤 유형이든지 미션을 의뢰할 수 있다.
 
-## Expectation Effect / Complete 기대효과
+## Complete 기대효과
 
  'Complete'를 통해 컨텐츠에 필터링 기능 추가해 수행자에 맞는 미션 컨텐츠를 찾아볼 수 있게 함으로써
  
