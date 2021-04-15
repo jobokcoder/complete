@@ -58,18 +58,10 @@
 예시
 ```
 
-## Deployment / 배포
-
-Add additional notes about how to deploy this on a live system / 라이브 시스템을 배포하는 방법
-
 ## Built With / 누구랑 만들었나요?
 
 * 조용훈 [개발자] - 기획 및 개발
 * 홍원우 [디자이너] - 기획 및 디자인
-
-## Contributiong / 기여
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us. / [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) 를 읽고 이에 맞추어 pull request 를 해주세요.
 
 ## License / 라이센스
 
