@@ -13,7 +13,8 @@
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
 </p>
 <br>
-### Complete는 무슨 웹 플랫폼?
+
+### Complete 무슨 웹 플랫폼인가?
 
  요즘 코로나19으로 인해 사회적 거리두기 시행함으로서 줄어든 일자리 및 일손확보의 어려움
 
