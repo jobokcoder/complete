@@ -13,7 +13,8 @@
 <br>
 <h3 align='center'>🔨 Design Tool</h3>
 <p align='center'>
-  <img src="https://img.shields.io/badge/Adobe XD-FF61F6?style=flat-square&logo=Adobe XD&logoColor=white"/>
+  
+  <img src="https://img.shields.io/badge/InDesign-FF61F6?style=flat-square&logo=InDesign&logoColor=white"/>
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
   <img src="https://img.shields.io/badge/JavaScript-e9d24e?style=flat-square&logo=JavaScript&logoColor=white"/>
   <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=PHP&logoColor=white"/>
