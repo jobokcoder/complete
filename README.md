@@ -13,9 +13,17 @@
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/>
 </p>
 <br>
-## Getting Started / 어떻게 시작하나요?
+### Complete는 무슨 웹 플랫폼?
 
-이 곳에서 설치에 관련된 이야기를 해주시면 좋습니다.
+ 요즘 코로나19으로 인해 사회적 거리두기 시행함으로서 줄어든 일자리 및 일손확보의 어려움
+
+등으로 인해 사회 구성원들은 피해를 겪고 있으며, 생활이 달라지면서 산책, 여행, 영화 등
+
+여러 여가 활동도 제한됨에 따라 나가서 소확행 즐기고 싶은 사람이 많아지고 있다.
+ 
+ 이를 해소시키기 위해 우리는 'Complete'라는 미션을 의뢰하고 수행하는 매칭 플랫폼을 만들려 한다.
+
+여기서
 
 ### Prerequisites / 선행 조건
 
