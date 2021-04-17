@@ -1,42 +1,66 @@
-/* 사이드 메뉴 CSS */
-.contents{ position: relative; padding-top: calc(36px + 70px); width: 100%; display: flex; justify-content: center; align-items: flex-start; }
-.contents__left{ position: fixed; left: 0; top: calc(36px + 70px); padding-top: 80px; width: 360px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.contents__left--menu{ position: relative; margin-bottom: 24px; padding: 8px 0px; width: 50%; text-align: center; border: 1px solid rgba(0, 0, 0, 0); cursor: pointer; }
-.contents__left--menu:hover .menu__hover--svg{ transition: 300ms ease-in-out; opacity: 1; }
-.contents__left--menu a{ font-size: 24px; font-weight: 500; }
-.menu__hover--svg{ opacity: 0; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -48%); }
-
-
-/* 폴더 컨텐츠 CSS */
+/* 상단 컨텐츠 CSS */
 .mypage{ position: relative; min-width: 1200px; width: 1200px; }
 .mypage__info{ width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.mypage__info--background{ position: relative; width: 100%; height: 254px; border: 1px solid var(--main-black2); }
+.mypage__info--background{ position: relative; width: 100%; height: 254px; }
 .mypage__info--background-img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
-.mypage__info--major{ padding: 24px 70px; padding-right: 34px; width: 100%; border: 1px solid var(--main-black2); display: flex; }
+.mypage__info--major{ padding: 24px 70px; padding-right: 34px; width: 100%; display: flex; }
 .mypage__info--picture{ position: relative; width: 146px; height: 146px; overflow: hidden; border-radius: 70%; transform: translateY(-70px); }
 .mypage__info--picture-img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
 .mypage__info--text{ margin-left: 30px; width: 100%; max-width: 900px; display: flex; flex-wrap: wrap; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .mypage__info--text-nick{ font-size: 24px; font-weight: 500; }
-.mypage__info--text-intro{ margin-top: 50px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; width: 100%; height: 48px; font-size: 18px; font-weight: 300; white-space: normal; }
-.mypage__folder{ width: 100%; padding-top: 14px; padding-bottom: 80px; display: flex; justify-content: center; align-items: center; }
-.mypage__folder > *{ position: relative; width: 234px; margin: 0px 39px; }
-.mypage__folder > *.active{ width: 420px; }
-.mypage__folder > * svg{ fill: #fff; max-width: 100%; filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.4)); }
-.mypage__folder > *.active svg{ fill: #f5ce33; }
-.mypage__folder--info{ position: absolute; left: 0; bottom: 15px; padding: 0px 36px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
-.mypage__folder--info-title{ font-size: 18px; font-weight: 100; text-transform: uppercase; }
-.mypage__folder--info-name{ font-size: 24px; font-weight: 400; }
-.mypage__folder--content{ width: 100%; height: 146px; display: flex; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap; }
-.mypage__folder--content-person{ width: 58px; height: 58px; border-radius: 70%; overflow: hidden; position: relative; margin-bottom: 14px; margin-right: 10px; background-color: royalblue; }
+.mypage__info--text-intro{ margin-top: 25px; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; width: 100%; height: 48px; font-size: 18px; font-weight: 300; white-space: normal; }
 
-/* 폴더 현황 CSS */
-.request__current{ margin-top: 36px; margin-bottom: 100px; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+/* 폴더 컨텐츠 CSS */
+.mypage__folder{ position: relative; width: 100%; height: 400px; padding-top: 14px; padding-bottom: 80px; display: flex; justify-content: center; align-items: center; }
+.mypage__folder > *{ position: absolute; width: 15rem; transition: 600ms ease-in-out; }
+.mypage__folder > *.prev-card{ left: 50%; transform: translateX(-210%); }
+.mypage__folder > *.current-card{ left: 50%; transform: translateX(-50%); width: 26.5rem; }
+.mypage__folder > *.current-card svg{ fill: #f5ce33; filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.8)); }
+.mypage__folder > *.current-card .mypage__folder--content{ display: flex; animation: fadeUp 600ms ease-in-out forwards; animation-delay: 600ms; }
+.mypage__folder > *.next-card{ left: 50%; transform: translateX(110%); }
+.mypage__folder > * svg{ fill: #fff; max-width: 100%; filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.4)); }
+.mypage__folder--info{ position: absolute; left: 0; bottom: 15px; padding: 0px 25px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
+.mypage__folder--info-title{ font-size: 14px; font-weight: 100; text-transform: uppercase; }
+.mypage__folder--info-name{ font-size: 18px; font-weight: 400; }
+.mypage__folder > *.current-card .mypage__folder--info-name{ font-size: 24px; }
+.mypage__folder--content{ transform: translateY(20%); opacity: 0; width: 100%; height: 146px; display: none; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap; }
+.mypage__folder--content-person{ width: 3.5rem; height: 3.5rem; border-radius: 70%; overflow: hidden; position: relative; margin-bottom: 14px; margin-right: 10px; background-color: royalblue; }
+
+
+/* 해당 폴더 현황 CSS */
+.request__current{ margin-top: 36px; margin-bottom: 100px; width: 100%; display: none; flex-direction: column; justify-content: center; align-items: center; }
+.request__current.current{ display: flex; }
 .request__current--list{ width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; border-top: 1px solid var(--main-black2); }
 .request__current--list:last-child{ border-bottom: 1px solid var(--main-black2); }
 .request__current--list.active .request__current--list-arrow{ transform: rotate(180deg); }
 .request__current--list-header{ padding: 25px 28px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
 .request__current--list-arrow{ cursor: pointer; }
-.request__current--list-wrap{ width: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.request__current--list-wrap{ padding-bottom: 28px; width: 100%; display: none; flex-wrap: wrap; justify-content: center; align-items: center; flex-direction: column; transform: translateY(-20%); opacity: 0; }
+.request__current--list-wrap.picture{ flex-direction: row; justify-content: flex-start; align-items: center; }
+.request__current--list.active .request__current--list-wrap{ display: flex; animation: fadeDown 600ms ease-in-out forwards; }
 .rcliw__item{ padding: 20px 28px; width: 100%; display: flex; justify-content: space-between; align-items: center; border-radius: 6px; }
 .rcliw__item:hover{ transition: 300ms ease-in-out; background-color: #E8F4F6; }
-.rcliw__item--picture{  width: 50px; height: 50px; border-radius: 70%; background-color: sandybrown; overflow: hidden; }
+.rcliw__item--picture{ width: 50px; height: 50px; border-radius: 70%; background-color: sandybrown; overflow: hidden; }
+.missions__list{ position: relative; width: 19%; margin-right: 2rem; }
+.missions__list--image{ position: relative; width: 100%; height: 256px; }
+.missions__list--image img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+.missions__list--info > *{ margin-top: 14px; }
+.missions__list--info{ padding-right: 16px; width: 83.25%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; background-color: #fff; transform: translateY(-48px); }
+.missions__list--info-title{ font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.missions__list--info-text{ height: 33px; font-size: 12px; font-weight: 400; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; width: 100%; white-space: normal; }
+.missions__list--info-writer{ font-size: 10px; font-weight: 300; }
+
+@keyframes fadeUp{
+    to{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeDown{
+    to{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}

@@ -1,5 +1,4 @@
 {
-    const joinForm = document.querySelector('.join__form');
     const joinFormAdd = document.querySelector('.join__form--input-add');
     const joinFormID = document.querySelector('.join__form--input-id');
     const joinFormPW = document.querySelector('.join__form--input-pw');
@@ -24,7 +23,6 @@
         const flag = CheckEmail(joinFormEmail.value);
         joinFormNotEmail.style.display = flag ? 'none' : 'block';
     });
-
 
     // 아이디는 첫 글자 영문, 영문 소문자와 숫자 6~12자리로 입력해야합니다!
     function CheckID(str){     
