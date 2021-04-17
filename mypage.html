@@ -146,6 +146,7 @@
                             <p class="mypage__folder--info-name">친구</p>
                         </div>
                     </div>
+
                     <div class="mypage__folder--request folders current-card">
                         <svg class="folder" xmlns="http://www.w3.org/2000/svg" width="420" viewBox="0 0 420 290">
                             <path id="folder_path" data-name="패스 112" d="M137.37,430.667H5.25A5.294,5.294,0,0,0,0,436V715.33a5.3,5.3,0,0,0,5.25,5.337h409.5A5.3,5.3,0,0,0,420,715.33V473.268a4.412,4.412,0,0,0-4.375-4.448h-252.7a4.367,4.367,0,0,1-3.847-2.329L141.216,433A4.364,4.364,0,0,0,137.37,430.667Z" transform="translate(0 -430.667)" />
@@ -181,6 +182,7 @@
                             <p class="mypage__folder--info-name">의뢰</p>
                         </div>
                     </div>
+                    
                     <div class="mypage__folder--response next-card folders">
                         <svg class="folder" xmlns="http://www.w3.org/2000/svg" width="420" viewBox="0 0 420 290">
                             <path id="folder_path" data-name="패스 112" d="M137.37,430.667H5.25A5.294,5.294,0,0,0,0,436V715.33a5.3,5.3,0,0,0,5.25,5.337h409.5A5.3,5.3,0,0,0,420,715.33V473.268a4.412,4.412,0,0,0-4.375-4.448h-252.7a4.367,4.367,0,0,1-3.847-2.329L141.216,433A4.364,4.364,0,0,0,137.37,430.667Z" transform="translate(0 -430.667)" />
@@ -192,126 +194,28 @@
                     </div>
                 </div>
 
-                <div class="request__current request__current--friend">
+                <div class="request__current request__current--response">
                     <div class="request__current--list">
                         <div class="request__current--list-header">
-                            <h2 class="request__current--list-title">의뢰요청현황</h2>
+                            <h2 class="request__current--list-title">수행 중</h2>
                             <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
                                 <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
                         </div>
                         <div class="request__current--list-wrap">
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
                                 </div>
-                            </div>
-                            <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
                                 <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
-                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="request__current--list">
                         <div class="request__current--list-header">
-                            <h2 class="request__current--list-title">의뢰완료확인요청</h2>
-                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
-                            </svg>
-                        </div>
-                        <div class="request__current--list-wrap">
-                            <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="request__current--list">
-                        <div class="request__current--list-header">
-                            <h2 class="request__current--list-title">완료한 의뢰</h2>
+                            <h2 class="request__current--list-title">수행완료확인요청</h2>
                             <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
                                 <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
@@ -341,6 +245,99 @@
                                     <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
                                 </div>
                             </div>
+                            <div class="missions__list">
+                                <div class="missions__list--image">
+                                    <img src="./images/common/common.png" alt="missions" />
+                                    <div class="missions__list--image-opacity"></div>
+                                </div>
+        
+                                <div class="missions__list--info">
+                                    <p class="missions__list--info-title">짐 정리 도와주실분</p>
+                                    <div class="missions__list--info-text">제가 무지 짐 정리를 못하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능.하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능..</div>
+                                    <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="request__current--list">
+                        <div class="request__current--list-header">
+                            <h2 class="request__current--list-title">의뢰요청현황</h2>
+                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            </svg>
+                        </div>
+                        <div class="request__current--list-wrap">
+                            <div class="rcliw__item">
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
+                                <div class="rcliw__item--date">2021. 02.21</div>
+                                <div class="rcliw__item--select">승낙</div>
+                                <div class="rcliw__item--delete">
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="request__current--list">
+                        <div class="request__current--list-header">
+                            <h2 class="request__current--list-title">수행신청현황</h2>
+                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            </svg>
+                        </div>
+                        <div class="request__current--list-wrap">
+                            <div class="rcliw__item">
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
+                                <div class="rcliw__item--date">2021. 02.21</div>
+                                <div class="rcliw__item--select">신청 중</div>
+                                <div class="rcliw__item--delete">
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="request__current--list">
+                        <div class="request__current--list-header">
+                            <h2 class="request__current--list-title">완료</h2>
+                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            </svg>
+                        </div>
+                        <div class="request__current--list-wrap picture">
                             <div class="missions__list">
                                 <div class="missions__list--image">
                                     <img src="./images/common/common.png" alt="missions" />
@@ -361,124 +358,174 @@
                     <div class="request__current--list">
                         <div class="request__current--list-header">
                             <h2 class="request__current--list-title">의뢰요청현황</h2>
-                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            <svg class="request__current--list-arrow arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
                         </div>
                         <div class="request__current--list-wrap">
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
                                 <div class="rcliw__item--date">2021. 02.21</div>
                                 <div class="rcliw__item--select">승낙</div>
                                 <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
                                     </svg>
                                 </div>
                             </div>
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
                                 <div class="rcliw__item--date">2021. 02.21</div>
                                 <div class="rcliw__item--select">승낙</div>
                                 <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
                                     </svg>
                                 </div>
                             </div>
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
                                 <div class="rcliw__item--date">2021. 02.21</div>
                                 <div class="rcliw__item--select">승낙</div>
                                 <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
                                     </svg>
                                 </div>
                             </div>
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
                                 <div class="rcliw__item--date">2021. 02.21</div>
                                 <div class="rcliw__item--select">승낙</div>
                                 <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
                                     </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="request__current--list">
                         <div class="request__current--list-header">
                             <h2 class="request__current--list-title">의뢰완료확인요청</h2>
-                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            <svg class="request__current--list-arrow arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
                         </div>
                         <div class="request__current--list-wrap">
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
                                 <div class="rcliw__item--date">2021. 02.21</div>
                                 <div class="rcliw__item--select">승낙</div>
                                 <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
                                     </svg>
                                 </div>
                             </div>
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
                                 <div class="rcliw__item--date">2021. 02.21</div>
                                 <div class="rcliw__item--select">승낙</div>
                                 <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
+                                    <svg class="trash_can" xmlns="http://www.w3.org/2000/svg" width="32" height="34.31" viewBox="0 0 32 34.31">
+                                        <g transform="translate(37.741 -46.907)">
+                                            <g class="trash_cap">
+                                                <line x2="30" transform="translate(-36.741 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <path d="M-24.685,55.308V50.852a2.953,2.953,0,0,1,2.944-2.945h0A2.953,2.953,0,0,1-18.8,50.852v4.456" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                            <rect width="22.521" height="24.909" transform="translate(-33.001 55.308)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            <g>
+                                                <line y2="12.017" transform="translate(-27.033 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-21.741 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                <line y2="12.017" transform="translate(-16.449 61.436)" fill="none" stroke="#1a1311" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                            </g>
+                                        </g>
                                     </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="request__current--list">
                         <div class="request__current--list-header">
                             <h2 class="request__current--list-title">완료한 의뢰</h2>
-                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            <svg class="request__current--list-arrow arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
                         </div>
                         <div class="request__current--list-wrap picture">
@@ -522,165 +569,119 @@
                     </div>
                 </div>
 
-                <div class="request__current request__current--response">
+                <div class="request__current request__current--friend">
                     <div class="request__current--list">
                         <div class="request__current--list-header">
-                            <h2 class="request__current--list-title">의뢰요청현황</h2>
-                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            <h2 class="request__current--list-title">친구</h2>
+                            <svg class="request__current--list-arrow arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
                         </div>
                         <div class="request__current--list-wrap">
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">과제에 찌든 대학생</div>
+                                </div>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-cancel">친구 해제</div>
                                 </div>
                             </div>
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">과제에 찌든 대학생</div>
+                                </div>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-cancel">친구 해제</div>
                                 </div>
                             </div>
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">과제에 찌든 대학생</div>
                                 </div>
-                            </div>
-                            <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-cancel">친구 해제</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="request__current--list">
                         <div class="request__current--list-header">
-                            <h2 class="request__current--list-title">의뢰완료확인요청</h2>
-                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            <h2 class="request__current--list-title">보낸 신청</h2>
+                            <svg class="request__current--list-arrow arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
                         </div>
                         <div class="request__current--list-wrap">
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-cancel">거절</div>
                                 </div>
                             </div>
                             <div class="rcliw__item">
-                                <div class="rcliw__item--picture"></div>
-                                <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
-                                <div class="rcliw__item--date">2021. 02.21</div>
-                                <div class="rcliw__item--select">승낙</div>
-                                <div class="rcliw__item--delete">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="33" viewBox="0 0 34 33">
-                                        <defs>
-                                            <pattern id="pattern" preserveAspectRatio="none" width="100%" height="100%" viewBox="0 0 64 64">
-                                            <image width="64" height="64" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB8QAAAfEBnrltZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAK1SURBVHic7Zq9axRBGMZ/b3IRxY8TVATlsBQ5DRKMnGIhCNapbf0HUvkXiNiktBCsYptKLCzSWCghWgSVFFfEgCQKEkQsxPjxWuxG98bb253kZt8zNz8Ydufu2eHZZ2dn34UVVaVKROQgcBO4CEwCp4Bl4CXwDJhV1Z+VGVLVyhpwDVgFtEdbBM5U5qnCk58GfhWc/Fb7ClyvwpdUcQuIyDjwAtjj/PUeeAs0gbrz3xrQVNXPQc1VcOVHgSU6r/ArYDKjEWAK+ODoHvz3twBwzjmpd0A9R3se2MxovwAjIf2NBJ1eCRec/u28aa2qS8DDzE8HgNOhjAEmASwW6J8XHN9XqgjgiNP/VKDfKDi+r1QRwEAz9AHUsh0RqZM8kvrJmNM/JCKHe+j3O/19BXpftGMRTh8/LZJ6vEyVthvaMtD6UwcAcwNgquo2l60DVhg+VuDvGnCH5PHT6iI8ClzJ9NskU8gXIUk+lH6LS8DxTP8RyUtYlgXgPkCZUvYqnVPnbujyeYel9xPH717rUnigiQFYG7AmBmBtwJoYgLUBa4IEICJNEXFfgrrpaiJytuSYY2W1PvQ9ABGZAd6QVFtFPAVei8i9EtqFVDuzE38uIWbAVLqdEJFGnkhEjgGXnWPytA1goozWlxABjObsb1fnq/UiLoLWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGYG3AmhiAtQFrYgDWBqyJAVgbsCYGEGDMzZx9l+8ldT5jehMigNl0O6+q63kiVd0AHjvH5GnXgfkyWm9CfCIDnPD4pOWkh7ZwXAbhE5leV76Ldi3EuGWJi6C1AWtiANYGrIkBWBuwZugDqBVL/uGGiHT7qHpQGPcRbyeARtp2BWVugTbwI7SRQKwC33oJCgNIy89bwMf+eKqMNjCt6QtCHr8BAZrJ0+6M5ggAAAAASUVORK5CYII="/>
-                                            </pattern>
-                                        </defs>
-                                        <rect id="free-icon-delete-trash-bin-70245" width="34" height="33" fill="url(#pattern)"/>
-                                    </svg>
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-cancel">거절</div>
+                                </div>
+                            </div>
+                            <div class="rcliw__item">
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
+                                </div>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-cancel">거절</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="request__current--list">
                         <div class="request__current--list-header">
-                            <h2 class="request__current--list-title">완료한 의뢰</h2>
-                            <svg class="request__current--list-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                <path id="다각형_2" data-name="다각형 2" d="M20.5,0,41,32H0Z" fill="#1e3470"/>
+                            <h2 class="request__current--list-title">받은 신청</h2>
+                            <svg class="request__current--list-arrow arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
+                                <path d="M20.5,0,41,32H0Z" fill="#1e3470"/>
                             </svg>
                         </div>
-                        <div class="request__current--list-wrap picture">
-                            <div class="missions__list">
-                                <div class="missions__list--image">
-                                    <img src="./images/common/common.png" alt="missions" />
-                                    <div class="missions__list--image-opacity"></div>
+                        <div class="request__current--list-wrap">
+                            <div class="rcliw__item">
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
                                 </div>
-        
-                                <div class="missions__list--info">
-                                    <p class="missions__list--info-title">짐 정리 도와주실분</p>
-                                    <div class="missions__list--info-text">제가 무지 짐 정리를 못하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능.하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능..</div>
-                                    <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-accept">수락</div>
+                                    <div class="rcliw__item--select-cancel">거절</div>
                                 </div>
                             </div>
-                            <div class="missions__list">
-                                <div class="missions__list--image">
-                                    <img src="./images/common/common.png" alt="missions" />
-                                    <div class="missions__list--image-opacity"></div>
+                            <div class="rcliw__item">
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
                                 </div>
-        
-                                <div class="missions__list--info">
-                                    <p class="missions__list--info-title">짐 정리 도와주실분</p>
-                                    <div class="missions__list--info-text">제가 무지 짐 정리를 못하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능.하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능..</div>
-                                    <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-accept">수락</div>
+                                    <div class="rcliw__item--select-cancel">거절</div>
                                 </div>
                             </div>
-                            <div class="missions__list">
-                                <div class="missions__list--image">
-                                    <img src="./images/common/common.png" alt="missions" />
-                                    <div class="missions__list--image-opacity"></div>
+                            <div class="rcliw__item">
+                                <div class="rcliw__item--wrap">
+                                    <div class="rcliw__item--picture"></div>
+                                    <div class="rcliw__item--title">저 대신에 택배 붙여주세요 </div>
                                 </div>
-        
-                                <div class="missions__list--info">
-                                    <p class="missions__list--info-title">짐 정리 도와주실분</p>
-                                    <div class="missions__list--info-text">제가 무지 짐 정리를 못하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능.하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능..</div>
-                                    <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
+                                <div class="rcliw__item--select">
+                                    <div class="rcliw__item--select-accept">수락</div>
+                                    <div class="rcliw__item--select-cancel">거절</div>
                                 </div>
                             </div>
                         </div>

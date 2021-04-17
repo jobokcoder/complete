@@ -16,8 +16,11 @@
         });
     });
 
-    folders.forEach(el => {
+    folders.forEach((el, index) => {
         el.addEventListener('click', () => { slide(el) });
+        setTimeout(() => {
+            el.classList.add('active');
+        },index*400);
     });
 
     function slide(dom){
@@ -25,10 +28,19 @@
         const current = document.querySelector('.current-card');
         const next = document.querySelector('.next-card');
 
+        resetCurrent(requestCurrents);
+
         if(dom !== current){
-            console.log('Change !');
             if(prev === dom){
-                console.log('prev Slide !');
+                prev.classList.forEach(className => {
+                    if(className.includes('friend')){
+                        requestCurrentFriend.classList.add('current');
+                    }else if(className.includes('request')){
+                        requestCurrentRequest.classList.add('current');
+                    }else if(className.includes('response')){
+                        requestCurrentResponse.classList.add('current');
+                    }
+                });
                 prev.classList.remove('prev-card');
                 next.classList.remove('next-card');
                 current.classList.remove('current-card');
@@ -41,6 +53,15 @@
                 current.style.zIndex = 10;
             }else{
                 console.log('next Slide !');
+                next.classList.forEach(className => {
+                    if(className.includes('friend')){
+                        requestCurrentFriend.classList.add('current');
+                    }else if(className.includes('request')){
+                        requestCurrentRequest.classList.add('current');
+                    }else if(className.includes('response')){
+                        requestCurrentResponse.classList.add('current');
+                    }
+                });
                 prev.classList.remove('prev-card');
                 next.classList.remove('next-card');
                 current.classList.remove('current-card');
@@ -58,6 +79,12 @@
     function resetActive(dom){
         dom.forEach(el => {
             el.classList.remove('active');
+        });
+    }
+
+    function resetCurrent(dom){
+        dom.forEach(el => {
+            el.classList.remove('current');
         });
     }
 }

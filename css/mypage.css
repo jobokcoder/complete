@@ -13,17 +13,18 @@
 
 /* 폴더 컨텐츠 CSS */
 .mypage__folder{ position: relative; width: 100%; height: 400px; padding-top: 14px; padding-bottom: 80px; display: flex; justify-content: center; align-items: center; }
-.mypage__folder > *{ position: absolute; width: 15rem; transition: 600ms ease-in-out; }
-.mypage__folder > *.prev-card{ left: 50%; transform: translateX(-210%); }
-.mypage__folder > *.current-card{ left: 50%; transform: translateX(-50%); width: 26.5rem; }
-.mypage__folder > *.current-card svg{ fill: #f5ce33; filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.8)); }
-.mypage__folder > *.current-card .mypage__folder--content{ display: flex; animation: fadeUp 600ms ease-in-out forwards; animation-delay: 600ms; }
-.mypage__folder > *.next-card{ left: 50%; transform: translateX(110%); }
-.mypage__folder > * svg{ fill: #fff; max-width: 100%; filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.4)); }
+.folders{ position: absolute; width: 15rem; opacity: 0; }
+.folders.active{ transition: 600ms ease-in-out; opacity: 1; }
+.folders.prev-card{ left: 50%; transform: translateX(-210%) translateY(0rem); }
+.folders.current-card{ left: 50%; transform: translateX(-50%) translateY(0rem); width: 26.5rem; }
+.folders.current-card svg{ fill: #f5ce33; filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.8)); }
+.folders.current-card .mypage__folder--content{ display: flex; animation: fadeUp 600ms ease-in-out forwards; animation-delay: 600ms; }
+.folders.next-card{ left: 50%; transform: translateX(110%) translateY(0rem); }
+.folders svg{ fill: #fff; max-width: 100%; filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.4)); }
+.folders.current-card .mypage__folder--info-name{ font-size: 24px; }
 .mypage__folder--info{ position: absolute; left: 0; bottom: 15px; padding: 0px 25px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; }
 .mypage__folder--info-title{ font-size: 14px; font-weight: 100; text-transform: uppercase; }
 .mypage__folder--info-name{ font-size: 18px; font-weight: 400; }
-.mypage__folder > *.current-card .mypage__folder--info-name{ font-size: 24px; }
 .mypage__folder--content{ transform: translateY(20%); opacity: 0; width: 100%; height: 146px; display: none; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap; }
 .mypage__folder--content-person{ width: 3.5rem; height: 3.5rem; border-radius: 70%; overflow: hidden; position: relative; margin-bottom: 14px; margin-right: 10px; background-color: royalblue; }
 
@@ -33,15 +34,23 @@
 .request__current.current{ display: flex; }
 .request__current--list{ width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; border-top: 1px solid var(--main-black2); }
 .request__current--list:last-child{ border-bottom: 1px solid var(--main-black2); }
-.request__current--list.active .request__current--list-arrow{ transform: rotate(180deg); }
+.request__current--list.active .request__current--list-arrow{ transform: rotate(-180deg); }
 .request__current--list-header{ padding: 25px 28px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
 .request__current--list-arrow{ cursor: pointer; }
 .request__current--list-wrap{ padding-bottom: 28px; width: 100%; display: none; flex-wrap: wrap; justify-content: center; align-items: center; flex-direction: column; transform: translateY(-20%); opacity: 0; }
 .request__current--list-wrap.picture{ flex-direction: row; justify-content: flex-start; align-items: center; }
 .request__current--list.active .request__current--list-wrap{ display: flex; animation: fadeDown 600ms ease-in-out forwards; }
+
 .rcliw__item{ padding: 20px 28px; width: 100%; display: flex; justify-content: space-between; align-items: center; border-radius: 6px; }
 .rcliw__item:hover{ transition: 300ms ease-in-out; background-color: #E8F4F6; }
+.rcliw__item--wrap{ display: flex; justify-content: center; align-items: center; }
+.rcliw__item--wrap > *{ margin-right: 4rem; }
 .rcliw__item--picture{ width: 50px; height: 50px; border-radius: 70%; background-color: sandybrown; overflow: hidden; }
+.rcliw__item--select{ display: flex; justify-content: center; align-items: center; }
+.rcliw__item--select > *{ margin-left: 1rem; padding: 10px 0px; width: 156px; border-radius: 11px; text-align: center; cursor: pointer; }
+.rcliw__item--select-accept{ background-color: var(--main-color2); color: #000; }
+.rcliw__item--select-cancel{ background-color: var(--main-color3); color: #fff; }
+
 .missions__list{ position: relative; width: 19%; margin-right: 2rem; }
 .missions__list--image{ position: relative; width: 100%; height: 256px; }
 .missions__list--image img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
