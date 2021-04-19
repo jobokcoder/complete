@@ -10,6 +10,8 @@
 /* 메인 컨텐츠 CSS */
 .contents__center{ position: relative; min-width: 1200px; width: 1200px; }
 .missions{ width: 100%; display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start; }
+.missions__list{ opacity: 0; transform: translateY(2rem); }
+.missions__list.active{ transition: 600ms ease-in-out; opacity: 1; transform: translateY(0); }
 .missions__list:nth-child(n-3){ width: 30%; }
 .missions__list:nth-child(2){ margin: 0px 5%; }
 .missions__list:nth-child(n+4){ width: 19%; }
