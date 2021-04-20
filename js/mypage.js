@@ -28,9 +28,8 @@
         const current = document.querySelector('.current-card');
         const next = document.querySelector('.next-card');
 
-        resetCurrent(requestCurrents);
-
-        if(dom !== current){
+        if(dom != current){
+            resetCurrent(requestCurrents);
             if(prev === dom){
                 prev.classList.forEach(className => {
                     if(className.includes('friend')){
