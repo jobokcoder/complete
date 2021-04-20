@@ -30,7 +30,11 @@
 
 .join__form{ margin-top: 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .join__form--input{ margin: 7.5px 0px; padding: 13px 20px; width: 400px; border-radius: 2px; background-color: #F3F9FA; }
+.join__form--input-email{ width: 300px; }
 .join__form--button{ margin-top: 20px; padding: 12px 0px; width: 100%; background-color: var(--main-color2); border-radius: 2px; cursor: pointer; font-size: 18px; font-weight: 500; text-align: center; }
 .join__form--not{ display: none; margin-left: 10px; align-self: flex-start; font-size: 12px; color: red; }
 
-.join__modal--form{ display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #fff; }
+.email__confirm{ width: 100%; display: flex; justify-content: space-between; align-items: center; background-color: #fff; }
+.email__confirm--text{ margin: 7.5px 0px; padding: 13px 20px; width: 300px; border-radius: 2px; background-color: #F3F9FA; }
+.email__confirm--button{ margin: 7.5px 0px; padding: 13px 30px; text-align: center; border-radius: 2px; background-color: var(--main-color3); color: #fff; cursor: pointer; }
+.email__confirm--box{ display: none; }

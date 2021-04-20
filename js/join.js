@@ -2,10 +2,15 @@
     const joinFormAdd = document.querySelector('.join__form--input-add');
     const joinFormID = document.querySelector('.join__form--input-id');
     const joinFormPW = document.querySelector('.join__form--input-pw');
+    const joinFormNick = document.querySelector('.join__form--input-nick');
     const joinFormEmail = document.querySelector('.join__form--input-email');
     const joinFormNotID = document.querySelector('.join__form--not-id');
     const joinFormNotPW = document.querySelector('.join__form--not-pw');
+    const joinFormNotNick = document.querySelector('.join__form--not-nick');
     const joinFormNotEmail = document.querySelector('.join__form--not-email');
+    const joinEmailRequestBtn = document.querySelector('.email__confirm--button-request');
+    const joinEmailRequestBox = document.querySelector('.email__confirm--box');
+    let sendReady = false;
 
     joinFormAdd.addEventListener('click', () => { sample4_execDaumPostcode(); });
 
@@ -15,14 +20,29 @@
     });
     
     joinFormPW.addEventListener('keydown', () => {
-        const flag = CheckPassword(joinFormPW.value);
+        const flag = CheckPW(joinFormPW.value);
         joinFormNotPW.style.display = flag ? 'none' : 'block';
+    });
+
+    joinFormNick.addEventListener('keydown', () => {
+        const flag = CheckNick(joinFormNick.value);
+        joinFormNotNick.style.display = flag ? 'none' : 'block';
     });
     
     joinFormEmail.addEventListener('keydown', () => {
         const flag = CheckEmail(joinFormEmail.value);
         joinFormNotEmail.style.display = flag ? 'none' : 'block';
+        sendReady = flag ? true : false;
     });
+
+    joinEmailRequestBtn.addEventListener('click', () => {
+        sendReady ? sendEmail() : '';
+    });
+
+    function sendEmail(){
+        console.log('이메일 보내깅');
+        joinEmailRequestBox.style.display = 'flex';
+    }
 
     // 아이디는 첫 글자 영문, 영문 소문자와 숫자 6~12자리로 입력해야합니다!
     function CheckID(str){     
@@ -38,6 +58,16 @@
     function CheckPassword(str){     
         const regPW = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4,20}$/;
         if(!regPW.test(str)) {
+            return false;
+        }else {                      
+            return true;         
+        }           
+    }
+
+    // 닉네임은 영문 또는 한글 또는 숫자 2~15자리로 입력해야합니다!
+    function CheckNick(str){     
+        const regNick = /^[a-zA-Z0-9가-힣]{2,15}$/;
+        if(!regNick.test(str)) {
             return false;
         }else {                      
             return true;         
@@ -61,7 +91,7 @@
 
                 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var roadAddr = data.jibunAddress; // 도로명 주소 변수
                 var extraRoadAddr = ''; // 참고 항목 변수
 
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -80,8 +110,9 @@
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 // document.getElementById("sample4_roadAddress").value = roadAddr;
+                console.log(roadAddr);
                 const arr = roadAddr.split(" ");
-                const add = `${arr[0]} ${arr[1]} `;
+                const add = `${arr[0]} ${arr[1]} ${arr[2]} `;
                 joinFormAdd.value = add;
             }
         }).open();

@@ -5,7 +5,6 @@
     const requestCurrentResponse = document.querySelector('.request__current--response');
     const requestList = document.querySelectorAll('.request__current--list');
     const requestListArrow = document.querySelectorAll('.request__current--list-arrow');
-    const folderWrapper = document.querySelector('.mypage__folder');
     const folders = document.querySelectorAll('.folders');
 
     requestListArrow.forEach(el => {
@@ -51,7 +50,6 @@
                 next.style.zIndex = 10;
                 current.style.zIndex = 10;
             }else{
-                console.log('next Slide !');
                 next.classList.forEach(className => {
                     if(className.includes('friend')){
                         requestCurrentFriend.classList.add('current');
