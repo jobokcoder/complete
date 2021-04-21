@@ -1,3 +1,6 @@
+<?php
+    include('./modules/modules.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +85,7 @@
                     </svg>
                 </div>
 
-                <form class="join__form" autocomplete="off">
+                <form class="join__form" autocomplete="off" method="POST">
                     <input class="join__form--input join__form--input-id" type="text" placeholder="아이디"/>
                     <p class="join__form--not join__form--not-id">아이디는 첫 글자 영문, 영문 소문자와 숫자 6~12자리로 입력해야합니다!</p>
                     <input class="join__form--input join__form--input-pw" type="password" placeholder="비밀번호"/>
@@ -91,7 +94,7 @@
                     <p class="join__form--not join__form--not-nick">닉네임은 영문 또는 한글 및 숫자를 포함한 2~15자리로 입력해야합니다!</p>
                     <input class="join__form--input join__form--input-add" type="text" placeholder="주소" readonly/>
                     <div class="email__confirm">
-                        <input class="join__form--input join__form--input-email" type="text" placeholder="이메일"/>
+                        <input class="join__form--input join__form--input-email" type="text" name="email" placeholder="이메일"/>
                         <button class="email__confirm--button email__confirm--button-request" type="button">인증</button>
                     </div>
                     <p class="join__form--not join__form--not-email">유효하지 않은 이메일 형식입니다!</p>
@@ -106,5 +109,7 @@
     </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="./js/join.js"></script>
+<script type="text/javascript">
+</script>
 </body>
 </html>

@@ -10,9 +10,9 @@
     const joinFormNotEmail = document.querySelector('.join__form--not-email');
     const joinEmailRequestBtn = document.querySelector('.email__confirm--button-request');
     const joinEmailRequestBox = document.querySelector('.email__confirm--box');
+    const joinEmailResponseBtn = document.querySelector('.email__confirm--button-response');
+    const joinEmailResponseText = document.querySelector('.email__confirm--text');
     let sendReady = false;
-
-    joinFormAdd.addEventListener('click', () => { sample4_execDaumPostcode(); });
 
     joinFormID.addEventListener('keydown', () => {
         const flag = CheckID(joinFormID.value);
@@ -35,13 +35,39 @@
         sendReady = flag ? true : false;
     });
 
-    joinEmailRequestBtn.addEventListener('click', () => {
-        sendReady ? sendEmail() : '';
+    joinEmailRequestBtn.addEventListener('click', (e) => {
+        if(sendReady){
+            e.preventDefault();
+            sendReady ? sendEmail() : '';
+        }
     });
 
+    joinEmailResponseBtn.addEventListener('click', () => { confirmEmail(); });
+    joinFormAdd.addEventListener('click', () => { sample4_execDaumPostcode(); });
+
     function sendEmail(){
-        console.log('이메일 보내깅');
         joinEmailRequestBox.style.display = 'flex';
+        joinFormEmail.readOnly = true;
+        joinFormEmail.style.filter = 'grayscale(1)';
+        fetch('./modules/email.php', {
+            method: 'post',
+            body: JSON.stringify({email: joinFormEmail.value})
+        });
+        sendReady = false;
+    }
+
+    function confirmEmail(){
+        fetch('./modules/confirmEmail.php')
+        .then(res => res.json())
+        .then(data => {
+            if(joinEmailResponseText.value == data['code']){
+                alert('인증이 완료되었습니다 !');
+                
+            }else{
+                alert('인증이 실패했습니다 !');
+                return 0;
+            }
+        });
     }
 
     // 아이디는 첫 글자 영문, 영문 소문자와 숫자 6~12자리로 입력해야합니다!
@@ -110,7 +136,6 @@
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 // document.getElementById("sample4_roadAddress").value = roadAddr;
-                console.log(roadAddr);
                 const arr = roadAddr.split(" ");
                 const add = `${arr[0]} ${arr[1]} ${arr[2]} `;
                 joinFormAdd.value = add;
