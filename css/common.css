@@ -43,3 +43,18 @@ svg{ overflow: visible; }
 .trash_can{ cursor: pointer; transition: all 300ms ease-in-out; }
 .trash_can *{ transition: all 300ms ease-in-out; }
 .trash_can:hover .trash_cap{ transform: translateY(-0.5rem); }
+
+.loading{ position: fixed; left: 0; top: 0; z-index: 50; width: 100%; height: 100vh; display: none; justify-content: center; align-items: center; background-color: rgba(255, 255, 255, 0.5); }
+.loading .svg{ width: 300px; }
+#path_133{ stroke-dasharray: 800;stroke-dashoffset: 500; animation: dash 1s infinite; }
+#path_137{ transform: translateY(0px); animation: dojang 500ms infinite alternate; }
+@keyframes dash {
+    to {
+    stroke-dashoffset: -1100;
+    }
+}
+@keyframes dojang{
+    to {
+        transform: translateY(-100px);
+    }
+}

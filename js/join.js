@@ -12,67 +12,88 @@
     const joinEmailRequestBox = document.querySelector('.email__confirm--box');
     const joinEmailResponseBtn = document.querySelector('.email__confirm--button-response');
     const joinEmailResponseText = document.querySelector('.email__confirm--text');
-    let sendReady = false;
+    const joinFormSubmit = document.querySelector('.join__form--button');
+    const loading = document.querySelector('.loading');
+    let idStatus = false, pwStatus = false, nickStatus = false, 
+    sendStatus = false, emailStatus = false;
 
     joinFormID.addEventListener('keydown', () => {
         const flag = CheckID(joinFormID.value);
         joinFormNotID.style.display = flag ? 'none' : 'block';
+        idStatus = flag ? true : false;
     });
     
     joinFormPW.addEventListener('keydown', () => {
         const flag = CheckPW(joinFormPW.value);
         joinFormNotPW.style.display = flag ? 'none' : 'block';
+        pwStatus = flag ? true : false;
     });
 
     joinFormNick.addEventListener('keydown', () => {
         const flag = CheckNick(joinFormNick.value);
         joinFormNotNick.style.display = flag ? 'none' : 'block';
+        nickStatus = flag ? true : false;
     });
     
     joinFormEmail.addEventListener('keydown', () => {
         const flag = CheckEmail(joinFormEmail.value);
         joinFormNotEmail.style.display = flag ? 'none' : 'block';
-        sendReady = flag ? true : false;
+        sendStatus = flag ? true : false;
     });
 
     joinEmailRequestBtn.addEventListener('click', (e) => {
-        if(sendReady){
+        if(sendStatus){
             e.preventDefault();
-            sendReady ? sendEmail() : '';
+            sendStatus ? sendEmail() : '';
+        }
+    });
+
+    joinFormSubmit.addEventListener('click', () => {
+        console.log(idStatus, idStatus, idStatus, joinFormAdd.value, emailStatus);
+        if(!idStatus || !pwStatus || !nickStatus || joinFormAdd.value === '' || !emailStatus){
+            alert('모든 양식을 채워주시길 바랍니다.');
+        }else{
+            alert('회원가입 완료!');
         }
     });
 
     joinEmailResponseBtn.addEventListener('click', () => { confirmEmail(); });
     joinFormAdd.addEventListener('click', () => { sample4_execDaumPostcode(); });
-
+    
     function sendEmail(){
-        joinEmailRequestBox.style.display = 'flex';
         joinFormEmail.readOnly = true;
         joinFormEmail.style.filter = 'grayscale(1)';
+        alert('인증코드를 해당 이메일로 보냈습니다. 인증 코드를 적어주시길 바랍니다.');
         fetch('./modules/email.php', {
             method: 'post',
             body: JSON.stringify({email: joinFormEmail.value})
+        }).then(() => {
+            joinEmailRequestBox.style.display = 'flex';
         });
         sendReady = false;
     }
 
     function confirmEmail(){
-        fetch('./modules/confirmEmail.php')
-        .then(res => res.json())
-        .then(data => {
-            if(joinEmailResponseText.value == data['code']){
-                alert('인증이 완료되었습니다 !');
-                
-            }else{
-                alert('인증이 실패했습니다 !');
-                return 0;
-            }
-        });
+        if(!emailStatus){
+            fetch('./modules/confirmEmail.php')
+            .then(res => res.json())
+            .then(data => {
+                if(joinEmailResponseText.value == data['code']){
+                    alert('인증이 완료되었습니다 !');
+                    emailStatus = true;
+                }else{
+                    alert('인증이 실패했습니다 !');
+                }
+            });
+        }
     }
 
     // 아이디는 첫 글자 영문, 영문 소문자와 숫자 6~12자리로 입력해야합니다!
     function CheckID(str){     
         const regID = /^[a-z][a-z\d]{6,12}$/;
+        if(str == ''){          
+            return true;    
+        }
         if(!regID.test(str)) {
             return false;
         }else {                      
@@ -81,8 +102,11 @@
     }
 
     // 비밀번호는 영문 대소문자와 숫자 4~20자리로 입력해야합니다!
-    function CheckPassword(str){     
+    function CheckPW(str){     
         const regPW = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4,20}$/;
+        if(str == ''){          
+            return true;    
+        }
         if(!regPW.test(str)) {
             return false;
         }else {                      
@@ -93,6 +117,9 @@
     // 닉네임은 영문 또는 한글 또는 숫자 2~15자리로 입력해야합니다!
     function CheckNick(str){     
         const regNick = /^[a-zA-Z0-9가-힣]{2,15}$/;
+        if(str == ''){          
+            return true;    
+        }
         if(!regNick.test(str)) {
             return false;
         }else {                      
@@ -103,6 +130,9 @@
     // 이메일을 입력해야합니다!
     function CheckEmail(str){     
         const regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+        if(str == ''){          
+            return true;    
+        }
         if(!regEmail.test(str)) {
             return false;
         }else {                      
