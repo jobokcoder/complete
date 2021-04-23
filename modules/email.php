@@ -3,7 +3,7 @@
     
     $reciveData = json_decode(file_get_contents('php://input'), true, 512, JSON_THROW_ON_ERROR);
 
-    $mailHTML = './mail.html';
+    $mailHTML = './mail.php';
     $semi_rand = md5(time());
     $file = fopen($mailHTML,"rb");
     $data = fread($file,filesize($mailHTML));

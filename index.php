@@ -17,6 +17,10 @@
             include('./modules/header.php');
         ?>
 
+        <div class="view">
+
+        </div>
+        
         <div class="contents">
             <ul class="contents__left">
                 <li class="contents__left--menu">
