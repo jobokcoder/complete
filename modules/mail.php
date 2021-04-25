@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="border: 1px solid #000000; max-width: 700px; overflow: hidden; box-sizing: border-box; margin: 0; padding: 7vw; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif; ">
+    <div style="border: 1px solid #000000; max-width: 700px; overflow: hidden; box-sizing: border-box; margin: 0; padding: 5vw; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif; ">
         <div style=" border-collapse: collapse; box-sizing: border-box; margin: 0; width: 100% ; max-width: 500px; background-color: #fff; display: table; table-layout: fixed; ">
             <div style="border-collapse: collapse; box-sizing: border-box; margin: 0; padding: 0; width: 100%; height: 50px; display: table-row; border-bottom: 4px solid #0D295D;">
                 <div style="display: table-cell; width: 100%;">

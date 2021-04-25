@@ -23,6 +23,7 @@ svg{ overflow: visible; }
 
 /* 헤더 CSS */
 .header{ position: fixed; z-index: 30; left: 0; top: 0; padding: 0.875rem 2.5rem; width: 100%; display: flex; justify-content: space-between; align-items: center; background-color: var(--main-color3); }
+.header *{ color: var(--main-white); }
 .header__logo{ display: flex; justify-self: start; }
 .header__right{ display: flex; justify-content: center; align-items: center; }
 .header__icons{ justify-self: end; display: flex; justify-content: center; align-items: center; }

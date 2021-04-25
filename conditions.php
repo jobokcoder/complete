@@ -17,7 +17,7 @@
             include('./modules/header.php');
         ?>
 
-        <div class="contents">
+        <div class="conditions__contents">
             <div class="join">
                 <div class="join__logo">
                     <svg class="join__logo--logo-svg" xmlns="http://www.w3.org/2000/svg" width="271.483" height="76.517" viewBox="0 0 271.483 76.517">

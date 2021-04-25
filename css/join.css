@@ -1,4 +1,5 @@
-.contents{ padding-top: 2.25rem; position: relative; width: 100%; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+.conditions__contents{ padding: 7rem 0; position: relative; width: 100%; display: flex; justify-content: center; align-items: center; }
+.join__contents{ padding: 7rem 0; position: relative; width: 100%; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
 .join{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
 
 /* 회원가입 약관 CSS */

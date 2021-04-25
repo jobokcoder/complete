@@ -44,11 +44,73 @@
 
             <form class="write" method="POST" enctype="multipart/form-data">
                 <input class="write__input write__input--title" type="text" name="m_contents" placeholder="제목을 입력하세요."/>
-                <div class="write__input--tagbox"><p class="hashtag"># 안녕하세요.</p><input class="write__input write__input--tag" type="text" name="m_tag" placeholder="해시태그는 , 로 구분합니다."/></div>
+                
+                <div class="write__input--tagbox">
+                    <p class="hashtag"># 안녕하세요.</p>
+                    <input class="write__input write__input--tag" type="text" name="m_tag" placeholder="해시태그는 , 로 구분합니다."/>
+                </div>
+                
                 <div class="write__input--fileBox">
-                    <input class="write__input write__input--file" multiple="multiple" type="file" name="filename[]" accept="image/*"/>
-                    <button class="write__input--filebtn" type="button">이미지 추가</button>
+                    <input class="write__input write__input--file" multiple="multiple" type="file" name="m_expain_file" accept="image/*"/>
+                    <svg class="write__input--filebtn" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+                        <g id="그룹_70" data-name="그룹 70" transform="translate(-9.759 -6.897)">
+                            <rect id="사각형_33" data-name="사각형 33" width="22" height="22" rx="1.442" transform="translate(10.259 7.397)" fill="none" stroke="#00285d" stroke-linejoin="round" stroke-width="1"/>
+                            <g id="그룹_9" data-name="그룹 9">
+                            <path id="패스_135" data-name="패스 135" d="M13.148,23.249l2.711-2.566a1.416,1.416,0,0,1,1.934-.018l1.523,1.389A1.417,1.417,0,0,0,21.289,22L25.2,18.009a1.417,1.417,0,0,1,2.1.073l2.074,2.426" fill="none" stroke="#00285d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                            <circle id="타원_13" data-name="타원 13" cx="2.017" cy="2.017" r="2.017" transform="translate(15.521 13.545)" fill="none" stroke="#00285d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="write__input--file-label">설명에 필요한 파일을 추가해주세요.</p>
                     <p class="write__input--file-name">dsadasdasd.jpg</p>
+                </div>
+                
+                <textarea class="write__input--content" placeholder="무슨 의뢰를 하실건가요"></textarea>
+                
+                <div class="done__conditions">
+                    <div class="done__conditions--header">
+                        <p class="done__conditions--header-title">완료조건</p>
+                        <svg class="done__conditions--header-btn" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                            <g id="그룹_75" data-name="그룹 75" transform="translate(-599 -665.524)">
+                                <circle id="circle_10" data-name="타원 10" cx="12.5" cy="12.5" r="12.5" transform="translate(599 665.524)" fill="#2ea0aa"/>
+                                <path id="path_130" data-name="패스 130" d="M2499.441,1922l6.536,7.434,8.87-11.671" transform="translate(-1895.644 -1245.575)" fill="none" stroke="#fff" stroke-width="1"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="done__conditions--contents">
+                        <svg class="done__conditions--contents-add" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                            <path id="path_190" data-name="패스 190" d="M858,93h-7V86h-2v7h-7v2h7v7h2V95h7Z" transform="translate(-842 -86)"/>
+                        </svg>
+                        <input class="done__conditions--contents-text" type="text" placeholder="조건을 입력하세요">
+                    </div>
+                </div>
+
+                <div class="done__compensation">
+                    <div class="done__compensation--header">
+                        <p class="done__compensation--header-title">완료보상</p>
+                        <svg class="done__compensation--filebtn" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
+                            <g id="그룹_70" data-name="그룹 70" transform="translate(-9.759 -6.897)">
+                                <rect id="사각형_33" data-name="사각형 33" width="22" height="22" rx="1.442" transform="translate(10.259 7.397)" fill="none" stroke="#00285d" stroke-linejoin="round" stroke-width="1"/>
+                                <g id="그룹_9" data-name="그룹 9">
+                                <path id="패스_135" data-name="패스 135" d="M13.148,23.249l2.711-2.566a1.416,1.416,0,0,1,1.934-.018l1.523,1.389A1.417,1.417,0,0,0,21.289,22L25.2,18.009a1.417,1.417,0,0,1,2.1.073l2.074,2.426" fill="none" stroke="#00285d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                <circle id="타원_13" data-name="타원 13" cx="2.017" cy="2.017" r="2.017" transform="translate(15.521 13.545)" fill="none" stroke="#00285d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="done__compensation--contents">
+                        <input class="done__compensation--contents-text" type="text" placeholder="보상은 무엇인가요"/>
+                        <div class="done__compensation--fileBox">
+                            <input class="write__input done__compensation--file" multiple="multiple" type="file" name="m_expain_file" accept="image/*"/>
+
+                            <p class="done__compensation--file-name">dsadasdasd.jpg</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="write__done">
+                    <button class="write__done--btn" type="button">의뢰하기</button>
                 </div>
             </form>
 
