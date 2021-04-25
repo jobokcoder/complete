@@ -48,6 +48,7 @@
                 <div class="write__input--fileBox">
                     <input class="write__input write__input--file" multiple="multiple" type="file" name="filename[]" accept="image/*"/>
                     <button class="write__input--filebtn" type="button">이미지 추가</button>
+                    <p class="write__input--file-name">dsadasdasd.jpg</p>
                 </div>
             </form>
 

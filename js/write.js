@@ -4,8 +4,11 @@
     const hashtag = document.querySelector('.hashtag');
     const fileInput = document.querySelector('.write__input--file');
     const fileBtn = document.querySelector('.write__input--filebtn');
+    const fileBox = document.querySelector('.write__input--fileBox');
+    const fileName = document.querySelector('.write__input--file-name');
     const tagArr = [];
     hashtag.remove();
+    fileName.remove();
 
     tagInput.addEventListener('keyup', (e) => {
         if(e.key === ','){
@@ -20,12 +23,20 @@
     });
 
     fileInput.addEventListener('change', () => {
-        console.log(fileInput[0].value);
+        const fileNames = document.querySelectorAll('.write__input--file-name');
+        fileNames.forEach(el => {
+            el.remove();
+        });
+
+        for(let i=0; i< fileInput.files.length; i++){
+            let files = fileName.cloneNode(true);
+            files.textContent = fileInput.files[i]['name'];
+            fileBox.appendChild(files);
+        }
     });
 
     fileBtn.addEventListener('click', () => { fileInput.click(); });
     
-
     function hash(str){
         if(tagArr.length < 5){
             let tag = hashtag.cloneNode(true);
