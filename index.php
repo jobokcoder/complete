@@ -15,6 +15,7 @@
         
         <?php
             include('./modules/header.php');
+            include('./modules/view.php');
         ?>
 
         <div class="contents">

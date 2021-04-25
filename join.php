@@ -33,7 +33,7 @@
             </svg>
         </div>
 
-        <div class="contents">
+        <div class="join__contents">
             <div class="join__background">
                 <svg class="join__background--svg" xmlns="http://www.w3.org/2000/svg" width="1243.848" height="1243.848" viewBox="0 0 1243.848 1243.848">
                     <g id="symbol" transform="translate(1296.848 -50) rotate(90)">

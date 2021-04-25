@@ -25,18 +25,11 @@
 
     conditionsAccepet.addEventListener('click', () => {
         if(conditionsInfoCheck.checked && conditionsGPSCheck.checked && conditionsUseCheck.checked){
-            sendGET('./join.html',conditions);
+            location.href = './join.php';
         }else{
             conditionsNot.style.display = 'block';
         }
     });
-
-    function sendGET(action, method = 'GET'){
-        conditionsForm.method = method;
-        conditionsForm.action = action;
-        conditionsForm.submit();
-    }
-
     function toggleCheckBox(el){
         el.checked = el.checked == false ? true : false;
     }

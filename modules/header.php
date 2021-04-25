@@ -59,8 +59,8 @@
                         <path id="합치기_8" data-name="합치기 8" d="M12.226,13.371l8.892,8.914ZM0,7.243a7.225,7.225,0,1,1,7.225,7.243A7.233,7.233,0,0,1,0,7.243Z" transform="translate(1.526 1.887) rotate(-1)" fill="none" stroke="#fff" stroke-width="3"/>
                     </svg>                      
                 </div>
-                <div class="header__icons--item">로그인</div>
-                <div class="header__icons--item">회원가입</div>
+                <div class="header__icons--item"><a href="./login.php">로그인</a></div>
+                <div class="header__icons--item"><a href="./conditions.php">회원가입</a></div>
             </div>
             <!-- <div class="header__icons">
                 <div class="header__icons--item">
