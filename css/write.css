@@ -1,3 +1,9 @@
-.write{ margin-top: 100px; padding: 0px 10rem; width: 100%; max-width: 75rem; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
+.write{ margin-top: 100px; padding: 0px 160px; width: 100%; max-width: 1200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .write__input{ width: 100%; color: var(--main-black1); }
-.write__input--title{ padding: 1.25rem 0px; font-size: 2rem; font-weight: 900; }
+.write__input--title{ padding: 1.25rem 0px; font-size: 32px; font-weight: 900; border-bottom: 1px solid var(--main-black2); }
+.write__input--tagbox{ padding: 0.65rem 0; width: 100%; display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); }
+.write__input--tag{ width: auto; font-size: 16px; font-weight: 400; }
+.hashtag{ margin-right: 0.65rem; padding: 0.25rem 1rem; border-radius: 0.25rem; background-color: var(--main-color1); color: #fff; font-size: 16px; font-weight: 400; }
+.write__input--fileBox{ padding: 0.65rem 0; width: 100%; display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); }
+.write__input--file{ display: none; }
+.write__input--filebtn{ cursor: pointer; padding: 0.25rem 1rem; border-radius: 0.25rem; background-color: var(--main-color3); color: #fff; font-size: 16px; font-weight: 400; }

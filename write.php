@@ -42,8 +42,13 @@
                 </li>
             </ul>
 
-            <form class="write" method="POST">
+            <form class="write" method="POST" enctype="multipart/form-data">
                 <input class="write__input write__input--title" type="text" name="m_contents" placeholder="제목을 입력하세요."/>
+                <div class="write__input--tagbox"><p class="hashtag"># 안녕하세요.</p><input class="write__input write__input--tag" type="text" name="m_tag" placeholder="해시태그는 , 로 구분합니다."/></div>
+                <div class="write__input--fileBox">
+                    <input class="write__input write__input--file" multiple="multiple" type="file" name="filename[]" accept="image/*"/>
+                    <button class="write__input--filebtn" type="button">이미지 추가</button>
+                </div>
             </form>
 
             <div class="contents__right">
@@ -51,6 +56,6 @@
             </div>
         </div>
     </div>
-<!-- <script src="./js/write.js"></script> -->
+<script src="./js/write.js"></script>
 </body>
 </html>
