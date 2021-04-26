@@ -35,21 +35,27 @@
     fileBtn.addEventListener('click', () => { fileInput.click(); });
 
     fileInput.addEventListener('change', () => {
-        const fileNames = document.querySelectorAll('.write__input--file-name');
-        fileLabel.remove();
-        fileNames.forEach(el => {
-            el.remove();
-        });
-
-        if(fileInput.files.length > 5){
-            alert('자료 파일은 최대 5개 입니다.')
-            fileBox.appendChild(fileLabel);
+        const flag = checkFileExtens(fileInput.files);
+        if(flag){
             fileInput.value = "";
+            alert('gif, jpg, png, mp4 확장자 파일만 가능합니다.');
         }else{
-            for(let i=0; i< fileInput.files.length; i++){
-                let files = fileName.cloneNode(true);
-                files.textContent = fileInput.files[i]['name'];
-                fileBox.appendChild(files);
+            const fileNames = document.querySelectorAll('.write__input--file-name');
+            fileLabel.remove();
+            fileNames.forEach(el => {
+                el.remove();
+            });
+    
+            if(fileInput.files.length > 5){
+                alert('자료 파일은 최대 5개 입니다.')
+                fileBox.appendChild(fileLabel);
+                fileInput.value = "";
+            }else{
+                for(let i=0; i< fileInput.files.length; i++){
+                    let files = fileName.cloneNode(true);
+                    files.textContent = fileInput.files[i]['name'];
+                    fileBox.appendChild(files);
+                }
             }
         }
     });
@@ -62,32 +68,54 @@
     doneFileBtn.addEventListener('click', () => { doneFileInput.click(); });
 
     doneFileInput.addEventListener('change', () => {
-        const doneFileNames = document.querySelectorAll('.done__compensation--file-name');
-        doneFileNames.forEach(el => {
-            el.remove();
-        });
-
-        if(doneFileInput.files.length > 5){
-            alert('자료 파일은 최대 5개 입니다.')
+        const flag = checkFileExtens(doneFileInput.files);
+        if(flag){
             doneFileInput.value = "";
+            alert('gif, jpg, png, mp4 확장자 파일만 가능합니다.');
         }else{
-            for(let i=0; i< doneFileInput.files.length; i++){
-                let files = doneFileName.cloneNode(true);
-                files.textContent = doneFileInput.files[i]['name'];
-                doneFileBox.appendChild(files);
+            const doneFileNames = document.querySelectorAll('.done__compensation--file-name');
+            doneFileNames.forEach(el => {
+                el.remove();
+            });
+
+            if(doneFileInput.files.length > 4){
+                alert('자료 파일은 최대 5개 입니다.');
+                doneFileInput.value = "";
+            }else{
+                for(let i=0; i< doneFileInput.files.length; i++){
+                    let files = doneFileName.cloneNode(true);
+                    files.textContent = doneFileInput.files[i]['name'];
+                    doneFileBox.appendChild(files);
+                }
             }
         }
     });
+    
+    function checkFileExtens(files){
+        for(let i=0; i<files.length; i++){
+            const nameArr = files[i]['name'].split('.');
+            if(nameArr[1] != 'gif' && nameArr[1] != 'jpg' && nameArr[1] != 'png' && nameArr[1] != 'mp4'){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 
     function addDoneCond(){
         const addCond = doneCondContents.cloneNode(true);
         const addCondBtn = addCond.querySelector('.done__conditions--contents-add');
-        
-        addCondBtn.addEventListener('click', () => {
-            addDoneCond();
-        });
+        const allConds = document.querySelectorAll('.done__conditions--contents');
+        console.log(allConds.length);
+        if(allConds.length+1 > 5){
+            alert('조건은 최대 5개까지 가능합니다.');
+        }else{
+            addCondBtn.addEventListener('click', () => {
+                addDoneCond();
+            });
 
-        doneCond.appendChild(addCond);
+            doneCond.appendChild(addCond);
+        }
     }
 
     function delDoneCond(){

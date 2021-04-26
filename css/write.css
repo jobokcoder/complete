@@ -3,10 +3,10 @@
 .write__input--title{ padding: 1.25rem 0px; font-size: 32px; font-weight: 900; border-bottom: 1px solid var(--main-black2); }
 .write__input--tagbox{ padding: 0.65rem 0; width: 100%; display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); }
 .write__input--tag{ width: auto; font-size: 16px; font-weight: 400; }
-.hashtag{ margin-right: 0.65rem; padding: 0.25rem 1rem; width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
+.hashtag{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
 
 .write__input--file{ display: none; }
-.write__input--file-name{ margin-left: 0.65rem; padding: 0.25rem 1rem; width: 8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2);  font-size: 16px; font-weight: 400; }
+.write__input--file-name{ margin-left: 0.65rem; padding: 0.25rem 1rem; max-width: 8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2);  font-size: 16px; font-weight: 400; }
 .write__input--file-label{ margin-left: 0.65rem; }
 .write__input--fileBox{ padding: 0.65rem 0; width: 100%; display: flex; overflow: hidden; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); }
 .write__input--filebtn{ cursor: pointer; }
@@ -35,7 +35,7 @@
 .done__compensation--fileBox{ padding: 0.375rem 0; display: flex; justify-content: flex-start; align-items: center; }
 .done__compensation--filebtn{ margin-left: 0.65rem; cursor: pointer; }
 .done__compensation--contents-text{ padding-top: 1rem; width: 100%; }
-.done__compensation--file-name{ margin-right: 0.65rem; padding: 0.25rem 1rem; width: 8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2);  font-size: 16px; font-weight: 400; }
+.done__compensation--file-name{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2);  font-size: 16px; font-weight: 400; }
 
 .write__done{ margin-top: 1.25rem; width: 100%; display: flex; justify-content: flex-end; align-items: center; }
 .write__done--btn{ cursor: pointer; padding: 0.875rem 0; width: 9.375rem; border-radius: 0.125rem; font-weight: 500; background-color: #F5CE33; }

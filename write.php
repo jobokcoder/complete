@@ -51,7 +51,7 @@
                 </div>
                 
                 <div class="write__input--fileBox">
-                    <input class="write__input write__input--file" multiple="multiple" type="file" name="m_expain_file" accept="image/*"/>
+                    <input class="write__input write__input--file" multiple="multiple" type="file" name="m_expain_file" accept=".gif, .jpg, .png, .mp4"/>
                     <svg class="write__input--filebtn" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                         <g id="그룹_70" data-name="그룹 70" transform="translate(-9.759 -6.897)">
                             <rect id="사각형_33" data-name="사각형 33" width="22" height="22" rx="1.442" transform="translate(10.259 7.397)" fill="none" stroke="#00285d" stroke-linejoin="round" stroke-width="1"/>
@@ -102,7 +102,7 @@
                     <div class="done__compensation--contents">
                         <input class="done__compensation--contents-text" type="text" placeholder="보상은 무엇인가요"/>
                         <div class="done__compensation--fileBox">
-                            <input class="write__input done__compensation--file" multiple="multiple" type="file" name="m_expain_file" accept="image/*"/>
+                            <input class="write__input done__compensation--file" multiple="multiple" type="file" name="m_expain_file" accept=".gif, .jpg, .png, .mp4"/>
 
                             <p class="done__compensation--file-name">dsadasdasd.jpg</p>
                         </div>
