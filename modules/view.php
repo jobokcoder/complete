@@ -11,7 +11,7 @@
                         <h1 class="view__contents--title">OO주유소 옆 밭에서 일 도와줄 사람 구합니다</h1>
                         <p class="view__contents--tag">#OO주유소 #밭일 #무 #농작물수확</p>
                         <p class="view__contents--content">
-                            
+                        제가 무지 짐 정리를 못하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능.하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능..
                         </p>
 
                         <div class="view__contents--done">
