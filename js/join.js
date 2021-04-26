@@ -53,7 +53,7 @@
         if(!idStatus || !pwStatus || !nickStatus || joinFormAdd.value === '' || !emailStatus){
             alert('모든 양식을 채워주시길 바랍니다.');
         }else{
-            alert('회원가입 완료!');
+            
         }
     });
 
