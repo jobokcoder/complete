@@ -2,7 +2,7 @@
 /* Noto Sans 굵기 : 100;300;400;500;700;900 */
 :root{
     --main-color1: #2EA0AA;
-    --main-color2: #FFE600;
+    --main-color2: #F5CE33;
     --main-color3: #1E3470;
     --main-white: #ffffff;
     --main-black1: #3A3A3C;
@@ -88,6 +88,8 @@ svg{ overflow: visible; }
 .loading .svg{ width: 18.75rem; }
 #path_133{ stroke-dasharray: 800; stroke-dashoffset: 500; animation: dash 1s infinite; }
 #path_137{ transform: translateY(0px); animation: dojang 500ms infinite alternate; }
+
+.header__icons--item-logout:hover #path_337{ transition: 300ms ease-in-out; transform: translateX(10px) translateY(6px); }
 
 @keyframes dash {
     to {

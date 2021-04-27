@@ -88,6 +88,13 @@
                             </svg>  
                         </a>             
                     </div>
+                    <div class="header__icons--item"> 
+                        <svg class="header__icons--item-logout" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <path id="path_335" d="M0,0H40V40H0Z" fill="none"/>
+                            <path id="path_337" d="M7,14H30.333l-5-5m0,10,5-5" transform="translate(4.667 6)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            <path id="path_336" d="M21.333,10.667V7.333A3.333,3.333,0,0,0,18,4H6.333A3.333,3.333,0,0,0,3,7.333v20a3.333,3.333,0,0,0,3.333,3.333H18a3.333,3.333,0,0,0,3.333-3.333V24" transform="translate(2 2.667)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </svg>
+                    </div>
                 </div>
             <?php
                 }
@@ -124,3 +131,24 @@
                 </div>
             </div>
         </div>
+
+<script type="text/javascript">
+
+    const logoutBtn = document.querySelector('.header__icons--item-logout');
+    const loading = document.querySelector('.loading');
+
+    logoutBtn.addEventListener('click', () => {
+        loading.style.display = 'flex';
+
+        fetch('./modules/logout.php')
+        .then(respon => respon.json())
+        .then(result => {
+            setTimeout(() => {
+                if(result['status'] === 200){
+                    location.href = './index.php';
+                }
+            },500);
+        });
+    });
+
+</script>
