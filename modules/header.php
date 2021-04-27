@@ -80,12 +80,17 @@
         </header>
 
         <div class="search">
+            <button class="search__cancel" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="37.828" height="37.828" viewBox="0 0 37.828 37.828">
+                    <path id="path_10" d="M17.5-1152.5,0-1135l17.5-17.5L0-1170l17.5,17.5L35-1170l-17.5,17.5L35-1135Z" transform="translate(1.414 1171.414)" fill="none" stroke="#fff" stroke-width="4"/>
+                </svg>
+            </button>
             <div class="search__form">
                 <div class="search__form--box">
                     <input class="search__form--input" type="text" name="keyword" placeholder="검색어를 입력해주세요."/>
                     <button class="search__form--button" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36.103" height="37.668" viewBox="0 0 36.103 37.668">
-                            <path id="path_4" data-name="합치기 4" d="M17.368,18.995,30,31.658ZM0,10.289A10.263,10.263,0,1,1,10.263,20.577,10.275,10.275,0,0,1,0,10.289Z" transform="matrix(0.999, 0.052, -0.052, 0.999, 4.246, 2.627)" fill="none" stroke="#010101" stroke-width="5"/>
+                            <path id="path_4" d="M17.368,18.995,30,31.658ZM0,10.289A10.263,10.263,0,1,1,10.263,20.577,10.275,10.275,0,0,1,0,10.289Z" transform="matrix(0.999, 0.052, -0.052, 0.999, 4.246, 2.627)" fill="none" stroke="#010101" stroke-width="5"/>
                         </svg>
                     </button>
                 </div>

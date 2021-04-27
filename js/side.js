@@ -1,5 +1,5 @@
 {
-    const sideMenu = document.querySelector('.contents__left--menuBox');
+    const sideMenu = document.querySelector('.contents__left--menuBox') && document.querySelector('.contents__left--menuBox');
     let transY = 0;
     let speed = 0.03;
 
