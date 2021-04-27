@@ -1,4 +1,4 @@
-.contents{ position: relative; padding-top: calc(0 + 4.375rem); width: 100%; display: flex; justify-content: center; align-items: flex-start; }
+.contents{ position: relative; padding-top: calc(0 + 4.375rem); min-width: 1200px; width: 100%; display: flex; justify-content: center; align-items: flex-start; }
 
 /* 상단 컨텐츠 CSS */
 .mypage{ position: relative; max-width: 75rem; width: 100%; }
@@ -39,21 +39,23 @@
 .request__current--list.active .request__current--list-arrow{ transform: rotate(-180deg); }
 .request__current--list-header{ padding: 1.625rem 1.75rem; width: 100%; display: flex; justify-content: space-between; align-items: center; }
 .request__current--list-arrow{ cursor: pointer; }
-.request__current--list-wrap{ padding-bottom: 1.75rem; width: 100%; display: none; flex-wrap: wrap; justify-content: center; align-items: center; flex-direction: column; transform: translateY(-20%); opacity: 0; }
-.request__current--list-wrap.picture{ flex-direction: row; justify-content: flex-start; align-items: center; }
-.request__current--list.active .request__current--list-wrap{ display: flex; animation: fadeDown 600ms ease-in-out forwards; }
+.request__current--list-wrap{ padding-bottom: 1.75rem; width: 100%; display: none; grid-template-rows: 1fr; transform: translateY(-20%); opacity: 0; }
+.request__current--list-wrap.picture{ grid-template-columns: repeat(5, 14rem); column-gap: 1.25rem; }
+.request__current--list.active .request__current--list-wrap{ display: grid; animation: fadeDown 600ms ease-in-out forwards; }
 
-.rcliw__item{ padding: 1.25rem 1.75rem; width: 100%; display: flex; justify-content: space-between; align-items: center; border-radius: 0.375rem; }
+.request__current--friend .rcliw__item{ grid-template-columns: auto 20rem; }
+.rcliw__item{ padding: 1.25rem 1.75rem; width: 100%; display: grid; grid-template-columns: 2fr 2fr 1fr 0.5fr; justify-content: space-between; align-items: center; border-radius: 0.375rem; }
 .rcliw__item:hover{ transition: 300ms ease-in-out; background-color: #E8F4F6; }
-.rcliw__item--wrap{ display: flex; justify-content: center; align-items: center; }
+.rcliw__item--wrap{ display: flex; justify-content: flex-start; align-items: center; }
 .rcliw__item--wrap > *{ margin-right: 4rem; }
+.rcliw__item--date{ display: flex; justify-content: center; align-items: center; }
 .rcliw__item--picture{ width: 3.125rem; height: 3.125rem; border-radius: 70%; background-color: sandybrown; overflow: hidden; }
-.rcliw__item--select{ display: flex; justify-content: center; align-items: center; }
+.rcliw__item--select{ display: flex; justify-content: flex-end; align-items: center; }
 .rcliw__item--select > *{ margin-left: 1rem; padding: 0.625rem 0px; width: 9.75rem; border-radius: 0.625rem; text-align: center; cursor: pointer; }
 .rcliw__item--select-accept{ background-color: var(--main-color2); color: #000; }
 .rcliw__item--select-cancel{ background-color: var(--main-color3); color: #fff; }
 
-.missions__list{ position: relative; width: 19%; margin-right: 2rem; }
+.missions__list{ position: relative; }
 .missions__list--image{ position: relative; width: 100%; height: 16rem; }
 .missions__list--image img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
 .missions__list--info > *{ margin-top: 0.875rem; }
