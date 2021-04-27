@@ -6,7 +6,7 @@
 .hashtag{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
 
 .write__input--dateBox{ padding: 0.65rem 0; width: 100%; display: flex; overflow: hidden; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); }
-
+.write__input--dateBox > input{ margin: 0 0.65rem; padding: 0.25rem 1rem; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2); }
 .write__input--file{ display: none; }
 .write__input--file-name{ margin-left: 0.65rem; padding: 0.25rem 1rem; max-width: 8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2);  font-size: 16px; font-weight: 400; }
 .write__input--file-label{ margin-left: 0.65rem; }

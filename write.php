@@ -33,7 +33,7 @@
 
                 <div class="write__input--dateBox">
                     <p> 기간 : </p>
-                    <input class="write__input--date-start" type="date" name="m_date_s"/>
+                    <input class="write__input--date-start" type="date" name="m_date_s" />
                     <p> ~ </p>
                     <input class="write__input--date-end" type="date" name="m_date_e"/>
                 </div>
@@ -107,6 +107,7 @@
             </div>
         </div>
     </div>
+<script src="./js/side.js"></script>
 <script src="./js/write.js"></script>
 </body>
 </html>

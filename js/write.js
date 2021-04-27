@@ -110,6 +110,17 @@
             }
         }
     });
+
+    dateEnd.addEventListener('change', () => {
+        const start = new Date(dateStart.value);
+        const end = new Date(dateEnd.value);
+        const dateDiff = Math.ceil((end.getTime()-start.getTime())/(1000*3600*24));
+        
+        if(dateDiff < 0){
+            alert('종료 일시는 시작 일시보다 늦어야 합니다.');
+            dateEnd.value = "";
+        }
+    });
     
     function checkFileExtens(files){
         for(let i=0; i<files.length; i++){
