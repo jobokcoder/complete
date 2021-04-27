@@ -102,7 +102,7 @@
                     <input class="join__form--input join__form--input-id" type="text" placeholder="아이디"/>
                     <p class="join__form--not join__form--not-id">아이디는 첫 글자 영문, 영문 소문자와 숫자 6~12자리로 입력해야합니다!</p>
                     <input class="join__form--input join__form--input-pw" type="password" placeholder="비밀번호"/>
-                    <p class="join__form--not join__form--not-pw">비밀번호는 영문 대소문자와 숫자 4~20자리로 입력해야합니다!</p>
+                    <p class="join__form--not join__form--not-pw">비밀번호는 특수기호, 영문 대소문자와 숫자 4~20자리로 입력해야합니다!</p>
                     <input class="join__form--input join__form--input-nick" type="text" placeholder="닉네임"/>
                     <p class="join__form--not join__form--not-nick">닉네임은 영문 또는 한글 및 숫자를 포함한 2~15자리로 입력해야합니다!</p>
                     <input class="join__form--input join__form--input-add" type="text" placeholder="주소" readonly/>
@@ -122,7 +122,5 @@
     </div>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="./js/join.js"></script>
-<script type="text/javascript">
-</script>
 </body>
 </html>

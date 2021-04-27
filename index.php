@@ -15,33 +15,13 @@
         
         <?php
             include('./modules/header.php');
-            include('./modules/view.php');
         ?>
 
         <div class="contents">
-            <ul class="contents__left">
-                <li class="contents__left--menu">
-                    <a href="#">메뉴</a>
-                    <svg class="menu__hover--svg" xmlns="http://www.w3.org/2000/svg" width="179.745" height="28.979" viewBox="0 0 179.745 28.979">
-                        <path id="패스_89" data-name="패스 89" d="M165.636,500.855v9.582l14.256-9.582,14.723,9.582v-9.582l-14.723-9.582Z" transform="translate(-491.273 194.615) rotate(-90)" fill="#259099"/>
-                        <path id="패스_88" data-name="패스 88" d="M165.636,500.855v9.582l14.256-9.582,14.723,9.582v-9.582l-14.723-9.582Z" transform="translate(671.018 -165.636) rotate(90)" fill="#fbc21c"/>
-                    </svg>
-                </li>
-                <li class="contents__left--menu">
-                    <a href="#">미션</a>
-                    <svg class="menu__hover--svg" xmlns="http://www.w3.org/2000/svg" width="179.745" height="28.979" viewBox="0 0 179.745 28.979">
-                        <path id="패스_89" data-name="패스 89" d="M165.636,500.855v9.582l14.256-9.582,14.723,9.582v-9.582l-14.723-9.582Z" transform="translate(-491.273 194.615) rotate(-90)" fill="#259099"/>
-                        <path id="패스_88" data-name="패스 88" d="M165.636,500.855v9.582l14.256-9.582,14.723,9.582v-9.582l-14.723-9.582Z" transform="translate(671.018 -165.636) rotate(90)" fill="#fbc21c"/>
-                    </svg>
-                </li>
-                <li class="contents__left--menu">
-                    <a href="#">카테고리</a>
-                    <svg class="menu__hover--svg" xmlns="http://www.w3.org/2000/svg" width="179.745" height="28.979" viewBox="0 0 179.745 28.979">
-                        <path id="패스_89" data-name="패스 89" d="M165.636,500.855v9.582l14.256-9.582,14.723,9.582v-9.582l-14.723-9.582Z" transform="translate(-491.273 194.615) rotate(-90)" fill="#259099"/>
-                        <path id="패스_88" data-name="패스 88" d="M165.636,500.855v9.582l14.256-9.582,14.723,9.582v-9.582l-14.723-9.582Z" transform="translate(671.018 -165.636) rotate(90)" fill="#fbc21c"/>
-                    </svg>
-                </li>
-            </ul>
+
+            <?php
+                include('./modules/side.php');
+            ?>
 
             <div class="contents__center">
                 <div class="missions">

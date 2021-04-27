@@ -49,11 +49,31 @@
     });
 
     joinFormSubmit.addEventListener('click', () => {
-        console.log(idStatus, idStatus, idStatus, joinFormAdd.value, emailStatus);
         if(!idStatus || !pwStatus || !nickStatus || joinFormAdd.value === '' || !emailStatus){
             alert('모든 양식을 채워주시길 바랍니다.');
         }else{
-            
+            const userInfo = {
+                user_id: joinFormID.value,
+                user_pw: joinFormPW.value,
+                user_nick: joinFormNick.value,
+                user_add: joinFormAdd.value,
+                user_email: joinFormEmail.value,
+            };
+            fetch('./modules/okJoin.php', {
+                method: 'post',
+                body: JSON.stringify(userInfo)
+            }).then(respon => respon.json())
+            .then(result => {
+                console.log(result);
+                if(result['status'] === 300){
+                    alert('이미 있는 이메일 입니다.');
+                }else if(result['status'] === 400){
+                    alert('이미 있는 아이디 입니다.');
+                }else{
+                    alert('정상적으로 회원가입 되었습니다.');
+                    location.href = './index.php';
+                }
+            })
         }
     });
 
@@ -63,11 +83,11 @@
     function sendEmail(){
         joinFormEmail.readOnly = true;
         joinFormEmail.style.filter = 'grayscale(1)';
-        alert('인증코드를 해당 이메일로 보냈습니다. 인증 코드를 적어주시길 바랍니다.');
         fetch('./modules/email.php', {
             method: 'post',
             body: JSON.stringify({email: joinFormEmail.value})
         }).then(() => {
+            alert('인증코드를 해당 이메일로 보냈습니다. 인증 코드를 적어주시길 바랍니다.');
             joinEmailRequestBox.style.display = 'flex';
         });
         sendReady = false;

@@ -14,11 +14,31 @@
     const doneCond = document.querySelector('.done__conditions');
     const doneCondBtn = document.querySelector('.done__conditions--header-btn');
     const doneCondContents = document.querySelector('.done__conditions--contents');
+    const dateStart = document.querySelector('.write__input--date-start');
+    const dateEnd = document.querySelector('.write__input--date-end');
     const tagArr = [];
+
     hashtag.remove();
     fileName.remove();
     doneFileName.remove();
     doneCondContents.remove();
+
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth()+1;
+    let yyyy = today.getFullYear();
+
+    if(dd < 10){
+        dd = `0${dd}`;
+    } 
+
+    if(mm < 10){
+        mm = `0${mm}`;
+    } 
+
+    today = `${yyyy}-${mm}-${dd}`;
+    dateStart.setAttribute('min', today);
+    dateEnd.setAttribute('min', today);
 
     tagInput.addEventListener('keyup', (e) => {
         if(e.key === ','){

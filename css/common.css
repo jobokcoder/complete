@@ -34,7 +34,7 @@ svg{ overflow: visible; }
 .contents__left{ position: fixed; left: 0; top: calc(2.25rem + 4.375rem); padding-top: 5rem; width: 22.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .contents__left--menu{ position: relative; margin-bottom: 1.5rem; padding: 0.5rem 0px; width: 50%; text-align: center; border: 0.0625rem solid rgba(0, 0, 0, 0); cursor: pointer; }
 .contents__left--menu:hover .menu__hover--svg{ transition: 300ms ease-in-out; opacity: 1; }
-.contents__left--menu a{ font-size: 1.5rem; font-weight: 500; }
+.contents__left--menu a{ position: relative; z-index: 10; font-size: 1.5rem; font-weight: 500; }
 .menu__hover--svg{ opacity: 0; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -48%); }
 
 /* 미션 보기 CSS */

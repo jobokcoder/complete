@@ -1,10 +1,11 @@
 <?php
     session_start();
-    
+
     function getData($sql){
-        $arr = [];
-        $conn = new mysqli('localhost', 'root', '', 'complete');
+        $conn = new mysqli("localhost", "root", "", "complete");
         $result = mysqli_query($conn, $sql);
+        $arr = array();
+
         while($row = mysqli_fetch_array($result)){
             $arr[] = $row;
         }
@@ -12,12 +13,8 @@
     }
 
     function setData($sql){
-        $conn = new mysqli('localhost', 'root', '', 'complete');
+        $conn = mysqli_connect("localhost", "root", "", "complete");
         $result = mysqli_query($conn, $sql);
-        if($result){
-            return 1;
-        }else{
-            return 0;
-        }
+        return $result;
     }
 ?>
