@@ -59,21 +59,22 @@
                 user_add: joinFormAdd.value,
                 user_email: joinFormEmail.value,
             };
+            loading.style.display = 'flex';
             fetch('./modules/okJoin.php', {
                 method: 'post',
                 body: JSON.stringify(userInfo)
             }).then(respon => respon.json())
             .then(result => {
-                console.log(result);
+                loading.style.display = 'none';
                 if(result['status'] === 300){
                     alert('이미 있는 이메일 입니다.');
                 }else if(result['status'] === 400){
                     alert('이미 있는 아이디 입니다.');
                 }else{
                     alert('정상적으로 회원가입 되었습니다.');
-                    location.href = './index.php';
+                    location.href = './login.php';
                 }
-            })
+            });
         }
     });
 

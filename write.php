@@ -1,3 +1,6 @@
+<?php
+    include('./modules/modules.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

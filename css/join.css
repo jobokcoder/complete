@@ -1,8 +1,7 @@
+/* 회원가입 약관 CSS */
 .conditions__contents{ padding: 7rem 0; position: relative; width: 100%; display: flex; justify-content: center; align-items: center; }
 .join__contents{ padding: 7rem 0; position: relative; width: 100%; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; }
 .join{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
-
-/* 회원가입 약관 CSS */
 
 .join__conditions{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .join__conditions--form{ margin-top: 0.9375rem; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }

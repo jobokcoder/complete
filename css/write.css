@@ -1,3 +1,4 @@
+/* 의뢰하기 CSS */
 .write{ margin-top: 4.375rem; padding: 0px 10rem; padding-bottom: 6.25rem; width: 100%; max-width: 1200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .write__input{ width: 100%; color: var(--main-black1); }
 .write__input--title{ padding: 1.25rem 0px; font-size: 32px; font-weight: 900; border-bottom: 1px solid var(--main-black2); }

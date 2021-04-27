@@ -1,3 +1,6 @@
+<?php
+    include('./modules/modules.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,12 +51,13 @@
 
                 <form class="login__form--input" autocomplete="off">
                     <input class="login__form--input-text" type="text" name="user_id" placeholder="아이디"/>
-                    <input class="login__form--input-text" type="password" name="user_pw" placeholder="비밀번호"/>
-                    <button class="login__form--input-button" type="submit" name="submit" value="login">로그인</button>
+                    <input class="login__form--input-pass" type="password" name="user_pw" placeholder="비밀번호"/>
+                    <button class="login__form--input-button" type="button" name="submit" value="login">로그인</button>
                     <a class="login__form--input-link" href="#">아이디 / 비밀번호 찾기</a>
                 </form>
             </div>
         </div>
     </div>
+<script src="./js/login.js"></script>
 </body>
 </html>
