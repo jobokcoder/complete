@@ -131,24 +131,3 @@
                 </div>
             </div>
         </div>
-
-<script type="text/javascript">
-
-    const logoutBtn = document.querySelector('.header__icons--item-logout');
-    const loading = document.querySelector('.loading');
-
-    logoutBtn.addEventListener('click', () => {
-        loading.style.display = 'flex';
-
-        fetch('./modules/logout.php')
-        .then(respon => respon.json())
-        .then(result => {
-            setTimeout(() => {
-                if(result['status'] === 200){
-                    location.href = './index.php';
-                }
-            },500);
-        });
-    });
-
-</script>

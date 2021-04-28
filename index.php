@@ -24,6 +24,7 @@
 
             <?php
                 include('./modules/side.php');
+                include('./modules/view.php');
             ?>
 
             <div class="contents__center">
@@ -427,6 +428,7 @@
             </div>
         </div>
     </div>
+<script src="./js/common.js"></script>
 <script src="./js/side.js"></script>
 <script src="./js/main.js"></script>
 </body>

@@ -9,4 +9,33 @@
     function toggleModal(el){
         el.style.display = el.style.display == 'none' ? 'flex' : 'none';
     }
+
+    // const logoutBtn = document.querySelector('.header__icons--item-logout');
+    // const loading = document.querySelector('.loading');
+
+    // logoutBtn.addEventListener('click', () => {
+    //     loading.style.display = 'flex';
+
+    //     fetch('./modules/logout.php')
+    //     .then(respon => respon.json())
+    //     .then(result => {
+    //         setTimeout(() => {
+    //             if(result['status'] === 200){
+    //                 location.href = './index.php';
+    //             }
+    //         },500);
+    //     });
+    // });
+
+    const view = document.querySelector('.view');
+    const missions = document.querySelectorAll('.missions__list');
+    const missionsCloses = document.querySelectorAll('.view__cancel');
+
+    missions.forEach(el => {
+        el.addEventListener('click', () => { toggleModal(view); });
+    });
+    
+    missionsCloses.forEach(el => {
+        el.addEventListener('click', () => { toggleModal(view); });
+    });
 }

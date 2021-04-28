@@ -110,6 +110,7 @@
             </div>
         </div>
     </div>
+<script src="./js/common.js"></script>
 <script src="./js/side.js"></script>
 <script src="./js/write.js"></script>
 </body>

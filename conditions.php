@@ -361,6 +361,7 @@ complete 및 complete 관련 제반 서비스(모바일 웹/앱 포함)의 회�
             </div>
         </div>
     </div>
+<script src="./js/common.js"></script>
 <script src="./js/conditions.js"></script>
 </body>
 </html>

@@ -611,6 +611,7 @@
                                     <div class="rcliw__item--select-cancel">거절</div>
                                 </div>
                             </div>
+
                             <div class="rcliw__item">
                                 <div class="rcliw__item--wrap">
                                     <div class="rcliw__item--picture"></div>
@@ -621,6 +622,7 @@
                                     <div class="rcliw__item--select-cancel">거절</div>
                                 </div>
                             </div>
+                            
                             <div class="rcliw__item">
                                 <div class="rcliw__item--wrap">
                                     <div class="rcliw__item--picture"></div>
@@ -641,6 +643,8 @@
             </div>
         </div>
     </div>
+<script src="./js/common.js"></script>
+<script src="./js/side.js"></script>
 <script src="./js/mypage.js"></script>
 </body>
 </html>
