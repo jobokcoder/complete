@@ -1,13 +1,9 @@
 /* 메인 컨텐츠 CSS */
 .contents__center{ position: relative; max-width: 75rem; width: 100%; }
-.missions{ width: 100%; display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start; }
+.missions{ width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 20px; justify-content: flex-start; align-items: flex-start; }
+.missions:nth-child(2n){ grid-template-columns: 1fr 1fr 1fr 1fr;  }
 .missions__list{ opacity: 0; transform: translateY(2rem); }
 .missions__list.active{ transition: 600ms ease-in-out; opacity: 1; transform: translateY(0); }
-.missions__list:nth-child(n-3){ width: 30%; }
-.missions__list:nth-child(2){ margin: 0px 5%; }
-.missions__list:nth-child(n+4){ width: 19%; }
-.missions__list:nth-child(5){ margin: 0px 0.9375rem; }
-.missions__list:nth-child(7){ margin: 0px 0.9375rem; }
 .missions__list--image{ position: relative; width: 100%; height: 25.63rem; }
 .missions__list--image img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
 .missions__list--image-opacity{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; background-color: rgba(0, 0, 0, 0.15); }
@@ -16,8 +12,8 @@
 .missions__list--info-title{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.188rem; font-weight: 700; }
 .missions__list--info-text{ overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; width: 100%; height: 3rem; font-size: 1rem; font-weight: 400; white-space: normal; }
 .missions__list--info-writer{ margin-top: 0.875rem; font-size: 0.9375rem; font-weight: 300; }
-.missions__list:nth-child(n+4) .missions__list--image{ height: 16rem; }
+/* .missions__list:nth-child(n+4) .missions__list--image{ height: 16rem; }
 .missions__list:nth-child(n+4) .missions__list--info > *{ margin-top: 0.875rem; }
 .missions__list:nth-child(n+4) .missions__list--info-title{ font-size: 0.875rem; font-weight: 500; }
 .missions__list:nth-child(n+4) .missions__list--info-text{ height: 2.063rem; font-size: 0.75rem; font-weight: 400; }
-.missions__list:nth-child(n+4) .missions__list--info-writer{ font-size: 0.625rem; font-weight: 300; }
+.missions__list:nth-child(n+4) .missions__list--info-writer{ font-size: 0.625rem; font-weight: 300; } */
