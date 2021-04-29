@@ -41,7 +41,7 @@ svg{ overflow: visible; }
 
 
 /* 검색창 CSS */
-.search{ position: fixed; left: 0; top: 0; z-index: 60; width: 100%; height: 100%; display: none; justify-content: center; align-items: center; overflow: hidden; background-color: rgba(0, 0, 0, 0.8); }
+.search{ animation: fade 600ms ease-in-out forwards; opacity: 0; position: fixed; left: 0; top: 0; z-index: 60; width: 100%; height: 100%; display: none; justify-content: center; align-items: center; overflow: hidden; background-color: rgba(0, 0, 0, 0.8); }
 .search__cancel{ position: absolute; right: 5rem; top: 5rem; cursor: pointer; }
 .search__form{ max-width: 1200px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
 .search__form--box{ width: 100%; display: grid; grid-template-columns: auto 5.625rem; }
@@ -100,5 +100,11 @@ svg{ overflow: visible; }
 @keyframes dojang{
     to {
         transform: translateY(-6.25rem);
+    }
+}
+
+@keyframes fade {
+    to {
+        opacity: 1;
     }
 }

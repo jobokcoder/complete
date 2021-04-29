@@ -18,4 +18,4 @@
 .missions__list--info > *{ margin-top: 1.25rem; }
 .missions__list--info-title{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.188rem; font-weight: 700; }
 .missions__list--info-text{ overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; width: 100%; height: 3rem; font-size: 1rem; font-weight: 400; white-space: normal; }
-.missions__list--info-writer{ margin-top: 0.875rem; font-size: 0.9375rem; font-weight: 300; }
+.missions__list--info-writer{ margin-top: 0.875rem; font-size: 0.9375rem; font-weight: 300; }   

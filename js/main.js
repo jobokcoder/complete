@@ -1,4 +1,7 @@
 {
+    const loading = document.querySelector('.loading');
+    
+    loading.style.display = 'flex';
     window.addEventListener('load', () => {
         const missions = document.querySelectorAll('.missions__list');
 
@@ -13,13 +16,15 @@
             spaceBetween: 30,
             loop: true,
             pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
+                el: '.swiper-pagination',
+                clickable: true,
             },
             navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
         });
+        
+        loading.style.display = 'none';
     });
 }

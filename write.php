@@ -1,5 +1,6 @@
 <?php
     include('./modules/modules.php');
+    include('./modules/loginConfirm.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
