@@ -1,5 +1,12 @@
+/* 이벤트 슬라이드 CSS */
+.banner__images--slider{ width: 100%; height: 13.625rem; display: flex; justify-content: center; align-items: center; }
+.swiper-container{ width: 100%; height: 100%; }
+.swiper-slide{ position: relative; overflow: hidden; border-radius: 0.75rem; background-color: cornflowerblue; }
+.swiper-slide img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+
 /* 메인 컨텐츠 CSS */
 .contents__center{ position: relative; max-width: 75rem; width: 100%; }
+.missions__wrapper{ margin-top: 1.5rem; width: 100%; }
 .missions{ width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 20px; justify-content: flex-start; align-items: flex-start; }
 .missions:nth-child(2n){ grid-template-columns: 1fr 1fr 1fr 1fr;  }
 .missions__list{ opacity: 0; transform: translateY(2rem); }
@@ -12,8 +19,3 @@
 .missions__list--info-title{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.188rem; font-weight: 700; }
 .missions__list--info-text{ overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; width: 100%; height: 3rem; font-size: 1rem; font-weight: 400; white-space: normal; }
 .missions__list--info-writer{ margin-top: 0.875rem; font-size: 0.9375rem; font-weight: 300; }
-/* .missions__list:nth-child(n+4) .missions__list--image{ height: 16rem; }
-.missions__list:nth-child(n+4) .missions__list--info > *{ margin-top: 0.875rem; }
-.missions__list:nth-child(n+4) .missions__list--info-title{ font-size: 0.875rem; font-weight: 500; }
-.missions__list:nth-child(n+4) .missions__list--info-text{ height: 2.063rem; font-size: 0.75rem; font-weight: 400; }
-.missions__list:nth-child(n+4) .missions__list--info-writer{ font-size: 0.625rem; font-weight: 300; } */
