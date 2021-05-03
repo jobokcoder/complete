@@ -9,7 +9,7 @@
     $count = count($data);
     if($count > 0){
         $response['status'] = 200;
-        $_SESSION['user_id'] = $data[0][0];
+        $_SESSION['m_id'] = $data[0][0];
         print_r(json_encode($response));
     }else{
         $response['status'] = 300;
