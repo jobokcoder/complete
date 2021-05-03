@@ -28,11 +28,11 @@
             ?>
 
             <form class="write" method="POST" enctype="multipart/form-data">
-                <input class="write__input write__input--title" type="text" name="m_contents" placeholder="제목을 입력하세요."/>
+                <input class="write__input write__input--title" type="text" name="m_title" placeholder="제목을 입력하세요."/>
                 
                 <div class="write__input--tagbox">
                     <p class="hashtag"># 안녕하세요.</p>
-                    <input class="write__input write__input--tag" type="text" name="m_tag" placeholder="해시태그는 , 로 구분합니다."/>
+                    <input class="write__input write__input--tag" type="text" placeholder="해시태그는 , 로 구분합니다."/>
                 </div>
 
                 <div class="write__input--dateBox">
@@ -43,7 +43,8 @@
                 </div>
                 
                 <div class="write__input--fileBox">
-                    <input class="write__input write__input--file" multiple="multiple" type="file" name="m_expain_file" accept=".gif, .jpg, .png, .mp4"/>
+                    <input class="write__input--hidden" type="hidden" name="m_hash" placeholder="제목을 입력하세요."/>
+                    <input class="write__input write__input--file" multiple="multiple" type="file" name="m_expain_file[]" accept=".gif, .jpg, .png, .mp4"/>
                     <svg class="write__input--filebtn" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                         <g id="그룹_70" data-name="그룹 70" transform="translate(-9.759 -6.897)">
                             <rect id="사각형_33" data-name="사각형 33" width="22" height="22" rx="1.442" transform="translate(10.259 7.397)" fill="none" stroke="#00285d" stroke-linejoin="round" stroke-width="1"/>
@@ -57,22 +58,19 @@
                     <p class="write__input--file-name">dsadasdasd.jpg</p>
                 </div>
                 
-                <textarea class="write__input--content" placeholder="무슨 의뢰를 하실건가요"></textarea>
+                <textarea class="write__input--content" placeholder="무슨 의뢰를 하실건가요" name="m_content"></textarea>
                 
                 <div class="done__conditions">
                     <div class="done__conditions--header">
                         <p class="done__conditions--header-title">완료조건</p>
-                        <svg class="done__conditions--header-btn" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
-                            <g id="그룹_75" data-name="그룹 75" transform="translate(-599 -665.524)">
-                                <circle id="circle_10" data-name="타원 10" cx="12.5" cy="12.5" r="12.5" transform="translate(599 665.524)" fill="#2ea0aa"/>
-                                <path id="path_130" data-name="패스 130" d="M2499.441,1922l6.536,7.434,8.87-11.671" transform="translate(-1895.644 -1245.575)" fill="none" stroke="#fff" stroke-width="1"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="done__conditions--contents">
-                        <svg class="done__conditions--contents-add" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <svg class="done__conditions--header-btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                             <path id="path_190" data-name="패스 190" d="M858,93h-7V86h-2v7h-7v2h7v7h2V95h7Z" transform="translate(-842 -86)"/>
                         </svg>
+                        <input class="done__conditions--contents-hidden" type="hidden" name="m_cond" />
+                    </div>
+
+                    <div class="done__conditions--contents">
+                        <p class="done__conditions--contents-add">0</p>
                         <input class="done__conditions--contents-text" type="text" placeholder="조건을 입력하세요">
                     </div>
                 </div>
@@ -92,9 +90,9 @@
                     </div>
 
                     <div class="done__compensation--contents">
-                        <input class="done__compensation--contents-text" type="text" placeholder="보상은 무엇인가요"/>
+                        <input class="done__compensation--contents-text" type="text" name="m_com" placeholder="보상은 무엇인가요"/>
                         <div class="done__compensation--fileBox">
-                            <input class="write__input done__compensation--file" multiple="multiple" type="file" name="m_expain_file" accept=".gif, .jpg, .png, .mp4"/>
+                            <input class="write__input done__compensation--file" multiple="multiple" type="file" name="m_com_file[]" accept=".gif, .jpg, .png, .mp4"/>
 
                             <p class="done__compensation--file-name">dsadasdasd.jpg</p>
                         </div>
