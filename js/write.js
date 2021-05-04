@@ -123,10 +123,14 @@
                 method: 'POST',
                 body: formData,
             })
-            .then(r => r.text())
+            .then(respon => respon.json())
             .then(data => {
-                loading.style.display = 'none';
-                console.log(data);
+                if(data['status'] == 200){
+                    location.href = './index.php';
+                }else{
+                    alert('업로드에 실패하였습니다.');
+                    location.href = './index.php';
+                }
             })
         }
     });

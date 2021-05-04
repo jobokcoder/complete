@@ -1,5 +1,5 @@
 <?php
-    $userID = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'none';
+    $userID = isset($_SESSION['m_id']) ? $_SESSION['m_id'] : 'none';
 
     if($userID === 'none'){
         echo("<script>

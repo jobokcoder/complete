@@ -1,6 +1,6 @@
 
 <?php
-    $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'none';
+    $user_id = isset($_SESSION['m_id']) ? $_SESSION['m_id'] : 'none';
 ?>
 
         <header class="header">
