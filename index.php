@@ -24,30 +24,73 @@
         <div class="contents">
 
             <?php
-                include('./modules/side.php');
                 include('./modules/view.php');
             ?>
 
             <div class="contents__center">
 
-                <div class="banner__images--slider">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img class="swiper-slide--img" src="./images/banner/banner_01.png" alt="banner"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="swiper-slide--img" src="./images/banner/banner_02.png" alt="banner"/>
-                            </div>
-                            <div class="swiper-slide">
-                                <img class="swiper-slide--img" src="./images/banner/banner_03.png" alt="banner"/>
+                <div class="slide">
+                    <div class="slide__wrapper">
+                        <div class="slide__left">
+                            <h1 class="slide__left--title">MISSION</h1>
+
+                            <div class="slide__contents">
+                                <div class="slide__menu">
+                                    <svg class="slide__menu--text active" width="35" height="89" viewBox="0 0 35 89">
+                                        <text transform="translate(28 89) rotate(-90)" fill="#3a3a3c" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" opacity="0.5"><tspan x="0" y="0">인기순</tspan></text>
+                                    </svg>
+                                    <svg class="slide__menu--text" width="35" height="89" viewBox="0 0 35 89">
+                                        <text transform="translate(28 89) rotate(-90)" fill="#3a3a3c" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" opacity="0.5"><tspan x="0" y="0">마감임박</tspan></text>
+                                    </svg>
+                                    <svg class="slide__menu--text" width="35" height="89" viewBox="0 0 35 89">
+                                        <text transform="translate(28 89) rotate(-90)" fill="#3a3a3c" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" opacity="0.5"><tspan x="0" y="0">이벤트</tspan></text>
+                                    </svg>
+                                </div>
+
+                                <div class="slide__mission">
+                                    <div class="slide__mission--hash">
+                                        <p class="slide__mission--hash-tag">#사진찍기</p>
+                                        <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                    </div>
+
+                                    <h1 class="slide__mission--title">해외 온 것 같은 이미지 찍기</h1>
+
+                                    <p class="slide__mission--text">
+                                        해외로 왔다고 착각이드는 이미지를 
+                                        찍어서 보내주시면 됩니다!!  
+                                        집에서 찍든 동네에서 찍든 그냥 
+                                        해외여행 온 것 같은 기분이 들면 
+                                        장소는 상관없어요!
+                                    </p>
+
+                                    <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                    <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+
+                                    <div class="slide__mission--buttons">
+                                        <svg class="slide__mission--buttons-left" width="24" height="24" viewBox="0 0 24 24">
+                                            <circle id="타원_16" data-name="타원 16" cx="12" cy="12" r="12" fill="#1e3470" opacity="0.1"/>
+                                            <path id="패스_157" data-name="패스 157" d="M9034-2348l5.318,5.32,5.32-5.32" transform="translate(-2333.34 -9027.319) rotate(90)" fill="none" stroke="#000" stroke-width="1"/>
+                                        </svg>
+
+                                        <p class="slide__mission--now">2 / 8</p>
+
+                                        <svg class="slide__mission--buttons-right" width="24" height="24" viewBox="0 0 24 24">
+                                            <circle id="타원_17" data-name="타원 17" cx="12" cy="12" r="12" fill="#1e3470" opacity="0.1"/>
+                                            <path id="패스_156" data-name="패스 156" d="M9034-2348l5.318,5.32,5.32-5.32" transform="translate(2357.34 9051.319) rotate(-90)" fill="none" stroke="#000" stroke-width="1"/>
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Add Pagination -->
-                        <div class="swiper-pagination"></div>
-                        <!-- Add Arrows -->
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+
+                        <div class="slide__right">
+                            <div class="slide__right--wrapper">
+                                <div class="slide__right--circle"></div>
+                                <div class="slide__right--mission">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -68,15 +111,9 @@
                     </div>
                 </div>
             </div>
-
-            <div class="contents__right">
-
-            </div>
         </div>
     </div>
 <script src="./js/common.js"></script>
-<script src="./js/side.js"></script>
 <script src="./js/main.js"></script>
-<script src="./js/swiper-bundle.min.js"></script>
 </body>
 </html>

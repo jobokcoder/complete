@@ -23,10 +23,6 @@
 
         <div class="contents">
 
-            <?php
-                include('./modules/side.php');
-            ?>
-
             <form class="write" method="POST" enctype="multipart/form-data">
                 <input class="write__input write__input--title" type="text" name="m_title" placeholder="제목을 입력하세요."/>
                 
@@ -110,7 +106,6 @@
         </div>
     </div>
 <script src="./js/common.js"></script>
-<script src="./js/side.js"></script>
 <script src="./js/write.js"></script>
 </body>
 </html>

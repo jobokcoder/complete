@@ -22,10 +22,6 @@
 
         <div class="contents">
 
-            <?php
-                include('./modules/side.php');
-            ?>
-
             <form class="inquiry" method="POST" enctype="multipart/form-data">
                 <h1 class="inquiry__title">문의</h1>
                 <input class="inquiry__input inquiry__input--email" type="text" name="m_contents" placeholder="답변 받으실 이메일 주소를 입력하세요."/>
@@ -60,7 +56,6 @@
         </div>
     </div>
 <script src="./js/common.js"></script>
-<script src="./js/side.js"></script>
 <script src="./js/inquiry.js"></script>
 </body>
 </html>

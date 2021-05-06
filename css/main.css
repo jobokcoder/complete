@@ -1,11 +1,34 @@
-/* 이벤트 슬라이드 CSS */
-.banner__images--slider{ width: 100%; height: 13.625rem; display: flex; justify-content: center; align-items: center; }
-.swiper-container{ width: 100%; height: 100%; }
-.swiper-slide{ position: relative; overflow: hidden; border-radius: 0.75rem; background-color: cornflowerblue; }
-.swiper-slide img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+/* 메인 슬라이드 CSS */
+.slide{ width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; }
+.slide__wrapper{ width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+.slide__contents{ display: flex; justify-content: flex-start; align-items: flex-start; }
+
+.slide__left{ display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
+.slide__left--title{ padding-left: 6.875rem; font-size: 5.625rem; font-weight: 900; color: #2EA0AA; opacity: 0.2; }
+.slide__menu{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.slide__menu--text.active *{ opacity: 1; }
+.slide__mission{ margin-left: 4.75rem; }
+.slide__mission--hash{ display: flex; justify-content: flex-start; align-items: center; }
+.slide__mission--hash-tag{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
+.slide__mission--title{ margin-top: 1rem; font-size: 2rem; font-weight: 700; }
+.slide__mission--text{ margin-top: 1rem; width: 21.88rem; font-size: 1.5rem; font-weight: 400; }
+.slide__mission--writer{ margin-top: 1rem; font-size: 1.25rem; font-weight: 400; }
+.slide__mission--deadline{ font-size: 1.25rem; font-weight: 400; }
+.slide__mission--buttons{ margin-top: 1.75rem; display: flex; justify-content: flex-start; align-items: center; }
+.slide__mission--buttons *{ margin-right: 1rem; }
+.slide__mission--buttons svg{ cursor: pointer; }
+
+.slide__right{ width: 100%; display: flex; justify-content: center; align-items: center; }
+.slide__right--wrapper{ position: relative; width: 100%; height: 100%; transform: translateX(80%); }
+.slide__right--circle{ position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 70%; width: 40.5rem; height: 40.5rem; background-color: var(--main-color1); }
+.slide__right--circle::before{ content: ''; position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
+.slide__right--circle::after{ content: ''; position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -48%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
+.slide__right--mission{ position: absolute; left: -40%; top: 50%; transform: translate(-50%, -50%); width: 22.5rem; height: 25.63rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0px 0px 8px rgba(0, 0, 0, 1); }
+.slide__right--mission img{ position: absolute; width: 100%; height: 100%; object-fit: cover; }
 
 /* 메인 컨텐츠 CSS */
-.contents__center{ position: relative; max-width: 75rem; width: 100%; }
+.contents{ padding: 0; }
+.contents__center{ position: relative; max-width: 75rem; width: 100%; flex-direction: column; }
 .missions__wrapper{ margin-top: 1.5rem; width: 100%; }
 .missions{ width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 20px; justify-content: flex-start; align-items: flex-start; }
 .missions:nth-child(2n){ grid-template-columns: 1fr 1fr 1fr 1fr;  }

@@ -3,6 +3,8 @@
 
     $sql = 'select * from mission';
     $result = getData($sql);
+    $count = count($result);
 
-    print_r(json_encode($result));
+    echo $count;
+    // print_r(json_encode($result));
 ?>

@@ -23,10 +23,6 @@
 
         <div class="contents">
 
-            <?php
-                include('./modules/side.php');
-            ?>
-
             <div class="mypage">
                 <div class="mypage__info">
                     <div class="mypage__info--background">
@@ -645,7 +641,6 @@
         </div>
     </div>
 <script src="./js/common.js"></script>
-<script src="./js/side.js"></script>
 <script src="./js/mypage.js"></script>
 </body>
 </html>

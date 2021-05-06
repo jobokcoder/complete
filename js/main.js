@@ -7,8 +7,9 @@
     function getMission(){
 
         fetch('./modules/getMission.php')
-        .then(respon => respon.json())
+        .then(respon => respon.text())
         .then(data => {
+            console.log(data);
             const total = data.length;
             const block = Math.ceil(total / 7);
             const arr = [];
@@ -61,31 +62,11 @@
             dom.removeChild(dom.firstChild);
         }
     }
-    
-    // loading.style.display = 'flex';
 
     window.addEventListener('load', () => {
 
         removeChild(missionsWrapper);
-        getMission();
+        // getMission();
 
-        const swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            autoplay: {
-                delay: 4000,
-            },
-        });
     });
-        
-    //     loading.style.display = 'none';
 }
