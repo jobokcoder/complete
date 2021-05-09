@@ -36,13 +36,13 @@
 
                             <div class="slide__contents">
                                 <div class="slide__menu">
-                                    <svg class="slide__menu--text active" width="35" height="89" viewBox="0 0 35 89">
+                                    <svg class="slide__menu--text slide__menu--text-popluar active" width="35" height="89" viewBox="0 0 35 89">
                                         <text transform="translate(28 89) rotate(-90)" fill="#3a3a3c" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" opacity="0.5"><tspan x="0" y="0">인기순</tspan></text>
                                     </svg>
-                                    <svg class="slide__menu--text" width="35" height="89" viewBox="0 0 35 89">
+                                    <svg class="slide__menu--text slide__menu--text-deadline" width="35" height="89" viewBox="0 0 35 89">
                                         <text transform="translate(28 89) rotate(-90)" fill="#3a3a3c" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" opacity="0.5"><tspan x="0" y="0">마감임박</tspan></text>
                                     </svg>
-                                    <svg class="slide__menu--text" width="35" height="89" viewBox="0 0 35 89">
+                                    <svg class="slide__menu--text slide__menu--text-event" width="35" height="89" viewBox="0 0 35 89">
                                         <text transform="translate(28 89) rotate(-90)" fill="#3a3a3c" font-size="24" font-family="NotoSansCJKkr-Bold, Noto Sans CJK KR" font-weight="700" opacity="0.5"><tspan x="0" y="0">이벤트</tspan></text>
                                     </svg>
                                 </div>
@@ -230,6 +230,9 @@
                         <div class="slide__right">
                             <div class="slide__right--wrapper">
                                 <div class="slide__right--circle"></div>
+                                <div class="slide__right--sub-circle"></div>
+                                <div class="slide__right--sub-circle"></div>
+
                                 <div class="slide__right--mission now">
                                     <img src="./images/common/common.png" alt="common"/>
                                 </div>

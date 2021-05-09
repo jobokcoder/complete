@@ -1,6 +1,6 @@
 <?php
-  session_start();
-  if(isset($_SESSION[ 'm_id'])){
-    $jb_login = TRUE;
-  }
+	$jb_login = false;
+	if(isset($_SESSION[ 'm_id'])){
+		$jb_login = TRUE;
+	}
 ?>
