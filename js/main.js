@@ -3,6 +3,71 @@
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
     const missionsWrapper = document.querySelector('.missions__wrapper');
+    const slideNowText = document.querySelector('.slide__mission--now');
+    const slideLeftBtn = document.querySelector('.slide__mission--buttons-left');
+    const slideRightBtn = document.querySelector('.slide__mission--buttons-right');
+    const slideRightWrapper = document.querySelector('.slide__right--wrapper');
+    const slideMission = document.querySelectorAll('.slide__mission');
+    let slideNow = 0;
+    let slidDeg = 0;
+    
+    removeChild(missionsWrapper);
+
+    slideLeftBtn.addEventListener('click', () => { rotateSlide('left'); });
+    slideRightBtn.addEventListener('click', () => { rotateSlide('right'); });
+
+    function rotateSlide(direction){
+
+        const rotateMission = document.querySelectorAll('.slide__right--mission');
+
+        if(direction === 'left'){
+            slideNow--;
+            slidDeg -= 45;
+        }else{
+            slideNow++;
+            slidDeg += 45;
+        }
+
+        slideNow = slideNow < 0 ? 7 : slideNow > 7 ? 0 : slideNow;
+        slideNowText.textContent = `${slideNow + 1} / 8`;
+
+        slideRightWrapper.style.transform = `translateX(80%) rotate(${slidDeg}deg)`;
+
+        slideMission.forEach((el) => {
+            el.classList.remove('now');
+        });
+
+        slideMission.forEach((el,index) => {
+            if(index === slideNow){
+                el.classList.add('now');
+            }
+        });
+
+        rotateMission.forEach((el) => {
+            el.classList.remove('now');
+        });
+
+        rotateMission.forEach((el,index) => {
+            if(index === slideNow){
+                el.classList.add('now');
+            }
+        });
+    }
+
+    // 인기순 , 마감임박 , 이벤트
+    function getSlideMission(type){
+        const info = {
+            'type': type,
+        };
+
+        fetch('./modules/getSlideMission.php', {
+            method: 'post',
+            body: JSON.stringify(),
+        }).then(respon => respon.json(info))
+        .then(result => {
+            
+        });
+    }
 
     function getMission(){
 
@@ -62,11 +127,4 @@
             dom.removeChild(dom.firstChild);
         }
     }
-
-    window.addEventListener('load', () => {
-
-        removeChild(missionsWrapper);
-        // getMission();
-
-    });
 }

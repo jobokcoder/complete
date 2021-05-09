@@ -47,24 +47,167 @@
                                     </svg>
                                 </div>
 
-                                <div class="slide__mission">
-                                    <div class="slide__mission--hash">
-                                        <p class="slide__mission--hash-tag">#사진찍기</p>
-                                        <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                <div class="slide__contents--mission">
+                                    <div class="slide__mission now">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
+
+                                        <h1 class="slide__mission--title">slide 1</h1>
+
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
                                     </div>
 
-                                    <h1 class="slide__mission--title">해외 온 것 같은 이미지 찍기</h1>
+                                    <div class="slide__mission">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
 
-                                    <p class="slide__mission--text">
-                                        해외로 왔다고 착각이드는 이미지를 
-                                        찍어서 보내주시면 됩니다!!  
-                                        집에서 찍든 동네에서 찍든 그냥 
-                                        해외여행 온 것 같은 기분이 들면 
-                                        장소는 상관없어요!
-                                    </p>
+                                        <h1 class="slide__mission--title">slide 2</h1>
 
-                                    <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
-                                    <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                    </div>
+            
+                                    <div class="slide__mission">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
+
+                                        <h1 class="slide__mission--title">slide 3</h1>
+
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                    </div>
+            
+                                    <div class="slide__mission">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
+
+                                        <h1 class="slide__mission--title">slide 4</h1>
+
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                    </div>
+            
+                                    <div class="slide__mission">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
+
+                                        <h1 class="slide__mission--title">slide 5</h1>
+
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                    </div>
+            
+                                    <div class="slide__mission">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
+
+                                        <h1 class="slide__mission--title">slide 6</h1>
+
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                    </div>
+            
+                                    <div class="slide__mission">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
+
+                                        <h1 class="slide__mission--title">slide 7</h1>
+
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                    </div>
+            
+                                    <div class="slide__mission">
+                                        <div class="slide__mission--hash">
+                                            <p class="slide__mission--hash-tag">#사진찍기</p>
+                                            <p class="slide__mission--hash-tag">#여행가고싶다</p>
+                                        </div>
+
+                                        <h1 class="slide__mission--title">slide 8</h1>
+
+                                        <p class="slide__mission--text">
+                                            해외로 왔다고 착각이드는 이미지를 
+                                            찍어서 보내주시면 됩니다!!  
+                                            집에서 찍든 동네에서 찍든 그냥 
+                                            해외여행 온 것 같은 기분이 들면 
+                                            장소는 상관없어요!
+                                        </p>
+
+                                        <p class="slide__mission--writer">의뢰자 : 배달에 ㅁㅊ놈</p>
+                                        <p class="slide__mission--deadline">마감일 : 2021.05.01</p>
+                                    </div>
+            
 
                                     <div class="slide__mission--buttons">
                                         <svg class="slide__mission--buttons-left" width="24" height="24" viewBox="0 0 24 24">
@@ -72,7 +215,7 @@
                                             <path id="패스_157" data-name="패스 157" d="M9034-2348l5.318,5.32,5.32-5.32" transform="translate(-2333.34 -9027.319) rotate(90)" fill="none" stroke="#000" stroke-width="1"/>
                                         </svg>
 
-                                        <p class="slide__mission--now">2 / 8</p>
+                                        <p class="slide__mission--now">1 / 8</p>
 
                                         <svg class="slide__mission--buttons-right" width="24" height="24" viewBox="0 0 24 24">
                                             <circle id="타원_17" data-name="타원 17" cx="12" cy="12" r="12" fill="#1e3470" opacity="0.1"/>
@@ -80,12 +223,34 @@
                                         </svg>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
                         <div class="slide__right">
                             <div class="slide__right--wrapper">
                                 <div class="slide__right--circle"></div>
+                                <div class="slide__right--mission now">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
+                                <div class="slide__right--mission">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
+                                <div class="slide__right--mission">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
+                                <div class="slide__right--mission">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
+                                <div class="slide__right--mission">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
+                                <div class="slide__right--mission">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
+                                <div class="slide__right--mission">
+                                    <img src="./images/common/common.png" alt="common"/>
+                                </div>
                                 <div class="slide__right--mission">
                                     <img src="./images/common/common.png" alt="common"/>
                                 </div>

@@ -1,6 +1,6 @@
 
 <?php
-    $user_id = isset($_SESSION['m_id']) ? $_SESSION['m_id'] : 'none';
+    include('./modules/confirmLogin.php');
 ?>
 
         <header class="header">
@@ -120,11 +120,21 @@
             </div>
             
             <div class="menu__contents">
-                <p class="menu__contents--item">로그인</p>
-                <p class="menu__contents--item">회원가입</p>
-                <p class="menu__contents--item">미션</p>
-                <p class="menu__contents--item">같이하기</p>
-                <p class="menu__contents--item">이벤트</p>
-                <p class="menu__contents--item">고객센터</p>
+                <?php
+                    if($jb_login){
+                ?>
+                <p class="menu__contents--item header-logout">로그아웃</p>
+                <?php
+                    }else{
+                ?>
+                <p class="menu__contents--item header-login">로그인</p>
+                <?php
+                    }
+                ?>
+                <p class="menu__contents--item header-join">회원가입</p>
+                <p class="menu__contents--item header-mission">미션</p>
+                <p class="menu__contents--item header-write">같이하기</p>
+                <p class="menu__contents--item header-event">이벤트</p>
+                <p class="menu__contents--item header-cService">고객센터</p>
             </div>
         </div>

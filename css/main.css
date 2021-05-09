@@ -3,11 +3,14 @@
 .slide__wrapper{ width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
 .slide__contents{ display: flex; justify-content: flex-start; align-items: flex-start; }
 
+
 .slide__left{ display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .slide__left--title{ padding-left: 6.875rem; font-size: 5.625rem; font-weight: 900; color: #2EA0AA; opacity: 0.2; }
 .slide__menu{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .slide__menu--text.active *{ opacity: 1; }
-.slide__mission{ margin-left: 4.75rem; }
+.slide__contents--mission{ margin-left: 4.75rem; }
+.slide__mission{ display: none; opacity: 0; }
+.slide__mission.now{ display: block; animation: fade 600ms ease-in forwards; }
 .slide__mission--hash{ display: flex; justify-content: flex-start; align-items: center; }
 .slide__mission--hash-tag{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
 .slide__mission--title{ margin-top: 1rem; font-size: 2rem; font-weight: 700; }
@@ -19,11 +22,20 @@
 .slide__mission--buttons svg{ cursor: pointer; }
 
 .slide__right{ width: 100%; display: flex; justify-content: center; align-items: center; }
-.slide__right--wrapper{ position: relative; width: 100%; height: 100%; transform: translateX(80%); }
-.slide__right--circle{ position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 70%; width: 40.5rem; height: 40.5rem; background-color: var(--main-color1); }
+.slide__right--wrapper{ position: relative; width: 100%; height: 100%; transform: translateX(80%); transition: 600ms ease-in-out; }
+.slide__right--circle{ position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 70%; width: 40.5rem; height: 40.5rem; background-color: var(--main-color1); box-shadow: 0px 0px 16px #2EA0AA; }
 .slide__right--circle::before{ content: ''; position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
-.slide__right--circle::after{ content: ''; position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -48%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
-.slide__right--mission{ position: absolute; left: -40%; top: 50%; transform: translate(-50%, -50%); width: 22.5rem; height: 25.63rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0px 0px 8px rgba(0, 0, 0, 1); }
+.slide__right--circle::after{ content: ''; position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -49.5%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
+.slide__right--mission{ filter: grayscale(100%); transition: 600ms ease-in-out; position: absolute; width: 12rem; height: 12rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0px 0px 8px rgba(0, 0, 0, 1); }
+.slide__right--mission.now{ width: 20rem; height: 20rem; filter: grayscale(0%); }
+.slide__right--mission:nth-child(2){ left: -40%; top: 50%; transform: translate(-50%, -50%) rotate(0deg); }
+.slide__right--mission:nth-child(3){ left: -20%; top: 120%; transform: translate(-50%, -50%) rotate(-45deg); }
+.slide__right--mission:nth-child(4){ left: 50%; top: 150%; transform: translate(-50%, -50%) rotate(-90deg); }
+.slide__right--mission:nth-child(5){ left: 120%; top: 120%; transform: translate(-50%, -50%) rotate(-135deg); }
+.slide__right--mission:nth-child(6){ left: 140%; top: 50%; transform: translate(-50%, -50%) rotate(-180deg); }
+.slide__right--mission:nth-child(7){ left: 120%; top: -20%; transform: translate(-50%, -50%) rotate(-225deg); }
+.slide__right--mission:nth-child(8){ left: 50%; top: -50%; transform: translate(-50%, -50%) rotate(-270deg); }
+.slide__right--mission:nth-child(9){ left: -20%; top: -20%; transform: translate(-50%, -50%) rotate(-315deg); }
 .slide__right--mission img{ position: absolute; width: 100%; height: 100%; object-fit: cover; }
 
 /* 메인 컨텐츠 CSS */
