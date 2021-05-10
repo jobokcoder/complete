@@ -5,5 +5,7 @@
 .login__form--input{ margin-top: 3.125rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .login__form--input-text{ margin: 0.5rem 0px; padding: 0.75rem 1.25rem; width: 400px; border-radius: 0.125rem; background-color: #F3F9FA; }
 .login__form--input-pass{ margin: 0.5rem 0px; padding: 0.75rem 1.25rem; width: 400px; border-radius: 0.125rem; background-color: #F3F9FA; }
-.login__form--input-button{ margin-top: 1.25rem; padding: 0.75rem 0px; width: 100%; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; font-size: 1.125rem; font-weight: 500; }
+.login__form--input-button{ transition: 600ms ease-in-out; margin-top: 1.25rem; padding: 0.75rem 0px; width: 100%; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; font-size: 1.125rem; font-weight: 500; }
+.login__form--input-button:hover{ filter: brightness(1.1); }
+/* hue-rotate(90deg); */
 .login__form--input-link{ margin-top: 0.625rem; font-size: 0.875rem; font-weight: 300; }
