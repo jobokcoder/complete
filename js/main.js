@@ -5,20 +5,46 @@
     const missionsWrapper = document.querySelector('.missions__wrapper');
 
     const slideMenuText = document.querySelectorAll('.slide__menu--text');
-    const slideMenuPopluar = document.querySelector('.slide__menu--text-popluar');
-    const slideMenuDeadline = document.querySelector('.slide__menu--text-deadline');
-    const slideMenuEvent = document.querySelector('.slide__menu--text-event');
+    const slideMenuPopluar = document.querySelector('.slide__menu--text-popluar tspan');
+    const slideMenuDeadline = document.querySelector('.slide__menu--text-deadline tspan');
+    const slideMenuEvent = document.querySelector('.slide__menu--text-event tspan');
     const slideNowText = document.querySelector('.slide__mission--now');
     const slideLeftBtn = document.querySelector('.slide__mission--buttons-left');
     const slideRightBtn = document.querySelector('.slide__mission--buttons-right');
     const slideRightWrapper = document.querySelector('.slide__right--wrapper');
-    const slideMission = document.querySelectorAll('.slide__mission');
+    
+    const slideMissionBtn = document.querySelector('.slide__mission--buttons');
+    const slideMissionWrapper = document.querySelector('.slide__contents--mission');
+    const slideMissionOrigin = document.querySelector('.slide__mission');
+    const slideMissionHash = document.querySelector('.slide__mission--hash-tag');
+    const slideMissionHashTag = document.querySelector('.missions__list--hash-text');
+    const slideRightMissionWrapper = document.querySelector('.slide__right--wrapper');
+    const slideRightMission = document.querySelector('.slide__right--mission');
+
     let slideNow = 0;
     let slidDeg = 0;
     let missionCount = 0;
     
-    // missions.remove();
-    // missionsList.remove();
+    missions.remove();
+    missionsList.remove();
+    slideMissionOrigin.remove();
+    slideMissionHash.remove();
+    slideRightMission.remove();
+
+    function slideReset(){
+        const slideLeftMissionAll = document.querySelectorAll('.slide__mission');
+        const slideRightMissionAll = document.querySelectorAll('.slide__right--mission');
+
+        slideLeftMissionAll.forEach((el) => {
+            el.remove();
+        });
+
+        slideRightMissionAll.forEach((el) => {
+            el.remove();
+        });
+    }
+    
+    getSlideMission(1);
 
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -28,7 +54,7 @@
 
     window.addEventListener('scroll', () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            // getMission();
+            getMission();
             missionCount++;
         }
     });
@@ -64,6 +90,7 @@
 
     function rotateSlide(direction){
 
+        const slideMission = document.querySelectorAll('.slide__mission');
         const rotateMission = document.querySelectorAll('.slide__right--mission');
 
         if(direction === 'left'){
@@ -103,12 +130,26 @@
     // 인기순 , 마감임박 , 이벤트
     function getSlideMission(type){
 
+        slideReset();
+        slideNow = 0;
+        slidDeg = 0;
+        slideRightWrapper.style.transform = `translateX(80%) rotate(${slidDeg}deg)`;
+        slideNowText.textContent = `${slideNow + 1} / 8`;
+
+        const changeOriginTag = document.querySelectorAll('.missions__list--hash-text');
         const changeTitle = document.querySelector('.slide__left--title');
         const changeCircle = document.querySelectorAll('.slide__right--circle');
         const changeBeforeCircle = document.querySelector('.slide__right--before-circle');
         const changeAfterCircle = document.querySelector('.slide__right--after-circle');
+        const changeCenterCircle = document.querySelector('.slide__right--center-circle');
         const changeTag = document.querySelectorAll('.slide__mission--hash-tag');
         const changeWrapperCircle = document.querySelector('.missions__header--circle');
+
+        missionsList.querySelector('.missions__list--hash-text').style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
+
+        changeOriginTag.forEach((el) => {
+            el.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
+        });
 
         changeTitle.style['color'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
 
@@ -119,6 +160,7 @@
 
         changeBeforeCircle.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
         changeAfterCircle.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
+        changeCenterCircle.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
 
         changeTag.forEach((el) => {
             el.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
@@ -130,13 +172,51 @@
             'type': type,
         };
 
-        // fetch('./modules/getSlideMission.php', {
-        //     method: 'post',
-        //     body: JSON.stringify(),
-        // }).then(respon => respon.json(info))
-        // .then(result => {
-            
-        // });
+        fetch('./modules/getSlideMission.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then(respon => respon.json(param))
+        .then(data => {
+            const total = data.length;
+            const item = data;
+
+            item.forEach((el, index) => {
+                let tags = el['ms_tag'].split(',', 2);
+                let newSlideMission = slideMissionOrigin.cloneNode(true);
+                let newSlideMissionTitle = newSlideMission.querySelector('.slide__mission--title');
+                let newSlideMissionText = newSlideMission.querySelector('.slide__mission--text');
+                let newSlideMissionWriter = newSlideMission.querySelector('.slide__mission--writer');
+                let newSlideMissionDeadline = newSlideMission.querySelector('.slide__mission--deadline');
+                let newSlideMissionHashBox = newSlideMission.querySelector('.slide__mission--hash');
+                let newThum = el['ms_expain_pic'] != undefined ? el['ms_expain_pic'].split(',') : 'common.png';
+                let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+
+                let newSlideRightMission = slideRightMission.cloneNode(true);
+                let newSlideRightMissionImg = newSlideRightMission.querySelector('.slide__right--mission-img');
+
+                newSlideRightMissionImg.src = newImgSrc;
+
+                newSlideMissionTitle.textContent = el['ms_title'];
+                newSlideMissionText.textContent = el['ms_contents'];
+                newSlideMissionWriter.textContent = el['ms_writer'];
+                newSlideMissionDeadline.textContent = el['ms_date_end'];
+                
+                tags.forEach((el, index) => {
+                    let newSlideMissionHashTag = slideMissionHash.cloneNode(true);
+                    newSlideMissionHashTag.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
+                    newSlideMissionHashTag.textContent = el;
+                    newSlideMissionHashBox.appendChild(newSlideMissionHashTag);
+                });
+
+                if(index === 0){
+                    newSlideMission.classList.add('now');
+                    newSlideRightMission.classList.add('now');
+                }
+
+                slideMissionWrapper.appendChild(newSlideMission);
+                slideRightMissionWrapper.appendChild(newSlideRightMission);
+            });
+        });
     }
 
     function getMission(){
@@ -167,15 +247,22 @@
                         newMission = missionsList.cloneNode(true);
                         let newMissionImg = newMission.querySelector('.missions__list--image img');
                         let newMissionTitle = newMission.querySelector('.missions__list--info-title');
-                        let newMissionText = newMission.querySelector('.missions__list--info-text');
                         let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
+                        let newMissionHashBox = newMission.querySelector('.missions__list--info-hash');
                         let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
-                        let newImgSrc = newThum !== 'common.png' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                        let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                        let tags = data[n]['ms_tag'].split(',');
+
                         newMissionImg.src = newImgSrc;
                         newMissionTitle.textContent = data[n]['ms_title'];
-                        newMissionText.textContent = data[n]['ms_contents'];
                         newMissionWriter.textContent = data[n]['ms_writer'];
+                        
                         newDiv.appendChild(newMission);
+                        tags.forEach((el) => {
+                            let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
+                            newMissionHashTag.textContent = el;
+                            newMissionHashBox.appendChild(newMissionHashTag);
+                        });
                         
                         if(j == 2 || j == 6 || ((total-1) === n)){
                             missionsWrapper.appendChild(newDiv);
@@ -213,6 +300,7 @@
     function setBorderRadius() {
         document.querySelector('.slide__right--before-circle').style.borderRadius = generateBorderRadiusValue();
         document.querySelector('.slide__right--after-circle').style.borderRadius = generateBorderRadiusValue();
+        document.querySelector('.slide__right--center-circle').style.borderRadius = generateBorderRadiusValue();
     }
 
     function generateBorderRadiusValue() {

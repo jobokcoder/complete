@@ -1,5 +1,13 @@
 {
     const loading = document.querySelector('.loading');
+
+    const headerLogout = document.querySelector('.header-logout');
+    const headerLogin = document.querySelector('.header-login');
+    const headerJoin = document.querySelector('.header-join');
+    const headermission = document.querySelector('.header-mission');
+    const headerWrite = document.querySelector('.header-write');
+    const headerEvent = document.querySelector('.header-event');
+    const headerCService = document.querySelector('.header-cService');
     
     const menu = document.querySelector('.menu') ? document.querySelector('.menu') : 'none';
     const menuOpenBtn = document.querySelector('.header__icons--item-menu') ? document.querySelector('.header__icons--item-menu') : 'none';
@@ -13,15 +21,15 @@
     const missions = document.querySelectorAll('.missions__list');
     const missionsCloses = document.querySelectorAll('.view__cancel');
     
+    headerLogout.addEventListener('click', () => { 
+        
+    });
+
     searchOpenBtn.addEventListener('click', () => { toggleModal(search); });
     searchCloseBtn.addEventListener('click', () => { toggleModal(search); });
     
     menuOpenBtn.addEventListener('click', () => { menu.style.transform = 'translateX(0%)'; });
     menuCloseBtn.addEventListener('click', () => { menu.style.transform = 'translateX(105%)'; });
-
-    function toggleModal(el){
-        el.style.display = el.style.display == 'none' ? 'flex' : 'none';
-    }
 
     if(document.querySelector('.header__icons--item-logout')){
         const logoutBtn = document.querySelector('.header__icons--item-logout');
@@ -48,4 +56,8 @@
     missionsCloses.forEach(el => {
         el.addEventListener('click', () => { toggleModal(view); });
     });
+
+    function toggleModal(el){
+        el.style.display = el.style.display == 'none' ? 'flex' : 'none';
+    }
 }
