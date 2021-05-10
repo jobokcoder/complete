@@ -17,16 +17,23 @@
     let slidDeg = 0;
     let missionCount = 0;
     
-    removeChild(missionsWrapper);
+    // missions.remove();
+    // missionsList.remove();
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            scrollTo(0, 0);
+        }, 0);
+    });
 
     window.addEventListener('scroll', () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            getMission();
+            // getMission();
             missionCount++;
-            console.log('??');
         }
     });
 
+    setInterval(setBorderRadius, 800);
     
     slideLeftBtn.addEventListener('click', () => { rotateSlide('left'); });
     slideRightBtn.addEventListener('click', () => { rotateSlide('right'); });
@@ -98,8 +105,10 @@
 
         const changeTitle = document.querySelector('.slide__left--title');
         const changeCircle = document.querySelectorAll('.slide__right--circle');
-        const changeSubCircle = document.querySelectorAll('.slide__right--sub-circle');
+        const changeBeforeCircle = document.querySelector('.slide__right--before-circle');
+        const changeAfterCircle = document.querySelector('.slide__right--after-circle');
         const changeTag = document.querySelectorAll('.slide__mission--hash-tag');
+        const changeWrapperCircle = document.querySelector('.missions__header--circle');
 
         changeTitle.style['color'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
 
@@ -108,13 +117,14 @@
             el.style['boxShadow'] = type === 1 ? '0px 0px 16px #2EA0AA' : type === 2 ? '0px 0px 16px #F5CE33' : '0px 0px 16px #1E3470';
         });
 
-        changeSubCircle.forEach((el) => {
-            el.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
-        });
+        changeBeforeCircle.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
+        changeAfterCircle.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
 
         changeTag.forEach((el) => {
             el.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
         });
+
+        changeWrapperCircle.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
 
         const param = {
             'type': type,
@@ -143,12 +153,10 @@
         .then(data => {
             const total = data.length;
             const block = Math.ceil(total / 7);
-            const arr = [];
             let newDiv;
             let newMission;
             
             for(let n=0, i=0; i < block; i++){
-                const blockArr = [];
                 for(let j=0; j < 7; j++){
                     if(n < total){
                         if(j == 0 || j == 3){
@@ -175,8 +183,24 @@
                     }
                     n++;
                 }
-                arr.push(blockArr);
             }
+
+            const allMissions = document.querySelectorAll('.missions__list');
+            const newMissions = [];
+            allMissions.forEach((el) => {   
+                if(el.classList.contains('active') === false){
+                    newMissions.push(el);
+                }
+            });
+
+            newMissions.forEach((el, index) => {
+                el.classList.add('active');
+                setTimeout(() => {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
+                },200 * index);
+            });
+            
         });
     }
 
@@ -184,5 +208,19 @@
         while(dom.hasChildNodes()){
             dom.removeChild(dom.firstChild);
         }
+    }
+
+    function setBorderRadius() {
+        document.querySelector('.slide__right--before-circle').style.borderRadius = generateBorderRadiusValue();
+        document.querySelector('.slide__right--after-circle').style.borderRadius = generateBorderRadiusValue();
+    }
+
+    function generateBorderRadiusValue() {
+        return `${getRandomValue()}% ${getRandomValue()}% ${getRandomValue()}% ${getRandomValue()}% / 
+        ${getRandomValue()}% ${getRandomValue()}% ${getRandomValue()}%`;
+    }
+
+    function getRandomValue(){
+        return Math.floor(Math.random() * 30) + 60;
     }
 }

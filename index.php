@@ -230,8 +230,8 @@
                         <div class="slide__right">
                             <div class="slide__right--wrapper">
                                 <div class="slide__right--circle"></div>
-                                <div class="slide__right--sub-circle"></div>
-                                <div class="slide__right--sub-circle"></div>
+                                <div class="slide__right--before-circle"></div>
+                                <div class="slide__right--after-circle"></div>
 
                                 <div class="slide__right--mission now">
                                     <img src="./images/common/common.png" alt="common"/>
@@ -262,6 +262,10 @@
                     </div>
                 </div>
                 
+                <div class="missions__header">
+                    <h1 class="missions__title">추천미션</h1>
+                    <div class="missions__header--circle"></div>
+                </div>
                 <div class="missions__wrapper">
                     <div class="missions">
                         <div class="missions__list">
@@ -271,6 +275,10 @@
                             </div>
 
                             <div class="missions__list--info">
+                                <div class="missions__list--info-hash">
+                                    <div class="missions__list--hash-text">dasds</div>
+                                    <div class="missions__list--hash-text">dasds</div>
+                                </div>
                                 <p class="missions__list--info-title">짐 정리 도와주실분</p>
                                 <div class="missions__list--info-text">제가 무지 짐 정리를 못하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능.하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능..</div>
                                 <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
