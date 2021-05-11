@@ -41,4 +41,5 @@
 .done__compensation--file-name{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2);  font-size: 16px; font-weight: 400; }
 
 .write__done{ margin-top: 1.25rem; width: 100%; display: flex; justify-content: flex-end; align-items: center; }
-.write__done--btn{ cursor: pointer; padding: 0.875rem 0; width: 9.375rem; border-radius: 0.125rem; font-weight: 500; background-color: #F5CE33; }
+.write__done--btn{ transition: 600ms ease-in-out; cursor: pointer; padding: 0.875rem 0; width: 9.375rem; border-radius: 0.125rem; font-weight: 500; background-color: #F5CE33; }
+.write__done--btn:hover{ filter: brightness(1.1); }

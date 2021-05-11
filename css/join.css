@@ -23,7 +23,8 @@
 .join__conditions--check-gps:checked ~ .join__conditions--form .join__conditions--gps-svg #path_130{ stroke: var(--main-white); }
 
 .join__conditions--button{ margin-top: 0.9375rem; display: flex; justify-content: center; align-items: center; }
-.join__conditions--button > *{ margin: 0px 0.3125rem; padding: 0.75rem 0px; width: 12.5rem; font-size: 1.125rem; text-align: center; font-weight: 500; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; }
+.join__conditions--button > *{ transition: 600ms ease-in-out; margin: 0px 0.3125rem; padding: 0.75rem 0px; width: 12.5rem; font-size: 1.125rem; text-align: center; font-weight: 500; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; }
+.join__conditions--button > *:hover{ filter: brightness(1.1); }
 .join__conditions--not{ display: none; margin-top: 0.9375rem; text-align: center; font-size: 0.75rem; color: red; }
 
 .join__background{ position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -48%); }
@@ -31,7 +32,8 @@
 .join__form{ margin-top: 3.125rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .join__form--input{ margin: 0.5rem 0px; padding: 0.75rem 1.25rem; width: 25rem; border-radius: 0.125rem; background-color: #F3F9FA; }
 .join__form--input-email{ width: 18.75rem; }
-.join__form--button{ margin-top: 1.25rem; padding: 0.75rem 0px; width: 100%; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; font-size: 1.125rem; font-weight: 500; text-align: center; }
+.join__form--button{ transition: 600ms ease-in-out; margin-top: 1.25rem; padding: 0.75rem 0px; width: 100%; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; font-size: 1.125rem; font-weight: 500; text-align: center; }
+.join__form--button:hover{ filter: brightness(1.1); }
 .join__form--not{ display: none; margin-left: 0.625rem; align-self: flex-start; font-size: 0.75rem; color: red; }
 
 .email__confirm{ width: 100%; display: flex; justify-content: space-between; align-items: center; background-color: #fff; }

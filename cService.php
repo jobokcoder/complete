@@ -22,10 +22,6 @@
 
         <div class="contents">
 
-            <?php
-                include('./modules/side.php');
-            ?>
-
             <div class="contents__center">
                 <div class="cService">
                     <div class="cService__list">
@@ -258,7 +254,6 @@
         </div>
     </div>
 <script src="./js/common.js"></script>
-<script src="./js/side.js"></script>
 <script src="./js/cService.js"></script>
 </body>
 </html>

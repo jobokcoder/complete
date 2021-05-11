@@ -6,7 +6,7 @@
         <header class="header">
             <div class="header__in">
                 <div class="header__logo">
-                    <a href="./index.php">
+                    <a href="./index">
                         <svg class="header__logo--svg" width="176" height="49.605" viewBox="0 0 176 49.605">
                             <g id="그룹_19" data-name="그룹 19" transform="translate(-4.8 -2.396)">
                                 <g id="Layer_11" data-name="Layer 11" transform="translate(163.205 17.577)">

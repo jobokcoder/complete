@@ -1,11 +1,13 @@
 /* 메인 슬라이드 CSS */
-.slide{ width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; }
+.slide{ width: 100%; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.slide__title{ padding-left: 6.875rem; font-size: 5.625rem; font-weight: 900; color: #2EA0AA; opacity: 0.2; }
+.slide__container{ width: 100%; display: flex; justify-content: flex-start; align-items: center; }
 .slide__wrapper{ width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
 .slide__contents{ display: flex; justify-content: flex-start; align-items: flex-start; }
-
-
+.slide__event{ margin-left: 4.75rem; width: 100%; display: none; grid-template-rows: repeat(3, 1fr); row-gap: 1rem; }
+.slide__event--banner{ position: relative; width: 100%; height: 190px; overflow: hidden; background-color: var(--main-color1); }
+.slide__event--banner-img{ position: absolute; left: 50%; top: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%); object-fit: cover; }
 .slide__left{ display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
-.slide__left--title{ padding-left: 6.875rem; font-size: 5.625rem; font-weight: 900; color: #2EA0AA; opacity: 0.2; }
 .slide__menu{ display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .slide__menu--text{ cursor: pointer; }
 .slide__menu--text.active *{ opacity: 1; }
@@ -28,16 +30,16 @@
 .slide__right--before-circle{ transition: 1s linear; position: absolute; z-index: -1; left: 50%; top: 48%; transform: translate(-50%, -50%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
 .slide__right--after-circle{ transition: 1s linear; position: absolute; z-index: -1; left: 50%; top: 52%; transform: translate(-50%, -50%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
 .slide__right--center-circle{ transition: 1s linear; position: absolute; z-index: -1; left: 50%; top: 52%; transform: translate(-50%, -50%); border-radius: 70%; width: 100rem; height: 100rem; background-color: var(--main-color1); opacity: 0.17; }
-.slide__right--mission{ filter: grayscale(100%); transition: 600ms ease-in-out; position: absolute; width: 12rem; height: 12rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0px 0px 8px rgba(0, 0, 0, 1); }
+.slide__right--mission{ filter: grayscale(100%); transform-origin: center; transition: 600ms ease-in-out; position: absolute; width: 12rem; height: 12rem; border-radius: 0.75rem; overflow: hidden; box-shadow: 0px 0px 8px rgba(0, 0, 0, 1); }
 .slide__right--mission.now{ width: 20rem; height: 20rem; filter: grayscale(0%); }
 .slide__right--mission:nth-child(5){ left: -50%; top: 50%; transform: translate(-50%, -50%) rotate(0deg); }
-.slide__right--mission:nth-child(6){ left: -20%; top: 150%; transform: translate(-50%, -50%) rotate(-45deg); }
-.slide__right--mission:nth-child(7){ left: 50%; top: 200%; transform: translate(-50%, -50%) rotate(-90deg); }
-.slide__right--mission:nth-child(8){ left: 120%; top: 150%; transform: translate(-50%, -50%) rotate(-135deg); }
-.slide__right--mission:nth-child(9){ left: 140%; top: 50%; transform: translate(-50%, -50%) rotate(-180deg); }
-.slide__right--mission:nth-child(10){ left: 120%; top: -50%; transform: translate(-50%, -50%) rotate(-225deg); }
-.slide__right--mission:nth-child(11){ left: 50%; top: -100%; transform: translate(-50%, -50%) rotate(-270deg); }
-.slide__right--mission:nth-child(12){ left: -20%; top: -50%; transform: translate(-50%, -50%) rotate(-315deg); }
+.slide__right--mission:nth-child(6){ left: -25%; top: 200%; transform: translate(-50%, -50%) rotate(-45deg); }
+.slide__right--mission:nth-child(7){ left: 50%; top: 275%; transform: translate(-50%, -50%) rotate(-90deg); }
+.slide__right--mission:nth-child(8){ left: 125%; top: 200%; transform: translate(-50%, -50%) rotate(-135deg); }
+.slide__right--mission:nth-child(9){ left: 150%; top: 50%; transform: translate(-50%, -50%) rotate(-180deg); }
+.slide__right--mission:nth-child(10){ left: 125%; top: -100%; transform: translate(-50%, -50%) rotate(-225deg); }
+.slide__right--mission:nth-child(11){ left: 50%; top: -175%; transform: translate(-50%, -50%) rotate(-270deg); }
+.slide__right--mission:nth-child(12){ left: -20%; top: -100%; transform: translate(-50%, -50%) rotate(-315deg); }
 .slide__right--mission-img{ position: absolute; width: 100%; height: 100%; object-fit: cover; }
 
 /* 메인 컨텐츠 CSS */

@@ -4,6 +4,9 @@
     const missions = document.querySelector('.missions');
     const missionsWrapper = document.querySelector('.missions__wrapper');
 
+    const slideEvent = document.querySelector('.slide__event');
+
+    const slideWrapper = document.querySelector('.slide__wrapper');
     const slideMenuText = document.querySelectorAll('.slide__menu--text');
     const slideMenuPopluar = document.querySelector('.slide__menu--text-popluar tspan');
     const slideMenuDeadline = document.querySelector('.slide__menu--text-deadline tspan');
@@ -31,19 +34,7 @@
     slideMissionHash.remove();
     slideRightMission.remove();
 
-    function slideReset(){
-        const slideLeftMissionAll = document.querySelectorAll('.slide__mission');
-        const slideRightMissionAll = document.querySelectorAll('.slide__right--mission');
-
-        slideLeftMissionAll.forEach((el) => {
-            el.remove();
-        });
-
-        slideRightMissionAll.forEach((el) => {
-            el.remove();
-        });
-    }
-    
+    setInterval(setBorderRadius, 800);
     getSlideMission(1);
 
     window.addEventListener('load', () => {
@@ -59,8 +50,6 @@
         }
     });
 
-    setInterval(setBorderRadius, 800);
-    
     slideLeftBtn.addEventListener('click', () => { rotateSlide('left'); });
     slideRightBtn.addEventListener('click', () => { rotateSlide('right'); });
 
@@ -85,8 +74,29 @@
             el.classList.remove('active');
         });
         e.target.parentNode.parentNode.classList.add('active');
-        getSlideMission(3);
+        eventShow();
     });
+
+    function slideReset(){
+        const slideLeftMissionAll = document.querySelectorAll('.slide__mission');
+        const slideRightMissionAll = document.querySelectorAll('.slide__right--mission');
+
+        slideLeftMissionAll.forEach((el) => {
+            el.remove();
+        });
+
+        slideRightMissionAll.forEach((el) => {
+            el.remove();
+        });
+    }
+
+    function eventShow(){
+        const changeTitle = document.querySelector('.slide__title');
+
+        slideWrapper.style.display = 'none';
+        slideEvent.style.display = 'grid';
+        changeTitle.textContent = 'EVENT';
+    }
 
     function rotateSlide(direction){
 
@@ -130,6 +140,9 @@
     // 인기순 , 마감임박 , 이벤트
     function getSlideMission(type){
 
+        slideEvent.style.display = 'none';
+        slideWrapper.style.display = 'grid';
+
         slideReset();
         slideNow = 0;
         slidDeg = 0;
@@ -137,7 +150,7 @@
         slideNowText.textContent = `${slideNow + 1} / 8`;
 
         const changeOriginTag = document.querySelectorAll('.missions__list--hash-text');
-        const changeTitle = document.querySelector('.slide__left--title');
+        const changeTitle = document.querySelector('.slide__title');
         const changeCircle = document.querySelectorAll('.slide__right--circle');
         const changeBeforeCircle = document.querySelector('.slide__right--before-circle');
         const changeAfterCircle = document.querySelector('.slide__right--after-circle');

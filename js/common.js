@@ -28,7 +28,7 @@
         }else{
             headerLogout.addEventListener('click', () => { location.href = './logout.php' });
         }
-        headerJoin.addEventListener('click', () => { location.href = './join.php' });
+        headerJoin.addEventListener('click', () => { location.href = './conditions.php' });
         headermission.addEventListener('click', () => { location.href = './index.php' });
         headerWrite.addEventListener('click', () => { location.href = './write.php' });
         headerEvent.addEventListener('click', () => { location.href = './event.php' });

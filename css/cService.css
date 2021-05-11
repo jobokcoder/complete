@@ -1,5 +1,6 @@
 /* 고객센터 CSS */
-.cService{ width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
+.contents__center{ width: 100%; display: flex; justify-content: center; align-items: center; }
+.cService{ width: 100%; max-width: 1200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .cService__list{ width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .cService__list--title{ font-size: 1.5rem; font-weight: 700; }
 .cService__list--contents{ margin-top: 1.25rem; width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 2.5rem; }
