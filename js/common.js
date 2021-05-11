@@ -1,6 +1,7 @@
 {
-    const loading = document.querySelector('.loading');
+    const wrapper = document.querySelector('.wrapper');
 
+    const loading = document.querySelector('.loading');
     
     const menu = document.querySelector('.menu') ? document.querySelector('.menu') : 'none';
     const menuOpenBtn = document.querySelector('.header__icons--item-menu') ? document.querySelector('.header__icons--item-menu') : 'none';
@@ -13,6 +14,39 @@
     const view = document.querySelector('.view');
     const missions = document.querySelectorAll('.missions__list');
     const missionsCloses = document.querySelectorAll('.view__cancel');
+
+    let x = 0, y = 0;
+    let circleColor = ['2EA0AA', 'F5CE33', '1E3470', '3A3A3C'];
+
+    window.addEventListener('mousemove', (event) => {
+        x = event.clientX;
+        y = event.clientY;
+
+        for(let i = 0; i < 4; i++){
+            let newCircle = document.createElement('div');
+            let size = Math.ceil(Math.random() * 20);
+            let randNum = Math.floor(Math.random() * 4);
+            let randSign = Math.floor(Math.random() * 2);
+            let randRange = 6;
+            
+            newCircle.style.position = `fixed`;
+            newCircle.style.zIndex = 100;
+            newCircle.style.width = `${size}px`;
+            newCircle.style.height = `${size}px`;
+            newCircle.style.left = randSign === 0 ? `${x + (Math.floor(Math.random() * 4) * randRange - randRange / 2)}px` : `-${x + (Math.floor(Math.random() * 4) * randRange - randRange / 2)}px`;
+            newCircle.style.top = randSign === 0 ? `${y + (Math.floor(Math.random() * 4) * randRange - randRange / 2)}px` : `-${y + (Math.floor(Math.random() * 4) * randRange - randRange / 2)}px`;
+            newCircle.style.transform = `translate(-50%, -50%)`;
+            newCircle.style.borderRadius = `70%`;
+            newCircle.style.backgroundColor = `#${circleColor[randNum]}`;
+            newCircle.style.pointerEvents = 'none';
+            newCircle.style.animation = 'fadeOut 1000ms';
+
+            wrapper.appendChild(newCircle);
+            setTimeout(() => {
+                wrapper.removeChild(newCircle);
+            }, Math.round(Math.random() * 1000));
+        }
+    });
     
     window.addEventListener('load', () => {
         const headerLogout = document.querySelector('.header-logout');

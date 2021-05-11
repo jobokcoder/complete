@@ -86,8 +86,10 @@ svg{ overflow: visible; }
 .loading .svg{ width: 18.75rem; }
 #path_133{ stroke-dasharray: 800; stroke-dashoffset: 500; animation: dash 1s infinite; }
 #path_137{ transform: translateY(0px); animation: dojang 500ms infinite alternate; }
-
 .header__icons--item-logout:hover #path_337{ transition: 300ms ease-in-out; transform: translateX(10px) translateY(6px); }
+
+/* Mouse Cursor */
+.cursor{ position: fixed; pointer-events: none; left: 0; top: 0; transform: translate(-50%, -50%); width: 64px; height: 64px; border-radius: 70%; border: 2px solid #000; }
 
 @keyframes dash {
     to {
@@ -104,6 +106,12 @@ svg{ overflow: visible; }
 @keyframes fade {
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
     }
 }
 

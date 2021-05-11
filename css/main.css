@@ -59,8 +59,8 @@
 .missions__list--info > *{ margin-top: 1.25rem; }
 .missions__list--info-hash{ width: 100%; height: 32px; display: flex; flex-wrap: wrap; overflow: hidden; }
 .missions__list--hash-text{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
-.missions__list--info-title{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.188rem; font-weight: 700; }
-.missions__list--info-writer{ margin-top: 0.875rem; font-size: 0.9375rem; font-weight: 300; }   
+.missions__list--info-title{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.25rem; font-weight: 700; }
+.missions__list--info-writer{ margin-top: 0.875rem; font-size: 1.125rem; font-weight: 400; }   
 
 @keyframes bubble {
     0%{ border-radius: 50% 50% 50% 50% / 50% 50% 50% 50% ; }

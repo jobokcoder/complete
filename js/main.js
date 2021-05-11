@@ -268,7 +268,7 @@
 
                         newMissionImg.src = newImgSrc;
                         newMissionTitle.textContent = data[n]['ms_title'];
-                        newMissionWriter.textContent = data[n]['ms_writer'];
+                        newMissionWriter.innerHTML = `의뢰자 : ${data[n]['ms_writer']} <br> 마감일 : ${data[n]['ms_date_end']}`;
                         
                         newDiv.appendChild(newMission);
                         tags.forEach((el) => {
