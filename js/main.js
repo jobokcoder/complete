@@ -4,6 +4,9 @@
     const missions = document.querySelector('.missions');
     const missionsWrapper = document.querySelector('.missions__wrapper');
 
+    const viewWrapper = document.querySelector('.view');
+    const viewContents = document.querySelector('.view__contents');
+
     const slideEvent = document.querySelector('.slide__event');
 
     const slideWrapper = document.querySelector('.slide__wrapper');
@@ -16,11 +19,9 @@
     const slideRightBtn = document.querySelector('.slide__mission--buttons-right');
     const slideRightWrapper = document.querySelector('.slide__right--wrapper');
     
-    const slideMissionBtn = document.querySelector('.slide__mission--buttons');
     const slideMissionWrapper = document.querySelector('.slide__contents--mission');
     const slideMissionOrigin = document.querySelector('.slide__mission');
     const slideMissionHash = document.querySelector('.slide__mission--hash-tag');
-    const slideMissionHashTag = document.querySelector('.missions__list--hash-text');
     const slideRightMissionWrapper = document.querySelector('.slide__right--wrapper');
     const slideRightMission = document.querySelector('.slide__right--mission');
 
@@ -28,6 +29,7 @@
     let slidDeg = 0;
     let missionCount = 0;
     
+    viewContents.remove();
     missions.remove();
     missionsList.remove();
     slideMissionOrigin.remove();
@@ -248,6 +250,7 @@
             const block = Math.ceil(total / 7);
             let newDiv;
             let newMission;
+            let newView;
             
             for(let n=0, i=0; i < block; i++){
                 for(let j=0; j < 7; j++){
@@ -258,23 +261,69 @@
                         }
 
                         newMission = missionsList.cloneNode(true);
+                        newView = viewContents.cloneNode(true);
+
+                        let newid = data[n]['ms_id'];
+                        let newViewImg = newView.querySelector('.view__contents--picture-img');
+                        let newViewTitle = newView.querySelector('.view__contents--title');
+                        let newViewTag = newView.querySelector('.view__contents--tag');
+                        let newViewContent = newView.querySelector('.view__contents--content');
+                        let newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
+                        let newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
+                        let newViewListItem = newView.querySelector('.done__list--item');
+                        let newViewDate = newView.querySelector('.view__contents--writer-date');
+                        let newViewWriter = newView.querySelector('.view__contents--writer-user');
+
+                        let newMissionthum = newMission.querySelector('.missions__list--image');
                         let newMissionImg = newMission.querySelector('.missions__list--image img');
                         let newMissionTitle = newMission.querySelector('.missions__list--info-title');
                         let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
                         let newMissionHashBox = newMission.querySelector('.missions__list--info-hash');
+                        
                         let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
                         let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
                         let tags = data[n]['ms_tag'].split(',');
+                        let conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
+                        
+                        newViewListItem.remove();
+                        newView.id = newid;
+                        newViewImg.src = newImgSrc;
+                        newViewTitle.textContent = data[n]['ms_title'];
+                        tags.forEach((el) => {
+                            newViewTag.textContent += `${el} `;
+                        });
+                        newViewContent.textContent = data[n]['ms_contents'];
+                        if(conds !== ''){
+                            conds.forEach((el) => {
+                                let copyViewListItem = newViewListItem.cloneNode(true);
+                                copyViewListItem.textContent = el;
+                                newViewCondList.appendChild(copyViewListItem);
+                            });
+                        }
+                        newViewDoneList.textContent = data[n]['ms_done_com'];
+                        newViewDate.textContent = `${data[n]['ms_date_start']} ~ ${data[n]['ms_date_end']}`;
+                        newViewWriter.textContent = data[n]['ms_writer'];
+                        
+                        viewWrapper.appendChild(newView);
 
                         newMissionImg.src = newImgSrc;
                         newMissionTitle.textContent = data[n]['ms_title'];
                         newMissionWriter.innerHTML = `의뢰자 : ${data[n]['ms_writer']} <br> 마감일 : ${data[n]['ms_date_end']}`;
-                        
                         newDiv.appendChild(newMission);
                         tags.forEach((el) => {
                             let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
                             newMissionHashTag.textContent = el;
                             newMissionHashBox.appendChild(newMissionHashTag);
+                        });
+
+                        newMissionthum.addEventListener('click', () => {
+                            const originMissionView = document.querySelectorAll(`.view__contents`);
+                            const currentMissionView = document.getElementById(newid);
+                            originMissionView.forEach((el) => {
+                                el.classList.remove('active');
+                            });
+                            viewWrapper.classList.add('active');
+                            currentMissionView.classList.add('active');
                         });
                         
                         if(j == 2 || j == 6 || ((total-1) === n)){
