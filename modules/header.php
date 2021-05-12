@@ -124,6 +124,7 @@
                     if($jb_login){
                 ?>
                 <p class="menu__contents--item header-logout">로그아웃</p>
+                <p class="menu__contents--item header-mypage">마이페이지</p>
                 <?php
                     }else{
                 ?>

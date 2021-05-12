@@ -43,7 +43,6 @@
                                 <p class="view__contents--done-title"><strong>완</strong>료조건</p>
                                 <ul class="view__contents--done-conditionlist">
                                     <li class="done__list--item">무 다 뽑기</li>
-                                    <li class="done__list--item">무뽑고 세척 후 상자에 넣가</li>
                                 </ul>
                             </div>
 
@@ -198,6 +197,14 @@
         </div>
     </div>
 
+    
+    <svg class="cursor" width="60" height="60" viewBox="0 0 60 60">
+        <g id="타원_27" data-name="타원 27" fill="#fff" stroke="#707070" stroke-width="1">
+            <circle cx="30" cy="30" r="29.5" fill="none"/>
+        </g>
+    </svg>
+
+    
 <script src="./js/common.js"></script>
 <script src="./js/main.js"></script>
 </body>

@@ -1,6 +1,5 @@
 {
     const wrapper = document.querySelector('.wrapper');
-
     const loading = document.querySelector('.loading');
     
     const menu = document.querySelector('.menu') ? document.querySelector('.menu') : 'none';
@@ -11,17 +10,30 @@
     const searchOpenBtn = document.querySelector('.header__icons--item-search') ? document.querySelector('.header__icons--item-search') : 'none';
     const searchCloseBtn = document.querySelector('.search__cancel') ? document.querySelector('.search__cancel') : 'none';
 
-    const view = document.querySelector('.view');
-    const missions = document.querySelectorAll('.missions__list');
-    const missionsCloses = document.querySelectorAll('.view__cancel');
-
+    let speed = 0.03;
+    let cursorX = 0, cursorY = 0;
     let x = 0, y = 0;
     let circleColor = ['2EA0AA', 'F5CE33', '1E3470', '3A3A3C'];
+    let cursor = document.querySelector('.cursor');
 
     window.addEventListener('mousemove', (event) => {
         x = event.clientX;
         y = event.clientY;
 
+        createMouseTrail();
+    });
+
+    requestAnimationFrame(cursorMove);
+
+    function cursorMove(){
+        cursorX += (x - cursorX) * speed;
+        cursorY += (y - cursorY) * speed;
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+        requestAnimationFrame(cursorMove);
+    }
+
+    function createMouseTrail(){
         for(let i = 0; i < 2; i++){
             let newCircle = document.createElement('div');
             let size = Math.ceil(Math.random() * 20);
@@ -46,10 +58,11 @@
                 wrapper.removeChild(newCircle);
             }, Math.round(Math.random() * 1000));
         }
-    });
+    }
     
     window.addEventListener('load', () => {
         const headerLogout = document.querySelector('.header-logout');
+        const headerMyPage = document.querySelector('.header-mypage');
         const headerLogin = document.querySelector('.header-login');
         const headerJoin = document.querySelector('.header-join');
         const headermission = document.querySelector('.header-mission');
@@ -61,6 +74,7 @@
             headerLogin.addEventListener('click', () => { location.href = './login.php' });
         }else{
             headerLogout.addEventListener('click', () => { location.href = './logout.php' });
+            headerMyPage.addEventListener('click', () => { location.href = './mypage.php' });
         }
         headerJoin.addEventListener('click', () => { location.href = './conditions.php' });
         headermission.addEventListener('click', () => { location.href = './index.php' });
@@ -92,14 +106,6 @@
             });
         });
     }
-
-    missions.forEach(el => {
-        el.addEventListener('click', () => { toggleModal(view); });
-    });
-    
-    missionsCloses.forEach(el => {
-        el.addEventListener('click', () => { toggleModal(view); });
-    });
 
     function toggleModal(el){
         el.style.display = el.style.display == 'none' ? 'flex' : 'none';

@@ -1,8 +1,8 @@
 {
     const loading = document.querySelector('.loading');
+    const missionsWrapper = document.querySelector('.missions__wrapper');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
-    const missionsWrapper = document.querySelector('.missions__wrapper');
 
     const viewWrapper = document.querySelector('.view');
     const viewContents = document.querySelector('.view__contents');
@@ -95,9 +95,10 @@
     function eventShow(){
         const changeTitle = document.querySelector('.slide__title');
 
+        changeTitle.textContent = 'EVENT';
+        changeTitle.style.transform = 'translateY(0%)';
         slideWrapper.style.display = 'none';
         slideEvent.style.display = 'grid';
-        changeTitle.textContent = 'EVENT';
     }
 
     function rotateSlide(direction){
@@ -139,11 +140,14 @@
         });
     }
 
-    // 인기순 , 마감임박 , 이벤트
+    // 인기순 , 마감임박
     function getSlideMission(type){
 
+        const changeSlideTitle = document.querySelector('.slide__title');
+        changeSlideTitle.textContent = 'MISSION';
+        changeSlideTitle.style.transform = 'translateY(100%)';
         slideEvent.style.display = 'none';
-        slideWrapper.style.display = 'grid';
+        slideWrapper.style.display = 'flex';
 
         slideReset();
         slideNow = 0;
@@ -192,9 +196,8 @@
             body: JSON.stringify(param),
         }).then(respon => respon.json(param))
         .then(data => {
-            const total = data.length;
             const item = data;
-
+            
             item.forEach((el, index) => {
                 let tags = el['ms_tag'].split(',', 2);
                 let newSlideMission = slideMissionOrigin.cloneNode(true);
@@ -210,13 +213,12 @@
                 let newSlideRightMissionImg = newSlideRightMission.querySelector('.slide__right--mission-img');
 
                 newSlideRightMissionImg.src = newImgSrc;
-
                 newSlideMissionTitle.textContent = el['ms_title'];
                 newSlideMissionText.textContent = el['ms_contents'];
                 newSlideMissionWriter.textContent = el['ms_writer'];
                 newSlideMissionDeadline.textContent = el['ms_date_end'];
                 
-                tags.forEach((el, index) => {
+                tags.forEach((el) => {
                     let newSlideMissionHashTag = slideMissionHash.cloneNode(true);
                     newSlideMissionHashTag.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
                     newSlideMissionHashTag.textContent = el;
@@ -230,6 +232,56 @@
 
                 slideMissionWrapper.appendChild(newSlideMission);
                 slideRightMissionWrapper.appendChild(newSlideRightMission);
+                
+                let newView = viewContents.cloneNode(true);
+                        
+                tags = el['ms_tag'].split(',');
+                let conds = el['ms_done_cond'] !== '' ? el['ms_done_cond'].split(',') : '';
+                let newid = el['ms_id'];
+                let newViewImg = newView.querySelector('.view__contents--picture-img');
+                let newViewTitle = newView.querySelector('.view__contents--title');
+                let newViewTag = newView.querySelector('.view__contents--tag');
+                let newViewContent = newView.querySelector('.view__contents--content');
+                let newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
+                let newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
+                let newViewListItem = newView.querySelector('.done__list--item');
+                let newViewDate = newView.querySelector('.view__contents--writer-date');
+                let newViewWriter = newView.querySelector('.view__contents--writer-user');
+                let newViewCancelBtn = newView.querySelector('.view__cancel');
+                        
+                newViewListItem.remove();
+                newView.id = `slide_${newid}`;
+                newViewImg.src = newImgSrc;
+                newViewTitle.textContent = el['ms_title'];
+                newViewTag.textContent = '';
+                tags.forEach((el) => {
+                    newViewTag.textContent += `${el} `;
+                });
+                newViewContent.textContent = el['ms_contents'];
+                if(conds !== ''){
+                    conds.forEach((el) => {
+                        let copyViewListItem = newViewListItem.cloneNode(true);
+                        copyViewListItem.textContent = el;
+                        newViewCondList.appendChild(copyViewListItem);
+                    });
+                }
+                newViewDoneList.textContent = el['ms_done_com'];
+                newViewDate.textContent = `${el['ms_date_start']} ~ ${el['ms_date_end']}`;
+                newViewWriter.textContent = el['ms_writer'];
+                newViewCancelBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    newView.parentNode.classList.remove('active');
+                });
+                newSlideRightMissionImg.addEventListener('click', () => {
+                    const originMissionView = document.querySelectorAll(`.view__contents`);
+                    originMissionView.forEach((el) => {
+                        el.classList.remove('active');
+                    });
+                    viewWrapper.classList.add('active');
+                    newView.classList.add('active');
+                });
+                
+                viewWrapper.appendChild(newView);
             });
         });
     }
@@ -250,7 +302,6 @@
             const block = Math.ceil(total / 7);
             let newDiv;
             let newMission;
-            let newView;
             
             for(let n=0, i=0; i < block; i++){
                 for(let j=0; j < 7; j++){
@@ -261,7 +312,12 @@
                         }
 
                         newMission = missionsList.cloneNode(true);
-                        newView = viewContents.cloneNode(true);
+                        let newView = viewContents.cloneNode(true);
+                        
+                        let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
+                        let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                        let tags = data[n]['ms_tag'].split(',');
+                        let conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
 
                         let newid = data[n]['ms_id'];
                         let newViewImg = newView.querySelector('.view__contents--picture-img');
@@ -273,22 +329,13 @@
                         let newViewListItem = newView.querySelector('.done__list--item');
                         let newViewDate = newView.querySelector('.view__contents--writer-date');
                         let newViewWriter = newView.querySelector('.view__contents--writer-user');
-
-                        let newMissionthum = newMission.querySelector('.missions__list--image');
-                        let newMissionImg = newMission.querySelector('.missions__list--image img');
-                        let newMissionTitle = newMission.querySelector('.missions__list--info-title');
-                        let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
-                        let newMissionHashBox = newMission.querySelector('.missions__list--info-hash');
-                        
-                        let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
-                        let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
-                        let tags = data[n]['ms_tag'].split(',');
-                        let conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
+                        let newViewCancelBtn = newView.querySelector('.view__cancel');
                         
                         newViewListItem.remove();
                         newView.id = newid;
                         newViewImg.src = newImgSrc;
                         newViewTitle.textContent = data[n]['ms_title'];
+                        newViewTag.textContent = '';
                         tags.forEach((el) => {
                             newViewTag.textContent += `${el} `;
                         });
@@ -303,8 +350,19 @@
                         newViewDoneList.textContent = data[n]['ms_done_com'];
                         newViewDate.textContent = `${data[n]['ms_date_start']} ~ ${data[n]['ms_date_end']}`;
                         newViewWriter.textContent = data[n]['ms_writer'];
+                        newViewCancelBtn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            newView.parentNode.classList.remove('active');
+                        });
                         
                         viewWrapper.appendChild(newView);
+
+                        let newMissionthum = newMission.querySelector('.missions__list--image');
+                        let newMissionImg = newMission.querySelector('.missions__list--image img');
+                        let newMissionTitle = newMission.querySelector('.missions__list--info-title');
+                        let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
+                        let newMissionHashBox = newMission.querySelector('.missions__list--info-hash');
+                        let newMissionHashText = newMission.querySelector('.missions__list--hash-text');
 
                         newMissionImg.src = newImgSrc;
                         newMissionTitle.textContent = data[n]['ms_title'];
@@ -312,18 +370,19 @@
                         newDiv.appendChild(newMission);
                         tags.forEach((el) => {
                             let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
+                            newMissionHashText.remove();
                             newMissionHashTag.textContent = el;
                             newMissionHashBox.appendChild(newMissionHashTag);
                         });
 
                         newMissionthum.addEventListener('click', () => {
                             const originMissionView = document.querySelectorAll(`.view__contents`);
-                            const currentMissionView = document.getElementById(newid);
                             originMissionView.forEach((el) => {
                                 el.classList.remove('active');
                             });
                             viewWrapper.classList.add('active');
-                            currentMissionView.classList.add('active');
+                            newView.classList.add('active');
+                            console.log(newView);
                         });
                         
                         if(j == 2 || j == 6 || ((total-1) === n)){
