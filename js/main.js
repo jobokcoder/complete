@@ -279,6 +279,16 @@
                     });
                     viewWrapper.classList.add('active');
                     newView.classList.add('active');
+
+                    const viewInfo = {
+                        'id': newid,
+                    };
+
+                    fetch('./modules/okView.php', {
+                        method: 'POST',
+                        body: JSON.stringify(viewInfo),
+                    })
+                    .then(respon => respon.json());
                 });
                 
                 viewWrapper.appendChild(newView);
