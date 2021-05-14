@@ -18,7 +18,7 @@
 .slide__mission.now{ display: block; animation: fade 600ms ease-in forwards; }
 .slide__mission--hash{ display: flex; justify-content: flex-start; align-items: center; }
 .slide__mission--hash-tag{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
-.slide__mission--title{ margin-top: 1rem; font-size: 2rem; font-weight: 700; }
+.slide__mission--title{ margin-top: 1rem; max-width: 92.5%; font-size: 2rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .slide__mission--text{ display:-webkit-box; margin-top: 1rem; width: 21.88rem; font-size: 1.5rem; font-weight: 400; word-wrap:break-word; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; }
 .slide__mission--writer{ margin-top: 1rem; font-size: 1.25rem; font-weight: 400; }
 .slide__mission--deadline{ font-size: 1.25rem; font-weight: 400; }

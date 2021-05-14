@@ -313,6 +313,7 @@
 
                         newMission = missionsList.cloneNode(true);
                         let newView = viewContents.cloneNode(true);
+                        let newViewId = data[n]['ms_id'];
                         
                         let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
                         let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
@@ -382,7 +383,16 @@
                             });
                             viewWrapper.classList.add('active');
                             newView.classList.add('active');
-                            console.log(newView);
+
+                            const viewInfo = {
+                                'id': newViewId,
+                            };
+
+                            fetch('./modules/okView.php', {
+                                method: 'POST',
+                                body: JSON.stringify(viewInfo),
+                            })
+                            .then(respon => respon.json());
                         });
                         
                         if(j == 2 || j == 6 || ((total-1) === n)){
