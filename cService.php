@@ -148,9 +148,10 @@
 
                                     <div class="cService__faq--list-contents">
                                         <p class="cService__faq--list-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at odio ornare, <br>
-                                            pharetra velit in, pretium metus. Curabitur non urna fringilla, placerat eros vel, vulputate massa. Integer vel sapien porttitor, <br> <br>
-                                            pellentesque erat eget, suscipit libero. Sed dui sapien, facilisis sed
+                                            <strong>Complete 아이디 유무 확인</strong><br>
+                                            <br>
+                                            개인정보를 수정하기 위해서는 Complete 아이디가 필요합니다. <br>
+                                            본인 로그인 이후 '메뉴 -> 마이페이지' 에서 수정하실 수 있습니다.
                                         </p>
                                     </div>
                                 </div>
@@ -170,31 +171,14 @@
 
                                     <div class="cService__faq--list-contents">
                                         <p class="cService__faq--list-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at odio ornare, <br>
-                                            pharetra velit in, pretium metus. Curabitur non urna fringilla, placerat eros vel, vulputate massa. Integer vel sapien porttitor, <br> <br>
-                                            pellentesque erat eget, suscipit libero. Sed dui sapien, facilisis sed
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                <div class="cService__faq--list-items">
-                                    <div class="cService__faq--list-title">
-                                        <b class="cService__faq--icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="29.98" viewBox="0 0 30 29.98">
-                                                <path id="패스_28" data-name="패스 28" d="M-122.148,327.05a14.17,14.17,0,0,1-2.258,6.958c-.183.293-.19.467.069.7.459.42.889.873,1.327,1.316a2.969,2.969,0,0,1,.058,4.27,2.977,2.977,0,0,1-4.305-.052c-.453-.45-.91-.9-1.351-1.359a.392.392,0,0,0-.592-.073,14.4,14.4,0,0,1-5.82,2.144,14.537,14.537,0,0,1-11.3-3.05,14.416,14.416,0,0,1-5.625-9.881,14.47,14.47,0,0,1,3.8-11.927,14.247,14.247,0,0,1,9.157-4.77,14.505,14.505,0,0,1,13.289,5.207C-123.26,319.371-122.14,322.633-122.148,327.05Zm-6.87,2.909a8.9,8.9,0,0,0-3.07-11.252,9.01,9.01,0,0,0-11.9,1.674,9.025,9.025,0,0,0,.249,11.839,8.8,8.8,0,0,0,10.419,1.986c-1.077-1.547-1.055-3,.063-4.151S-130.721,328.86-129.018,329.959Z" transform="translate(152.075 -311.213)" fill="#fbc21b"/>
-                                            </svg>
-                                        </b>
-                                        <p>리뷰는 어떻게 쓰는 건가요?</p>
-                                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="32" viewBox="0 0 41 32">
-                                            <path d="M20.5,0,41,32H0Z" fill="#1e3470"/>
-                                        </svg>
-                                    </div>
-
-                                    <div class="cService__faq--list-contents">
-                                        <p class="cService__faq--list-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at odio ornare, <br>
-                                            pharetra velit in, pretium metus. Curabitur non urna fringilla, placerat eros vel, vulputate massa. Integer vel sapien porttitor, <br> <br>
-                                            pellentesque erat eget, suscipit libero. Sed dui sapien, facilisis sed
+                                            <strong>정확한 아이디/비밀번호를 입력했는지 확인</strong><br>
+                                            <br>
+                                            Complete 아이디는 영문 대문자를 포함하지 않습니다. 아이디는 영문 소문자와 숫자를 입력해 주세요.<br>
+                                            키보드의 'Caps Lock'이 켜져 있으면 영문 입력시 대문자로 입력 됩니다.<br>
+                                            <br>
+                                            아이디/비밀번호가 정확히 기억나지 않거나 입력한 정보로 계속 로그인에 실패한다면<br>
+                                            '메뉴 -> 로그인' 에서 아이디 / 비밀번호 찾기 항목을 눌러주시길 바랍니다.<br>
+                                            <br>
                                         </p>
                                     </div>
                                 </div>
@@ -214,9 +198,9 @@
 
                                     <div class="cService__faq--list-contents">
                                         <p class="cService__faq--list-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at odio ornare, <br>
-                                            pharetra velit in, pretium metus. Curabitur non urna fringilla, placerat eros vel, vulputate massa. Integer vel sapien porttitor, <br> <br>
-                                            pellentesque erat eget, suscipit libero. Sed dui sapien, facilisis sed
+                                            미션 해결 건 수로 회원님의 지역 중 가장 많이 해결하신 회원분이 우수 요원이 됩니다.<br>
+                                            <br>
+                                            Complete 우수 요원이 되기 위해서는 회원님이 무수한 미션들을 해결하셔야 합니다 !
                                         </p>
                                     </div>
                                 </div>
@@ -236,9 +220,14 @@
 
                                     <div class="cService__faq--list-contents">
                                         <p class="cService__faq--list-text">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at odio ornare, <br>
-                                            pharetra velit in, pretium metus. Curabitur non urna fringilla, placerat eros vel, vulputate massa. Integer vel sapien porttitor, <br> <br>
-                                            pellentesque erat eget, suscipit libero. Sed dui sapien, facilisis sed
+                                            <strong>Complete 탈퇴 이후</strong><br>
+                                            <br>
+                                            Complete 탈퇴는 Complete 가입시 등록되어 있던 회원님의 아이디와 개인정보를 모두 삭제하는 기능입니다. <br>
+                                            <br>
+                                            미션(게시글)에서도 본인의 프로필 정보가 표시되지않게 되며, <br>
+                                            더 이상 Complete를 이용할 수 없는 상태가 됩니다. <br>
+                                            <br>
+                                            재가입하실 경우 기존의 정보는 이용하실 수 없습니다.
                                         </p>
                                     </div>
                                 </div>

@@ -18,7 +18,7 @@
 .cService__faq--list{ width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .cService__faq--list-items{ width: 100%; border-top: 0.0625rem solid var(--main-black2); }
 .cService__faq--list-items:last-child{ border-bottom: 0.0625rem solid var(--main-black2); }
-.cService__faq--list-title{ cursor: pointer; padding: 1.25rem; width: 100%; display: flex; justify-content: flex-start; align-items: center; font-size: 1rem; font-weight: 500; }
+.cService__faq--list-title{ cursor: pointer; padding: 1.25rem; width: 100%; display: flex; justify-content: flex-start; align-items: center; font-size: 1rem; font-weight: 700; }
 .cService__faq--list-title > p{ width: 100%; }
 .cService__faq--icon{ margin-right: 1.25rem; font-size: 1.25rem; font-weight: 700; }
 .cService__faq--icon > svg{ width: 20px; height: 20px; }
@@ -28,7 +28,7 @@
 .cService__faq--list-title.active .arrow{ transform: rotate(-180deg); }
 .cService__faq--list-title.active ~ .cService__faq--list-contents{ display: block; }
 
-.arrow{ justify-self: flex-end; float: right; cursor: pointer; transition: all 300ms ease-in-out; transform-origin: center; }
+.arrow{ width: 20px; height: 20px; justify-self: flex-end; float: right; cursor: pointer; transition: all 300ms ease-in-out; transform-origin: center; }
 .arrow *{ transition: all 300ms ease-in-out; }
 .arrow:hover{ transform: rotate(-180deg); }
  

@@ -1,11 +1,41 @@
 {
+    const loading = document.querySelector('.loading');
+
     const fileBox = document.querySelector('.inquiry__input--fileBox');
     const fileInput = document.querySelector('.inquiry__input--file');
     const fileBtn = document.querySelector('.inquiry__input--filebtn');
     const fileName = document.querySelector('.inquiry__input--file-name');
     const fileLabel = document.querySelector('.inquiry__input--file-label');
 
+    const inquiryEmail = document.querySelector('.inquiry__input--email');
+    const inquiryTitle = document.querySelector('.inquiry__input--title');
+    const inquiryContent = document.querySelector('.inquiry__input--content');
+    const inquiryDoneBtn = document.querySelector('.inquiry__done--btn');
+
     fileName.remove();
+
+    inquiryDoneBtn.addEventListener('click', () => {
+        if(inquiryEmail.value === '' || inquiryTitle.value === '' || inquiryContent.value === ''){
+            alert('빈 칸없이 채워주세요.');
+            return 0;
+        }
+
+        const info = {
+            'email': inquiryEmail.value,
+            'title': inquiryTitle.value,
+            'content': inquiryContent.value,
+        };
+
+        loading.style.display = 'flex';
+        fetch('./modules/okInquiry.php', {
+            method: 'POST',
+            body: JSON.stringify(info),
+        })
+        .then((respon) => respon.json())
+        .then((data) => {
+            location.href = './index.php';
+        })
+    });
 
     fileBtn.addEventListener('click', () => { fileInput.click(); });
 

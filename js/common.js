@@ -28,8 +28,6 @@
     function cursorMove(){
         cursorX += (x - cursorX) * speed;
         cursorY += (y - cursorY) * speed;
-        cursor.style.left = `${cursorX}px`;
-        cursor.style.top = `${cursorY}px`;
         requestAnimationFrame(cursorMove);
     }
 

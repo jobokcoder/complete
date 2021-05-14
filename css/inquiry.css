@@ -1,5 +1,5 @@
 /* 고객문의 CSS */
-.inquiry{ margin-top: 4.375rem; padding: 0px 10rem; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
+.inquiry{ margin-top: 4.375rem; padding: 0px 10rem; max-width: 1200px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 .inquiry__title{ font-size: 1.5rem; font-weight: 700; }
 .inquiry__input{ padding: 0.65rem 0; width: 100%; border-bottom: 0.0625rem solid var(--main-black2); }
 .inquiry__input--content{ padding: 0.625rem 0; width: 100%; height: 18.75rem; resize: none; }
@@ -9,4 +9,5 @@
 .inquiry__input--fileBox{ padding: 0.65rem 0; width: 100%; display: flex; overflow: hidden; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); }
 .inquiry__input--filebtn{ cursor: pointer; }
 .inquiry__done{ margin-top: 1.25rem; width: 100%; display: flex; justify-content: flex-end; align-items: center; }
-.inquiry__done--btn{ cursor: pointer; padding: 0.875rem 0; width: 9.375rem; border-radius: 0.125rem; font-weight: 500; background-color: #F5CE33; }
+.inquiry__done--btn{ transition: 600ms ease-in-out; cursor: pointer; padding: 0.875rem 0; width: 9.375rem; border-radius: 0.125rem; font-weight: 500; background-color: #F5CE33; }
+.inquiry__done--btn:hover{ filter: brightness(1.1); }

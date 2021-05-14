@@ -197,14 +197,6 @@
         </div>
     </div>
 
-    
-    <svg class="cursor" width="60" height="60" viewBox="0 0 60 60">
-        <g id="타원_27" data-name="타원 27" fill="#fff" stroke="#707070" stroke-width="1">
-            <circle cx="30" cy="30" r="29.5" fill="none"/>
-        </g>
-    </svg>
-
-    
 <script src="./js/common.js"></script>
 <script src="./js/main.js"></script>
 </body>
