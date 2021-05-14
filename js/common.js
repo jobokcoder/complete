@@ -32,7 +32,7 @@
     }
 
     function createMouseTrail(){
-        for(let i = 0; i < 2; i++){
+        for(let i = 0; i < 1; i++){
             let newCircle = document.createElement('div');
             let size = Math.ceil(Math.random() * 20);
             let randNum = Math.floor(Math.random() * 4);

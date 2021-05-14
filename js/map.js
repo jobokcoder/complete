@@ -23,8 +23,6 @@
                 this.dragFlag = true;
                 this.x = e.clientX;
                 this.y = e.clientY;
-                console.log(this.x, this.y);
-                console.log('==============');
             },false);
 
             window.addEventListener('mouseup', (e) => {
