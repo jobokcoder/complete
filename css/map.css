@@ -1,1 +1,3 @@
-.map{ position: absolute; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; transform: translate(0, 0); }
+html{ width: 100%; height: 100%; }
+body{ width: 100%; height: 100%; overflow: hidden; }
+.wrapper{ position: relative; min-width: 500px; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
