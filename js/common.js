@@ -10,29 +10,19 @@
     const searchOpenBtn = document.querySelector('.header__icons--item-search') ? document.querySelector('.header__icons--item-search') : 'none';
     const searchCloseBtn = document.querySelector('.search__cancel') ? document.querySelector('.search__cancel') : 'none';
 
-    let speed = 0.03;
-    let cursorX = 0, cursorY = 0;
+    let trailMax = 60;
+    let trailStatus = 0;
     let x = 0, y = 0;
     let circleColor = ['2EA0AA', 'F5CE33', '1E3470', '3A3A3C'];
-    let cursor = document.querySelector('.cursor');
-
+    
     window.addEventListener('mousemove', (event) => {
         x = event.clientX;
         y = event.clientY;
-
         createMouseTrail();
     });
 
-    requestAnimationFrame(cursorMove);
-
-    function cursorMove(){
-        cursorX += (x - cursorX) * speed;
-        cursorY += (y - cursorY) * speed;
-        requestAnimationFrame(cursorMove);
-    }
-
     function createMouseTrail(){
-        for(let i = 0; i < 1; i++){
+        if(trailMax > trailStatus && trailStatus >= 0){
             let newCircle = document.createElement('div');
             let size = Math.ceil(Math.random() * 20);
             let randNum = Math.floor(Math.random() * 4);
@@ -52,7 +42,9 @@
             newCircle.style.animation = 'fadeOut 1000ms';
 
             wrapper.appendChild(newCircle);
+            trailStatus++;
             setTimeout(() => {
+                trailStatus--;
                 wrapper.removeChild(newCircle);
             }, Math.round(Math.random() * 1000));
         }

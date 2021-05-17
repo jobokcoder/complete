@@ -87,8 +87,4 @@
             }
         }
     }
-    
-    window.onload = () => {
-        new App();
-    }
 }
