@@ -3,77 +3,88 @@
         constructor(){
             this.x = 0;
             this.y = 0;
-            this.mouseX = 0;
-            this.mouseY = 0;
-            this.moveX = 0;
-            this.moveY = 0;
-            this.speed = 0.03;
-            this.dragFlag = false;
+            this.prvDom;
+            this.mapFlag = false;
+            this.backToWorldBtn = document.querySelector('.back');
             this.map = document.querySelector('.map');
-            this.style = window.getComputedStyle(this.map);
-            this.matrix = this.style.transform || this.style.webkitTransform || this.style.mozTransform;
+            this.svg = document.querySelector('.svg');
+            this.areas = document.querySelectorAll('.area');
+            this.mapStyle = window.getComputedStyle(this.map);
+            this.matrix = this.mapStyle.transform || this.mapStyle.webkitTransform || this.mapStyle.mozTransform;
             this.matrixType = this.matrix.includes('3d') ? '3d' : '2d';
             this.matrixValues = this.matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
-
             this.statusX = Number(this.matrixValues[4]);
             this.statusY = Number(this.matrixValues[5]);
 
-            window.addEventListener('mousedown', (e) => {
-                e.preventDefault();
-                this.dragFlag = true;
-                this.x = e.clientX;
-                this.y = e.clientY;
-            },false);
-
-            window.addEventListener('mouseup', (e) => {
-                e.preventDefault();
-                this.dragFlag = false;
-                this.x = 0;
-                this.y = 0;
-                this.mouseX = 0;
-                this.mouseY = 0;
-                this.moveX = 0;
-                this.moveY = 0;
-            },false);
-    
-            window.addEventListener('mousemove', (e) => {
-                e.preventDefault();
-                if(this.dragFlag){
-                    this.mouseMove(e);
-                }
-            }, false);
-
-            window.addEventListener('wheel', (e) => {
-                this.zoom(e);
+            this.areas.forEach((el) => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.areaZoom(el);
+                }, false);
             });
 
-            requestAnimationFrame(this.mapMove.bind(this));
+            this.backToWorldBtn.addEventListener('click', () => {this.resetZoom();}, false); 
+            window.addEventListener('resize', () => {this.resize();}, false);
+
+            window.addEventListener('wheel', (e) => {   
+                this.wheelZoom(e);
+            }, false);
         }
 
-        zoom(e){
-            if(e.deltaY > 0){
-                console.log('nozoom');
+        wheelZoom(e){
+            if(this.mapFlag === true){
+                if(e.wheelDelta > 0){
+                    this.map.style['zoom'] = '300%';
+                }else{
+                    this.map.style['zoom'] = '200%';
+                }
+            }
+        }
+
+        resetZoom(){
+            this.mapFlag = false;
+            this.map.style.zoom = '100%';
+            this.map.style.left = `0px`;
+            this.map.style.top = `0px`;
+        }
+        
+        areaZoom(dom){
+            if(this.mapFlag === false){
+                this.mapFlag = true;
+                this.map.style.left = `0px`;
+                this.map.style.top = `0px`;
+                this.mapCenterX = this.map.clientWidth / 2;
+                this.mapCenterY = this.map.clientHeight / 2;
+                this.domRect = dom.getBoundingClientRect();
+                this.domRectCenterX = this.domRect['x'] + this.domRect['width'] / 2;
+                this.domRectCenterY = this.domRect['y'] + this.domRect['height'] / 2;
+    
+                this.mapMoveToX = this.mapCenterX - this.domRectCenterX;
+                this.mapMoveToY = this.mapCenterY - this.domRectCenterY;
+    
+                this.map.style.zoom = '200%';
+                this.map.style.transition = '600ms';
+                this.map.style.left = `${this.mapMoveToX}px`;
+                this.map.style.top = `${this.mapMoveToY}px`;
+                this.map.style.transition = '0';
+
+                this.prvDom = dom;
+            }
+        }
+
+        resize(){
+            this.appWidth = document.body.clientWidth;
+            this.appHeight = document.body.clientHeight;
+            this.scale = window.devicePixelRatio;
+
+            this.map.style['width'] = this.appWidth * this.scale;
+            this.map.style['height'] = this.appHeight * this.scale;
+
+            if((this.appWidth * this.scale) > 500){
+                this.svg.style['transform'] = `scale(1)`;
             }else{
-                console.log('zoom');
+                this.svg.style['transform'] = `scale(0.8)`;
             }
-        }
-
-        mouseMove(event){
-            this.mouseX = event.clientX;
-            this.mouseY = event.clientY;
-            this.moveX = this.x - this.mouseX;
-            this.moveY = this.y - this.mouseY;
-            console.log(this.mouseX, this.mouseY);
-        }
-
-        mapMove(){
-            
-            if(this.dragFlag){
-                this.statusX += (this.moveX - this.statusX) * this.speed;
-                this.statusY += (this.moveY - this.statusY) * this.speed;
-            }
-            this.map.style.transform = "translate(" + this.statusX + "px, " + this.statusY + "px)";
-            requestAnimationFrame(this.mapMove.bind(this));
         }
     }
     
