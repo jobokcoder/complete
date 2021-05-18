@@ -3,6 +3,9 @@
         constructor(){
             this.x = 0;
             this.y = 0;
+            this.moveX = document.body.clientWidth / 2;
+            this.moveY = document.body.clientHeight / 2;
+            this.speed = 0.03;
             this.prvDom;
             this.mapFlag = false;
             this.canvas = document.querySelector('.canvas');
@@ -84,12 +87,18 @@
                             this.mapRandomCenterY = Math.ceil((Math.random() * (this.mapCenterY - 100)) + (document.body.clientHeight / 2));
                         }
 
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(document.body.clientWidth / 2, document.body.clientHeight / 2);
-                        this.ctx.lineWidth = 2;
-                        this.ctx.lineCap = 'round';
-                        this.ctx.lineTo((this.mapRandomCenterX + this.newMission.clientWidth / 2), (this.mapRandomCenterY + this.newMission.clientHeight / 2));
-                        this.ctx.stroke();
+                        this.x = Math.ceil(this.mapRandomCenterX + (this.newMission.clientWidth / 2));
+                        this.y = Math.ceil(this.mapRandomCenterY + (this.newMission.clientHeight / 2));
+                        this.i = 0;
+                        while(this.i < 200){
+                            
+                            this.moveX += Math.ceil((this.x - this.moveX) * this.speed);
+                            this.moveY += Math.ceil((this.y - this.moveY) * this.speed);
+                            console.log(this.x, this.y);
+                            console.log(this.moveX, this.moveY);
+                            console.log('=================');
+                            this.i++;
+                        }
 
                         this.prvItem.push(this.newMission);
                         this.newMission.style.left = `${this.mapRandomCenterX}px`;
@@ -98,6 +107,30 @@
                 }
             });
         }
+
+        // 겹침 감지 함수 사용 예
+        // this.collisionFlag = this.isCollision(this.prvItem, this.newMission, this.mapRandomCenterX, this.mapRandomCenterY);  
+        
+        // 겹침 감지 함수
+        // isCollision(prv, next, next_x, next_y){
+        //     this.flagArr = [];
+        //     prv.forEach((item) => {
+        //         this.prvItemRect = item.getBoundingClientRect();
+        //         this.flagArr.push(
+        //             this.prvItemRect['x'] < (next_x + next.clientWidth) &&
+        //             (this.prvItemRect['x'] + this.prvItemRect['width']) > next_x &&
+        //             this.prvItemRect['y'] < (next_y + next.clientHeight) &&
+        //             (this.prvItemRect['y'] + this.prvItemRect['height']) > next_y ||
+
+        //             ((document.body.clientWidth / 2) - 200) < (next_x + next.clientWidth) &&
+        //             ((document.body.clientWidth / 2) - 200 + 400) > next_x
+        //         );
+        //     });
+            
+        //     return this.flagArr.every((flag) => {
+        //         return flag === true ? false : true;
+        //     });
+        // }
 
         wheelZoom(e){
             if(this.mapFlag === true){
@@ -171,30 +204,6 @@
             this.canvas.height = this.appHeight * (this.scale * 2);
 
         }
-
-        // 겹침 감지 함수 사용 예
-        // this.collisionFlag = this.isCollision(this.prvItem, this.newMission, this.mapRandomCenterX, this.mapRandomCenterY);  
-        
-        // 겹침 감지 함수
-        // isCollision(prv, next, next_x, next_y){
-        //     this.flagArr = [];
-        //     prv.forEach((item) => {
-        //         this.prvItemRect = item.getBoundingClientRect();
-        //         this.flagArr.push(
-        //             this.prvItemRect['x'] < (next_x + next.clientWidth) &&
-        //             (this.prvItemRect['x'] + this.prvItemRect['width']) > next_x &&
-        //             this.prvItemRect['y'] < (next_y + next.clientHeight) &&
-        //             (this.prvItemRect['y'] + this.prvItemRect['height']) > next_y ||
-
-        //             ((document.body.clientWidth / 2) - 200) < (next_x + next.clientWidth) &&
-        //             ((document.body.clientWidth / 2) - 200 + 400) > next_x
-        //         );
-        //     });
-            
-        //     return this.flagArr.every((flag) => {
-        //         return flag === true ? false : true;
-        //     });
-        // }
     }
 
     window.onload = () => {
