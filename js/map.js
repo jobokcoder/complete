@@ -89,16 +89,8 @@
 
                         this.x = Math.ceil(this.mapRandomCenterX + (this.newMission.clientWidth / 2));
                         this.y = Math.ceil(this.mapRandomCenterY + (this.newMission.clientHeight / 2));
-                        this.i = 0;
-                        while(this.i < 200){
-                            
-                            this.moveX += Math.ceil((this.x - this.moveX) * this.speed);
-                            this.moveY += Math.ceil((this.y - this.moveY) * this.speed);
-                            console.log(this.x, this.y);
-                            console.log(this.moveX, this.moveY);
-                            console.log('=================');
-                            this.i++;
-                        }
+
+                        this.createLine(this.moveX, this.moveY);
 
                         this.prvItem.push(this.newMission);
                         this.newMission.style.left = `${this.mapRandomCenterX}px`;
@@ -107,6 +99,19 @@
                 }
             });
         }
+
+        createLine(x, y){
+            setInterval(() => {
+                this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+                this.ctx.lineWidth = 10;
+                this.ctx.lineCap = 'round';
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.moveX, this.moveY);
+                this.ctx.lineTo(this.moveX + (x - this.moveX) * this.speed, this.moveY + (y - this.moveY) * this.speed);
+                this.ctx.stroke();
+            }, 30);
+        }
+
 
         // 겹침 감지 함수 사용 예
         // this.collisionFlag = this.isCollision(this.prvItem, this.newMission, this.mapRandomCenterX, this.mapRandomCenterY);  
@@ -133,13 +138,6 @@
         // }
 
         wheelZoom(e){
-            if(this.mapFlag === true){
-                if(e.wheelDelta > 0){
-                    this.map.style.zoom = '300%';
-                }else{
-                    this.map.style.zoom = '200%';
-                }
-            }
         }
 
         resetZoom(){
