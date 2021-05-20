@@ -25,7 +25,6 @@
 
             this.backToWorldBtn.addEventListener('click', () => {this.resetZoom();}, false); 
             window.addEventListener('resize', () => {this.resize();}, false);
-
             window.addEventListener('wheel', (e) => {   
                 this.wheelZoom(e);
             }, false);
