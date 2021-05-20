@@ -14,7 +14,7 @@
     <title>Complete</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="app">
         <div class="map">
             <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="612.645" height="629.206" viewBox="0 0 612.645 629.206">
                 <g id="southKoreaHigh" transform="translate(0.304 -163.028)">
@@ -40,15 +40,6 @@
         </div>
 
         <canvas class="canvas"></canvas>
-
-        <div class="mission">
-            <div class="mission__thum">
-                <img class="mission__thum--img" src="./images/common/common.png" />
-            </div>
-            <p class="mission__title">🧈오븐에 구운 찰떡, 오구떡</p>
-            <p class="mission__writer">의뢰자 : zjaqld002</p>
-            <p class="mission__deadline">마감일 : 2021-05-27</p>
-        </div>
 
         <div class="back">Back To Map</div>
     </div>

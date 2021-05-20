@@ -1,116 +1,49 @@
 
     class App{
         constructor(){
+            this.canvas = document.createElement('canvas');
+            document.body.appendChild(this.canvas);
+            this.ctx = this.canvas.getContext('2d');
+
             this.x = 0;
             this.y = 0;
-            this.moveX = document.body.clientWidth / 2;
-            this.moveY = document.body.clientHeight / 2;
             this.speed = 0.03;
+
             this.prvDom;
             this.mapFlag = false;
-            this.canvas = document.querySelector('.canvas');
-            this.ctx = this.canvas.getContext('2d');
             this.wrapper = document.querySelector('.wrapper');
-            this.mission = document.querySelector('.mission');
             this.backToWorldBtn = document.querySelector('.back');
-            this.map = document.querySelector('.map');
-            this.svg = document.querySelector('.svg');
             this.areas = document.querySelectorAll('.area');
+            
+            this.map = document.querySelector('.map');
             this.mapStyle = window.getComputedStyle(this.map);
             this.matrix = this.mapStyle.transform || this.mapStyle.webkitTransform || this.mapStyle.mozTransform;
             this.matrixType = this.matrix.includes('3d') ? '3d' : '2d';
             this.matrixValues = this.matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
-            this.statusX = Number(this.matrixValues[4]);
-            this.statusY = Number(this.matrixValues[5]);
 
-            this.mission.remove();
+            this.resize();
+            this.backToWorldBtn.addEventListener('click', () => { this.resetZoom(); }, false); 
             this.areas.forEach((el) => {
                 el.addEventListener('click', (e) => {
                     e.preventDefault();
                     this.areaZoom(el);
                 }, false);
             });
-            this.resize();
-            this.backToWorldBtn.addEventListener('click', () => { this.resetZoom(); }, false); 
             window.addEventListener('resize', () => { this.resize(); }, false);
-            window.addEventListener('wheel', (e) => { this.wheelZoom(e); }, false);
         }
 
-        
-        getMission(name){
-            this.prvItem = [];
-            this.info = {
-                'name': name,
-            };
-
-            fetch('../modules/getAreaMission.php', {
-                method: 'POST',
-                body: JSON.stringify(this.info),
-            }).then((respon) => respon.json())
-            .then((data) => {
-                if(data.length !== 0){
-                    data.forEach((item, index) => {
-                        this.newMission = this.mission.cloneNode(true);
-                        this.newMissionTitle = this.newMission.querySelector('.mission__title');
-                        this.newMissionWriter = this.newMission.querySelector('.mission__writer');
-                        this.newMissionDeadLine = this.newMission.querySelector('.mission__deadline');
-    
-                        this.newMissionTitle.textContent = item['ms_title'];
-                        this.newMissionWriter.textContent = item['ms_writer'];
-                        this.newMissionDeadLine.textContent = item['ms_date_end'];
-
-                        this.wrapper.appendChild(this.newMission);
-
-                        if(index === 0){
-                            this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-                            this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-                            this.mapRandomCenterX = Math.ceil(Math.random() * (this.mapCenterX - 100));
-                            this.mapRandomCenterY = Math.ceil(Math.random() * this.mapCenterY);
-                        }else if(index === 1){
-                            this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-                            this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-                            this.mapRandomCenterX = Math.ceil((Math.random() * this.mapCenterX) + (document.body.clientWidth / 2));
-                            this.mapRandomCenterY = Math.ceil((Math.random() * (this.mapCenterY - 100)));
-                        }else if(index === 2){
-                            this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-                            this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-                            this.mapRandomCenterX = Math.ceil((Math.random() * (this.mapCenterX - 100)));
-                            this.mapRandomCenterY = Math.ceil((Math.random() * this.mapCenterY) + (document.body.clientHeight / 2));
-                        }else if(index === 3){
-                            this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-                            this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-                            this.mapRandomCenterX = Math.ceil((Math.random() * this.mapCenterX) + (document.body.clientWidth / 2));
-                            this.mapRandomCenterY = Math.ceil((Math.random() * (this.mapCenterY - 100)) + (document.body.clientHeight / 2));
-                        }
-
-                        this.x = Math.ceil(this.mapRandomCenterX + (this.newMission.clientWidth / 2));
-                        this.y = Math.ceil(this.mapRandomCenterY + (this.newMission.clientHeight / 2));
-
-                        this.createLine(this.moveX, this.moveY);
-
-                        this.prvItem.push(this.newMission);
-                        this.newMission.style.left = `${this.mapRandomCenterX}px`;
-                        this.newMission.style.top = `${this.mapRandomCenterY}px`;
-                    });
-                }
-            });
-        }
-
-        createLine(x, y){
-            setInterval(() => {
-                this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
-                this.ctx.lineWidth = 10;
-                this.ctx.lineCap = 'round';
-                this.ctx.beginPath();
-                this.ctx.moveTo(this.moveX, this.moveY);
-                this.ctx.lineTo(this.moveX + (x - this.moveX) * this.speed, this.moveY + (y - this.moveY) * this.speed);
-                this.ctx.stroke();
-            }, 30);
-        }
+        // createLine(moveX, moveY, posX, posY){
+        //     setInterval(() => {
+        //         moveX = moveX + (posX - moveX) * this.speed;
+        //         moveY = moveY + (posY - moveY) * this.speed;
+        //         this.ctx.lineWidth = 2;
+        //         this.ctx.lineCap = 'round';
+        //         this.ctx.beginPath();
+        //         this.ctx.moveTo(this.centerX, this.centerY);
+        //         this.ctx.lineTo(moveX, moveY);
+        //         this.ctx.stroke();
+        //     }, 15);
+        // }
 
 
         // 겹침 감지 함수 사용 예
@@ -137,9 +70,6 @@
         //     });
         // }
 
-        wheelZoom(e){
-        }
-
         resetZoom(){
             this.missions = document.querySelectorAll('.mission');
             this.missions.forEach((el) => {
@@ -158,7 +88,6 @@
         
         areaZoom(dom){
             if(this.mapFlag === false){
-                this.getMission(dom.id);
                 this.areas.forEach((el) => {
                     if(el !== dom){
                         el.style.transition = '600ms';
@@ -191,16 +120,16 @@
         }
 
         resize(){
-            this.appWidth = document.body.clientWidth;
-            this.appHeight = document.body.clientHeight;
+            this.stageWidth = document.body.clientWidth;
+            this.stageHeight = document.body.clientHeight;
             this.scale = window.devicePixelRatio;
 
-            this.map.style['width'] = this.appWidth * this.scale;
-            this.map.style['height'] = this.appHeight * this.scale;
+            this.map.style['width'] = this.stageWidth * this.scale;
+            this.map.style['height'] = this.stageHeight * this.scale;
 
-            this.canvas.width = this.appWidth * (this.scale * 2);
-            this.canvas.height = this.appHeight * (this.scale * 2);
-
+            this.canvas.width = this.stageWidth * 2;
+            this.canvas.height = this.stageHeight * 2;
+            this.ctx.scale(2,2);
         }
     }
 
