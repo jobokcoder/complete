@@ -1,5 +1,8 @@
-.app{ position: relative; width: 100%; height: 100vh; max-height: 100vh; overflow: hidden; }
+*{ color: #fff; }
+.app{ position: relative; width: 100%; height: 100vh; max-height: 100vh; overflow: hidden; background-color: #1e1d1e; }
 .map{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; transform: translate(0, 0); }
-.area:hover{ transition: 600ms cubic-bezier(0.6, -0.28, 0.735, 0.045); fill: black; }
-.back{ cursor: pointer; position: fixed; right: 10px; top: 50%; z-index: 30; transform: translateY(-50%); }
+.area{ fill: #2b2a2b; }
+.area:hover{ transition: 600ms cubic-bezier(0.6, -0.28, 0.735, 0.045); fill: #fff; }
+.back{ cursor: pointer; position: fixed; right: 20px; top: 50%; z-index: 30; transform: translateY(-50%); font-size: 20px; font-weight: 700; }
 canvas{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+.mission{ padding: 14px; position: absolute; left: 0; top: 0; border-radius: 20px; overflow: hidden; }
