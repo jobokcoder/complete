@@ -1,6 +1,7 @@
 export class missionController{
     constructor(){
         this.app = document.querySelector('.app');
+        this.prvDom;
     }
 
     removeMission(){
@@ -8,6 +9,16 @@ export class missionController{
         missions.forEach((el) => {
             el.remove();
         });
+    }
+
+    isCollision(dom1, dom2){
+        const dom1_Rect = dom1.getBoundingClientRect();
+        const dom2_Rect = dom2.getBoundingClientRect();
+
+        return dom1_Rect.left < dom2_Rect.left + dom2_Rect.width && 
+        dom1_Rect.left + dom1_Rect.width  > dom2_Rect.left &&
+		dom1_Rect.top < dom2_Rect.top + dom2_Rect.height && 
+        dom1_Rect.top + dom1_Rect.height > dom2_Rect.top;
     }
 
     getMission(name){
@@ -27,10 +38,20 @@ export class missionController{
                     newMission.style.width = '200px';
                     newMission.style.height = '300px';
                     newMission.style.background = '#000';
+                    newMission.style.left = 0;
+                    newMission.style.top = 0;
                     newMission.textContent = item['ms_title'];
 
-
                     this.app.appendChild(newMission);
+
+                    if(index !== 0 ? this.isCollision(newMission, this.prvDom) : null){
+                        for(let i = 0; i<4; i++){
+                            const newMission_Rect = newMission.getBoundingClientRect();
+                            const prvDom_Rect = this.prvDom.getBoundingClientRect();
+                        }
+                    }
+
+                    this.prvDom = newMission;
                 });
             }
         });
