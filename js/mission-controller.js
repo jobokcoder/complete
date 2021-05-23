@@ -1,9 +1,22 @@
 export class missionController{
-    constructor(){
+    constructor(id){
+        this.id = id;
         this.app = document.querySelector('.app');
         this.prvDom = [];
+        this.centerDom;
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
+        this.zoomFlag = false;
+        
+        window.addEventListener('resize', () => { this.resize(); });
+    }
+
+    resize(){
+        this.stageWidth = document.body.clientWidth;
+        this.stageHeight = document.body.clientHeight;
+        if(this.zoomFlag === true){
+            this.getMission();
+        }
     }
 
     removeMission(){
@@ -11,6 +24,20 @@ export class missionController{
         missions.forEach((el) => {
             el.remove();
         });
+        this.zoomFlag = false;
+    }
+
+    isNear(dom, event){
+        const domRect = dom.getBoundingClientRect();
+        const eventX = event.pageX;
+        const eventY = event.pageY;
+        let moveX = domRect.x + (domRect.width / 2);
+        let moveY = domRect.y + (domRect.height / 2);
+
+        moveX = (eventX - moveX);
+        moveY = (eventY - moveY);
+        
+        dom.style.transform = `translate(${(moveX/4)}px, ${(moveY/4)}px)`;
     }
 
     isCollision(dom1, dom2){
@@ -25,12 +52,13 @@ export class missionController{
 
     isCenterCollision(dom1){
         const dom1_Rect = dom1.getBoundingClientRect();
+        const centerDom_Rect = this.centerDom.getBoundingClientRect();
 
-        let centerX = (this.stageWidth / 2) - 150;
-        let centerY = (this.stageHeight / 2) - 150;
+        const centerX = (this.stageWidth / 2) - (centerDom_Rect.width);
+        const centerY = (this.stageHeight / 2) - (centerDom_Rect.height);
 
-        let centerWidth = 500;
-        let centerHeight = 500;
+        const centerWidth = centerDom_Rect.width * 2;
+        const centerHeight = centerDom_Rect.height * 2;
 
         return dom1_Rect.left < centerX + centerWidth && 
         dom1_Rect.left + dom1_Rect.width  > centerX &&
@@ -38,10 +66,22 @@ export class missionController{
         dom1_Rect.top + dom1_Rect.height > centerY;
     }
 
-    getRandomLocation(mission){
+    missionLocationLoop(comMission){
+        this.prvDom.forEach((ms) => {
+            let flag1 = this.isCollision(comMission, ms);
+            let flag2 = this.isCenterCollision(comMission);
+            if(flag1 === true || flag2 === true){
+                let rndLocationInfo = this.getRandomLocation(comMission);
+                comMission.style.left = `${rndLocationInfo['x']}px`;
+                comMission.style.top = `${rndLocationInfo['y']}px`;
+            }
+        });
+    }
+
+    getRandomLocation(){
         const locationInfo = {};
-        let maxLocationX = this.stageWidth - Number(mission.style.width.replace('px', ''));
-        let maxLocationY = this.stageHeight - Number(mission.style.height.replace('px', ''));
+        let maxLocationX = this.stageWidth - 300;
+        let maxLocationY = this.stageHeight - 300;
 
         let rndLocationX = Math.floor(Math.random() * maxLocationX);
         let rndLocationY = Math.floor(Math.random() * maxLocationY);
@@ -52,9 +92,10 @@ export class missionController{
         return locationInfo;
     }
 
-    getMission(name){
+    getMission(){
+        this.zoomFlag = true;
         this.info = {
-            'name': name,
+            'name': this.id,
         };
 
         fetch('../modules/getAreaMission.php', {
@@ -76,105 +117,26 @@ export class missionController{
                     newMission.textContent = item['ms_title'];
 
                     this.app.appendChild(newMission);
+                    this.centerDom = document.querySelector(`#${this.id}`);
 
                     if(index !== 0){
-                        this.prvDom.forEach((mission) => {
-                            let flag = this.isCollision(newMission, mission);
-                            while(flag !== false){
-                                let rndLocationInfo = this.getRandomLocation(newMission);
-                                newMission.style.left = `${rndLocationInfo['x']}px`;
-                                newMission.style.top = `${rndLocationInfo['y']}px`;
-                                newMission.textContent = item['ms_title'];
-                                flag = this.isCollision(newMission, mission);
+                        this.prvDom.forEach((ms) => {
+                            let flag1 = this.isCollision(newMission, ms);
+                            let flag2 = this.isCenterCollision(newMission);
+                            if(flag1 === true || flag2 === true){
+                                this.missionLocationLoop(newMission);
                             }
                         });
-
-                        let flag = this.isCenterCollision(newMission);
-                        while(flag !== false){
-                            let rndLocationInfo = this.getRandomLocation(newMission);
-                            newMission.style.left = `${rndLocationInfo['x']}px`;
-                            newMission.style.top = `${rndLocationInfo['y']}px`;
-                            newMission.textContent = item['ms_title'];
-                            flag = this.isCenterCollision(newMission);
-                        }
                     }
-
                     this.prvDom.push(newMission);
+
+                    newMission.addEventListener('mousemove', (e) => { this.isNear(newMission, e) });
+                    newMission.addEventListener('mouseleave', () => { 
+                        newMission.style.transform = 'none';
+                    });
                 });
             }
         });
     }
+
 }
-
-// if(index === 0){
-//     this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-//     this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-//     this.mapRandomCenterX = Math.ceil(Math.random() * (this.mapCenterX - 100));
-//     this.mapRandomCenterY = Math.ceil(Math.random() * this.mapCenterY);
-// }else if(index === 1){
-//     this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-//     this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-//     this.mapRandomCenterX = Math.ceil((Math.random() * this.mapCenterX) + (document.body.clientWidth / 2));
-//     this.mapRandomCenterY = Math.ceil((Math.random() * (this.mapCenterY - 100)));
-// }else if(index === 2){
-//     this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-//     this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-//     this.mapRandomCenterX = Math.ceil((Math.random() * (this.mapCenterX - 100)));
-//     this.mapRandomCenterY = Math.ceil((Math.random() * this.mapCenterY) + (document.body.clientHeight / 2));
-// }else if(index === 3){
-//     this.mapCenterX = document.body.clientWidth / 2 - this.newMission.clientWidth;
-//     this.mapCenterY = document.body.clientHeight / 2 - this.newMission.clientHeight;
-
-//     this.mapRandomCenterX = Math.ceil((Math.random() * this.mapCenterX) + (document.body.clientWidth / 2));
-//     this.mapRandomCenterY = Math.ceil((Math.random() * (this.mapCenterY - 100)) + (document.body.clientHeight / 2));
-// }
-
-// this.createLine(this.centerX, this.centerY, (this.mapRandomCenterX + (this.newMission.clientWidth / 2)), (this.mapRandomCenterY + (this.newMission.clientHeight / 2)));
-
-// this.x = Math.ceil(this.mapRandomCenterX + (this.newMission.clientWidth / 2));
-// this.y = Math.ceil(this.mapRandomCenterY + (this.newMission.clientHeight / 2));
-
-
-// this.prvItem.push(this.newMission);
-// this.newMission.style.left = `${this.mapRandomCenterX}px`;
-// this.newMission.style.top = `${this.mapRandomCenterY}px`;
-
-// createLine(moveX, moveY, posX, posY){
-//     setInterval(() => {
-//         moveX = moveX + (posX - moveX) * this.speed;
-//         moveY = moveY + (posY - moveY) * this.speed;
-//         this.ctx.lineWidth = 2;
-//         this.ctx.lineCap = 'round';
-//         this.ctx.beginPath();
-//         this.ctx.moveTo(this.centerX, this.centerY);
-//         this.ctx.lineTo(moveX, moveY);
-//         this.ctx.stroke();
-//     }, 15);
-// }
-//
-// 겹침 감지 함수 사용 예
-// this.collisionFlag = this.isCollision(this.prvItem, this.newMission, this.mapRandomCenterX, this.mapRandomCenterY);  
-//
-// 겹침 감지 함수
-// isCollision(prv, next, next_x, next_y){
-//     this.flagArr = [];
-//     prv.forEach((item) => {
-//         this.prvItemRect = item.getBoundingClientRect();
-//         this.flagArr.push(
-//             this.prvItemRect['x'] < (next_x + next.clientWidth) &&
-//             (this.prvItemRect['x'] + this.prvItemRect['width']) > next_x &&
-//             this.prvItemRect['y'] < (next_y + next.clientHeight) &&
-//             (this.prvItemRect['y'] + this.prvItemRect['height']) > next_y ||
-//
-//             ((document.body.clientWidth / 2) - 200) < (next_x + next.clientWidth) &&
-//             ((document.body.clientWidth / 2) - 200 + 400) > next_x
-//         );
-//     });
-//
-//     return this.flagArr.every((flag) => {
-//         return flag === true ? false : true;
-//     });
-// }

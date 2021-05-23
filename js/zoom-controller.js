@@ -67,7 +67,8 @@ export class zoomController{
                 }
             });
 
-            this.missionController.getMission(dom.id);
+            this.missionController.id = dom.id;
+            this.missionController.getMission();
         }
     }
 
