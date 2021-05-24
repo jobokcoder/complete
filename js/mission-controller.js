@@ -2,7 +2,7 @@ export class missionController{
     constructor(id){
         this.id = id;
         this.app = document.querySelector('.app');
-        this.prvDom = [];
+        this.locationArr = [];
         this.centerDom;
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
@@ -14,9 +14,6 @@ export class missionController{
     resize(){
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
-        if(this.zoomFlag === true){
-            this.getMission();
-        }
     }
 
     removeMission(){
@@ -40,14 +37,11 @@ export class missionController{
         dom.style.transform = `translate(${(moveX/4)}px, ${(moveY/4)}px)`;
     }
 
-    isCollision(dom1, dom2){
-        const dom1_Rect = dom1.getBoundingClientRect();
-        const dom2_Rect = dom2.getBoundingClientRect();
-
-        return dom1_Rect.left < dom2_Rect.left + dom2_Rect.width && 
-        dom1_Rect.left + dom1_Rect.width  > dom2_Rect.left &&
-		dom1_Rect.top < dom2_Rect.top + dom2_Rect.height && 
-        dom1_Rect.top + dom1_Rect.height > dom2_Rect.top;
+    isCollision(num1, num2){
+        return  num1.x < num2.x + 200 && 
+                num1.x + 200  > num2.x &&
+                num1.y < num2.y + 300 && 
+                num1.y + 300 > num2.y;
     }
 
     isCenterCollision(dom1){
@@ -66,16 +60,22 @@ export class missionController{
         dom1_Rect.top + dom1_Rect.height > centerY;
     }
 
-    missionLocationLoop(comMission){
-        this.prvDom.forEach((ms) => {
-            let flag1 = this.isCollision(comMission, ms);
-            let flag2 = this.isCenterCollision(comMission);
-            if(flag1 === true || flag2 === true){
-                let rndLocationInfo = this.getRandomLocation(comMission);
-                comMission.style.left = `${rndLocationInfo['x']}px`;
-                comMission.style.top = `${rndLocationInfo['y']}px`;
+    missionCollisionLoop(){
+        const missions = document.querySelectorAll('.mission');
+        const prvMissions = this.prvDom;
+
+        for(let i = 0; i < prvMissions.length; i++){
+            for(let j = 0; j < missions.length; j++){
+                if(missions[j] !== prvMissions[i]){
+                    let flag = this.isCollision(missions[j], prvMissions[i]);
+                    if(flag === true){
+                        let rndLocationInfo = this.getRandomLocation();
+                        missions[j].style.left = `${rndLocationInfo['x']}px`;
+                        missions[j].style.top = `${rndLocationInfo['y']}px`;
+                    }
+                }
             }
-        });
+        }
     }
 
     getRandomLocation(){
@@ -92,51 +92,70 @@ export class missionController{
         return locationInfo;
     }
 
+    getRandomArray(count) {
+        const rst = [];
+
+        while(true){
+            let newLocation = this.getRandomLocation();
+     
+            if(rst.length > 0){
+                if(this.isCollision(newLocation, rst[rst.length-1])){
+                    continue;
+                }
+            }
+
+            rst.push(newLocation);
+     
+            if (rst.length == count) {
+                break;
+            }
+        }
+
+        return rst;
+    }
+
+    createDom(data){
+        const newMission = document.createElement('div');
+        newMission.style.left = '-1000px';
+        newMission.style.top = '-1000px';
+        newMission.style.width = '200px';
+        newMission.style.height = '300px';
+        newMission.style.background = '#000';
+
+        newMission.textContent = data['ms_title'];
+        newMission.classList.add('mission');
+
+        newMission.addEventListener('mousemove', (e) => { this.isNear(newMission, e) });
+        newMission.addEventListener('mouseleave', () => { 
+            newMission.style.transform = 'none';
+        });
+        this.app.appendChild(newMission);
+    }
+
     getMission(){
         this.zoomFlag = true;
         this.info = {
             'name': this.id,
         };
-
         fetch('../modules/getAreaMission.php', {
             method: 'POST',
             body: JSON.stringify(this.info),
         }).then((respon) => respon.json())
         .then((data) => {
             if(data.length !== 0){
-                data.forEach((item, index) => {
-                    const newMission = document.createElement('div');
-                    newMission.classList.add('mission');
-                    newMission.style.width = '200px';
-                    newMission.style.height = '300px';
-                    newMission.style.background = '#000';
-
-                    let rndLocationInfo = this.getRandomLocation(newMission);
-                    newMission.style.left = `${rndLocationInfo['x']}px`;
-                    newMission.style.top = `${rndLocationInfo['y']}px`;
-                    newMission.textContent = item['ms_title'];
-
-                    this.app.appendChild(newMission);
-                    this.centerDom = document.querySelector(`#${this.id}`);
-
-                    if(index !== 0){
-                        this.prvDom.forEach((ms) => {
-                            let flag1 = this.isCollision(newMission, ms);
-                            let flag2 = this.isCenterCollision(newMission);
-                            if(flag1 === true || flag2 === true){
-                                this.missionLocationLoop(newMission);
-                            }
-                        });
-                    }
-                    this.prvDom.push(newMission);
-
-                    newMission.addEventListener('mousemove', (e) => { this.isNear(newMission, e) });
-                    newMission.addEventListener('mouseleave', () => { 
-                        newMission.style.transform = 'none';
-                    });
+                data.forEach((item) => {
+                    this.createDom(item);
                 });
             }
+        }).then(() => {
+            const mission = document.querySelectorAll('.mission');
+            const arr = this.getRandomArray(mission.length);
+            console.log(arr);
+
+            mission.forEach((el, index) => {
+                el.style.left = `${arr[index]['x']}px`;
+                el.style.top = `${arr[index]['y']}px`;
+            });
         });
     }
-
 }
