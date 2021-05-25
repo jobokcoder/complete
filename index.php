@@ -16,7 +16,6 @@
 </head>
 <body>
     <div class="wrapper">
-
         <div class="view">
             <div class="view__contents">
                 <button class="view__cancel" type="button">

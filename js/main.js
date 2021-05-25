@@ -28,20 +28,26 @@
     let slideNow = 0;
     let slidDeg = 0;
     let missionCount = 0;
-
-    setTimeout(() => {
-        console.log(test);
-    },10000);
+    let area = 'none';
     
-    viewContents.remove();
-    missions.remove();
-    missionsList.remove();
-    slideMissionOrigin.remove();
-    slideMissionHash.remove();
-    slideRightMission.remove();
+    window.addEventListener('load', () => {
 
-    setInterval(setBorderRadius, 800);
-    getSlideMission(1);
+        viewContents.remove();
+        missions.remove();
+        missionsList.remove();
+        slideMissionOrigin.remove();
+        slideMissionHash.remove();
+        slideRightMission.remove();
+
+        fetch('./modules/getAreaInfo.php')
+        .then((respon) => respon.json())
+        .then((data) => {
+            area = data['area'];
+            getSlideMission(1, area);
+        });
+
+        setInterval(setBorderRadius, 800);
+    });
 
     window.addEventListener('load', () => {
         setTimeout(() => {
@@ -51,7 +57,7 @@
 
     window.addEventListener('scroll', () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            getMission();
+            getMission(area);
         }
     });
 
@@ -63,7 +69,7 @@
             el.classList.remove('active');
         });
         e.target.parentNode.parentNode.classList.add('active');
-        getSlideMission(1); 
+        getSlideMission(1, area); 
     });
 
     slideMenuDeadline.addEventListener('click', (e) => {
@@ -71,7 +77,7 @@
             el.classList.remove('active');
         });
         e.target.parentNode.parentNode.classList.add('active');
-        getSlideMission(2); 
+        getSlideMission(2, area); 
     });
 
     slideMenuEvent.addEventListener('click', (e) => {
@@ -191,14 +197,15 @@
         changeWrapperCircle.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
 
         const param = {
+            'area': area,
             'type': type,
         };
 
         fetch('./modules/getSlideMission.php', {
             method: 'post',
             body: JSON.stringify(param),
-        }).then(respon => respon.json(param))
-        .then(data => {
+        }).then((respon) => respon.json())
+        .then((data) => {
             if(data.length > 0){
                 const item = data;
                 
@@ -303,6 +310,7 @@
 
     function getMission(){
         const param = {
+            'area': area,
             'count': missionCount,
         };
 
@@ -310,8 +318,8 @@
             method: 'post',
             body: JSON.stringify(param),
         })
-        .then(respon => respon.json())
-        .then(data => {
+        .then((respon) => respon.json())
+        .then((data) => {
             if(data.length > 0){
                 const total = data.length;
                 const block = Math.ceil(total / 7);

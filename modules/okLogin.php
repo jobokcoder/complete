@@ -10,6 +10,7 @@
     if($count > 0){
         $response['status'] = 200;
         $_SESSION['m_id'] = $data[0][0];
+        $_SESSION['m_add1'] = $data[0][3];
         print_r(json_encode($response));
     }else{
         $response['status'] = 300;
