@@ -119,10 +119,10 @@ export class missionController{
 
             if(cnt == 0){
                 newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200));
-                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300));
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300) + 90);
             }else if(cnt == 1){
                 newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200)) + (this.stageWidth / 2);
-                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300));
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300) + 90);
             }else if(cnt == 2){
                 newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200));
                 newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300)) + (this.stageHeight / 2);
