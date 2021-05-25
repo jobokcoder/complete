@@ -82,7 +82,6 @@
     joinFormAdd.addEventListener('click', () => { sample4_execDaumPostcode(); });
     
     function sendEmail(){
-        joinFormEmail.readOnly = true;
         joinFormEmail.style.filter = 'grayscale(1)';
         fetch('./modules/email.php', {
             method: 'post',

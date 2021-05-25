@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/common/logo.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/common.css" type="text/css">
@@ -76,6 +77,7 @@
                     <input class="join__conditions--check-use" type="checkbox" name="userUse"/>
                     <input class="join__conditions--check-info" type="checkbox" name="userInfo"/>
                     <input class="join__conditions--check-gps" type="checkbox" name="userGPS"/>
+                    <input class="join__conditions--check-all" type="checkbox" name="userAll"/>
                     <div class="join__conditions--form">
                         <div class="join__conditions--header">
                             <svg class="join__conditions--use-svg conditions-svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
@@ -353,6 +355,15 @@ complete 및 complete 관련 제반 서비스(모바일 웹/앱 포함)의 회�
                         </p>
                     </div>
                     <p class="join__conditions--not">Complete 이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.</p>
+                    
+                    <div class="join__conditions--header">
+                        <svg class="join__conditions--all-svg conditions-svg" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                            <g id="ellipse_10" data-name="타원 10" fill="#fff" stroke="#707070" stroke-width="1"><circle cx="12.5" cy="12.5" r="12.5" stroke="none"/><circle cx="12.5" cy="12.5" r="12" fill="none"/></g>
+                            <path id="path_130" data-name="패스 130" d="M2499.441,1922l6.536,7.434,8.87-11.671" transform="translate(-2494.644 -1911.099)" fill="none" stroke="#707070" stroke-width="1"/>
+                        </svg>
+                        <p class="join__conditions--header-title">모든 이용약관 동의</p>
+                    </div>  
+
                     <div class="join__conditions--button">
                         <div class="join__conditions--button-cancel">취소</div>
                         <div class="join__conditions--button-accept">확인</div>

@@ -129,10 +129,10 @@
                     }else{
                 ?>
                 <p class="menu__contents--item header-login">로그인</p>
+                <p class="menu__contents--item header-join">회원가입</p>
                 <?php
                     }
                 ?>
-                <p class="menu__contents--item header-join">회원가입</p>
                 <p class="menu__contents--item header-mission">미션</p>
                 <p class="menu__contents--item header-write">같이하기</p>
                 <p class="menu__contents--item header-event">이벤트</p>

@@ -21,8 +21,10 @@
 .join__conditions--check-info:checked ~ .join__conditions--form .join__conditions--info-svg #path_130{ stroke: var(--main-white); }
 .join__conditions--check-gps:checked ~ .join__conditions--form .join__conditions--gps-svg #ellipse_10{ fill:var(--main-color1); stroke: var(--main-color1); }
 .join__conditions--check-gps:checked ~ .join__conditions--form .join__conditions--gps-svg #path_130{ stroke: var(--main-white); }
+.join__conditions--check-all:checked ~ .join__conditions--form .join__conditions--all-svg #ellipse_10{ fill:var(--main-color1); stroke: var(--main-color1); }
+.join__conditions--check-all:checked ~ .join__conditions--form .join__conditions--all-svg #path_130{ stroke: var(--main-white); }
 
-.join__conditions--button{ margin-top: 0.9375rem; display: flex; justify-content: center; align-items: center; }
+.join__conditions--button{ display: flex; justify-content: center; align-items: center; }
 .join__conditions--button > *{ transition: 600ms ease-in-out; margin: 0px 0.3125rem; padding: 0.75rem 0px; width: 12.5rem; font-size: 1.125rem; text-align: center; font-weight: 500; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; }
 .join__conditions--button > *:hover{ filter: brightness(1.1); }
 .join__conditions--not{ display: none; margin-top: 0.9375rem; text-align: center; font-size: 0.75rem; color: red; }
