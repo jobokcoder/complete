@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/common.css" type="text/css">
@@ -14,7 +15,12 @@
     <title>Complete</title>
 </head>
 <body>
-    <div class="app">
+    <div class="app wrapper">
+        
+        <?php
+            include('./modules/header.php');
+        ?>
+
         <div class="map">
             <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="612.645" height="629.206" viewBox="0 0 612.645 629.206">
                 <g id="southKoreaHigh" transform="translate(0.304 -163.028)">
@@ -43,6 +49,7 @@
 
         <div class="back">Back To Map</div>
     </div>
+<script src="./js/common.js"></script>
 <script type="module" src="./js/map.js"></script>
 </body>
 </html>

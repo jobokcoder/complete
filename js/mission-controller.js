@@ -7,16 +7,39 @@ export class missionController{
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
         this.zoomFlag = false;
-        
-        window.addEventListener('resize', () => { this.resize(); });
+
+        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        document.body.appendChild(this.canvas);
+        window.addEventListener('resize', this.resize.bind(this), false);
+        this.resize();
     }
 
     resize(){
+        const missions = document.querySelectorAll('.mission');
+        if(missions.length > 0){
+            missions.forEach((el, index) => {
+                el.style.left = `${(el.offsetLeft / this.stageWidth * 100)}%`;
+                el.style.top = `${(el.offsetTop / this.stageHeight * 100)}%`;
+                if(this.locationArr[index]['dom'] === el){
+                    this.locationArr[index]['x'] = el.offsetLeft;
+                    this.locationArr[index]['y'] = el.offsetTop;
+                }
+            });
+        }
+
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
+        this.scale = window.devicePixelRatio;
+
+        this.canvas.width = this.stageWidth;
+        this.canvas.height = this.stageHeight;
+        this.ctx.scale(1,1);
+        this.drawLine();
     }
 
     removeMission(){
+        this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
         const missions = document.querySelectorAll('.mission');
         missions.forEach((el) => {
             el.remove();
@@ -24,17 +47,26 @@ export class missionController{
         this.zoomFlag = false;
     }
 
-    isNear(dom, event){
-        const domRect = dom.getBoundingClientRect();
+    isNear(el, event){
+        const domRect = el.getBoundingClientRect();
         const eventX = event.pageX;
         const eventY = event.pageY;
         let moveX = domRect.x + (domRect.width / 2);
         let moveY = domRect.y + (domRect.height / 2);
 
-        moveX = (eventX - moveX);
-        moveY = (eventY - moveY);
+        moveX = Math.floor(eventX - moveX);
+        moveY = Math.floor(eventY - moveY);
         
-        dom.style.transform = `translate(${(moveX/4)}px, ${(moveY/4)}px)`;
+        el.style.transform = `translate(${Math.floor(moveX/4)}px, ${Math.floor(moveY/4)}px)`;
+
+        this.locationArr.findIndex((item) => {
+            if(item.dom == el){
+                item.x = Math.floor(Number(el.style.left.replace('px', '')) + (moveX/4));
+                item.y = Math.floor(Number(el.style.top.replace('px', '')) + (moveY/4));
+            }
+        });
+
+        this.drawLine();
     }
 
     isCollision(num1, num2){
@@ -78,58 +110,84 @@ export class missionController{
         }
     }
 
-    getRandomLocation(){
-        const locationInfo = {};
-        let maxLocationX = this.stageWidth - 300;
-        let maxLocationY = this.stageHeight - 300;
-
-        let rndLocationX = Math.floor(Math.random() * maxLocationX);
-        let rndLocationY = Math.floor(Math.random() * maxLocationY);
-
-        locationInfo['x'] = rndLocationX;
-        locationInfo['y'] = rndLocationY;
-
-        return locationInfo;
-    }
-
     getRandomArray(count) {
         const rst = [];
+        let cnt = 0;
 
-        while(true){
-            let newLocation = this.getRandomLocation();
-     
-            if(rst.length > 0){
-                if(this.isCollision(newLocation, rst[rst.length-1])){
-                    continue;
-                }
+        while(true){ 
+            let newLocation = {};
+
+            if(cnt == 0){
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200));
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300));
+            }else if(cnt == 1){
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200)) + (this.stageWidth / 2);
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300));
+            }else if(cnt == 2){
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200));
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300)) + (this.stageHeight / 2);
+            }else if(cnt == 3){
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200)) + (this.stageWidth / 2);
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300)) + (this.stageHeight / 2);
             }
 
+            const mission = document.querySelectorAll('.mission');
+            newLocation['dom'] = mission[cnt];
             rst.push(newLocation);
      
             if (rst.length == count) {
                 break;
             }
+            cnt++;
         }
-
+        
         return rst;
     }
 
     createDom(data){
+        let newThum = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
+        let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+
         const newMission = document.createElement('div');
+        const newMissionFrame = document.createElement('div');
+        const newMissionImg = document.createElement('img');
+        const newMissionTitle = document.createElement('h1');
+        const newMissionWriter = document.createElement('p');
         newMission.style.left = '-1000px';
         newMission.style.top = '-1000px';
-        newMission.style.width = '200px';
+        newMission.style.width = '250px';
         newMission.style.height = '300px';
-        newMission.style.background = '#000';
 
-        newMission.textContent = data['ms_title'];
+        newMissionImg.src = newImgSrc;
+        newMissionTitle.textContent = data['ms_title'];
+        newMissionWriter.textContent = data['ms_writer'];
+
         newMission.classList.add('mission');
+        newMissionFrame.appendChild(newMissionImg);
+        newMission.appendChild(newMissionFrame);
+        newMission.appendChild(newMissionTitle);
+        newMission.appendChild(newMissionWriter);
 
         newMission.addEventListener('mousemove', (e) => { this.isNear(newMission, e) });
         newMission.addEventListener('mouseleave', () => { 
             newMission.style.transform = 'none';
         });
         this.app.appendChild(newMission);
+    }
+
+    drawLine(){
+        this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
+        this.locationArr.forEach((move) => {
+            this.centerX = (this.stageWidth / 2);
+            this.centerY = (this.stageHeight / 2);
+    
+            this.ctx.beginPath(); 
+            this.ctx.moveTo(this.centerX, this.centerY); 
+            this.ctx.lineTo(move.x + 100, move.y + 150);
+            this.ctx.lineWidth = 2;
+            this.ctx.strokeStyle = '#3A3A3C';
+            this.ctx.stroke();  
+        });
     }
 
     getMission(){
@@ -149,13 +207,28 @@ export class missionController{
             }
         }).then(() => {
             const mission = document.querySelectorAll('.mission');
-            const arr = this.getRandomArray(mission.length);
-            console.log(arr);
-
-            mission.forEach((el, index) => {
-                el.style.left = `${arr[index]['x']}px`;
-                el.style.top = `${arr[index]['y']}px`;
-            });
+            if(mission.length > 0){
+                this.locationArr = this.getRandomArray(mission.length);
+    
+                mission.forEach((el, index) => {
+                    el.style.left = `${this.locationArr[index]['x']}px`;
+                    el.style.top = `${this.locationArr[index]['y']}px`;
+                });
+                
+                setTimeout(() => {
+                    mission.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.style.opacity = 1;
+                        }, (index+1) * 200);
+                    })
+                        
+                    setTimeout(() => {
+                        this.canvas.style.transition = '600ms';
+                        this.canvas.style.opacity = 1;
+                    },1000);
+                }, 600);
+                this.drawLine();
+            }
         });
     }
 }
