@@ -15,5 +15,4 @@
         $response['status'] = 300;
         print_r(json_encode($response));
     }
-
 ?>

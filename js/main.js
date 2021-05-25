@@ -28,6 +28,10 @@
     let slideNow = 0;
     let slidDeg = 0;
     let missionCount = 0;
+
+    setTimeout(() => {
+        console.log(test);
+    },10000);
     
     viewContents.remove();
     missions.remove();

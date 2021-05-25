@@ -9,11 +9,25 @@
     const search = document.querySelector('.search') ? document.querySelector('.search') : 'none';
     const searchOpenBtn = document.querySelector('.header__icons--item-search') ? document.querySelector('.header__icons--item-search') : 'none';
     const searchCloseBtn = document.querySelector('.search__cancel') ? document.querySelector('.search__cancel') : 'none';
+    const searchBtn = document.querySelector('.search__form--button') ? document.querySelector('.search__form--button') : 'none';
+    const searchText = document.querySelector('.search__form--input') ? document.querySelector('.search__form--input') : 'none';
 
     let trailMax = 60;
     let trailStatus = 0;
     let x = 0, y = 0;
     let circleColor = ['2EA0AA', 'F5CE33', '1E3470', '3A3A3C'];
+
+    searchText.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){
+            const param = searchText.value;
+            location.href = `./search.php?search=${param}`;
+        }
+    });
+
+    searchBtn.addEventListener('click', () => {
+        const param = searchText.value;
+        location.href = `./search.php?search=${param}`;
+    });
     
     window.addEventListener('mousemove', (event) => {
         x = event.clientX;

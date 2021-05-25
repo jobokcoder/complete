@@ -20,13 +20,13 @@
         fetch('./modules/okLogin.php', {
             method: 'post',
             body: JSON.stringify(userInfo)
-        }).then(respon => respon.text())
+        }).then(respon => respon.json())
         .then(result => {
             setTimeout(() => {
                 if(result['status'] === 300){
                     loading.style.display = 'none';
                     alert('아이디 혹은 비밀번호가 잘못되었습니다.');
-                }else{
+                }else if(result['status'] === 200){
                     location.href = './index.php';
                 }
             },500);

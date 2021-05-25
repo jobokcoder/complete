@@ -35,7 +35,6 @@ export class missionController{
         this.canvas.width = this.stageWidth;
         this.canvas.height = this.stageHeight;
         this.ctx.scale(1,1);
-        this.drawLine();
     }
 
     removeMission(){
@@ -66,7 +65,6 @@ export class missionController{
             }
         });
 
-        this.drawLine();
     }
 
     isCollision(num1, num2){
@@ -227,7 +225,6 @@ export class missionController{
                         this.canvas.style.opacity = 1;
                     },1000);
                 }, 600);
-                this.drawLine();
             }
         });
     }
