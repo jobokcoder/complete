@@ -6,13 +6,21 @@
 .mypage__user--pic{ position: relative; width: 120px; height: 120px; border-radius: 70%; overflow: hidden; }
 .mypage__user--pic-img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
 .mypage__user--info{ display: flex; flex-direction: column; place-items: center; }
-.mypage__user--nick{ margin-top: 0.625rem; font-size: 1.5rem; font-weight: 500; }
+.mypage__user--nickBox{ position: relative; margin-top: 0.625rem; }
+.mypage__user--nick{ font-size: 1.5rem; font-weight: 500; }
+.mypage__user--edit{ cursor: pointer; position: absolute; right: 0; top: 50%; transform: translate(150%, -50%); }
 .mypage__user--add{ margin-top: 0.625rem; font-size: 1.125rem; font-weight: 500; }
 .mypage__user--comment{ margin-top: 1rem; width: 500px; font-size: 1rem; font-weight: 400; }
 
 .mypage__nav{ width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid var(--main-black1); border-bottom: 1px solid var(--main-black1); }
 .mypage__nav--menu{ padding: 1rem 0; cursor: pointer; width: 100%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: 500; border-bottom: 8px solid rgba(0, 0, 0, 0) }
 .mypage__nav--menu.active{ border-bottom: 8px solid var(--main-color1); }
+
+.missions__subFunction{ width: 100%; display: flex; justify-content: flex-end; align-items: center; }
+.missions__filter{ margin-top: 26px; padding: 10px 20px; width: 178px; background-color: var(--main-color1); border-radius: 8px; }
+.missions__filter--select{ width: 100%; color: #fff; font-size: 1.25rem; font-weight: 400; }
+
+.mypage__contents{ position: relative; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 
 .missions__wrapper{ margin-top: 2.375rem; width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; row-gap: 34px; column-gap: 40px; }
 .missions__list{ margin-bottom: 1.625rem; padding-bottom: 1.75rem; opacity: 0; transform: translateY(2rem); transition: all 600ms ease-in-out; border-bottom: 2px solid #000; }
@@ -25,3 +33,9 @@
 .missions__list--hash-text{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
 .missions__list--info-title{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.25rem; font-weight: 700; }
 .missions__list--info-writer{ margin-top: 0.875rem; font-size: 1.125rem; font-weight: 400; }   
+
+.account__wrapper{ padding: 40px 0px; width: 100%; display: none; justify-content: center; align-items: center; }
+.missions__account{ padding: 0 1.125rem; display: grid; grid-template-rows: repeat(5, 1fr); width: 100%; border-radius: 1.125rem; border: 1px solid var(--main-color3); }
+.missions__account--item{ padding: 1.75rem 1.25rem; display: grid; grid-template-columns: 1fr 8fr; place-items: center flex-start; border-bottom: 1px solid var(--main-black1); }
+.missions__account--item-title{ font-size: 1.125rem; font-weight: 400; }
+.missions__account--item-content{ font-size: 1.5rem; font-weight: 400; }
