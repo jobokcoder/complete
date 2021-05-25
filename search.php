@@ -80,7 +80,6 @@
             <div class="search__wrapper">
                 <h1 class="search__title">배달 검색 결과 2개</h1>
 
-                
                 <div class="missions__wrapper">
                     <div class="missions">
                         <div class="missions__list">
