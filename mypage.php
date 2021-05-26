@@ -17,6 +17,22 @@
 </head>
 <body>
     <div class="wrapper">
+
+        <div class="mypage__modal">
+            <div class="mypage__modal--contents">
+                <div class="mypage__modal--picture">
+                    <img class="mypage__modal--picture-img" src="./images/common/common.png" alt="profile" />
+                </div>
+
+                <input class="mypage__modal--nick" type="text" placeholder="닉네임" />
+                <textarea class="mypage__modal--comment" type="text" placeholder="자신을 소개해주세요."></textarea>
+
+                <div class="mypage__modal--select">
+                    <button class="mypage__modal--select-cancel" type="button">취소</button>
+                    <button class="mypage__modal--select-done" type="button">완료</button>
+                </div>
+            </div>
+        </div>
         
         <?php
             include('./modules/header.php');
