@@ -11,12 +11,14 @@
         $result['email'] = $arr[0]['m_email'];
         $result['m_add1'] = $arr[0]['m_add1'];
         $result['m_add2'] = $arr[0]['m_add2'];
+        $result['comment'] = $arr[0]['m_comment'];
     }else{
         $result['id'] = 'none';
         $result['nick'] = 'none';
         $result['email'] = 'none';
         $result['m_add1'] = 'none';
         $result['m_add2'] = 'none';
+        $result['comment'] = 'none';
     }
 
     print_r(json_encode($result));

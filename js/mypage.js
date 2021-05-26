@@ -1,7 +1,16 @@
 {
+    const loading = document.querySelector('.loading');
+
     const userNick = document.querySelector('.mypage__user--nick');
     const userAdd = document.querySelector('.mypage__user--add');
+    const userComment = document.querySelector('.mypage__user--comment');
 
+    const mypageModal = document.querySelector('.mypage__modal');
+    const mypageModalNick = document.querySelector('.mypage__modal--nick');
+    const mypageModalComment = document.querySelector('.mypage__modal--comment');
+    const mypageModalOpenBtn = document.querySelector('.mypage__user--edit');
+    const mypageModalCloseBtn = document.querySelector('.mypage__modal--select-cancel');
+    const mypageModalDoneBtn = document.querySelector('.mypage__modal--select-done');
     const mypageMenus = document.querySelectorAll('.mypage__nav--menu');
     const mypageSubFunction = document.querySelector('.missions__subFunction');
     const accountWrapper = document.querySelector('.account__wrapper');
@@ -9,7 +18,8 @@
     const missionsWrapper = document.querySelector('.missions__wrapper');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
-    let user = 'none';
+
+    let user = '';
 
     window.addEventListener('load', () => {
         fetch('./modules/getUserInfo.php')
@@ -17,7 +27,10 @@
         .then((data) => {
             user = data['id'];
             userNick.textContent = data['nick'];
+            userComment.textContent = data['comment'];
             userAdd.textContent = `${data['m_add1']} ${data['m_add2']}`;
+            mypageModalNick.value = data['nick'];
+            mypageModalComment.value = data['comment'];
             getMission(0);
         });
 
@@ -44,8 +57,48 @@
                 }
             });
         });
+
+        mypageModalOpenBtn.addEventListener('click', () => {
+            mypageModal.style.display = 'flex';
+        });
+
+        mypageModalCloseBtn.addEventListener('click', () => {
+            mypageModal.style.display = 'none';
+        });
+
+        mypageModalDoneBtn.addEventListener('click', () => {
+            if(mypageModalNick.value == ''){
+                alert('닉네임 비어있습니다.');
+                return 0;
+            }else{
+                mypageModalDone();
+            }
+        });
     });
 
+    function mypageModalDone(){
+        loading.style.display = 'flex';
+        const param = {
+            'id': user,
+            'nick': mypageModalNick.value,
+            'comment': document.querySelector('.mypage__modal--comment').value,
+        };
+
+        fetch('./modules/editProfile.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            if(data['status'] === 200){
+                userNick.textContent = data[0]['m_nick'];
+                userComment.textContent = data[0]['m_comment'];
+                mypageModalNick.value = data[0]['m_nick'];
+                mypageModalComment.value = data[0]['m_comment'];
+            }
+            loading.style.display = 'none';
+            mypageModal.style.display = 'none';
+        });
+    }
 
     function removeChild(dom){
         while(dom.hasChildNodes()){

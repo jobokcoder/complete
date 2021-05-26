@@ -4,7 +4,7 @@
     if($userID === 'none'){
         echo("<script>
             alert('로그인 후 이용하실 수 있습니다.');
-            history.back();
+            location.href = './index.php';
         </script>");
     }
 ?>
