@@ -52,7 +52,8 @@
                 <nav class="mypage__nav">
                     <div class="mypage__nav--menu quest active">의뢰한 미션</div>
                     <div class="mypage__nav--menu agent">수행 중인 미션</div>
-                    <div class="mypage__nav--menu status">수행 신청 현황</div>
+                    <div class="mypage__nav--menu application">수행 신청 현황</div>
+                    <div class="mypage__nav--menu status">계정</div>
                 </nav>
 
                 <div class="mypage__contents">
@@ -77,7 +78,7 @@
                                     <div class="missions__list--info-hash">
                                         <div class="missions__list--hash-text">dasds</div>
                                     </div>
-                                    <p class="missions__list--info-title">짐 정리 도와주실분</p>
+                                    <div class="missions__list--info-title">짐 정리 도와주실분</div>
                                     <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
                                 </div>
                             </div>
