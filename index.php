@@ -187,7 +187,7 @@
                                 <div class="missions__list--info-hash">
                                     <div class="missions__list--hash-text">dasds</div>
                                 </div>
-                                <p class="missions__list--info-title">짐 정리 도와주실분</p>
+                                <div class="missions__list--info-title">짐 정리 도와주실분</div>
                                 <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
                             </div>
                         </div>

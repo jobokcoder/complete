@@ -137,5 +137,6 @@
                 <p class="menu__contents--item header-write">같이하기</p>
                 <p class="menu__contents--item header-event">이벤트</p>
                 <p class="menu__contents--item header-cService">고객센터</p>
+                <p class="menu__contents--item header-map">지도</p>
             </div>
         </div>

@@ -8,9 +8,17 @@
     const viewWrapper = document.querySelector('.view');
     const viewContents = document.querySelector('.view__contents');
 
+    let userAdd = '';
+
     window.addEventListener('load', () => {
         missions.remove();
-        getMission(getParameters('search'));
+        fetch('./modules/getUserInfo.php')
+        .then((respon) => respon.json())
+        .then((data) => {
+            userAdd = data['m_add1'];
+        }).then(() => {
+            getMission(getParameters('search'));
+        });
     });
 
     function getParameters(paramName) {
@@ -29,6 +37,7 @@
 
     function getMission(keyword){
         const param = {
+            'area': userAdd,
             'keyword': keyword,
         };
 

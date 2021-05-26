@@ -73,6 +73,7 @@
         const headerWrite = document.querySelector('.header-write');
         const headerEvent = document.querySelector('.header-event');
         const headerCService = document.querySelector('.header-cService');
+        const headerMap = document.querySelector('.header-map');
         
         if(headerLogout === null){
             headerLogin.addEventListener('click', () => { location.href = './login.php' });
@@ -85,6 +86,7 @@
         headerWrite.addEventListener('click', () => { location.href = './write.php' });
         headerEvent.addEventListener('click', () => { location.href = './event.php' });
         headerCService.addEventListener('click', () => { location.href = './cService.php' });
+        headerMap.addEventListener('click', () => { location.href = './map.php' });
     });
 
     searchOpenBtn.addEventListener('click', () => { toggleModal(search); });

@@ -1,4 +1,3 @@
-.wrapper{ background-color: #f0eff3; }
 .contents{ padding-top: 5.412rem; }
 .search__wrapper{ padding: 4.5rem 2.5rem; width: 100%; max-width: 1200px; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; background-color: #fff; }
 .search__title{ padding-bottom: 0.625rem; width: 100%; font-size: 2rem; font-weight: 500; border-bottom: 1px solid var(--main-black1); }
