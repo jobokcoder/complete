@@ -8,6 +8,12 @@
     
         $result['id'] = $arr[0]['m_id'];
         $result['nick'] = $arr[0]['m_nick'];
+        
+        $passLeng = '';
+        for($i = 0; $i < strlen($arr[0]['m_pw']); $i++){
+            $passLeng .= '●';
+        }
+        $result['pw'] = $passLeng;
         $result['email'] = $arr[0]['m_email'];
         $result['m_add1'] = $arr[0]['m_add1'];
         $result['m_add2'] = $arr[0]['m_add2'];

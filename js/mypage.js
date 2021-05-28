@@ -5,12 +5,18 @@
     const userAdd = document.querySelector('.mypage__user--add');
     const userComment = document.querySelector('.mypage__user--comment');
 
+    const accountItemID = document.querySelector('.missions__account--item-id');
+    const accountItemPW = document.querySelector('.missions__account--item-pw');
+    const accountItemEmail = document.querySelector('.missions__account--item-email');
+    const accountItemAddress = document.querySelector('.missions__account--item-add');
+
     const mypageModal = document.querySelector('.mypage__modal');
     const mypageModalNick = document.querySelector('.mypage__modal--nick');
     const mypageModalComment = document.querySelector('.mypage__modal--comment');
     const mypageModalOpenBtn = document.querySelector('.mypage__user--edit');
     const mypageModalCloseBtn = document.querySelector('.mypage__modal--select-cancel');
     const mypageModalDoneBtn = document.querySelector('.mypage__modal--select-done');
+
     const mypageMenus = document.querySelectorAll('.mypage__nav--menu');
     const mypageSubFunction = document.querySelector('.missions__subFunction');
     const accountWrapper = document.querySelector('.account__wrapper');
@@ -25,12 +31,17 @@
         fetch('./modules/getUserInfo.php')
         .then((respon) => respon.json())
         .then((data) => {
+            console.log(data);
             user = data['id'];
             userNick.textContent = data['nick'];
             userComment.textContent = data['comment'];
             userAdd.textContent = `${data['m_add1']} ${data['m_add2']}`;
             mypageModalNick.value = data['nick'];
             mypageModalComment.value = data['comment'];
+            accountItemID.textContent = data['id'];
+            accountItemPW.textContent = data['pw'];
+            accountItemEmail.textContent = data['email'];
+            accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
             getMission(0);
         });
 

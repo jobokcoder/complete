@@ -59,9 +59,7 @@
                             </div>
                         </div>
                         <h2 class="mypage__user--add">제주특별자치도 제주시</h2>
-                        <p class="mypage__user--comment">임시 글임시 글임시 글임시 글임시 글아임시 글임시 글임시 글임시 글임시 글임
-임시 글임시 글임시 글임시 글임시 글이임시 글임시 글임시 글임시 글임시 글야
-임시 글임시 글임시 글임시 글임시 글이임시 글임시 글임시 글임시 글임시 글야</p>
+                        <p class="mypage__user--comment"></p>
                     </div>
                 </div>
                 
@@ -105,22 +103,22 @@
                         <div class="missions__account">
                             <div class="missions__account--item">
                                 <p class="missions__account--item-title">아이디</p>
-                                <p class="missions__account--item-content">dasdasdk</p>
+                                <p class="missions__account--item-content missions__account--item-id">dasdasdk</p>
                             </div>
                             <div class="missions__account--item">
                                 <p class="missions__account--item-title">비밀번호</p>
-                                <p class="missions__account--item-content">●●●●●●●●</p>
+                                <p class="missions__account--item-content missions__account--item-pw">●●●●●●●●</p>
                             </div>
                             <div class="missions__account--item">
                                 <p class="missions__account--item-title">이메일</p>
-                                <p class="missions__account--item-content">dlatldlapdlf@naver.com</p>
+                                <p class="missions__account--item-content missions__account--item-email">dlatldlapdlf@naver.com</p>
                             </div>
                             <div class="missions__account--item">
                                 <p class="missions__account--item-title">주소</p>
-                                <p class="missions__account--item-content">제주특별자치도 제주시 용담일동</p>
+                                <p class="missions__account--item-content missions__account--item-add">제주특별자치도 제주시 용담일동</p>
                             </div>
                             <div class="missions__account--item">
-                                <p class="missions__account--item-title">회원탈퇴</p>
+                                <p class="missions__account--item-title missions__account--item-goodbye">회원탈퇴</p>
                             </div>
                         </div>
                     </div>
