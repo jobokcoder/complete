@@ -31,7 +31,6 @@
         fetch('./modules/getUserInfo.php')
         .then((respon) => respon.json())
         .then((data) => {
-            console.log(data);
             user = data['id'];
             userNick.textContent = data['nick'];
             userComment.textContent = data['comment'];
