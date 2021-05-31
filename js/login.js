@@ -4,6 +4,17 @@
     const loginBtn = document.querySelector('.login__form--input-button');
     const loading = document.querySelector('.loading');
 
+    const findID = document.querySelector('.login__form--find-id');
+    const findPW = document.querySelector('.login__form--find-pw');
+
+    findID.addEventListener('click', () => { 
+        location.href = './findID.php';
+    });
+
+    findPW.addEventListener('click', () => { 
+        location.href = './findPW.php';
+    });
+
     loginBtn.addEventListener('click', () => {
         
         if(loginId.value === '' || loginPass.value === ''){

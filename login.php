@@ -54,7 +54,7 @@
                     <input class="login__form--input-text" type="text" name="user_id" placeholder="아이디"/>
                     <input class="login__form--input-pass" type="password" name="user_pw" placeholder="비밀번호"/>
                     <button class="login__form--input-button" type="button" name="submit" value="login">로그인</button>
-                    <a class="login__form--input-link" href="#">아이디 / 비밀번호 찾기</a>
+                    <a class="login__form--input-link" href="#"><b class="login__form--find-id">아이디</b> / <b class="login__form--find-pw">비밀번호 찾기</b></a>
                 </form>
             </div>
         </div>
