@@ -40,8 +40,9 @@
                 <input class="findPW__input--email" type="text" name="user_email" placeholder="이메일"/>
                 <p class="findPW__input--email-check">유효하지 않은 이메일 형식입니다!</p>
                 <input class="findPW__input--confirm" type="text" name="user_confirm" placeholder="인증코드"/>
-                <input class="findPW__input--password" type="text" name="user_password" placeholder="비밀번호"/>
-                <input class="findPW__input--password-new" type="text" name="user_password_confirm" placeholder="비밀번호 확인"/>
+                <input class="findPW__input--password" type="password" name="user_password" placeholder="비밀번호"/>
+                <p class="findPW__input--password-check">비밀번호는 특수기호, 영문 대소문자와 숫자 4~20자리로 입력해야합니다!</p>
+                <input class="findPW__input--password-new" type="password" name="user_password_confirm" placeholder="비밀번호 확인"/>
                 <button class="findPW__input--button" type="button">다음</button>
             </div>
         </div>

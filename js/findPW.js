@@ -8,9 +8,10 @@
     const findPWUserEmailCheck = document.querySelector('.findPW__input--email-check');
     const findPWConfirm = document.querySelector('.findPW__input--confirm');
     const findPWButton = document.querySelector('.findPW__input--button');
-
-    const findIDPassword = document.querySelector('.findPW__input--password');
-    const findIDPasswordConfirm = document.querySelector('.findPW__input--password-new');
+    
+    const findPWPassword = document.querySelector('.findPW__input--password');
+    const findPWPasswordConfirm = document.querySelector('.findPW__input--password-new');
+    const findPWUserPasswordCheck = document.querySelector('.findPW__input--password-check');
 
     findPWUserID.addEventListener('keydown', () => {
         const flag = CheckID(findPWUserID.value);
@@ -20,6 +21,11 @@
     findPWUserEmail.addEventListener('keydown', () => {
         const flag = CheckEmail(findPWUserEmail.value);
         findPWUserEmailCheck.style.display = flag ? 'none' : 'block';
+    });
+
+    findPWPassword.addEventListener('keydown', () => {
+        const flag = CheckPW(findPWPassword.value);
+        findPWUserPasswordCheck.style.display = flag ? 'none' : 'block';
     });
 
     findPWButton.addEventListener('click', () => {
@@ -58,17 +64,51 @@
                     findPWSubTitle.textContent = '비밀번호를 재설정해주세요.';
                     findPWButton.textContent = '완료';
                     findPWConfirm.style.display = 'none';
-                    findIDPassword.style.display = 'block';
-                    findIDPasswordConfirm.style.display = 'block';
+                    findPWPassword.style.display = 'block';
+                    findPWPasswordConfirm.style.display = 'block';
                 }else{
                     alert('인증이 실패했습니다 !');
                     return 0;
                 }
             });
         }else if(findPWButton.textContent === '완료'){
-            
+            if(findPWPassword.value !== '' && findPWUserPasswordCheck.style.display !== 'block' && findPWPasswordConfirm.value !== ''){
+                if(findPWPassword.value === findPWPasswordConfirm.value){
+                    const userInfo = {
+                        'id': findPWUserID.value,
+                        'pw': findPWPassword.value,
+                    }
+                    fetch('./modules/changePassword.php', {
+                        method: 'post',
+                        body: JSON.stringify(userInfo)
+                    }).then((respon) => respon.json())
+                    .then((data) => {
+                        if(data['status'] === 200){
+                            location.href = './login.php';
+                        }
+                    });
+                }else{
+                    alert('비밀번호와 확인 비밀번호가 맞지 않습니다.');
+                    return 0;
+                }
+            }else{
+                alert('모두 알맞게 채워주세요.');
+                return 0;
+            }
         }
     });
+
+    function CheckPW(str){     
+        const regPW = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4,20}$/;
+        if(str == ''){          
+            return true;    
+        }
+        if(!regPW.test(str)) {
+            return false;
+        }else {                      
+            return true;         
+        }           
+    }
 
     function checkUserInfo(){
         return new Promise((res, rej) => {

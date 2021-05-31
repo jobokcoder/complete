@@ -13,3 +13,4 @@
 .findPW__input--button:hover{ filter: brightness(1.1); }
 .findPW__input--id-check{ display: none; margin-left: 0.625rem; align-self: flex-start; font-size: 0.75rem; color: red; }
 .findPW__input--email-check{ display: none; margin-left: 0.625rem; align-self: flex-start; font-size: 0.75rem; color: red; }
+.findPW__input--password-check{ display: none; margin-left: 0.625rem; align-self: flex-start; font-size: 0.75rem; color: red; }
