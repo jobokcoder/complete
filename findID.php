@@ -34,7 +34,7 @@
                 <p class="findID__title">아이디 찾기</p>
                 <p class="findID__subTitle">본인이 등록한 이메일을 적어주세요.</p>
                 <input class="findID__input--email" type="text" name="user_email" placeholder="이메일"/>
-                <p class="findID__input--email-check">닉네임은 영문 또는 한글 및 숫자를 포함한 2~15자리로 입력해야합니다!</p>
+                <p class="findID__input--email-check">유효하지 않은 이메일 형식입니다!</p>
                 <input class="findID__input--confirm" type="text" name="user_confirm" placeholder="인증코드"/>
                 <input class="findID__input--id" type="text" name="user_id" readonly/>
                 <button class="findID__input--button" type="button">다음</button>

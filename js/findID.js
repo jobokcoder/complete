@@ -4,9 +4,14 @@
     const findIDSubTitle = document.querySelector('.findID__subTitle');
     const findIDButton = document.querySelector('.findID__input--button');
     const findIDUserID = document.querySelector('.findID__input--id');
-    const findIDConfirm = document.querySelector('.findID__input--confirm');
     const findIDEmail = document.querySelector('.findID__input--email');
+    const findIDConfirm = document.querySelector('.findID__input--confirm');
     const findIDEmailCheck = document.querySelector('.findID__input--email-check');
+
+    findIDEmail.addEventListener('keydown', () => {
+        const flag = CheckEmail(findIDEmail.value);
+        findIDEmailCheck.style.display = flag ? 'none' : 'block';
+    });
 
     findIDButton.addEventListener('click', () => {
         if(findIDButton.textContent === '다음'){
@@ -73,11 +78,6 @@
             }).then(() => { res(); });
         });
     }
-
-    findIDEmail.addEventListener('keydown', () => {
-        const flag = CheckEmail(findIDEmail.value);
-        findIDEmailCheck.style.display = flag ? 'none' : 'block';
-    });
 
     function CheckEmail(str){     
         const regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
