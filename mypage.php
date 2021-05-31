@@ -33,6 +33,43 @@
                 </div>
             </div>
         </div>
+
+        <div class="agent__modal">
+            <div class="agent__form">
+                <div class="agent__contents">
+                    <div class="agent__users">
+                        <div class="agent__users--user">
+                            <div class="agent__users--user-pic">
+                                <img src="./images/common/common.png" alt="user_pic"/>
+                            </div>
+                            <p class="agent__users--user-name">과제에 찌든 놈</p>
+                        </div>
+
+                        <div class="agent__users--user active">
+                            <div class="agent__users--user-pic">
+                                <img src="./images/common/common.png" alt="user_pic"/>
+                            </div>
+                            <p class="agent__users--user-name">과제에 찌든 놈</p>
+                        </div>
+                    </div>
+
+                    <div class="agent__numbering">
+                        <div class="agent__numbering--wrapper">
+                            <div class="agent__numbering--wrapper-user">
+                                <img src="./images/common/common.png" alt="user_pic"/>
+                            </div>
+                        </div>
+
+                        <p class="agent__numbering--text">총 4명</p>
+                    </div>
+                </div>
+
+                <div class="agent__bottom">
+                    <button class="agent__bottom--cancel">취소</button>
+                    <button class="agent__bottom--select">선택</button>
+                </div>
+            </div>
+        </div>
         
         <?php
             include('./modules/header.php');
@@ -64,23 +101,44 @@
                 </div>
                 
                 <nav class="mypage__nav">
-                    <div class="mypage__nav--menu quest active">의뢰한 미션</div>
-                    <div class="mypage__nav--menu agent">수행 중인 미션</div>
-                    <div class="mypage__nav--menu application">수행 신청 현황</div>
+                    <div class="mypage__nav--menu quest active">미션</div>
+                    <div class="mypage__nav--menu agent">같이하기</div>
+                    <div class="mypage__nav--menu application">신청현황</div>
                     <div class="mypage__nav--menu status">계정</div>
                 </nav>
 
                 <div class="mypage__contents">
-                    <div class="missions__subFunction">
-                        <div class="missions__filter">
-                            <select class="missions__filter--select">
-                                <option value="1">진행중</option>
-                                <option value="2">완료</option>
-                            </select>
+                    <div class="mypage__subFunction--wrapper">
+                        <div class="missions__subFunction missions__subFunction--mission active">
+                            <div class="missions__filter">
+                                <select class="missions__filter--select">
+                                    <option value="1">진행중</option>
+                                    <option value="2">완료</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="missions__subFunction missions__subFunction--with">
+                            <div class="missions__filter">
+                                <select class="missions__filter--select">
+                                    <option value="1">의뢰중</option>
+                                    <option value="2">완료확인요청</option>
+                                    <option value="3">완료</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="missions__subFunction missions__subFunction--accept">
+                            <div class="missions__filter">
+                                <select class="missions__filter--select">
+                                    <option value="1">같이하기현황</option>
+                                    <option value="2">미션신청현황</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="missions__wrapper">
+                    <div class="missions__wrapper missions__wrapper--mission active">
                         <div class="missions">
                             <div class="missions__list">
                                 <div class="missions__list--image">
@@ -96,6 +154,48 @@
                                     <p class="missions__list--info-writer"></p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="missions__wrapper missions__wrapper--with">
+                        <div class="missions">
+                            <div class="missions__list">
+                                <div class="missions__list--image">
+                                    <img src="./images/common/common.png" alt="missions" />
+                                    <div class="missions__list--image-opacity"></div>
+                                </div>
+
+                                <div class="missions__list--info">
+                                    <div class="missions__list--info-hash">
+                                        <div class="missions__list--hash-text"></div>
+                                    </div>
+                                    <div class="missions__list--info-title"></div>
+                                    <p class="missions__list--info-writer"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status__wrapper">
+                        <div class="status__header">
+                            <p class="status__header--text">제목</p>
+                            <p class="status__header--text">의뢰일</p>
+                            <p class="status__header--text">마감일</p>
+                            <p class="status__header--text">인원선택</p>
+                        </div>
+                        
+                        <div class="status__contents">
+                            <p class="status__contents--text">물고기 낚아서 같이 먹자</p>
+                            <p class="status__contents--text">2021.05.31</p>
+                            <p class="status__contents--text">2021.06.11</p>
+                            <button class="status__contents--button" type="button">선택</button>
+                        </div>
+
+                        <div class="status__contents">
+                            <p class="status__contents--text">동네 산책하기</p>
+                            <p class="status__contents--text">2021.06.02</p>
+                            <p class="status__contents--text">2021.06.07</p>
+                            <p class="status__contents--text">선택됨</p>
                         </div>
                     </div>
 
@@ -128,5 +228,6 @@
     </div>
 <script src="./js/common.js"></script>
 <script src="./js/mypage.js"></script>
+<script src="./js/mypageSub.js"></script>
 </body>
 </html>

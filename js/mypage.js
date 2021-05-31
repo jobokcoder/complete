@@ -18,9 +18,13 @@
     const mypageModalDoneBtn = document.querySelector('.mypage__modal--select-done');
 
     const mypageMenus = document.querySelectorAll('.mypage__nav--menu');
-    const mypageSubFunction = document.querySelector('.missions__subFunction');
+
+    const missionsWrapperMission = document.querySelector('.missions__wrapper--mission');
+    const missionsWrapperWith = document.querySelector('.missions__wrapper--with');
+    const statusWrapper = document.querySelector('.status__wrapper');
     const accountWrapper = document.querySelector('.account__wrapper');
 
+    const missionsSubFunctionAll = document.querySelectorAll('.missions__subFunction');
     const missionsWrapper = document.querySelector('.missions__wrapper');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
@@ -28,6 +32,8 @@
     let user = '';
 
     window.addEventListener('load', () => {
+        removeChild(missionsWrapperMission);
+        removeChild(missionsWrapperWith);
         fetch('./modules/getUserInfo.php')
         .then((respon) => respon.json())
         .then((data) => {
@@ -44,47 +50,57 @@
             accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
             getMission(0);
         });
+    });
 
-        mypageMenus.forEach((item) => {
-            item.addEventListener('click', () => {
-                mypageMenus.forEach((el) => {
-                    el.classList.remove('active');
-                });
-
-                missionsWrapper.style.display = 'none';
-                mypageSubFunction.style.display = 'none';
-                accountWrapper.style.display = 'none';
-                item.classList.add('active');
-
-                let tek = item.classList[item.classList.length-2];
-                
-                if(tek === 'quest'){
-                    missionsWrapper.style.display = 'grid';
-                    mypageSubFunction.style.display = 'flex';
-                }else if(tek === 'agent'){
-                    
-                }else if(tek === 'status'){
-                    accountWrapper.style.display = 'flex';
-                }
+    mypageMenus.forEach((item) => {
+        item.addEventListener('click', () => {
+            mypageMenus.forEach((el) => {
+                el.classList.remove('active');
             });
-        });
 
-        mypageModalOpenBtn.addEventListener('click', () => {
-            mypageModal.style.display = 'flex';
-        });
+            missionsSubFunctionAll.forEach((el) => {
+                el.classList.remove('active');
+            });
 
-        mypageModalCloseBtn.addEventListener('click', () => {
-            mypageModal.style.display = 'none';
-        });
+            missionsWrapperMission.classList.remove('active');
+            missionsWrapperWith.classList.remove('active');
+            statusWrapper.classList.remove('active');
+            accountWrapper.classList.remove('active');
 
-        mypageModalDoneBtn.addEventListener('click', () => {
-            if(mypageModalNick.value == ''){
-                alert('닉네임 비어있습니다.');
-                return 0;
-            }else{
-                mypageModalDone();
+            if(item.textContent === '미션'){
+                item.classList.add('active');
+                missionsWrapperMission.classList.add('active');
+                missionsSubFunctionAll[0].classList.add('active');
+            }else if(item.textContent === '같이하기'){
+                item.classList.add('active');
+                missionsWrapperWith.classList.add('active');
+                missionsSubFunctionAll[1].classList.add('active');
+            }else if(item.textContent === '신청현황'){
+                item.classList.add('active');
+                statusWrapper.classList.add('active');
+                missionsSubFunctionAll[2].classList.add('active');
+            }else if(item.textContent === '계정'){
+                item.classList.add('active');
+                accountWrapper.classList.add('active');
             }
         });
+    });
+
+    mypageModalOpenBtn.addEventListener('click', () => {
+        mypageModal.style.display = 'flex';
+    });
+
+    mypageModalCloseBtn.addEventListener('click', () => {
+        mypageModal.style.display = 'none';
+    });
+
+    mypageModalDoneBtn.addEventListener('click', () => {
+        if(mypageModalNick.value == ''){
+            alert('닉네임 비어있습니다.');
+            return 0;
+        }else{
+            mypageModalDone();
+        }
     });
 
     function mypageModalDone(){

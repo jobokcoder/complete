@@ -13,7 +13,7 @@
 .mypage__modal--select-done{ border: 1px solid var(--main-color2); background-color: var(--main-color2); }
 
 .mypage{ position: relative; max-width: 1200px; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
-.mypage__header{ padding: 3rem 0; width: 100%; height: 400px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.mypage__header{ padding: 3rem 0; width: 100%; height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .mypage__user--pic{ position: relative; width: 120px; height: 120px; border-radius: 70%; overflow: hidden; }
 .mypage__user--pic-img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
 .mypage__user--info{ display: flex; flex-direction: column; place-items: center; }
@@ -27,13 +27,16 @@
 .mypage__nav--menu{ padding: 1rem 0; cursor: pointer; width: 100%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: 500; border-bottom: 8px solid rgba(0, 0, 0, 0) }
 .mypage__nav--menu.active{ border-bottom: 8px solid var(--main-color1); }
 
-.missions__subFunction{ width: 100%; display: flex; justify-content: flex-end; align-items: center; }
+.mypage__subFunction--wrapper{ width: 100%; display: flex; justify-content: flex-end; align-items: center; }
+.missions__subFunction{ width: 100%; display: none; justify-content: flex-end; align-items: center; }
+.missions__subFunction.active{ display: flex; }
 .missions__filter{ margin-top: 26px; padding: 10px 20px; width: 178px; background-color: var(--main-color1); border-radius: 8px; }
 .missions__filter--select{ width: 100%; color: #fff; font-size: 1.25rem; font-weight: 400; }
 
 .mypage__contents{ position: relative; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
 
-.missions__wrapper{ margin-top: 2.375rem; width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; row-gap: 34px; column-gap: 40px; }
+.missions__wrapper{ margin-top: 2.375rem; width: 100%; display: none; grid-template-columns: 1fr 1fr 1fr 1fr; row-gap: 34px; column-gap: 40px; }
+.missions__wrapper.active{ display: grid; }
 .missions__list{ margin-bottom: 1.625rem; padding-bottom: 1.75rem; width: 100%; opacity: 0; transform: translateY(2rem); transition: all 600ms ease-in-out; border-bottom: 2px solid #000; }
 .missions__list--image{ position: relative; width: 100%; height: 304px; overflow: hidden; border-radius: 0.75rem; }
 .missions__list--image img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -46,7 +49,38 @@
 .missions__list--info-writer{ margin-top: 0.875rem; font-size: 1.125rem; font-weight: 400; }   
 
 .account__wrapper{ padding: 40px 0px; width: 100%; display: none; justify-content: center; align-items: center; }
+.account__wrapper.active{ display: flex; }
 .missions__account{ padding: 0 1.125rem; display: grid; grid-template-rows: repeat(5, 1fr); width: 100%; border-radius: 1.125rem; border: 1px solid var(--main-color3); }
 .missions__account--item{ padding: 1.75rem 1.25rem; display: grid; grid-template-columns: 1fr 8fr; place-items: center flex-start; border-bottom: 1px solid var(--main-black1); }
 .missions__account--item-title{ font-size: 1.125rem; font-weight: 400; }
 .missions__account--item-content{ font-size: 1.5rem; font-weight: 400; }
+
+.status__wrapper{ display: none; }
+.status__wrapper.active{ display: grid; margin-top: 28px; width: 100%; grid-template-rows: repeat(auto-fit, auto); }
+.status__header{ padding: 18px 20px; width: 100%; display: grid; grid-template-columns: 4fr 1fr 1fr 1fr; background-color: var(--main-color2); border-top-left-radius: 18px; border-top-right-radius: 18px; }
+.status__header--text:first-child{ text-align: left; }
+.status__header--text{ font-size: 22px; font-weight: 500; text-align: center; }
+
+.status__contents{ padding: 22px 20px; width: 100%; display: grid; grid-template-columns: 4fr 1fr 1fr 1fr; place-items: center; border-bottom: 1px solid var(--main-black1); }
+.status__contents--text:first-child{ text-align: left !important; place-self: start; }
+.status__contents--text{ font-size: 20px; font-weight: 400; text-align: center; }
+.status__contents--button{ cursor: pointer; border-radius: 8px; width: 100px; font-size: 20px; font-weight: 400; text-align: center; background-color: var(--main-color2); }
+
+.agent__modal{ position: fixed; left: 0; top: 0; z-index: 50; width: 100%; height: 100vh; display: none; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.5); }
+.agent__form{ width: 1200px; display: grid; grid-template-rows: 5fr 1fr; }
+.agent__contents{ padding: 24px 20px; padding-bottom: 0; border-radius: 18px; width: 100%; background-color: #fff; display: grid; grid-template-rows: 4fr 1fr; }
+.agent__users{ padding-bottom: 12px; border-bottom: 1px solid var(--main-black1); display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: 1fr 1fr; column-gap: 20px; row-gap: 10px; overflow-y: auto; }
+.agent__users--user{ border-radius: 14px; display: flex; justify-content: center; align-items: center; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); }
+.agent__users--user.active{ background-color: #E9F5F6; box-shadow: none; }
+.agent__users--user-pic{ margin-right: 16px; position: relative; width: 46px; height: 46px; border-radius: 70%; overflow: hidden; }
+.agent__users--user-pic img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+.agent__numbering--wrapper{ display: flex; justify-content: flex-start; align-items: center; }
+.agent__numbering--wrapper-user{ margin-right: 8px; position: relative; width: 32px; height: 32px; border-radius: 70%; overflow: hidden; }
+.agent__numbering--wrapper-user img{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+.agent__numbering{ padding: 0px 10px; display: flex; justify-content: space-between; align-items: center; }
+.agent__numbering--text{ font-size: 20px; font-weight: 500; }
+.agent__bottom{ margin-top: 18px; width: 100%; display: flex; justify-content: flex-end; align-items: center; }
+.agent__bottom--cancel{ cursor: pointer; font-size: 20px; padding: 10px 50px; border-radius: 8px; background-color: #fff; }
+.agent__bottom--select{ cursor: pointer; font-size: 20px; margin-left: 20px; padding: 10px 50px; border-radius: 8px; background-color: var(--main-color2); }
+.agent__bottom--cancel:hover{ transition: 300ms ease-in-out; filter: brightness(1.1); }
+.agent__bottom--select:hover{ transition: 300ms ease-in-out; filter: brightness(1.1); }
