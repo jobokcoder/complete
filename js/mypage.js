@@ -31,6 +31,7 @@
         fetch('./modules/getUserInfo.php')
         .then((respon) => respon.json())
         .then((data) => {
+            missions.remove();
             user = data['id'];
             userNick.textContent = data['nick'];
             userComment.textContent = data['comment'];

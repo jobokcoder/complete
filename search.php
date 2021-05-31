@@ -33,11 +33,9 @@
                     </div>
 
                     <div class="view__contents--right">
-                        <h1 class="view__contents--title">OO주유소 옆 밭에서 일 도와줄 사람 구합니다</h1>
-                        <p class="view__contents--tag">#OO주유소 #밭일 #무 #농작물수확</p>
-                        <p class="view__contents--content">
-                        제가 무지 짐 정리를 못하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능.하는데 주변에 도와 줄 사람이 없어서 , 주말에 가능..
-                        </p>
+                        <h1 class="view__contents--title"></h1>
+                        <p class="view__contents--tag"></p>
+                        <p class="view__contents--content"></p>
 
                         <div class="view__contents--done">
                             <div class="view__contents--done-condition">
@@ -54,8 +52,8 @@
                         </div>
 
                         <div class="view__contents--writer">
-                            <p class="view__contents--writer-date">기간 : 2021.04.19</p>
-                            <p class="view__contents--writer-user">의뢰자 : 홍어</p>
+                            <p class="view__contents--writer-date"></p>
+                            <p class="view__contents--writer-user"></p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +65,7 @@
                         </div>
                     </div>
 
-                    <p class="view__contents--num">모집인원 : 4명</p>
+                    <p class="view__contents--num"></p>
                 </div>
             </div>
         </div>
@@ -78,7 +76,7 @@
 
         <div class="contents">
             <div class="search__wrapper">
-                <h1 class="search__title">배달 검색 결과 2개</h1>
+                <h1 class="search__title"></h1>
 
                 <div class="missions__wrapper">
                     <div class="missions">
@@ -90,10 +88,10 @@
 
                             <div class="missions__list--info">
                                 <div class="missions__list--info-hash">
-                                    <div class="missions__list--hash-text">dasds</div>
+                                    <div class="missions__list--hash-text"></div>
                                 </div>
-                                <p class="missions__list--info-title">짐 정리 도와주실분</p>
-                                <p class="missions__list--info-writer">의뢰자 : 홍어<br>게시일 : 2021.03.24</p>
+                                <p class="missions__list--info-title"></p>
+                                <p class="missions__list--info-writer"></p>
                             </div>
                         </div>
                     </div>
