@@ -1,5 +1,4 @@
 {
-    const loading = document.querySelector('.loading');
     const missionsWrapper = document.querySelector('.missions__wrapper');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');

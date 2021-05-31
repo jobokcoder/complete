@@ -5,7 +5,8 @@
 .findID__title{ margin: 1.875rem 0; text-align: center; font-size: 28px; font-weight: 700; }
 .findID__subTitle{ margin: 0.563rem 0px; padding-left: 20px; }
 .findID__input--email{ margin: 0.563rem 0px; padding: 0.75rem 1.25rem; width: 100%; border-radius: 0.125rem; background-color: #F3F9FA; }
-.findID__input--confirm{ margin: 0.563rem 0px; padding: 0.75rem 1.25rem; width: 100%; border-radius: 0.125rem; background-color: #F3F9FA; }
+.findID__input--confirm{ display: none; margin: 0.563rem 0px; padding: 0.75rem 1.25rem; width: 100%; border-radius: 0.125rem; background-color: #F3F9FA; }
 .findID__input--id{ display: none; margin: 0.563rem 0px; padding: 0.75rem 1.25rem; width: 100%; border-radius: 0.125rem; background-color: #F3F9FA; }
 .findID__input--button{ transition: 600ms ease-in-out; margin-top: 0.563rem; padding: 0.75rem 0px; width: 100%; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; font-size: 1.125rem; font-weight: 500; }
 .findID__input--button:hover{ filter: brightness(1.1); }
+.findID__input--email-check{ display: none; margin-left: 0.625rem; align-self: flex-start; font-size: 0.75rem; color: red; }
