@@ -82,12 +82,12 @@
 
             if(item.textContent === '미션'){
                 item.classList.add('active');
-                missionsWrapperWith.classList.add('active');
+                missionsWrapperMission.classList.add('active');
                 missionsSubFunctionAll[0].classList.add('active');
                 getFulFillMission();
             }else if(item.textContent === '같이하기'){
                 item.classList.add('active');
-                missionsWrapperMission.classList.add('active');
+                missionsWrapperWith.classList.add('active');
                 missionsSubFunctionAll[1].classList.add('active');
                 getMission(0);
             }else if(item.textContent === '신청현황'){
@@ -141,6 +141,7 @@
         .then((data) => {
             if(data.length > 0){
                 data.forEach((item) => {
+                    console.log(item);
                     let newMission = missionsList.cloneNode(true);
                             
                     let newThum = item['ms_expain_pic'] != undefined ? item['ms_expain_pic'].split(',') : 'common.png';

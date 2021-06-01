@@ -74,7 +74,7 @@
 
                     <div class="mypage__user--info">
                         <div class="mypage__user--nickBox">
-                            <h1 class="mypage__user--nick">닉네임</h1>
+                            <h1 class="mypage__user--nick"></h1>
                             <div class="mypage__user--edit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25.919" height="25.919" viewBox="0 0 25.919 25.919">
                                     <g id="그룹_22" data-name="그룹 22" transform="translate(-344.421 19.423)">
@@ -85,6 +85,7 @@
                                 </svg>
                             </div>
                         </div>
+
                         <h2 class="mypage__user--add">제주특별자치도 제주시</h2>
                         <p class="mypage__user--comment"></p>
                     </div>
