@@ -34,6 +34,7 @@
 
     const agentModal = document.querySelector('.agent__modal');
     const agentModalUsers = document.querySelector('.agent__users');
+    const agentModalSubmit = document.querySelector('.agent__bottom--select');
 
     let user = '';
 
@@ -110,7 +111,37 @@
         }
     });
 
+    agentModalSubmit.addEventListener('click', () => { sendAgents(); });
+
     filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
+
+    function sendAgents(){
+        const selectAgent = document.querySelectorAll('.agent__users--user');
+        const arr = [];
+        
+        selectAgent.forEach((el) => {
+            if(el.classList.contains('active')){
+                arr.push(el.id);
+            }
+        });
+
+        const param = {
+            'id': agentModal.id,
+            'agents': arr,
+        };
+
+        fetch('./modules/sendAgents.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            if(data['status'] === 200){
+                location.reload();
+            }else if(data['status'] === 100){
+                alert('인원을 선택해주세요.')
+            }
+        });
+    }
 
     function getRequest(type){
         type = Number(type)
@@ -150,7 +181,6 @@
                     statusContents.appendChild(statusContentsTitle);
                     statusContents.appendChild(statusContentsStart);
                     statusContents.appendChild(statusContentsEnd);
-    
 
                     if(type === 0){
                         if(item['r_status'] == 0){
@@ -160,14 +190,14 @@
                             statusContentsButton.textContent = '선택';
                             statusContentsButton.addEventListener('click', (e) => { selectAgent(e.target.id) });
                             statusContents.appendChild(statusContentsButton);
-                        }else if(item['r_status'] === 1){
+                        }else if(item['r_status'] == 1){
                             const statusContentsDone = document.createElement('p');
                             statusContentsDone.classList.add('status__contents--text');
                             statusContentsDone.textContent = '선택됨';
                             statusContents.appendChild(statusContentsDone);
                         }
                     }else{
-            
+                        
                     }
     
                     statusWrapper.appendChild(statusContents);
@@ -187,6 +217,7 @@
         }).then((respon) => respon.json())
         .then((data) => {
             const database = data['data'];
+            agentModal.id = data['data'][0]['ms_id'];
             removeChild(agentModalUsers);
             database.forEach((item) => {
                 const agentUser = document.createElement('div');
@@ -198,6 +229,7 @@
                 agentUserPic.classList.add('agent__users--user-pic');
                 agentUserNick.classList.add('agent__users--user-name');
 
+                agentUser.id = item['m_id'];
                 agentUserNick.textContent = item['m_nick'];
                 agentUserPicImg.src = './images/common/common.png';
                 agentUserPic.appendChild(agentUserPicImg);
