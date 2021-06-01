@@ -66,6 +66,7 @@
                     </div>
 
                     <p class="view__contents--num"></p>
+                    <button class="view__contents--request-button" type="button">수행 신청</button>
                 </div>
             </div>
         </div>

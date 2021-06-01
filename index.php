@@ -67,8 +67,8 @@
                     </div>
 
                     <div class="view__contents--num-wrapper">
+                        <p class="view__contents--num"></p>
                         <button class="view__contents--request-button" type="button">수행 신청</button>
-                        <p class="view__contents--num">모집인원 : 4명</p>
                     </div>
                 </div>
             </div>

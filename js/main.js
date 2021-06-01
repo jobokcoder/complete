@@ -284,6 +284,8 @@
                     const newViewWriter = newView.querySelector('.view__contents--writer-user');
                     const newViewCancelBtn = newView.querySelector('.view__cancel');
                     const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
+                    const newViewContentsNum = newView.querySelector('.view__contents--num');
+                    newViewContentsNum.textContent = '모집인원 : 0명';
 
                     newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
@@ -328,6 +330,7 @@
                         })
                         .then(respon => respon.json());
                     });
+
                     
                     viewWrapper.appendChild(newView);
                 });
@@ -382,6 +385,8 @@
                             const newViewWriter = newView.querySelector('.view__contents--writer-user');
                             const newViewCancelBtn = newView.querySelector('.view__cancel');
                             const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
+                            const newViewContentsNum = newView.querySelector('.view__contents--num');
+                            newViewContentsNum.textContent = '모집인원 : 0명';
         
                             newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
