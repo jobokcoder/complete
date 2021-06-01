@@ -105,8 +105,8 @@
                         <div class="missions__subFunction missions__subFunction--mission active">
                             <div class="missions__filter">
                                 <select class="missions__filter--select">
-                                    <option value="1">진행중</option>
-                                    <option value="2">완료</option>
+                                    <option value="0">진행중</option>
+                                    <option value="1">완료</option>
                                 </select>
                             </div>
                         </div>
@@ -114,9 +114,9 @@
                         <div class="missions__subFunction missions__subFunction--with">
                             <div class="missions__filter">
                                 <select class="missions__filter--select">
-                                    <option value="1">의뢰중</option>
-                                    <option value="2">완료확인요청</option>
-                                    <option value="3">완료</option>
+                                    <option value="0">의뢰중</option>
+                                    <option value="1">완료확인요청</option>
+                                    <option value="2">완료</option>
                                 </select>
                             </div>
                         </div>
@@ -124,8 +124,8 @@
                         <div class="missions__subFunction missions__subFunction--accept">
                             <div class="missions__filter">
                                 <select class="missions__filter--select">
-                                    <option value="1">같이하기현황</option>
-                                    <option value="2">미션신청현황</option>
+                                    <option value="0">같이하기현황</option>
+                                    <option value="1">미션신청현황</option>
                                 </select>
                             </div>
                         </div>

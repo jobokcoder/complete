@@ -12,7 +12,7 @@
         $sql = "select request.*, mission.* from request join mission on request.ms_id = mission.ms_id where mission.ms_writer = '$m_id'";
         $json['data'] = getData($sql);
     }else if($type === 1){
-        $sql = "select request.*, mission.* from request join mission on request.ms_id = mission.ms_id where request.r_id = '$m_id'";
+        $sql = "select request.*, mission.* from request join mission on request.ms_id = mission.ms_id where request.m_id = '$m_id'";
         $json['data'] = getData($sql);
     }
 

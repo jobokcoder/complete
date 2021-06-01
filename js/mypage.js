@@ -24,6 +24,10 @@
     const statusWrapper = document.querySelector('.status__wrapper');
     const accountWrapper = document.querySelector('.account__wrapper');
 
+    const filterMission = document.querySelector('.missions__subFunction--mission').querySelector('.missions__filter--select');
+    const filterWith = document.querySelector('.missions__subFunction--with').querySelector('.missions__filter--select');
+    const filterAccept = document.querySelector('.missions__subFunction--accept').querySelector('.missions__filter--select');
+
     const missionsSubFunctionAll = document.querySelectorAll('.missions__subFunction');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
@@ -106,7 +110,17 @@
         }
     });
 
+    filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
+
     function getRequest(type){
+        type = Number(type)
+        const removeStatusContents = document.querySelectorAll('.status__contents');
+        if(removeStatusContents.length){
+            removeStatusContents.forEach((el) => {
+                el.remove();
+            });
+        }
+
         const param = {
             'type': type,
         };
@@ -117,41 +131,48 @@
         }).then((respon) => respon.json())
         .then((data) => {
             const database = data['data'];
-            database.forEach((item) => {
-                const statusContents = document.createElement('div');
-                const statusContentsTitle = document.createElement('p');
-                const statusContentsStart = document.createElement('p');
-                const statusContentsEnd = document.createElement('p');
+            if(database.length > 0){
+                database.forEach((item) => {
+                    const statusContents = document.createElement('div');
+                    const statusContentsTitle = document.createElement('p');
+                    const statusContentsStart = document.createElement('p');
+                    const statusContentsEnd = document.createElement('p');
+    
+                    statusContents.classList.add('status__contents');
+                    statusContentsTitle.classList.add('status__contents--text');
+                    statusContentsStart.classList.add('status__contents--text');
+                    statusContentsEnd.classList.add('status__contents--text');
+    
+                    statusContentsTitle.textContent = item['ms_title'];
+                    statusContentsStart.textContent = item['ms_date_start'];
+                    statusContentsEnd.textContent = item['ms_date_end'];
+    
+                    statusContents.appendChild(statusContentsTitle);
+                    statusContents.appendChild(statusContentsStart);
+                    statusContents.appendChild(statusContentsEnd);
+    
 
-                statusContents.classList.add('status__contents');
-                statusContentsTitle.classList.add('status__contents--text');
-                statusContentsStart.classList.add('status__contents--text');
-                statusContentsEnd.classList.add('status__contents--text');
-
-                statusContentsTitle.textContent = item['ms_title'];
-                statusContentsStart.textContent = item['ms_date_start'];
-                statusContentsEnd.textContent = item['ms_date_end'];
-
-                statusContents.appendChild(statusContentsTitle);
-                statusContents.appendChild(statusContentsStart);
-                statusContents.appendChild(statusContentsEnd);
-
-                if(item['r_status'] == 0){
-                    const statusContentsButton = document.createElement('button');
-                    statusContentsButton.classList.add('status__contents--button');
-                    statusContentsButton.id = item['ms_id'];
-                    statusContentsButton.textContent = '선택';
-                    statusContentsButton.addEventListener('click', (e) => { selectAgent(e.target.id) });
-                    statusContents.appendChild(statusContentsButton);
-                }else if(item['r_status'] === 1){
-                    const statusContentsDone = document.createElement('p');
-                    statusContentsDone.classList.add('status__contents--text');
-                    statusContentsDone.textContent = '선택됨';
-                    statusContents.appendChild(statusContentsDone);
-                }
-
-                statusWrapper.appendChild(statusContents);
-            });
+                    if(type === 0){
+                        if(item['r_status'] == 0){
+                            const statusContentsButton = document.createElement('button');
+                            statusContentsButton.classList.add('status__contents--button');
+                            statusContentsButton.id = item['ms_id'];
+                            statusContentsButton.textContent = '선택';
+                            statusContentsButton.addEventListener('click', (e) => { selectAgent(e.target.id) });
+                            statusContents.appendChild(statusContentsButton);
+                        }else if(item['r_status'] === 1){
+                            const statusContentsDone = document.createElement('p');
+                            statusContentsDone.classList.add('status__contents--text');
+                            statusContentsDone.textContent = '선택됨';
+                            statusContents.appendChild(statusContentsDone);
+                        }
+                    }else{
+            
+                    }
+    
+                    statusWrapper.appendChild(statusContents);
+                });
+            }
         });
     }
 
