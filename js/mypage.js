@@ -29,6 +29,7 @@
     const missions = document.querySelector('.missions');
 
     const agentModal = document.querySelector('.agent__modal');
+    const agentModalUsers = document.querySelector('.agent__users');
 
     let user = '';
 
@@ -164,9 +165,27 @@
             body: JSON.stringify(param),
         }).then((respon) => respon.json())
         .then((data) => {
-            console.log(data);
+            const database = data['data'];
+            removeChild(agentModalUsers);
+            database.forEach((item) => {
+                const agentUser = document.createElement('div');
+                const agentUserPic = document.createElement('div');
+                const agentUserPicImg = document.createElement('img');
+                const agentUserNick = document.createElement('p');
+
+                agentUser.classList.add('agent__users--user');
+                agentUserPic.classList.add('agent__users--user-pic');
+                agentUserNick.classList.add('agent__users--user-name');
+
+                agentUserNick.textContent = item['m_nick'];
+                agentUserPicImg.src = './images/common/common.png';
+                agentUserPic.appendChild(agentUserPicImg);
+                agentUser.appendChild(agentUserPic);
+                agentUser.appendChild(agentUserNick);
+                agentModalUsers.appendChild(agentUser);
+            });
+            toggleModal(agentModal);
         });
-        toggleModal(agentModal);
     }
 
     function mypageModalDone(){

@@ -48,12 +48,12 @@
 
                     <div class="agent__numbering">
                         <div class="agent__numbering--wrapper">
-                            <div class="agent__numbering--wrapper-user">
+                            <!-- <div class="agent__numbering--wrapper-user">
                                 <img src="./images/common/common.png" alt="user_pic"/>
-                            </div>
+                            </div> -->
                         </div>
 
-                        <p class="agent__numbering--text">총 4명</p>
+                        <p class="agent__numbering--text">총 0명</p>
                     </div>
                 </div>
 
