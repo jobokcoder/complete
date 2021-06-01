@@ -42,6 +42,9 @@
     const agentModalCancel = document.querySelector('.agent__bottom--cancel');
     const statusContentsButtons = document.querySelectorAll('.status__contents--button');
 
+    const stampModal = document.querySelector('.send__modal');
+    const stampModalCancel = document.querySelector('.send__modal--cancel');
+
     let user = '';
 
     window.addEventListener('load', () => {
@@ -101,6 +104,10 @@
             }
         });
     });
+
+    stampModalCancel.addEventListener('click', () => {
+        toggleModal(stampModal);
+    });
     
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
@@ -141,14 +148,12 @@
         .then((data) => {
             if(data.length > 0){
                 data.forEach((item) => {
-                    console.log(item);
                     let newMission = missionsList.cloneNode(true);
                             
                     let newThum = item['ms_expain_pic'] != undefined ? item['ms_expain_pic'].split(',') : 'common.png';
                     let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
                     let tags = item['ms_tag'].split(',');
 
-                    let newMissionthum = newMission.querySelector('.missions__list--image');
                     let newMissionImg = newMission.querySelector('.missions__list--image img');
                     let newMissionTitle = newMission.querySelector('.missions__list--info-title');
                     let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
@@ -158,14 +163,20 @@
                     newMissionImg.src = newImgSrc;
                     newMissionTitle.textContent = item['ms_title'];
                     newMissionWriter.innerHTML = `의뢰자 : ${item['ms_writer']} <br> 마감일 : ${item['ms_date_end']}`;
-                    missionsWrapperMission.appendChild(newMission);
-
+                    
                     tags.forEach((el) => {
                         let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
                         newMissionHashText.remove();
                         newMissionHashTag.textContent = el;
                         newMissionHashBox.appendChild(newMissionHashTag);
                     });
+
+                    newMission.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        toggleModal(stampModal);
+                    });
+
+                    missionsWrapperMission.appendChild(newMission);
                 });
             }
         }).then(() => {
