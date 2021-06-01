@@ -25,9 +25,10 @@
     const accountWrapper = document.querySelector('.account__wrapper');
 
     const missionsSubFunctionAll = document.querySelectorAll('.missions__subFunction');
-    const missionsWrapper = document.querySelector('.missions__wrapper');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
+
+    const agentModal = document.querySelector('.agent__modal');
 
     let user = '';
 
@@ -48,7 +49,6 @@
             accountItemPW.textContent = data['pw'];
             accountItemEmail.textContent = data['email'];
             accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
-            getMission(0);
         });
     });
 
@@ -69,16 +69,18 @@
 
             if(item.textContent === '미션'){
                 item.classList.add('active');
-                missionsWrapperMission.classList.add('active');
+                missionsWrapperWith.classList.add('active');
                 missionsSubFunctionAll[0].classList.add('active');
             }else if(item.textContent === '같이하기'){
                 item.classList.add('active');
-                missionsWrapperWith.classList.add('active');
+                missionsWrapperMission.classList.add('active');
                 missionsSubFunctionAll[1].classList.add('active');
+                getMission(0);
             }else if(item.textContent === '신청현황'){
                 item.classList.add('active');
                 statusWrapper.classList.add('active');
                 missionsSubFunctionAll[2].classList.add('active');
+                getRequest(0);
             }else if(item.textContent === '계정'){
                 item.classList.add('active');
                 accountWrapper.classList.add('active');
@@ -102,6 +104,70 @@
             mypageModalDone();
         }
     });
+
+    function getRequest(type){
+        const param = {
+            'type': type,
+        };
+
+        fetch('./modules/getRequestAgent.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            const database = data['data'];
+            database.forEach((item) => {
+                const statusContents = document.createElement('div');
+                const statusContentsTitle = document.createElement('p');
+                const statusContentsStart = document.createElement('p');
+                const statusContentsEnd = document.createElement('p');
+
+                statusContents.classList.add('status__contents');
+                statusContentsTitle.classList.add('status__contents--text');
+                statusContentsStart.classList.add('status__contents--text');
+                statusContentsEnd.classList.add('status__contents--text');
+
+                statusContentsTitle.textContent = item['ms_title'];
+                statusContentsStart.textContent = item['ms_date_start'];
+                statusContentsEnd.textContent = item['ms_date_end'];
+
+                statusContents.appendChild(statusContentsTitle);
+                statusContents.appendChild(statusContentsStart);
+                statusContents.appendChild(statusContentsEnd);
+
+                if(item['r_status'] == 0){
+                    const statusContentsButton = document.createElement('button');
+                    statusContentsButton.classList.add('status__contents--button');
+                    statusContentsButton.id = item['ms_id'];
+                    statusContentsButton.textContent = '선택';
+                    statusContentsButton.addEventListener('click', (e) => { selectAgent(e.target.id) });
+                    statusContents.appendChild(statusContentsButton);
+                }else if(item['r_status'] === 1){
+                    const statusContentsDone = document.createElement('p');
+                    statusContentsDone.classList.add('status__contents--text');
+                    statusContentsDone.textContent = '선택됨';
+                    statusContents.appendChild(statusContentsDone);
+                }
+
+                statusWrapper.appendChild(statusContents);
+            });
+        });
+    }
+
+    function selectAgent(id){
+        const param = {
+            'id': id,
+        };
+
+        fetch('./modules/selectAgent.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            console.log(data);
+        });
+        toggleModal(agentModal);
+    }
 
     function mypageModalDone(){
         loading.style.display = 'flex';
@@ -134,6 +200,7 @@
     }
 
     function getMission(type){
+        removeChild(missionsWrapperMission);
         const param = {
             'id': user,
             'type': type,
@@ -174,7 +241,7 @@
                             newMissionImg.src = newImgSrc;
                             newMissionTitle.textContent = data[n]['ms_title'];
                             newMissionWriter.innerHTML = `의뢰자 : ${data[n]['ms_writer']} <br> 마감일 : ${data[n]['ms_date_end']}`;
-                            missionsWrapper.appendChild(newMission);
+                            missionsWrapperMission.appendChild(newMission);
                             tags.forEach((el) => {
                                 let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
                                 newMissionHashText.remove();

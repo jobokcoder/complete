@@ -44,13 +44,6 @@
                             </div>
                             <p class="agent__users--user-name">과제에 찌든 놈</p>
                         </div>
-
-                        <div class="agent__users--user active">
-                            <div class="agent__users--user-pic">
-                                <img src="./images/common/common.png" alt="user_pic"/>
-                            </div>
-                            <p class="agent__users--user-name">과제에 찌든 놈</p>
-                        </div>
                     </div>
 
                     <div class="agent__numbering">
@@ -182,20 +175,6 @@
                             <p class="status__header--text">의뢰일</p>
                             <p class="status__header--text">마감일</p>
                             <p class="status__header--text">인원선택</p>
-                        </div>
-                        
-                        <div class="status__contents">
-                            <p class="status__contents--text">물고기 낚아서 같이 먹자</p>
-                            <p class="status__contents--text">2021.05.31</p>
-                            <p class="status__contents--text">2021.06.11</p>
-                            <button class="status__contents--button" type="button">선택</button>
-                        </div>
-
-                        <div class="status__contents">
-                            <p class="status__contents--text">동네 산책하기</p>
-                            <p class="status__contents--text">2021.06.02</p>
-                            <p class="status__contents--text">2021.06.07</p>
-                            <p class="status__contents--text">선택됨</p>
                         </div>
                     </div>
 

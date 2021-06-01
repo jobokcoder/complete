@@ -9,7 +9,6 @@
         $sql = "select * from mission limit $start, 7";
     }else{
         $sql = "select mission.*, member.m_id from mission join member on mission.ms_writer = member.m_id where member.m_add1 = '$area' limit $start, 7";
-       
     }
 
     $result = getData($sql);
