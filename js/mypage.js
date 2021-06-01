@@ -182,6 +182,33 @@
                 agentUserPic.appendChild(agentUserPicImg);
                 agentUser.appendChild(agentUserPic);
                 agentUser.appendChild(agentUserNick);
+
+                agentUser.addEventListener('click', () => {
+                    agentUser.classList.toggle('active');
+
+                    const agentNumberWrapper = document.querySelector('.agent__numbering--wrapper');
+                    const selectNumber = document.querySelector('.agent__numbering--text');
+                    const selectAgent = document.querySelectorAll('.agent__users--user');
+                    let num = 0;
+
+                    removeChild(agentNumberWrapper);
+
+                    selectAgent.forEach((el) => {
+                        if(el.classList.contains('active')){
+                            const agentIcon = document.createElement('div');
+                            const agentIconImg = document.createElement('img');
+        
+                            agentIcon.classList.add('agent__numbering--wrapper-user');
+                            agentIconImg.src = './images/common/common.png';
+                            agentIcon.appendChild(agentIconImg);
+                            agentNumberWrapper.appendChild(agentIcon);
+
+                            num++;
+                        }
+                    });
+                    selectNumber.textContent = `총 ${num}명`;
+                });
+
                 agentModalUsers.appendChild(agentUser);
             });
             toggleModal(agentModal);
