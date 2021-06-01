@@ -28,13 +28,19 @@
     const filterWith = document.querySelector('.missions__subFunction--with').querySelector('.missions__filter--select');
     const filterAccept = document.querySelector('.missions__subFunction--accept').querySelector('.missions__filter--select');
 
+
     const missionsSubFunctionAll = document.querySelectorAll('.missions__subFunction');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
 
-    const agentModal = document.querySelector('.agent__modal');
     const agentModalUsers = document.querySelector('.agent__users');
     const agentModalSubmit = document.querySelector('.agent__bottom--select');
+
+    const lastHeaderText = document.querySelector('.status__header--text:last-child');
+
+    const agentModal = document.querySelector('.agent__modal');
+    const agentModalCancel = document.querySelector('.agent__bottom--cancel');
+    const statusContentsButtons = document.querySelectorAll('.status__contents--button');
 
     let user = '';
 
@@ -55,6 +61,7 @@
             accountItemPW.textContent = data['pw'];
             accountItemEmail.textContent = data['email'];
             accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
+            getFulFillMission();
         });
     });
 
@@ -77,6 +84,7 @@
                 item.classList.add('active');
                 missionsWrapperWith.classList.add('active');
                 missionsSubFunctionAll[0].classList.add('active');
+                getFulFillMission();
             }else if(item.textContent === '같이하기'){
                 item.classList.add('active');
                 missionsWrapperMission.classList.add('active');
@@ -92,6 +100,18 @@
                 accountWrapper.classList.add('active');
             }
         });
+    });
+    
+    statusContentsButtons.forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleModal(agentModal);
+            getAgent(el);
+        });
+    });
+
+    agentModalCancel.addEventListener('click', () => {
+        toggleModal(agentModal);
     });
 
     mypageModalOpenBtn.addEventListener('click', () => {
@@ -114,6 +134,57 @@
     agentModalSubmit.addEventListener('click', () => { sendAgents(); });
 
     filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
+
+    function getFulFillMission(){
+        fetch('./modules/getFulFillMission.php')
+        .then((respon) => respon.json())
+        .then((data) => {
+            if(data.length > 0){
+                data.forEach((item) => {
+                    let newMission = missionsList.cloneNode(true);
+                            
+                    let newThum = item['ms_expain_pic'] != undefined ? item['ms_expain_pic'].split(',') : 'common.png';
+                    let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                    let tags = item['ms_tag'].split(',');
+
+                    let newMissionthum = newMission.querySelector('.missions__list--image');
+                    let newMissionImg = newMission.querySelector('.missions__list--image img');
+                    let newMissionTitle = newMission.querySelector('.missions__list--info-title');
+                    let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
+                    let newMissionHashBox = newMission.querySelector('.missions__list--info-hash');
+                    let newMissionHashText = newMission.querySelector('.missions__list--hash-text');
+
+                    newMissionImg.src = newImgSrc;
+                    newMissionTitle.textContent = item['ms_title'];
+                    newMissionWriter.innerHTML = `의뢰자 : ${item['ms_writer']} <br> 마감일 : ${item['ms_date_end']}`;
+                    missionsWrapperMission.appendChild(newMission);
+
+                    tags.forEach((el) => {
+                        let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
+                        newMissionHashText.remove();
+                        newMissionHashTag.textContent = el;
+                        newMissionHashBox.appendChild(newMissionHashTag);
+                    });
+                });
+            }
+        }).then(() => {
+            const allMissions = document.querySelectorAll('.missions__list');
+            const newMissions = [];
+            allMissions.forEach((el) => {   
+                if(el.classList.contains('active') === false){
+                    newMissions.push(el);
+                }
+            });
+
+            newMissions.forEach((el, index) => {
+                el.classList.add('active');
+                setTimeout(() => {
+                    el.style.opacity = 1;
+                    el.style.transform = 'translateY(0)';
+                },200 * index);
+            });
+        });
+    }
 
     function sendAgents(){
         const selectAgent = document.querySelectorAll('.agent__users--user');
@@ -155,6 +226,11 @@
         const param = {
             'type': type,
         };
+        if(type === 0){
+            lastHeaderText.textContent = '인원선택';
+        }else{
+            lastHeaderText.textContent = '수락 여부';
+        }
 
         fetch('./modules/getRequestAgent.php', {
             method: 'post',
@@ -183,6 +259,7 @@
                     statusContents.appendChild(statusContentsEnd);
 
                     if(type === 0){
+                        lastHeaderText.textContent = '인원선택';
                         if(item['r_status'] == 0){
                             const statusContentsButton = document.createElement('button');
                             statusContentsButton.classList.add('status__contents--button');
@@ -197,6 +274,7 @@
                             statusContents.appendChild(statusContentsDone);
                         }
                     }else{
+                        lastHeaderText.textContent = '수락 여부';
                         if(item['r_status'] == 0){
                             const statusContentsDone = document.createElement('p');
                             statusContentsDone.classList.add('status__contents--text');
@@ -207,40 +285,34 @@
                             statusContentsDone.classList.add('status__contents--text');
                             checkAgent(item['ms_id'])
                             .then((res) => {
-                                if(res){
-                                    statusContentsDone.textContent = '수락됨';
-                                }else{
-                                    statusContentsDone.textContent = '거절됨';
-                                }
+                                statusContentsDone.textContent = res ? '수락됨' : '거절됨';
                             })
-                            
                             statusContents.appendChild(statusContentsDone);
-
-                            function checkAgent(ms_id){
-                                return new Promise((res, rej) => {
-                                    const param = {
-                                        'id': ms_id,
-                                    };
-    
-                                    fetch('./modules/checkAgent.php', {
-                                        method: 'post',
-                                        body: JSON.stringify(param),
-                                    }).then((respon) => respon.json())
-                                    .then((data) => {
-                                        if(data['status'] == 0){
-                                            res(false);
-                                        }else{
-                                            res(true);
-                                        }
-                                    });
-                                });
-                            }
                         }
                     }
-    
                     statusWrapper.appendChild(statusContents);
                 });
             }
+        });
+    }
+                            
+    function checkAgent(ms_id){
+        return new Promise((res, rej) => {
+            const param = {
+                'id': ms_id,
+            };
+
+            fetch('./modules/checkAgent.php', {
+                method: 'post',
+                body: JSON.stringify(param),
+            }).then((respon) => respon.json())
+            .then((data) => {
+                if(data['status'] == 0){
+                    res(false);
+                }else{
+                    res(true);
+                }
+            });
         });
     }
 

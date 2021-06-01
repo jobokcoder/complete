@@ -204,6 +204,5 @@
     </div>
 <script src="./js/common.js"></script>
 <script src="./js/mypage.js"></script>
-<script src="./js/mypageSub.js"></script>
 </body>
 </html>
