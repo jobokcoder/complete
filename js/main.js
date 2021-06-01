@@ -1,13 +1,11 @@
 {
+    const loading = document.querySelector('.loading');
     const missionsWrapper = document.querySelector('.missions__wrapper');
     const missionsList = document.querySelector('.missions__list');
     const missions = document.querySelector('.missions');
-
     const viewWrapper = document.querySelector('.view');
     const viewContents = document.querySelector('.view__contents');
-
     const slideEvent = document.querySelector('.slide__event');
-
     const slideWrapper = document.querySelector('.slide__wrapper');
     const slideMenuText = document.querySelectorAll('.slide__menu--text');
     const slideMenuPopluar = document.querySelector('.slide__menu--text-popluar tspan');
@@ -17,7 +15,6 @@
     const slideLeftBtn = document.querySelector('.slide__mission--buttons-left');
     const slideRightBtn = document.querySelector('.slide__mission--buttons-right');
     const slideRightWrapper = document.querySelector('.slide__right--wrapper');
-    
     const slideMissionWrapper = document.querySelector('.slide__contents--mission');
     const slideMissionOrigin = document.querySelector('.slide__mission');
     const slideMissionHash = document.querySelector('.slide__mission--hash-tag');
@@ -148,9 +145,33 @@
         });
     }
 
+    function requestAgent(id){
+        const param = {
+            'id': id,
+        };
+
+        loading.style.display = 'flex';
+        fetch('./modules/requestAgent.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            loading.style.display = 'none';
+            if(data['status'] === 400){
+                alert('로그인 후 이용하실 수 있습니다.');
+                return 0;
+            }else if(data['status'] === 300){
+                alert('이미 신청하셨습니다.');
+                return 0;
+            }else{
+                alert('수행 신청되었습니다.');
+                location.reload();
+            }
+        });
+    }
+
     // 인기순 , 마감임박
     function getSlideMission(type){
-
         const changeSlideTitle = document.querySelector('.slide__title');
         changeSlideTitle.textContent = 'MISSION';
         changeSlideTitle.style.transform = 'translateY(100%)';
@@ -243,21 +264,24 @@
                     slideMissionWrapper.appendChild(newSlideMission);
                     slideRightMissionWrapper.appendChild(newSlideRightMission);
                     
-                    let newView = viewContents.cloneNode(true);
+                    const newView = viewContents.cloneNode(true);
                             
                     tags = el['ms_tag'].split(',');
-                    let conds = el['ms_done_cond'] !== '' ? el['ms_done_cond'].split(',') : '';
-                    let newid = el['ms_id'];
-                    let newViewImg = newView.querySelector('.view__contents--picture-img');
-                    let newViewTitle = newView.querySelector('.view__contents--title');
-                    let newViewTag = newView.querySelector('.view__contents--tag');
-                    let newViewContent = newView.querySelector('.view__contents--content');
-                    let newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
-                    let newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
-                    let newViewListItem = newView.querySelector('.done__list--item');
-                    let newViewDate = newView.querySelector('.view__contents--writer-date');
-                    let newViewWriter = newView.querySelector('.view__contents--writer-user');
-                    let newViewCancelBtn = newView.querySelector('.view__cancel');
+                    const conds = el['ms_done_cond'] !== '' ? el['ms_done_cond'].split(',') : '';
+                    const newid = el['ms_id'];
+                    const newViewImg = newView.querySelector('.view__contents--picture-img');
+                    const newViewTitle = newView.querySelector('.view__contents--title');
+                    const newViewTag = newView.querySelector('.view__contents--tag');
+                    const newViewContent = newView.querySelector('.view__contents--content');
+                    const newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
+                    const newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
+                    const newViewListItem = newView.querySelector('.done__list--item');
+                    const newViewDate = newView.querySelector('.view__contents--writer-date');
+                    const newViewWriter = newView.querySelector('.view__contents--writer-user');
+                    const newViewCancelBtn = newView.querySelector('.view__cancel');
+                    const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
+
+                    newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
                     newViewListItem.remove();
                     newView.id = `slide_${newid}`;
@@ -334,25 +358,28 @@
                             }
 
                             newMission = missionsList.cloneNode(true);
-                            let newView = viewContents.cloneNode(true);
-                            let newViewId = data[n]['ms_id'];
+                            const newView = viewContents.cloneNode(true);
+                            const newViewId = data[n]['ms_id'];
                             
-                            let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
-                            let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
-                            let tags = data[n]['ms_tag'].split(',');
-                            let conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
+                            const newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
+                            const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                            const tags = data[n]['ms_tag'].split(',');
+                            const conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
 
-                            let newid = data[n]['ms_id'];
-                            let newViewImg = newView.querySelector('.view__contents--picture-img');
-                            let newViewTitle = newView.querySelector('.view__contents--title');
-                            let newViewTag = newView.querySelector('.view__contents--tag');
-                            let newViewContent = newView.querySelector('.view__contents--content');
-                            let newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
-                            let newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
-                            let newViewListItem = newView.querySelector('.done__list--item');
-                            let newViewDate = newView.querySelector('.view__contents--writer-date');
-                            let newViewWriter = newView.querySelector('.view__contents--writer-user');
-                            let newViewCancelBtn = newView.querySelector('.view__cancel');
+                            const newid = data[n]['ms_id'];
+                            const newViewImg = newView.querySelector('.view__contents--picture-img');
+                            const newViewTitle = newView.querySelector('.view__contents--title');
+                            const newViewTag = newView.querySelector('.view__contents--tag');
+                            const newViewContent = newView.querySelector('.view__contents--content');
+                            const newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
+                            const newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
+                            const newViewListItem = newView.querySelector('.done__list--item');
+                            const newViewDate = newView.querySelector('.view__contents--writer-date');
+                            const newViewWriter = newView.querySelector('.view__contents--writer-user');
+                            const newViewCancelBtn = newView.querySelector('.view__cancel');
+                            const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
+        
+                            newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
                             newViewListItem.remove();
                             newView.id = newid;

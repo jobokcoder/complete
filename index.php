@@ -66,7 +66,10 @@
                         </div>
                     </div>
 
-                    <p class="view__contents--num">모집인원 : 4명</p>
+                    <div class="view__contents--num-wrapper">
+                        <button class="view__contents--request-button" type="button">수행 신청</button>
+                        <p class="view__contents--num">모집인원 : 4명</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -175,6 +178,7 @@
                     <h1 class="missions__title">추천미션</h1>
                     <div class="missions__header--circle"></div>
                 </div>
+
                 <div class="missions__wrapper">
                     <div class="missions">
                         <div class="missions__list">

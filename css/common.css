@@ -73,6 +73,8 @@ svg{ overflow: visible; }
 .view__contents--bottom{ padding: 0.875rem 0px; padding-right: 2.5rem; width: 100%; display: flex; justify-content: space-between; align-items: center; }
 .view__contents--agentlist{ display: flex; justify-content: center; align-items: center; }
 .view__contents--agentlist-agent{ margin-right: 0.875rem; position: relative; width: 2rem; height: 2rem; border-radius: 50%; background-color: coral; }
+.view__contents--num-wrapper{ display: flex; justify-content: center; align-items: center; }
+.view__contents--request-button{ cursor: pointer; padding: 10px 20px; border-radius: 10px; border: 1px solid #000; }
 .view__contents--num{ font-size: 1.125rem; font-weight: 500; }
 .view__cancel{ position: absolute; right: -50px; top: -30px; }
 
