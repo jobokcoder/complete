@@ -156,14 +156,18 @@
             body: JSON.stringify(param),
         }).then((respon) => respon.json())
         .then((data) => {
+            console.log(data['status']);
             loading.style.display = 'none';
-            if(data['status'] === 400){
+            if(data['status'] === 500){
                 alert('로그인 후 이용하실 수 있습니다.');
+                return 0;
+            }else if(data['status'] === 400){
+                alert('의뢰자 본인은 신청할 수 없습니다.');
                 return 0;
             }else if(data['status'] === 300){
                 alert('이미 신청하셨습니다.');
                 return 0;
-            }else{
+            }else if(data['status'] === 200){
                 alert('수행 신청되었습니다.');
                 location.reload();
             }
