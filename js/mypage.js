@@ -197,7 +197,45 @@
                             statusContents.appendChild(statusContentsDone);
                         }
                     }else{
-                        
+                        if(item['r_status'] == 0){
+                            const statusContentsDone = document.createElement('p');
+                            statusContentsDone.classList.add('status__contents--text');
+                            statusContentsDone.textContent = '신청중';
+                            statusContents.appendChild(statusContentsDone);
+                        }else if(item['r_status'] == 1){
+                            const statusContentsDone = document.createElement('p');
+                            statusContentsDone.classList.add('status__contents--text');
+                            checkAgent(item['ms_id'])
+                            .then((res) => {
+                                if(res){
+                                    statusContentsDone.textContent = '수락됨';
+                                }else{
+                                    statusContentsDone.textContent = '거절됨';
+                                }
+                            })
+                            
+                            statusContents.appendChild(statusContentsDone);
+
+                            function checkAgent(ms_id){
+                                return new Promise((res, rej) => {
+                                    const param = {
+                                        'id': ms_id,
+                                    };
+    
+                                    fetch('./modules/checkAgent.php', {
+                                        method: 'post',
+                                        body: JSON.stringify(param),
+                                    }).then((respon) => respon.json())
+                                    .then((data) => {
+                                        if(data['status'] == 0){
+                                            res(false);
+                                        }else{
+                                            res(true);
+                                        }
+                                    });
+                                });
+                            }
+                        }
                     }
     
                     statusWrapper.appendChild(statusContents);
