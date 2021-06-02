@@ -46,13 +46,11 @@
     });
 
     window.addEventListener('load', () => {
-        setTimeout(() => {
-            scrollTo(0, 0);
-        }, 0);
+        scrollTo(0, 0);
     });
 
     window.addEventListener('scroll', () => {
-        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 200)) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
             getMission(area);
         }
     });
@@ -339,6 +337,7 @@
     }
 
     function getMission(){
+        console.log(missionCount);
         const param = {
             'area': area,
             'count': missionCount,
@@ -351,6 +350,7 @@
         .then((respon) => respon.json())
         .then((data) => {
             if(data.length > 0){
+                missionCount++;
                 const total = data.length;
                 const block = Math.ceil(total / 7);
                 let newDiv;
@@ -476,7 +476,6 @@
                         el.style.transform = 'translateY(0)';
                     },200 * index);
                 });
-                missionCount++;
             }
         });
     }
