@@ -92,7 +92,6 @@
                 item.classList.add('active');
                 missionsWrapperWith.classList.add('active');
                 missionsSubFunctionAll[1].classList.add('active');
-                getMission(0);
             }else if(item.textContent === '신청현황'){
                 item.classList.add('active');
                 statusWrapper.classList.add('active');
@@ -143,6 +142,7 @@
     filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
 
     function getFulFillMission(){
+        removeChild(missionsWrapperMission);
         fetch('./modules/getFulFillMission.php')
         .then((respon) => respon.json())
         .then((data) => {
@@ -424,13 +424,13 @@
         removeChild(missionsWrapperMission);
         const param = {
             'id': user,
-            'type': type,
         };
 
-        fetch('./modules/getMyPageMission.php', {
+        fetch('./modules/getWithMission.php', {
             method: 'post',
             body: JSON.stringify(param),
-        }).then((respon) => respon.json())
+        })
+        .then((respon) => respon.json())
         .then((data) => {
             if(data.length > 0){
                 const total = data.length;
