@@ -99,6 +99,7 @@
                 item.classList.add('active');
                 missionsWrapperWith.classList.add('active');
                 missionsSubFunctionAll[1].classList.add('active');
+                getWithMission();
             }else if(item.textContent === '신청현황'){
                 item.classList.add('active');
                 statusWrapper.classList.add('active');
@@ -149,9 +150,7 @@
     });
 
     agentModalSubmit.addEventListener('click', () => { sendAgents(); });
-
     filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
-
     fileInput.addEventListener('change', () => {
         const flag = checkFileExtens(fileInput.files);
         const doneFileNames = document.querySelectorAll('.done__compensation--file-name');
@@ -289,7 +288,6 @@
                 newStampTag.textContent = el;
                 stampRightHashBox.appendChild(newStampTag);
             });
-            
         })
         .then(() => {
             toggleModal(stampModal);
@@ -529,7 +527,7 @@
         }
     }
 
-    function getMission(type){
+    function getWithMission(){
         removeChild(missionsWrapperMission);
         const param = {
             'id': user,
