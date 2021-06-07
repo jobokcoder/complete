@@ -113,14 +113,13 @@
                         <h1 class="send__right--title-text">미션완료</h1>
                     </div>
 
-                    <div class="send__right--contents">
+                    <form class="send__right--contents" method="POST" enctype="multipart/form-data">
                         <div class="send__right--subject">
                             <p class="send__right--subject-text">피자먹기</p>
                         </div>
 
                         <div class="send__right--hash">
-                            <p class="send__right--hash-text">#피자</p>
-                            <p class="send__right--hash-text">#직접먹기</p>
+                            <p class="send__right--hash-text"></p>
                         </div>
 
                         <div class="send__right--writer">
@@ -128,7 +127,7 @@
                         </div>
 
                         <div class="send__right--file">
-                            <input class="send__right--file-input" type="file" name="send__right_file[]" accept=".gif, .jpg, .png, .mp4"/>
+                            <input class="send__right--file-input" type="file" name="request__file" accept=".gif, .jpg, .png, .mp4"/>
                             <svg class="send__right--file-btn" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                                 <g id="그룹_70" data-name="그룹 70" transform="translate(-9.759 -6.897)">
                                     <rect id="사각형_33" data-name="사각형 33" width="22" height="22" rx="1.442" transform="translate(10.259 7.397)" fill="none" stroke="#00285d" stroke-linejoin="round" stroke-width="1"/>
@@ -138,10 +137,11 @@
                                     </g>
                                 </g>
                             </svg>
+                            <p class="done__compensation--file-name"></p>
                         </div>
 
                         <div class="send__right--textarea">
-                            <textarea class="send__right--textarea-text">
+                            <textarea class="send__right--textarea-text" name="request_text">
                                 
                             </textarea>
                         </div>
@@ -154,9 +154,9 @@
                         <div class="send__right--confirm">
                             <p class="send__right--date">2021.05.25</p>
                             <p class="send__right--nick">닉네임 : 사람인</p>
-                            <div class="send__right--stamp"></div>
+                            <div class="send__right--stamp">도장</div>
                         </div>
-                    </div>
+                    </form>
 
                     <button class="send__right--submit" type="button">제출</button>
                 </div>

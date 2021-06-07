@@ -24,10 +24,7 @@
     const statusWrapper = document.querySelector('.status__wrapper');
     const accountWrapper = document.querySelector('.account__wrapper');
 
-    const filterMission = document.querySelector('.missions__subFunction--mission').querySelector('.missions__filter--select');
-    const filterWith = document.querySelector('.missions__subFunction--with').querySelector('.missions__filter--select');
     const filterAccept = document.querySelector('.missions__subFunction--accept').querySelector('.missions__filter--select');
-
 
     const missionsSubFunctionAll = document.querySelectorAll('.missions__subFunction');
     const missionsList = document.querySelector('.missions__list');
@@ -44,12 +41,22 @@
 
     const stampModal = document.querySelector('.send__modal');
     const stampModalCancel = document.querySelector('.send__modal--cancel');
+    const stampLeftHashBox = document.querySelector('.send__left--hash');
+    const stampLeftHashTag = document.querySelector('.send__right--hash-text');
+    const stampRightHashBox = document.querySelector('.send__right--hash');
+
+    const form = document.querySelector('.send__right--contents');
+    const fileLabel = document.querySelector('.send__right--file-btn');
+    const fileInput = document.querySelector('.send__right--file-input');
+    const fileBox = document.querySelector('.send__right--file');
+    const fileName = document.querySelector('.done__compensation--file-name');
 
     let user = '';
 
     window.addEventListener('load', () => {
         removeChild(missionsWrapperMission);
         removeChild(missionsWrapperWith);
+        fileName.remove();
         fetch('./modules/getUserInfo.php')
         .then((respon) => respon.json())
         .then((data) => {
@@ -104,6 +111,10 @@
         });
     });
 
+    fileLabel.addEventListener('click', () => {
+        fileInput.click();
+    });
+
     stampModalCancel.addEventListener('click', () => {
         toggleModal(stampModal);
     });
@@ -141,6 +152,29 @@
 
     filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
 
+    fileInput.addEventListener('change', () => {
+        const flag = checkFileExtens(fileInput.files);
+        const doneFileNames = document.querySelectorAll('.done__compensation--file-name');
+        doneFileNames.forEach(el => {
+            el.remove();
+        });
+
+        if(flag){
+            fileInput.value = "";
+            alert('gif, jpg, png, mp4 확장자 파일만 가능합니다.');
+        }else{
+            if(fileInput.files.length > 1){
+                fileInput.value = "";
+            }else{
+                for(let i=0; i< fileInput.files.length; i++){
+                    let files = fileName.cloneNode(true);
+                    files.textContent = fileInput.files[i]['name'];
+                    fileBox.appendChild(files);
+                }
+            }
+        }
+    });
+
     function getFulFillMission(){
         removeChild(missionsWrapperMission);
         fetch('./modules/getFulFillMission.php')
@@ -173,7 +207,7 @@
 
                     newMission.addEventListener('click', (e) => {
                         e.preventDefault();
-                        toggleModal(stampModal);
+                        missionDoneStamp(item['ms_id']);
                     });
 
                     missionsWrapperMission.appendChild(newMission);
@@ -196,6 +230,81 @@
                 },200 * index);
             });
         });
+    }
+
+    function missionDoneStamp(id){
+        removeChild(stampLeftHashBox);
+        removeChild(stampRightHashBox);
+        const param = {
+            'ms_id': id,
+        };
+        fetch('./modules/getMissionInfo.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            data = data[0];
+            const sendLeftTags = data['ms_tag'].split(',', 2);
+            const sendLeftTitle = stampModal.querySelector('.send__left--title-text');
+            const sendLeftTextArea = stampModal.querySelector('.send__left--textarea-text');
+            const sendLeftCond = stampModal.querySelector('.send__left--cond-text');
+            const sendLeftDone = stampModal.querySelector('.send__left--done-text');
+            const sendLeftWriter = stampModal.querySelector('.send__left--writer-text');
+            
+            sendLeftTitle.textContent = data['ms_title'];
+            sendLeftTextArea.textContent = data['ms_contents'];
+            sendLeftCond.textContent = data['ms_done_cond'];
+            sendLeftDone.textContent = data['ms_done_com'];
+            sendLeftWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
+
+            const sendrightTitle = stampModal.querySelector('.send__right--subject-text');
+            const sendrightCond = stampModal.querySelector('.send__right--cond-text');
+            const sendrightWriter = stampModal.querySelector('.send__right--writer-text');
+            const sendrightDate = stampModal.querySelector('.send__right--date');
+            const sendrightNick = stampModal.querySelector('.send__right--nick');
+            
+            sendrightTitle.textContent = data['ms_title'];
+            sendrightCond.textContent = data['ms_done_cond'];
+            sendrightWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
+            sendrightNick.textContent = `닉네임 : ${user}`;
+
+            const today = new Date();   
+            const year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            let date = today.getDate();
+
+            month = (month < 10) ? '0' + month : month;
+            date = (date < 10) ? '0' + date : date;
+
+            sendrightDate.textContent = `${year}.${month}.${date}`;
+            
+            sendLeftTags.forEach((el) => {
+                let newStampTag = stampLeftHashTag.cloneNode(true);
+                newStampTag.textContent = el;
+                stampLeftHashBox.appendChild(newStampTag);
+            });
+
+            sendLeftTags.forEach((el) => {
+                let newStampTag = stampLeftHashTag.cloneNode(true);
+                newStampTag.textContent = el;
+                stampRightHashBox.appendChild(newStampTag);
+            });
+            
+        })
+        .then(() => {
+            toggleModal(stampModal);
+        });
+    }
+    
+    function checkFileExtens(files){
+        for(let i=0; i<files.length; i++){
+            const nameArr = files[i]['name'].split('.');
+            if(nameArr[1] != 'gif' && nameArr[1] != 'jpg' && nameArr[1] != 'png' && nameArr[1] != 'mp4'){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }
 
     function sendAgents(){

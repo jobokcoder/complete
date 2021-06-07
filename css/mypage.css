@@ -98,7 +98,7 @@
 .send__left--hash{ padding: 10px 0px; width: 100%; display: flex; flex-wrap: wrap; overflow: hidden; border-bottom: 1px solid var(--main-black1); }
 .send__left--hash-text{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
 .send__left--textarea{ padding: 10px 0px; border-bottom: 1px solid var(--main-black1); }
-.send__left--textarea-text{ height: 144px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background-color: #E9F5F6;  }
+.send__left--textarea-text{ max-width: 100%; height: 144px; background-color: #E9F5F6; overflow-y: auto; }
 .send__left--cond{ padding: 10px 0px; border-bottom: 1px solid var(--main-black1); }
 .send__left--cond-text{ font-size: 16px; font-weight: 400; }
 .send__left--done{ padding: 10px 0px; border-bottom: 1px solid var(--main-black1); }
@@ -117,12 +117,15 @@
 .send__right--writer-text{ font-size: 16px; font-weight: 400; }
 .send__right--file{ padding: 12px 0px; width: 100%; display: flex; justify-content: flex-start; align-items: flex-start; border-bottom: 1px solid var(--main-black1); }
 .send__right--file-input{ display: none; }
+.send__right--file-btn{ cursor: pointer; }
+.done__compensation--file-name{ margin-left: 0.65rem; padding: 0.25rem 1rem; max-width: 8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: rgba(144, 163, 203, 0.2);  font-size: 16px; font-weight: 400; }
 .send__right--textarea{ padding: 12px 0px; width: 100%; border-bottom: 1px solid var(--main-black1); }
 .send__right--textarea-text{ resize: none; width: 100%; height: 208px; background-color: #E9F5F6; font-size: 16px; font-weight: 400; }
-.send__right--cond{ padding: 10px 0px; border-bottom: 1px solid var(--main-black1); }
+.send__right--cond{ padding: 10px 0px; width: 100%; border-bottom: 1px solid var(--main-black1); }
 .send__right--cond-text{ font-size: 16px; font-weight: 400; }
 .send__right--confirm{ position: relative; width: 100%; height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .send__right--date{ font-size: 20px; font-weight: 400; }
 .send__right--nick{ font-size: 18px; font-weight: 400; transform: translateX(120%); }
-.send__right--stamp{ cursor: pointer; position: absolute; bottom: 0; right: 0; width: 70px; height: 70px; border-radius: 70%; transform: translate(-50%, -10%); background-color: royalblue; }
-.send__right--submit{ cursor: pointer; width: 100%; height: 100%; transform: scale(1.05); background-color: var(--main-color2); font-size: 22px; font-weight: 400; }
+.send__right--stamp{ cursor: pointer; position: absolute; bottom: 0; right: 0; width: 70px; height: 70px; border-radius: 70%; border: 1px solid #000; display: flex; justify-content: center; align-items: center; background-color: #fff; }
+.send__right--submit{ transition: 300ms ease-in-out; cursor: pointer; width: 100%; height: 100%; transform: scale(1.05); background-color: var(--main-color2); font-size: 22px; font-weight: 400; }
+.send__right--submit:hover{ filter: brightness(1.1); }

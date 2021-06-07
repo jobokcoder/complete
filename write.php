@@ -91,7 +91,7 @@
                         <div class="done__compensation--fileBox">
                             <input class="write__input done__compensation--file" multiple="multiple" type="file" name="m_com_file[]" accept=".gif, .jpg, .png, .mp4"/>
 
-                            <p class="done__compensation--file-name">dsadasdasd.jpg</p>
+                            <p class="done__compensation--file-name"></p>
                         </div>
                     </div>
                 </div>
