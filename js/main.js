@@ -304,7 +304,7 @@
                     }
                     newViewDoneList.textContent = el['ms_done_com'];
                     newViewDate.textContent = `${el['ms_date_start']} ~ ${el['ms_date_end']}`;
-                    newViewWriter.textContent = el['ms_writer'];
+                    newViewWriter.textContent = el['ms_nick'];
                     newViewCancelBtn.addEventListener('click', (e) => {
                         e.preventDefault();
                         newView.parentNode.classList.remove('active');
@@ -328,8 +328,9 @@
                         .then(respon => respon.json());
                     });
 
+                    const ms_id = el['ms_id'];
                     const param2 = {
-                        'ms_id': data[n]['ms_id'],
+                        'ms_id': ms_id,
                     };
 
                     fetch('./modules/getRequestCount.php', {
@@ -425,7 +426,6 @@
                             const param2 = {
                                 'ms_id': data[n]['ms_id'],
                             };
-
 
                             fetch('./modules/getRequestCount.php', {
                                 method: 'post',
