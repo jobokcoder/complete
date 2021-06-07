@@ -64,26 +64,29 @@
                             }
 
                             newMission = missionsList.cloneNode(true);
-                            let newView = viewContents.cloneNode(true);
-                            let newViewId = data[n]['ms_id'];
+                            const newView = viewContents.cloneNode(true);
+                            const newViewId = data[n]['ms_id'];
                             
-                            let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
-                            let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
-                            let tags = data[n]['ms_tag'].split(',');
-                            let conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
+                            const newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
+                            const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                            const tags = data[n]['ms_tag'].split(',');
+                            const conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
 
-                            let newid = data[n]['ms_id'];
-                            let newViewImg = newView.querySelector('.view__contents--picture-img');
-                            let newViewTitle = newView.querySelector('.view__contents--title');
-                            let newViewTag = newView.querySelector('.view__contents--tag');
-                            let newViewContent = newView.querySelector('.view__contents--content');
-                            let newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
-                            let newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
-                            let newViewListItem = newView.querySelector('.done__list--item');
-                            let newViewDate = newView.querySelector('.view__contents--writer-date');
-                            let newViewWriter = newView.querySelector('.view__contents--writer-user');
-                            let newViewCancelBtn = newView.querySelector('.view__cancel');
+                            const newid = data[n]['ms_id'];
+                            const newViewImg = newView.querySelector('.view__contents--picture-img');
+                            const newViewTitle = newView.querySelector('.view__contents--title');
+                            const newViewTag = newView.querySelector('.view__contents--tag');
+                            const newViewContent = newView.querySelector('.view__contents--content');
+                            const newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
+                            const newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
+                            const newViewListItem = newView.querySelector('.done__list--item');
+                            const newViewDate = newView.querySelector('.view__contents--writer-date');
+                            const newViewWriter = newView.querySelector('.view__contents--writer-user');
+                            const newViewCancelBtn = newView.querySelector('.view__cancel');
+                            const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
+                            const newViewContentsNum = newView.querySelector('.view__contents--num');
                             
+                            newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             newViewListItem.remove();
                             newView.id = newid;
                             newViewImg.src = newImgSrc;
@@ -95,7 +98,7 @@
                             newViewContent.textContent = data[n]['ms_contents'];
                             if(conds !== ''){
                                 conds.forEach((el) => {
-                                    let copyViewListItem = newViewListItem.cloneNode(true);
+                                    const copyViewListItem = newViewListItem.cloneNode(true);
                                     copyViewListItem.textContent = el;
                                     newViewCondList.appendChild(copyViewListItem);
                                 });
@@ -107,8 +110,20 @@
                                 e.preventDefault();
                                 newView.parentNode.classList.remove('active');
                             });
-                            
-                            viewWrapper.appendChild(newView);
+
+                            const param2 = {
+                                'ms_id': data[n]['ms_id'],
+                            };
+        
+                            fetch('./modules/getRequestCount.php', {
+                                method: 'post',
+                                body: JSON.stringify(param2),
+                            })
+                            .then((respon2) => respon2.json())
+                            .then((data2) => {
+                                newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
+                                viewWrapper.appendChild(newView);
+                            });
 
                             let newMissionthum = newMission.querySelector('.missions__list--image');
                             let newMissionImg = newMission.querySelector('.missions__list--image img');
@@ -169,6 +184,34 @@
                     el.style.transform = 'translateY(0)';
                 },200 * index);
             });
+        });
+    }
+
+    function requestAgent(id){
+        const param = {
+            'id': id,
+        };
+
+        loading.style.display = 'flex';
+        fetch('./modules/requestAgent.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            loading.style.display = 'none';
+            if(data['status'] === 500){
+                alert('로그인 후 이용하실 수 있습니다.');
+                return 0;
+            }else if(data['status'] === 400){
+                alert('의뢰자 본인은 신청할 수 없습니다.');
+                return 0;
+            }else if(data['status'] === 300){
+                alert('이미 신청하셨습니다.');
+                return 0;
+            }else if(data['status'] === 200){
+                alert('수행 신청되었습니다.');
+                location.reload();
+            }
         });
     }
 

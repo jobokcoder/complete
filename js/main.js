@@ -283,7 +283,6 @@
                     const newViewCancelBtn = newView.querySelector('.view__cancel');
                     const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
                     const newViewContentsNum = newView.querySelector('.view__contents--num');
-                    newViewContentsNum.textContent = '모집인원 : 0명';
 
                     newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
@@ -329,15 +328,25 @@
                         .then(respon => respon.json());
                     });
 
-                    
-                    viewWrapper.appendChild(newView);
+                    const param2 = {
+                        'ms_id': data[n]['ms_id'],
+                    };
+
+                    fetch('./modules/getRequestCount.php', {
+                        method: 'post',
+                        body: JSON.stringify(param2),
+                    })
+                    .then((respon2) => respon2.json())
+                    .then((data2) => {
+                        newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
+                        viewWrapper.appendChild(newView);
+                    });
                 });
             }
         });
     }
 
     function getMission(){
-        console.log(missionCount);
         const param = {
             'area': area,
             'count': missionCount,
@@ -386,7 +395,6 @@
                             const newViewCancelBtn = newView.querySelector('.view__cancel');
                             const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
                             const newViewContentsNum = newView.querySelector('.view__contents--num');
-                            newViewContentsNum.textContent = '모집인원 : 0명';
         
                             newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
@@ -413,9 +421,23 @@
                                 e.preventDefault();
                                 newView.parentNode.classList.remove('active');
                             });
-                            
-                            viewWrapper.appendChild(newView);
 
+                            const param2 = {
+                                'ms_id': data[n]['ms_id'],
+                            };
+
+
+                            fetch('./modules/getRequestCount.php', {
+                                method: 'post',
+                                body: JSON.stringify(param2),
+                            })
+                            .then((respon2) => respon2.json())
+                            .then((data2) => {
+                                console.log();
+                                newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
+                                viewWrapper.appendChild(newView);
+                            });
+                            
                             let newMissionthum = newMission.querySelector('.missions__list--image');
                             let newMissionImg = newMission.querySelector('.missions__list--image img');
                             let newMissionTitle = newMission.querySelector('.missions__list--info-title');
