@@ -44,6 +44,7 @@
     const stampLeftHashBox = document.querySelector('.send__left--hash');
     const stampLeftHashTag = document.querySelector('.send__right--hash-text');
     const stampRightHashBox = document.querySelector('.send__right--hash');
+    const sendRightSumbit = stampModal.querySelector('.send__right--submit');
 
     const form = document.querySelector('.send__right--contents');
     const fileLabel = document.querySelector('.send__right--file-btn');
@@ -99,7 +100,7 @@
                 item.classList.add('active');
                 missionsWrapperWith.classList.add('active');
                 missionsSubFunctionAll[1].classList.add('active');
-                getWithMission();
+                getWithMission(0);
             }else if(item.textContent === '신청현황'){
                 item.classList.add('active');
                 statusWrapper.classList.add('active');
@@ -112,13 +113,14 @@
         });
     });
 
-    fileLabel.addEventListener('click', () => {
-        fileInput.click();
-    });
-
-    stampModalCancel.addEventListener('click', () => {
-        toggleModal(stampModal);
-    });
+    agentModalCancel.addEventListener('click', () => { toggleModal(agentModal); });
+    agentModalSubmit.addEventListener('click', () => { sendAgents(); });
+    fileLabel.addEventListener('click', () => { fileInput.click(); });
+    filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
+    mypageModalOpenBtn.addEventListener('click', () => { mypageModal.style.display = 'flex'; });
+    mypageModalCloseBtn.addEventListener('click', () => { mypageModal.style.display = 'none'; });
+    stampModalCancel.addEventListener('click', () => { toggleModal(stampModal); });
+    sendRightSumbit.addEventListener('click', () => { sendDoneMisson(); });
     
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
@@ -126,18 +128,6 @@
             toggleModal(agentModal);
             getAgent(el);
         });
-    });
-
-    agentModalCancel.addEventListener('click', () => {
-        toggleModal(agentModal);
-    });
-
-    mypageModalOpenBtn.addEventListener('click', () => {
-        mypageModal.style.display = 'flex';
-    });
-
-    mypageModalCloseBtn.addEventListener('click', () => {
-        mypageModal.style.display = 'none';
     });
 
     mypageModalDoneBtn.addEventListener('click', () => {
@@ -149,8 +139,6 @@
         }
     });
 
-    agentModalSubmit.addEventListener('click', () => { sendAgents(); });
-    filterAccept.addEventListener('change', () => { getRequest(filterAccept.value) });
     fileInput.addEventListener('change', () => {
         const flag = checkFileExtens(fileInput.files);
         const doneFileNames = document.querySelectorAll('.done__compensation--file-name');
@@ -249,23 +237,29 @@
             const sendLeftCond = stampModal.querySelector('.send__left--cond-text');
             const sendLeftDone = stampModal.querySelector('.send__left--done-text');
             const sendLeftWriter = stampModal.querySelector('.send__left--writer-text');
+            const sendLeftImg = stampModal.querySelector('.send__left--thum-img');
+            const newThum = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
+            const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
             
+            sendLeftImg.src = newImgSrc;
             sendLeftTitle.textContent = data['ms_title'];
             sendLeftTextArea.textContent = data['ms_contents'];
             sendLeftCond.textContent = data['ms_done_cond'];
             sendLeftDone.textContent = data['ms_done_com'];
             sendLeftWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
 
-            const sendrightTitle = stampModal.querySelector('.send__right--subject-text');
-            const sendrightCond = stampModal.querySelector('.send__right--cond-text');
-            const sendrightWriter = stampModal.querySelector('.send__right--writer-text');
-            const sendrightDate = stampModal.querySelector('.send__right--date');
-            const sendrightNick = stampModal.querySelector('.send__right--nick');
+            const sendRightMissionID = stampModal.querySelector('.send__right--mission-id');
+            const sendRightTitle = stampModal.querySelector('.send__right--subject-text');
+            const sendRightCond = stampModal.querySelector('.send__right--cond-text');
+            const sendRightWriter = stampModal.querySelector('.send__right--writer-text');
+            const sendRightDate = stampModal.querySelector('.send__right--date');
+            const sendRightNick = stampModal.querySelector('.send__right--nick');
             
-            sendrightTitle.textContent = data['ms_title'];
-            sendrightCond.textContent = data['ms_done_cond'];
-            sendrightWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
-            sendrightNick.textContent = `닉네임 : ${user}`;
+            sendRightMissionID.value = data['ms_id'];
+            sendRightTitle.textContent = data['ms_title'];
+            sendRightCond.textContent = data['ms_done_cond'];
+            sendRightWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
+            sendRightNick.textContent = `닉네임 : ${user}`;
 
             const today = new Date();   
             const year = today.getFullYear();
@@ -275,7 +269,7 @@
             month = (month < 10) ? '0' + month : month;
             date = (date < 10) ? '0' + date : date;
 
-            sendrightDate.textContent = `${year}.${month}.${date}`;
+            sendRightDate.textContent = `${year}.${month}.${date}`;
             
             sendLeftTags.forEach((el) => {
                 let newStampTag = stampLeftHashTag.cloneNode(true);
@@ -288,10 +282,28 @@
                 newStampTag.textContent = el;
                 stampRightHashBox.appendChild(newStampTag);
             });
+
         })
         .then(() => {
             toggleModal(stampModal);
         });
+    }
+
+    function sendDoneMisson(){
+        const sendRightForm = stampModal.querySelector('.send__right--contents');
+        const formData = new FormData(sendRightForm);
+        loading.style.display = 'flex';
+        fetch('./modules/sendDoneMisson.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(respon => respon.json())
+        .then(data => {
+            loading.style.display = 'none';
+            if(data['status'] == 200){
+                location.reload();
+            }
+        })
     }
     
     function checkFileExtens(files){
@@ -527,10 +539,11 @@
         }
     }
 
-    function getWithMission(){
+    function getWithMission(type){
         removeChild(missionsWrapperMission);
         const param = {
             'id': user,
+            'type': type,
         };
 
         fetch('./modules/getWithMission.php', {
@@ -540,65 +553,38 @@
         .then((respon) => respon.json())
         .then((data) => {
             if(data.length > 0){
-                const total = data.length;
-                const block = Math.ceil(total / 7);
-                let newDiv;
-                let newMission;
+                const datas = data;
                 
-                for(let n=0, i=0; i < block; i++){
-                    for(let j=0; j < 7; j++){
-                        if(n < total){
-                            if(j == 0 || j == 3){
-                                newDiv = missions.cloneNode(true);
-                                removeChild(newDiv);
-                            }
-
-                            newMission = missionsList.cloneNode(true);
+                datas.forEach((item, index) => {
+                    let newMission = missionsList.cloneNode(true);
                             
-                            let newThum = data[n]['ms_expain_pic'] != undefined ? data[n]['ms_expain_pic'].split(',') : 'common.png';
-                            let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
-                            let tags = data[n]['ms_tag'].split(',');
+                    let newThum = item['ms_expain_pic'] != undefined ? item['ms_expain_pic'].split(',') : 'common.png';
+                    let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                    let tags = item['ms_tag'].split(',');
 
-                            let newMissionthum = newMission.querySelector('.missions__list--image');
-                            let newMissionImg = newMission.querySelector('.missions__list--image img');
-                            let newMissionTitle = newMission.querySelector('.missions__list--info-title');
-                            let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
-                            let newMissionHashBox = newMission.querySelector('.missions__list--info-hash');
-                            let newMissionHashText = newMission.querySelector('.missions__list--hash-text');
+                    let newMissionImg = newMission.querySelector('.missions__list--image img');
+                    let newMissionTitle = newMission.querySelector('.missions__list--info-title');
+                    let newMissionWriter = newMission.querySelector('.missions__list--info-writer');
+                    let newMissionHashBox = newMission.querySelector('.missions__list--info-hash');
+                    let newMissionHashText = newMission.querySelector('.missions__list--hash-text');
 
-                            newMissionImg.src = newImgSrc;
-                            newMissionTitle.textContent = data[n]['ms_title'];
-                            newMissionWriter.innerHTML = `의뢰자 : ${data[n]['ms_writer']} <br> 마감일 : ${data[n]['ms_date_end']}`;
-                            missionsWrapperMission.appendChild(newMission);
-                            tags.forEach((el) => {
-                                let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
-                                newMissionHashText.remove();
-                                newMissionHashTag.textContent = el;
-                                newMissionHashBox.appendChild(newMissionHashTag);
-                            });
+                    newMissionImg.src = newImgSrc;
+                    newMissionTitle.textContent = item['ms_title'];
+                    newMissionWriter.innerHTML = `의뢰자 : ${item['ms_writer']} <br> 마감일 : ${item['ms_date_end']}`;
+                    
+                    tags.forEach((el) => {
+                        let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
+                        newMissionHashText.remove();
+                        newMissionHashTag.textContent = el;
+                        newMissionHashBox.appendChild(newMissionHashTag);
+                    });
 
-                            newMissionthum.addEventListener('click', () => {
-                                const originMissionView = document.querySelectorAll(`.view__contents`);
-                                originMissionView.forEach((el) => {
-                                    el.classList.remove('active');
-                                });
-                                viewWrapper.classList.add('active');
-                                newView.classList.add('active');
+                    newMission.addEventListener('click', () => {
 
-                                const viewInfo = {
-                                    'id': newViewId,
-                                };
+                    });
 
-                                fetch('./modules/okView.php', {
-                                    method: 'POST',
-                                    body: JSON.stringify(viewInfo),
-                                })
-                                .then(respon => respon.json());
-                            });
-                        }
-                        n++;
-                    }
-                }
+                    missionsWrapperWith.appendChild(newMission);
+                });
             }
         }).then(() => {
             const allMissions = document.querySelectorAll('.missions__list');

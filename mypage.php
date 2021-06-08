@@ -156,6 +156,7 @@
                             <p class="send__right--nick">닉네임 : 사람인</p>
                             <div class="send__right--stamp">도장</div>
                         </div>
+                        <input class="send__right--mission-id" type="hidden" name="ms_id" value="" />
                     </form>
 
                     <button class="send__right--submit" type="button">제출</button>
