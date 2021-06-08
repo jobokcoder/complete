@@ -15,8 +15,14 @@
         location.href = './findPW.php';
     });
 
-    loginBtn.addEventListener('click', () => {
-        
+    loginBtn.addEventListener('click', () => { login(); });
+    loginPass.addEventListener('keydown', (e) => {
+        if(e.keyCode == 13){
+            login();
+        }
+    });
+
+    function login(){
         if(loginId.value === '' || loginPass.value === ''){
             alert('빈칸없이 채워주세요.');
             return 0;
@@ -42,8 +48,7 @@
                 }
             },500);
         });
-
-    });
+    }
     
         
 }
