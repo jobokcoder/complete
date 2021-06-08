@@ -120,7 +120,13 @@
     mypageModalOpenBtn.addEventListener('click', () => { mypageModal.style.display = 'flex'; });
     mypageModalCloseBtn.addEventListener('click', () => { mypageModal.style.display = 'none'; });
     stampModalCancel.addEventListener('click', () => { toggleModal(stampModal); });
-    sendRightSumbit.addEventListener('click', () => { sendDoneMisson(); });
+    sendRightSumbit.addEventListener('click', () => {
+        if(sendRightSumbit.textContent == '제출'){
+            sendDoneMisson();
+        }else{
+
+        }
+    });
     
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
@@ -192,9 +198,21 @@
                         newMissionHashBox.appendChild(newMissionHashTag);
                     });
 
-                    newMission.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        missionDoneStamp(item['ms_id']);
+                    const param2 = {
+                        'ms_id': item['ms_id'],
+                    };
+
+                    fetch('./modules/checkConfirm.php', {
+                        method: 'POST',
+                        body: JSON.stringify(param2),
+                    }).then((respon) => respon.json())
+                    .then((data) => {
+                        if(data.length == 0){
+                            newMission.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                missionDoneStamp(item['ms_id']);
+                            });
+                        }
                     });
 
                     missionsWrapperMission.appendChild(newMission);
@@ -270,6 +288,7 @@
             date = (date < 10) ? '0' + date : date;
 
             sendRightDate.textContent = `${year}.${month}.${date}`;
+            sendRightSumbit.textContent = '제출';
             
             sendLeftTags.forEach((el) => {
                 let newStampTag = stampLeftHashTag.cloneNode(true);
