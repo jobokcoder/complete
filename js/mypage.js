@@ -120,13 +120,7 @@
     mypageModalOpenBtn.addEventListener('click', () => { mypageModal.style.display = 'flex'; });
     mypageModalCloseBtn.addEventListener('click', () => { mypageModal.style.display = 'none'; });
     stampModalCancel.addEventListener('click', () => { toggleModal(stampModal); });
-    sendRightSumbit.addEventListener('click', () => {
-        if(sendRightSumbit.textContent == '제출'){
-            sendDoneMisson();
-        }else{
-
-        }
-    });
+    sendRightSumbit.addEventListener('click', () => { sendDoneMisson(); });
     
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
@@ -214,19 +208,20 @@
                             });
                         }
                     });
-
+                    
                     missionsWrapperMission.appendChild(newMission);
                 });
             }
         }).then(() => {
             const allMissions = document.querySelectorAll('.missions__list');
             const newMissions = [];
+
             allMissions.forEach((el) => {   
                 if(el.classList.contains('active') === false){
                     newMissions.push(el);
                 }
             });
-
+            
             newMissions.forEach((el, index) => {
                 el.classList.add('active');
                 setTimeout(() => {
@@ -240,6 +235,7 @@
     function missionDoneStamp(id){
         removeChild(stampLeftHashBox);
         removeChild(stampRightHashBox);
+        
         const param = {
             'ms_id': id,
         };
@@ -288,7 +284,6 @@
             date = (date < 10) ? '0' + date : date;
 
             sendRightDate.textContent = `${year}.${month}.${date}`;
-            sendRightSumbit.textContent = '제출';
             
             sendLeftTags.forEach((el) => {
                 let newStampTag = stampLeftHashTag.cloneNode(true);
