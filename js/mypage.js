@@ -39,6 +39,12 @@
     const agentModalCancel = document.querySelector('.agent__bottom--cancel');
     const statusContentsButtons = document.querySelectorAll('.status__contents--button');
 
+    const doneModal = document.querySelector('.done__modal');
+    const doneModalCancel = document.querySelector('.done__modal--cancel');
+    const doneLeftHashBox = document.querySelector('.done__left--hash');
+    const doneLeftHashTag = document.querySelector('.done__right--hash-text');
+    const doneRightSumbit = doneModal.querySelector('.done__right--submit');
+
     const stampModal = document.querySelector('.send__modal');
     const stampModalCancel = document.querySelector('.send__modal--cancel');
     const stampLeftHashBox = document.querySelector('.send__left--hash');
@@ -136,6 +142,8 @@
     mypageModalCloseBtn.addEventListener('click', () => { mypageModal.style.display = 'none'; });
     stampModalCancel.addEventListener('click', () => { toggleModal(stampModal); });
     sendRightSumbit.addEventListener('click', () => { sendDoneMisson(); });
+    doneModalCancel.addEventListener('click', () => { toggleModal(doneModal); });
+    doneRightSumbit.addEventListener('click', () => {  });
     
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
@@ -176,6 +184,70 @@
             }
         }
     });
+
+    function missionDoneConfirm(id){
+        removeChild(doneLeftHashBox);
+        
+        const param = {
+            'ms_id': id,
+        };
+        fetch('./modules/getMissionConfirmInfo.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            console.log(data);
+            data = data[0];
+            const doneLeftTags = data['ms_tag'].split(',', 2);
+            const doneLeftTitle = doneModal.querySelector('.done__left--title-text');
+            const doneLeftTextArea = doneModal.querySelector('.done__left--textarea-text');
+            const doneLeftCond = doneModal.querySelector('.done__left--cond-text');
+            const doneLeftDone = doneModal.querySelector('.done__left--done-text');
+            const doneLeftWriter = doneModal.querySelector('.done__left--writer-text');
+            const doneLeftImg = doneModal.querySelector('.done__left--thum-img');
+            const newThum = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
+            const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+            
+            doneLeftImg.src = newImgSrc;
+            doneLeftTitle.textContent = data['ms_title'];
+            doneLeftTextArea.textContent = data['ms_contents'];
+            doneLeftCond.textContent = data['ms_done_cond'];
+            doneLeftDone.textContent = data['ms_done_com'];
+            doneLeftWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
+
+            const doneRightMissionID = doneModal.querySelector('.done__right--mission-id');
+            const doneRightTitle = doneModal.querySelector('.done__right--subject-text');
+            const doneRightWriter = doneModal.querySelector('.done__right--writer-text');
+            const doneRightDate = doneModal.querySelector('.done__right--date');
+            const doneRightNick = doneModal.querySelector('.done__right--nick');
+            const doneRightText = doneModal.querySelector('.done__right--textarea-text');
+            
+            doneRightMissionID.value = data['ms_id'];
+            doneRightTitle.textContent = data['ms_title'];
+            doneRightWriter.textContent = `작성일 : ${data['c_date']} 작성자 : ${data['m_id']}`;
+            doneRightNick.textContent = `닉네임 : ${user}`;
+            doneRightText.textContent = data['c_text'];
+
+            const today = new Date();   
+            const year = today.getFullYear();
+            let month = today.getMonth() + 1;
+            let date = today.getDate();
+
+            month = (month < 10) ? '0' + month : month;
+            date = (date < 10) ? '0' + date : date;
+
+            doneRightDate.textContent = `${year}.${month}.${date}`;
+            
+            doneLeftTags.forEach((el) => {
+                let newStampTag = stampLeftHashTag.cloneNode(true);
+                newStampTag.textContent = el;
+                doneLeftHashBox.appendChild(newStampTag);
+            });
+        })
+        .then(() => {
+            toggleModal(doneModal);
+        });
+    }
 
     function getCompleteStatus(){
         fetch('./modules/getCompleteStatus.php')
@@ -608,7 +680,6 @@
         .then((data) => {
             if(data.length > 0){
                 const datas = data;
-                
                 datas.forEach((item) => {
                     let newMission = missionsList.cloneNode(true);
                             
@@ -633,9 +704,12 @@
                         newMissionHashBox.appendChild(newMissionHashTag);
                     });
 
-                    newMission.addEventListener('click', () => {
-
-                    });
+                    if(type == 1){
+                        newMission.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            missionDoneConfirm(item['ms_id']);
+                        });
+                    }
 
                     missionsWrapperWith.appendChild(newMission);
                 });
