@@ -39,10 +39,12 @@
     const agentModalCancel = document.querySelector('.agent__bottom--cancel');
     const statusContentsButtons = document.querySelectorAll('.status__contents--button');
 
+    const stamps = document.querySelectorAll('.stamp');
     const doneModal = document.querySelector('.done__modal');
     const doneModalCancel = document.querySelector('.done__modal--cancel');
     const doneLeftHashBox = document.querySelector('.done__left--hash');
-    const doneLeftHashTag = document.querySelector('.done__right--hash-text');
+    const doneRightStamp = document.querySelector('.done__right--stamp');
+    const doneRightStampSelect = document.querySelector('.done__right--stamp-select');
     const doneRightSumbit = doneModal.querySelector('.done__right--submit');
 
     const stampModal = document.querySelector('.send__modal');
@@ -52,7 +54,6 @@
     const stampRightHashBox = document.querySelector('.send__right--hash');
     const sendRightSumbit = stampModal.querySelector('.send__right--submit');
 
-    const form = document.querySelector('.send__right--contents');
     const fileLabel = document.querySelector('.send__right--file-btn');
     const fileInput = document.querySelector('.send__right--file-input');
     const fileBox = document.querySelector('.send__right--file');
@@ -60,7 +61,6 @@
 
     const missionSelectBox = document.querySelector('.missions__filter--select-mission');
     const withSelectBox = document.querySelector('.missions__filter--select-with');
-    const acceptSelectBox = document.querySelector('.missions__filter--select-accept');
 
     let user = '';
 
@@ -143,8 +143,26 @@
     stampModalCancel.addEventListener('click', () => { toggleModal(stampModal); });
     sendRightSumbit.addEventListener('click', () => { sendDoneMisson(); });
     doneModalCancel.addEventListener('click', () => { toggleModal(doneModal); });
-    doneRightSumbit.addEventListener('click', () => {  });
-    
+    doneRightSumbit.addEventListener('click', () => { confirmDoneMission(); });
+    doneRightStamp.addEventListener('click', () => { doneRightStampSelect.style.display = 'grid'; });
+
+    stamps.forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const doneRightStampText = doneModal.querySelectorAll('.done__right--stamp-text');
+            if(doneRightStampText.length > 0){
+                doneRightStampText[0].remove();
+            }
+            const doneRightStampCopy = doneRightStamp.querySelector('.stamp');
+            if(doneRightStampCopy.length > 0){
+                doneRightStampCopy[0].remove();
+            }
+            doneRightStampSelect.style.display = 'none';
+            const cloneStamp = el.cloneNode(true);
+            doneRightStamp.appendChild(cloneStamp);
+        });
+    });
+
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
@@ -185,6 +203,19 @@
         }
     });
 
+    function confirmDoneMission(){
+        // const param = {
+        //     'ms_id': doneModal.id,
+        // };
+        // fetch('./modules/getMissionConfirmInfo.php', {
+        //     method: 'post',
+        //     body: JSON.stringify(param),
+        // }).then((respon) => respon.json())
+        // .then((data) => {
+
+        // });
+    }
+
     function missionDoneConfirm(id){
         removeChild(doneLeftHashBox);
         
@@ -196,7 +227,6 @@
             body: JSON.stringify(param),
         }).then((respon) => respon.json())
         .then((data) => {
-            console.log(data);
             data = data[0];
             const doneLeftTags = data['ms_tag'].split(',', 2);
             const doneLeftTitle = doneModal.querySelector('.done__left--title-text');
@@ -222,6 +252,7 @@
             const doneRightNick = doneModal.querySelector('.done__right--nick');
             const doneRightText = doneModal.querySelector('.done__right--textarea-text');
             
+            doneModal.id = data['ms_id'];
             doneRightMissionID.value = data['ms_id'];
             doneRightTitle.textContent = data['ms_title'];
             doneRightWriter.textContent = `작성일 : ${data['c_date']} 작성자 : ${data['m_id']}`;
