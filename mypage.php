@@ -141,9 +141,7 @@
                         </div>
 
                         <div class="send__right--textarea">
-                            <textarea class="send__right--textarea-text" name="request_text">
-                                
-                            </textarea>
+                            <textarea class="send__right--textarea-text" name="request_text"></textarea>
                         </div>
 
                         <div class="send__right--cond">
@@ -191,6 +189,14 @@
 
                         <h2 class="mypage__user--add">제주특별자치도 제주시</h2>
                         <p class="mypage__user--comment"></p>
+                    </div>
+
+                    <div class="mypage__user--status">
+                        <p class="mypage__user--status-complete"></p>
+                        <div class="mypage__user--status-bar">
+                            <div class="mypage__user--status-number"></div>
+                        </div>
+                        <p class="mypage__user--status-fail"></p>
                     </div>
                 </div>
                 
