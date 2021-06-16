@@ -211,7 +211,7 @@
                     <div class="mypage__subFunction--wrapper">
                         <div class="missions__subFunction missions__subFunction--mission active">
                             <div class="missions__filter">
-                                <select class="missions__filter--select">
+                                <select class="missions__filter--select missions__filter--select-mission">
                                     <option value="0">진행중</option>
                                     <option value="1">완료</option>
                                 </select>
@@ -220,7 +220,7 @@
                         
                         <div class="missions__subFunction missions__subFunction--with">
                             <div class="missions__filter">
-                                <select class="missions__filter--select">
+                                <select class="missions__filter--select missions__filter--select-with">
                                     <option value="0">의뢰중</option>
                                     <option value="1">완료확인요청</option>
                                     <option value="2">완료</option>
@@ -230,7 +230,7 @@
 
                         <div class="missions__subFunction missions__subFunction--accept">
                             <div class="missions__filter">
-                                <select class="missions__filter--select">
+                                <select class="missions__filter--select missions__filter--select-accept">
                                     <option value="0">같이하기현황</option>
                                     <option value="1">미션신청현황</option>
                                 </select>

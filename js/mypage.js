@@ -52,6 +52,10 @@
     const fileBox = document.querySelector('.send__right--file');
     const fileName = document.querySelector('.done__compensation--file-name');
 
+    const missionSelectBox = document.querySelector('.missions__filter--select-mission');
+    const withSelectBox = document.querySelector('.missions__filter--select-with');
+    const acceptSelectBox = document.querySelector('.missions__filter--select-accept');
+
     let user = '';
 
     window.addEventListener('load', () => {
@@ -72,9 +76,19 @@
             accountItemPW.textContent = data['pw'];
             accountItemEmail.textContent = data['email'];
             accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
-            getFulFillMission();
+            getFulFillMission(0);
             getCompleteStatus();
         });
+    });
+
+    missionSelectBox.addEventListener('change', () => {
+        removeChild(missionsWrapperMission);
+        getFulFillMission(missionSelectBox.value);
+    });
+
+    withSelectBox.addEventListener('change', () => {
+        removeChild(missionsWrapperWith);
+        getWithMission(withSelectBox.value);
     });
 
     mypageMenus.forEach((item) => {
@@ -96,7 +110,7 @@
                 item.classList.add('active');
                 missionsWrapperMission.classList.add('active');
                 missionsSubFunctionAll[0].classList.add('active');
-                getFulFillMission();
+                getFulFillMission(0);
             }else if(item.textContent === '같이하기'){
                 item.classList.add('active');
                 missionsWrapperWith.classList.add('active');
@@ -183,15 +197,20 @@
         });
     }
 
-    function getFulFillMission(){
+    function getFulFillMission(type){
         removeChild(missionsWrapperMission);
-        fetch('./modules/getFulFillMission.php')
+        const param = {
+            'type': type
+        };
+        fetch('./modules/getFulFillMission.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        })
         .then((respon) => respon.json())
         .then((data) => {
             if(data.length > 0){
                 data.forEach((item) => {
                     let newMission = missionsList.cloneNode(true);
-                            
                     let newThum = item['ms_expain_pic'] != undefined ? item['ms_expain_pic'].split(',') : 'common.png';
                     let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
                     let tags = item['ms_tag'].split(',');
@@ -575,7 +594,7 @@
     }
 
     function getWithMission(type){
-        removeChild(missionsWrapperMission);
+        removeChild(missionsWrapperWith);
         const param = {
             'id': user,
             'type': type,
@@ -590,7 +609,7 @@
             if(data.length > 0){
                 const datas = data;
                 
-                datas.forEach((item, index) => {
+                datas.forEach((item) => {
                     let newMission = missionsList.cloneNode(true);
                             
                     let newThum = item['ms_expain_pic'] != undefined ? item['ms_expain_pic'].split(',') : 'common.png';
