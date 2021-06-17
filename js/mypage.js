@@ -240,15 +240,12 @@
             const doneMissionLeftDone = doneMissionModal.querySelector('.doneMission__left--done-text');
             const doneMissionLeftWriter = doneMissionModal.querySelector('.doneMission__left--writer-text');
 
-            const doneMissionRightTags = data['ms_tag'].split(',', 2);
             const doneMissionRightImg = doneMissionModal.querySelector('.doneMission__right--thum-img');
-            const doneMissionRightHashBox = doneMissionModal.querySelector('.doneMission__right--hash');
             const doneMissionRightTitle = doneMissionModal.querySelector('.doneMission__right--title-text');
             const doneMissionRightTextArea = doneMissionModal.querySelector('.doneMission__right--textarea-text');
             const doneMissionRightCond = doneMissionModal.querySelector('.doneMission__right--cond-text');
             const doneMissionRightDate = doneMissionModal.querySelector('.doneMission__right--date-text');
             const doneMissionRightWriter = doneMissionModal.querySelector('.doneMission__right--writer-text');
-            const doneMissionRightStamp = doneMissionModal.querySelector('.done__right--stamp');
 
             const doneStamps = doneMissionModal.querySelectorAll('.done-stamp');
             
@@ -324,7 +321,6 @@
             const doneLeftImg = doneModal.querySelector('.done__left--thum-img');
             const newThum = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
             const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
-            
             
             doneLeftImg.src = newImgSrc;
             doneLeftTitle.textContent = data['ms_title'];

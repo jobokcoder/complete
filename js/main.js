@@ -248,8 +248,8 @@
                     newSlideRightMissionImg.src = newImgSrc;
                     newSlideMissionTitle.textContent = el['ms_title'];
                     newSlideMissionText.textContent = el['ms_contents'];
-                    newSlideMissionWriter.textContent = el['ms_writer'];
-                    newSlideMissionDeadline.textContent = el['ms_date_end'];
+                    newSlideMissionWriter.textContent = `의뢰자 : ${el['ms_writer']}`;
+                    newSlideMissionDeadline.textContent = `마감일 : ${el['ms_date_end']}`;
                     
                     tags.forEach((el) => {
                         let newSlideMissionHashTag = slideMissionHash.cloneNode(true);
