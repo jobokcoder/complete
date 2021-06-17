@@ -69,9 +69,9 @@
                     <div class="header__icons--item"> 
                         <svg class="header__icons--item-menu" width="30" height="28" viewBox="0 0 30 28">
                             <g id="그룹_20" data-name="그룹 20" transform="translate(-1570 -39)">
-                                <rect id="사각형_335" data-name="사각형 335" width="30" height="4" transform="translate(1570 39)" fill="#3a3a3c"/>
-                                <rect id="사각형_336" data-name="사각형 336" width="18" height="4" transform="translate(1582 51)" fill="#3a3a3c"/>
-                                <rect id="사각형_337" data-name="사각형 337" width="30" height="4" transform="translate(1570 63)" fill="#3a3a3c"/>
+                                <rect id="square_335" data-name="사각형 335" width="30" height="4" transform="translate(1570 39)" fill="#3a3a3c"/>
+                                <rect id="square_336" data-name="사각형 336" width="18" height="4" transform="translate(1582 51)" fill="#3a3a3c"/>
+                                <rect id="square_337" data-name="사각형 337" width="30" height="4" transform="translate(1570 63)" fill="#3a3a3c"/>
                             </g>
                         </svg>
                     </div>
