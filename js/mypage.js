@@ -297,18 +297,21 @@
         .then((respon) => respon.json())
         .then((data) => {
             data = data[0];
-
             const statusComplete = document.querySelector('.mypage__user--status-complete');
             const statusFail = document.querySelector('.mypage__user--status-fail');
             const statusNumber = document.querySelector('.mypage__user--status-number');
             const complete = Number(data['m_complete']);
             const fail = Number(data['m_fail']);
             const total = complete + fail;
-            const completePercent = (complete / total) * 100;
+            let completePercent = 0;
+            if(total !== 0){
+                completePercent = (complete / total) * 100;
+            }
 
             statusComplete.textContent = `성공 : ${complete}개 `;
             statusFail.textContent = ` 실패 : ${fail}개`;
             statusNumber.style.width = `${completePercent}%`;
+            console.log(completePercent);
         });
     }
 

@@ -4,6 +4,18 @@
     $ms_id = $reciveData['ms_id'];
     $stamp = $reciveData['stamp'];
 
+    $sql = "select * from confirm where ms_id = '$ms_id'";
+    $result = getData($sql);
+    foreach($result as $item){
+        $m_id = $item['m_id'];
+        if($stamp == 0){
+            $sql = "update member set m_fail = (m_fail + 1) where m_id = '$m_id'"; 
+        }else{
+            $sql = "update member set m_complete = (m_complete + 1) where m_id = '$m_id'"; 
+        }
+        $result = setData($sql);
+    }
+
     $sql = "update confirm set c_status = '1', c_stamp = '$stamp' where ms_id = '$ms_id'";
     $result = setData($sql);
     $json = [];
