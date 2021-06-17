@@ -46,6 +46,7 @@
     const doneRightStampItem = document.querySelector('.done__right--stamp-item');
     const doneRightStampSelect = document.querySelector('.done__right--stamp-select');
     const doneRightSumbit = doneModal.querySelector('.done__right--submit');
+    const doneRightStampID = doneModal.querySelector('.done__right--stamp-id');
 
     const stampModal = document.querySelector('.send__modal');
     const stampModalCancel = document.querySelector('.send__modal--cancel');
@@ -84,24 +85,6 @@
             accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
             getFulFillMission(0);
             getCompleteStatus();
-        });
-    });
-
-    doneRightStampItem.addEventListener('click', (e) => { 
-        e.preventDefault();
-        doneRightStampSelect.style.display = 'grid';
-    })
-
-    stamps.forEach((el) => {
-        el.addEventListener('click', (e) => {
-            e.preventDefault();
-            removeChild(doneRightStampItem);
-            doneRightStampSelect.style.display = 'none';
-            const copyStamp = el.cloneNode(true);
-            const copyStampText = document.querySelector('.done__right--stamp-text');
-
-            copyStampText.style.display = 'none';
-            doneRightStampItem.appendChild(copyStamp);
         });
     });
 
@@ -163,6 +146,27 @@
     doneModalCancel.addEventListener('click', () => { toggleModal(doneModal); });
     doneRightSumbit.addEventListener('click', () => { confirmDoneMission(); });
 
+    doneRightStampItem.addEventListener('click', (e) => { 
+        e.preventDefault();
+        doneRightStampSelect.style.display = 'grid';
+    })
+
+    stamps.forEach((el, index) => {
+        el.addEventListener('click', (e) => {
+            const copyStamp = el.cloneNode(true);
+            const copyStampText = document.querySelector('.done__right--stamp-text');
+
+            e.preventDefault();
+            removeChild(doneRightStampItem);
+            
+            doneRightStampID.value = index;
+            copyStampText.style.display = 'none';
+            doneRightStampSelect.style.display = 'none';
+
+            doneRightStampItem.appendChild(copyStamp);
+        });
+    });
+
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
@@ -204,16 +208,25 @@
     });
 
     function confirmDoneMission(){
-        // const param = {
-        //     'ms_id': doneModal.id,
-        // };
-        // fetch('./modules/getMissionConfirmInfo.php', {
-        //     method: 'post',
-        //     body: JSON.stringify(param),
-        // }).then((respon) => respon.json())
-        // .then((data) => {
-
-        // });
+        if(doneRightStampID.value === ''){
+            alert('도장을 선택해주세요.'); 
+            return 0;
+        }
+        loading.style.display = 'flex';
+        
+        const param = {
+            'ms_id': doneModal.id,
+            'stamp': doneRightStampID.value,
+        };
+        
+        fetch('./modules/confirmDoneMission.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            loading.style.display = 'none';
+            location.reload();
+        });
     }
 
     function missionDoneConfirm(id){
@@ -238,6 +251,7 @@
             const newThum = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
             const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
             
+            
             doneLeftImg.src = newImgSrc;
             doneLeftTitle.textContent = data['ms_title'];
             doneLeftTextArea.textContent = data['ms_contents'];
@@ -245,7 +259,6 @@
             doneLeftDone.textContent = data['ms_done_com'];
             doneLeftWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
 
-            const doneRightMissionID = doneModal.querySelector('.done__right--mission-id');
             const doneRightTitle = doneModal.querySelector('.done__right--subject-text');
             const doneRightWriter = doneModal.querySelector('.done__right--writer-text');
             const doneRightDate = doneModal.querySelector('.done__right--date');
@@ -253,7 +266,6 @@
             const doneRightText = doneModal.querySelector('.done__right--textarea-text');
             
             doneModal.id = data['ms_id'];
-            doneRightMissionID.value = data['ms_id'];
             doneRightTitle.textContent = data['ms_title'];
             doneRightWriter.textContent = `작성일 : ${data['c_date']} 작성자 : ${data['m_id']}`;
             doneRightNick.textContent = `닉네임 : ${user}`;

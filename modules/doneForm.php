@@ -243,7 +243,7 @@
                         </div>
                     </div>
                 </div>
-                <input class="done__right--mission-id" type="hidden" name="ms_id" value="" />
+                <input class="done__right--stamp-id" type="hidden" name="ms_id" value="" />
             </form>
 
             <button class="done__right--submit" type="button">도장찍기</button>
