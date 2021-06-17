@@ -51,8 +51,7 @@
     const stampModal = document.querySelector('.send__modal');
     const stampModalCancel = document.querySelector('.send__modal--cancel');
     const stampLeftHashBox = document.querySelector('.send__left--hash');
-    const stampLeftHashTag = document.querySelector('.send__right--hash-text');
-    const stampRightHashBox = document.querySelector('.send__right--hash');
+    const stampLeftHashTag = document.querySelector('.send__left--hash-text');
     const sendRightSumbit = stampModal.querySelector('.send__right--submit');
 
     const fileLabel = document.querySelector('.send__right--file-btn');
@@ -65,6 +64,11 @@
 
     const doneMissionModal = document.querySelector('.doneMission__modal');
     const doneMissionModalClose = document.querySelector('.doneMission__modal--cancel');
+
+    const tagBox = document.querySelector('.write__input--tagbox');
+    const tagInput= document.querySelector('.write__input--tag');
+    const hashtag = document.querySelector('.hashtag');
+    const tagArr = [];
 
     let user = '';
 
@@ -88,6 +92,7 @@
             accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
             getFulFillMission(0);
             getCompleteStatus();
+            hashtag.remove();
         });
     });
 
@@ -211,6 +216,38 @@
     });
 
     doneMissionModalClose.addEventListener('click', () => { doneMissionModal.style.display = 'none'; });
+    
+    tagInput.addEventListener('keyup', (e) => {
+        if(e.key === ','){
+            hash(e.target.value);
+        }
+    });
+
+    tagInput.addEventListener('keydown', (e) => {
+        if(e.key === 'Backspace' && e.target.value === ''){
+            removehash();
+        }
+    });
+
+    function hash(str){
+        if(tagArr.length < 5){
+            let tag = hashtag.cloneNode(true);
+            let text = '#' + str.replaceAll(',','');
+            tag.textContent = text;
+            tagArr.push(text);
+            tagBox.prepend(tag);
+            tagInput.value = '';
+        }
+        writeHashTag.value = tagArr;
+    }
+
+    function removehash(){
+        if(tagArr.length > 0){
+            const tags = document.querySelectorAll('.hashtag');
+            tags[tags.length - 1].remove();
+            tagArr.pop();
+        }
+    }
 
     function showDoneMission(id){
         doneMissionModal.style.display = 'flex';
@@ -338,7 +375,7 @@
             doneModal.id = data['ms_id'];
             doneRightTitle.textContent = data['ms_title'];
             doneRightWriter.textContent = `작성일 : ${data['c_date']} 작성자 : ${data['m_id']}`;
-            doneRightNick.textContent = `닉네임 : ${user}`;
+            doneRightNick.textContent = `수행자 : ${user}`;
             doneRightText.textContent = data['c_text'];
 
             const today = new Date();   
@@ -352,7 +389,7 @@
             doneRightDate.textContent = `${year}.${month}.${date}`;
             
             doneLeftTags.forEach((el) => {
-                let newStampTag = stampLeftHashTag.cloneNode(true);
+                const newStampTag = stampLeftHashTag.cloneNode(true);
                 newStampTag.textContent = el;
                 doneLeftHashBox.appendChild(newStampTag);
             });
@@ -461,7 +498,6 @@
 
     function missionDoneStamp(id){
         removeChild(stampLeftHashBox);
-        removeChild(stampRightHashBox);
         
         const param = {
             'ms_id': id,
@@ -490,17 +526,11 @@
             sendLeftWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
 
             const sendRightMissionID = stampModal.querySelector('.send__right--mission-id');
-            const sendRightTitle = stampModal.querySelector('.send__right--subject-text');
-            const sendRightCond = stampModal.querySelector('.send__right--cond-text');
-            const sendRightWriter = stampModal.querySelector('.send__right--writer-text');
             const sendRightDate = stampModal.querySelector('.send__right--date');
             const sendRightNick = stampModal.querySelector('.send__right--nick');
             
             sendRightMissionID.value = data['ms_id'];
-            sendRightTitle.textContent = data['ms_title'];
-            sendRightCond.textContent = data['ms_done_cond'];
-            sendRightWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
-            sendRightNick.textContent = `닉네임 : ${user}`;
+            sendRightNick.textContent = `수행자 : ${user}`;
 
             const today = new Date();   
             const year = today.getFullYear();
@@ -517,13 +547,6 @@
                 newStampTag.textContent = el;
                 stampLeftHashBox.appendChild(newStampTag);
             });
-
-            sendLeftTags.forEach((el) => {
-                let newStampTag = stampLeftHashTag.cloneNode(true);
-                newStampTag.textContent = el;
-                stampRightHashBox.appendChild(newStampTag);
-            });
-
         })
         .then(() => {
             toggleModal(stampModal);

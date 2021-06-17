@@ -216,3 +216,7 @@
 .doneMission__right--writer-text{ font-size: 18px; font-weight: 400; }
 .done__right--stamp{ position: relative; display: flex; justify-content: center; align-items: center; width: 90px; height: 90px; }
 .done-stamp{ display: none; }
+
+.write__input--tagbox{ padding: 0.65rem 0; width: 100%; display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); overflow-x: hidden; }
+.write__input--tag{ width: auto; font-size: 16px; font-weight: 400; }
+.hashtag{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }

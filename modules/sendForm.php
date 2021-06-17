@@ -52,15 +52,12 @@
 
                     <form class="send__right--contents" method="POST" enctype="multipart/form-data">
                         <div class="send__right--subject">
-                            <p class="send__right--subject-text">피자먹기</p>
+                            <input class="send__right--subject-text" type="text" name="send_title" placeholder="제목을 입력하세요." />
                         </div>
-
-                        <div class="send__right--hash">
-                            <p class="send__right--hash-text"></p>
-                        </div>
-
-                        <div class="send__right--writer">
-                            <p class="send__right--writer-text">마감일 : 2021.05.25 &nbsp;&nbsp; 작성자 : 눈누난나</p>
+                        
+                        <div class="write__input--tagbox">
+                            <p class="hashtag"># 안녕하세요.</p>
+                            <input class="write__input write__input--tag" type="text" placeholder="해시태그는 , 로 구분합니다."/>
                         </div>
 
                         <div class="send__right--file">
