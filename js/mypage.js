@@ -223,7 +223,7 @@
             method: 'post',
             body: JSON.stringify(param),
         }).then((respon) => respon.json())
-        .then((data) => {
+        .then(() => {
             loading.style.display = 'none';
             location.reload();
         });
@@ -311,7 +311,6 @@
             statusComplete.textContent = `성공 : ${complete}개 `;
             statusFail.textContent = ` 실패 : ${fail}개`;
             statusNumber.style.width = `${completePercent}%`;
-            console.log(completePercent);
         });
     }
 

@@ -64,6 +64,7 @@
         <?php
             include('./modules/sendForm.php');
             include('./modules/doneForm.php');
+            include('./modules/doneMission.php');
             include('./modules/header.php');
         ?>
 
