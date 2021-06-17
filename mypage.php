@@ -196,6 +196,7 @@
                             <div class="missions__account--item">
                                 <p class="missions__account--item-title">비밀번호</p>
                                 <p class="missions__account--item-content missions__account--item-pw">●●●●●●●●</p>
+                                <button class="missions__account--password-change">변경</button>
                             </div>
                             <div class="missions__account--item">
                                 <p class="missions__account--item-title">이메일</p>

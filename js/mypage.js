@@ -63,6 +63,9 @@
     const missionSelectBox = document.querySelector('.missions__filter--select-mission');
     const withSelectBox = document.querySelector('.missions__filter--select-with');
 
+    const doneMissionModal = document.querySelector('.doneMission__modal');
+    const doneMissionModalClose = document.querySelector('.doneMission__modal--cancel');
+
     let user = '';
 
     window.addEventListener('load', () => {
@@ -206,6 +209,77 @@
             }
         }
     });
+
+    doneMissionModalClose.addEventListener('click', () => { doneMissionModal.style.display = 'none'; });
+
+    function showDoneMission(id){
+        doneMissionModal.style.display = 'flex';
+        const param = {
+            'ms_id': id,
+        };
+        
+        fetch('./modules/showDoneMission.php', {
+            method: 'post',
+            body: JSON.stringify(param),
+        }).then((respon) => respon.json())
+        .then((data) => {
+            data = data[0];
+
+            const newThum_left = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
+            const newImgSrc_left = newThum_left[0] !== '' ? `./upload/${newThum_left[0]}` : '/upload/common.png';
+
+            const newThum_right = data['c_picture'] != undefined ? data['c_picture'].split(',') : 'common.png';
+            const newImgSrc_right = newThum_right[0] !== '' ? `./upload/${newThum_right[0]}` : '/upload/common.png';
+            
+            const doneMissionLeftTags = data['ms_tag'].split(',', 2);
+            const doneMissionLeftImg = doneMissionModal.querySelector('.doneMission__left--thum-img');
+            const doneMissionLeftHashBox = doneMissionModal.querySelector('.doneMission__left--hash');
+            const doneMissionLeftTitle = doneMissionModal.querySelector('.doneMission__left--title-text');
+            const doneMissionLeftTextArea = doneMissionModal.querySelector('.doneMission__left--textarea-text');
+            const doneMissionLeftCond = doneMissionModal.querySelector('.doneMission__left--cond-text');
+            const doneMissionLeftDone = doneMissionModal.querySelector('.doneMission__left--done-text');
+            const doneMissionLeftWriter = doneMissionModal.querySelector('.doneMission__left--writer-text');
+
+            const doneMissionRightTags = data['ms_tag'].split(',', 2);
+            const doneMissionRightImg = doneMissionModal.querySelector('.doneMission__right--thum-img');
+            const doneMissionRightHashBox = doneMissionModal.querySelector('.doneMission__right--hash');
+            const doneMissionRightTitle = doneMissionModal.querySelector('.doneMission__right--title-text');
+            const doneMissionRightTextArea = doneMissionModal.querySelector('.doneMission__right--textarea-text');
+            const doneMissionRightCond = doneMissionModal.querySelector('.doneMission__right--cond-text');
+            const doneMissionRightDate = doneMissionModal.querySelector('.doneMission__right--date-text');
+            const doneMissionRightWriter = doneMissionModal.querySelector('.doneMission__right--writer-text');
+            const doneMissionRightStamp = doneMissionModal.querySelector('.done__right--stamp');
+
+            const doneStamps = doneMissionModal.querySelectorAll('.done-stamp');
+            
+            removeChild(doneMissionLeftHashBox);
+            doneMissionLeftImg.src = newImgSrc_left;
+            doneMissionLeftTitle.textContent = data['ms_title'];
+            doneMissionLeftTextArea.textContent = data['ms_contents'];
+            doneMissionLeftCond.textContent = data['ms_done_cond'];
+            doneMissionLeftDone.textContent = data['ms_done_com'];
+            doneMissionLeftWriter.textContent = `마감일 : ${data['ms_date_end']}  작성자 : ${data['ms_writer']}`;
+
+            doneMissionRightImg.src = newImgSrc_right;
+            doneMissionRightTitle.textContent = data['ms_title'];
+            doneMissionRightTextArea.textContent = data['c_text'];
+            doneMissionRightCond.textContent = data['ms_done_cond'];
+            doneMissionRightDate.textContent = `제출일 : ${data['c_date']}`;
+            doneMissionRightWriter.textContent = `제출자 : ${data[19]}`;
+
+            doneStamps.forEach((el, index) => {
+                if(index == data['c_stamp']){
+                    el.style.display = 'block';
+                }
+            });
+
+            doneMissionLeftTags.forEach((el) => {
+                const newStampTag = stampLeftHashTag.cloneNode(true);
+                newStampTag.textContent = el;
+                doneMissionLeftHashBox.appendChild(newStampTag);
+            });
+        });
+    }
 
     function confirmDoneMission(){
         if(doneRightStampID.value === ''){
@@ -753,6 +827,13 @@
                         newMission.addEventListener('click', (e) => {
                             e.preventDefault();
                             missionDoneConfirm(item['ms_id']);
+                        });
+                    }
+
+                    if(type == 2){
+                        newMission.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            showDoneMission(item['ms_id']);
                         });
                     }
 

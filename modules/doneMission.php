@@ -68,12 +68,12 @@
                 </div>
 
                 <div class="doneMission__right--writer">
-                    <p class="doneMission__right--writer-text">
-                        마감일 : 2021.05.25<br>
-                        작성자 : 눈누난나
-                    </p>
+                    <div class="doneMission__right--writer-left">
+                        <p class="doneMission__right--date-text">마감일 : 2021.05.25</p>
+                        <p class="doneMission__right--writer-text">마감일 : 2021.05.25</p>
+                    </div>
                     <div class="done__right--stamp">
-                        <svg class="done-stamp__1 done-stamp" style="display: block;" viewBox="0 0 397.226 361.088">
+                        <svg class="done-stamp__1 done-stamp" viewBox="0 0 397.226 361.088">
                             <g id="그룹_91" data-name="그룹 91" transform="translate(-51.387 -77.041)">
                                 <path id="패스_266" data-name="패스 266" d="M231.58,150.247l-5.97,23.26h12.13Zm0,0-5.97,23.26h12.13ZM74,99.367v112.89a4,4,0,0,0,4,4H422a4,4,0,0,0,4-4V99.367a4,4,0,0,0-4-4H78A4,4,0,0,0,74,99.367Zm121.15,65H176.17v32.75H159v-83.08h45.47V131.2h-28.3v16h18.98Zm48.86,33.4-2.05-7.68H220.98l-1.94,7.5-17.57-.06,21.38-83.85,16.64-.05,22.27,84.14Zm43.02-.65H269.92v-83.08h17.11Zm53.97,0H295.88v-83.08h17.17v65.91H341Zm-115.39-23.61h12.13l-6.16-23.26Zm5.97-23.26-5.97,23.26h12.13Zm0,0-5.97,23.26h12.13Z" fill="#dd001c"/>
                                 <g id="그룹_85" data-name="그룹 85">
