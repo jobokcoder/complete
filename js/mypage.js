@@ -43,7 +43,7 @@
     const doneModal = document.querySelector('.done__modal');
     const doneModalCancel = document.querySelector('.done__modal--cancel');
     const doneLeftHashBox = document.querySelector('.done__left--hash');
-    const doneRightStamp = document.querySelector('.done__right--stamp');
+    const doneRightStampItem = document.querySelector('.done__right--stamp-item');
     const doneRightStampSelect = document.querySelector('.done__right--stamp-select');
     const doneRightSumbit = doneModal.querySelector('.done__right--submit');
 
@@ -84,6 +84,24 @@
             accountItemAddress.textContent = `${data['m_add1']} ${data['m_add2']}`;
             getFulFillMission(0);
             getCompleteStatus();
+        });
+    });
+
+    doneRightStampItem.addEventListener('click', (e) => { 
+        e.preventDefault();
+        doneRightStampSelect.style.display = 'grid';
+    })
+
+    stamps.forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            removeChild(doneRightStampItem);
+            doneRightStampSelect.style.display = 'none';
+            const copyStamp = el.cloneNode(true);
+            const copyStampText = document.querySelector('.done__right--stamp-text');
+
+            copyStampText.style.display = 'none';
+            doneRightStampItem.appendChild(copyStamp);
         });
     });
 
@@ -144,24 +162,6 @@
     sendRightSumbit.addEventListener('click', () => { sendDoneMisson(); });
     doneModalCancel.addEventListener('click', () => { toggleModal(doneModal); });
     doneRightSumbit.addEventListener('click', () => { confirmDoneMission(); });
-    doneRightStamp.addEventListener('click', () => { doneRightStampSelect.style.display = 'grid'; });
-
-    stamps.forEach((el) => {
-        el.addEventListener('click', (e) => {
-            e.preventDefault();
-            const doneRightStampText = doneModal.querySelectorAll('.done__right--stamp-text');
-            if(doneRightStampText.length > 0){
-                doneRightStampText[0].remove();
-            }
-            const doneRightStampCopy = doneRightStamp.querySelector('.stamp');
-            if(doneRightStampCopy.length > 0){
-                doneRightStampCopy[0].remove();
-            }
-            doneRightStampSelect.style.display = 'none';
-            const cloneStamp = el.cloneNode(true);
-            doneRightStamp.appendChild(cloneStamp);
-        });
-    });
 
     statusContentsButtons.forEach((el) => {
         el.addEventListener('click', (e) => {
