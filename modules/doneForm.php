@@ -55,8 +55,9 @@
                     <p class="done__right--subject-text">피자먹기</p>
                 </div>
 
-                <div class="done__right--writer">
-                    <p class="done__right--writer-text">마감일 : 2021.05.25 &nbsp;&nbsp; 작성자 : 눈누난나</p>
+                <div class="done__right--hash">
+                    <p class="done__right--hash-text">#피자</p>
+                    <p class="done__right--hash-text">#직접먹기</p>
                 </div>
 
                 <div class="done__right--picture">

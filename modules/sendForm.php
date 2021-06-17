@@ -61,6 +61,7 @@
                         </div>
 
                         <div class="send__right--file">
+                            <input class="write__input--hidden" type="hidden" name="c_hash"/>
                             <input class="send__right--file-input" type="file" name="request__file" accept=".gif, .jpg, .png, .mp4"/>
                             <svg class="send__right--file-btn" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23">
                                 <g id="그룹_70" data-name="그룹 70" transform="translate(-9.759 -6.897)">
@@ -75,12 +76,7 @@
                         </div>
 
                         <div class="send__right--textarea">
-                            <textarea class="send__right--textarea-text" name="request_text"></textarea>
-                        </div>
-
-                        <div class="send__right--cond">
-                            <p class="send__right--cond-title">완료조건</p>
-                            <p class="send__right--cond-text">1. 미션완료 적을때, 주문한 가게이름, 피자이름, 음식리뷰, 별점 까지 싹싹 적어주세요.</p>
+                            <textarea class="send__right--textarea-text" name="send_text"></textarea>
                         </div>
 
                         <div class="send__right--confirm">

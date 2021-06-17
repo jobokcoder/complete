@@ -43,6 +43,7 @@
     const doneModal = document.querySelector('.done__modal');
     const doneModalCancel = document.querySelector('.done__modal--cancel');
     const doneLeftHashBox = document.querySelector('.done__left--hash');
+    const doneRightHashBox = document.querySelector('.done__right--hash');
     const doneRightStampItem = document.querySelector('.done__right--stamp-item');
     const doneRightStampSelect = document.querySelector('.done__right--stamp-select');
     const doneRightSumbit = doneModal.querySelector('.done__right--submit');
@@ -68,6 +69,7 @@
     const tagBox = document.querySelector('.write__input--tagbox');
     const tagInput= document.querySelector('.write__input--tag');
     const hashtag = document.querySelector('.hashtag');
+    const writeHashTag = document.querySelector('.write__input--hidden');
     const tagArr = [];
 
     let user = '';
@@ -339,6 +341,7 @@
 
     function missionDoneConfirm(id){
         removeChild(doneLeftHashBox);
+        removeChild(doneRightHashBox);
         
         const param = {
             'ms_id': id,
@@ -350,6 +353,7 @@
         .then((data) => {
             data = data[0];
             const doneLeftTags = data['ms_tag'].split(',', 2);
+            const doneRightTags = data['c_hash'].split(',', 2);
             const doneLeftTitle = doneModal.querySelector('.done__left--title-text');
             const doneLeftTextArea = doneModal.querySelector('.done__left--textarea-text');
             const doneLeftCond = doneModal.querySelector('.done__left--cond-text');
@@ -367,15 +371,14 @@
             doneLeftWriter.textContent = `마감일 : ${data['ms_date_end']} 작성자 : ${data['ms_writer']}`;
 
             const doneRightTitle = doneModal.querySelector('.done__right--subject-text');
-            const doneRightWriter = doneModal.querySelector('.done__right--writer-text');
             const doneRightDate = doneModal.querySelector('.done__right--date');
+            const doneRightHash = doneModal.querySelector('.done__right--hash');
             const doneRightNick = doneModal.querySelector('.done__right--nick');
             const doneRightText = doneModal.querySelector('.done__right--textarea-text');
             
             doneModal.id = data['ms_id'];
-            doneRightTitle.textContent = data['ms_title'];
-            doneRightWriter.textContent = `작성일 : ${data['c_date']} 작성자 : ${data['m_id']}`;
-            doneRightNick.textContent = `수행자 : ${user}`;
+            doneRightTitle.textContent = data['c_title'];
+            doneRightNick.textContent = `수행자 : ${data['m_id']}`;
             doneRightText.textContent = data['c_text'];
 
             const today = new Date();   
@@ -392,6 +395,12 @@
                 const newStampTag = stampLeftHashTag.cloneNode(true);
                 newStampTag.textContent = el;
                 doneLeftHashBox.appendChild(newStampTag);
+            });
+
+            doneRightTags.forEach((el) => {
+                const newStampTag = stampLeftHashTag.cloneNode(true);
+                newStampTag.textContent = el;
+                doneRightHash.appendChild(newStampTag);
             });
         })
         .then(() => {
@@ -555,7 +564,15 @@
 
     function sendDoneMisson(){
         const sendRightForm = stampModal.querySelector('.send__right--contents');
+        const sendRightTitle = stampModal.querySelector('.send__right--subject-text');
+        const sendRightText = stampModal.querySelector('.send__right--textarea-text');
         const formData = new FormData(sendRightForm);
+
+        if(sendRightTitle.value == '' || sendRightTitle.value == ''){
+            alert('빈 칸을 채워주세요.');
+            return 0;
+        }
+
         loading.style.display = 'flex';
         fetch('./modules/sendDoneMisson.php', {
             method: 'POST',

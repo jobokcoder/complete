@@ -20,11 +20,13 @@
 
     $m_id = $_SESSION['m_id'];
     $ms_id = $_POST['ms_id'];
-    $c_text = $_POST['request_text'];
+    $c_text = $_POST['send_text'];
+    $c_title = $_POST['send_title'];
+    $c_hash = $_POST['c_hash'];
     $c_picture = $uploadname;
     $c_date = date("Y-m-d");
 
-    $sql = "INSERT INTO confirm(c_picture, c_text, c_date, c_stamp, m_id, ms_id) VALUES('$c_picture', '$c_text', '$c_date', '0', '$m_id', '$ms_id')";
+    $sql = "INSERT INTO confirm(c_title, c_picture, c_text, c_hash, c_date, c_stamp, m_id, ms_id) VALUES('$c_title', '$c_picture', '$c_text', '$c_hash', '$c_date', '0', '$m_id', '$ms_id')";
     $result = setData($sql);
     
     if($result){
