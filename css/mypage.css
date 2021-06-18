@@ -1,5 +1,5 @@
 /* 상단 컨텐츠 CSS */
-.contents{ position: relative; padding-top: calc(0 + 4.375rem); width: 100%; display: flex; justify-content: center; align-items: flex-start; }
+.contents{ position: relative; padding-top: calc(0 + 4.375rem); padding-bottom: 10vh; width: 100%; display: flex; justify-content: center; align-items: flex-start; }
 
 .mypage__modal{ padding-top: 113px; position: fixed; left: 0; top: 0; z-index: 40; width: 100vw; height: 100vh; overflow: hidden; display: none; flex-direction: column; justify-content: flex-start; align-items: center; background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px); }
 .mypage__modal--contents{ padding: 2.375rem 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; width: 100%; max-width: 1200px; border-radius: 1rem; background-color: #fff; }
@@ -54,10 +54,12 @@
 .account__wrapper{ padding: 40px 0px; width: 100%; display: none; justify-content: center; align-items: center; }
 .account__wrapper.active{ display: flex; }
 .missions__account{ padding: 0 1.125rem; display: grid; grid-template-rows: repeat(5, 1fr); width: 100%; border-radius: 1.125rem; border: 1px solid var(--main-color3); }
-.missions__account--item{ padding: 1.75rem 1.25rem; display: grid; grid-template-columns: 1fr 8fr; place-items: center flex-start; border-left: 8px solid rgba(0, 0, 0, 0); border-bottom: 1px solid var(--main-black1); }
+.missions__account--item{ position: relative; padding: 1.75rem 1.25rem; display: grid; grid-template-columns: 1fr 8fr; place-items: center flex-start; border-left: 8px solid rgba(0, 0, 0, 0); border-bottom: 1px solid var(--main-black1); }
 .missions__account--item:hover{ border-left: 8px solid var(--main-color2); }
 .missions__account--item-title{ font-size: 1.125rem; font-weight: 400; }
 .missions__account--item-content{ font-size: 1.5rem; font-weight: 400; }
+.missions__account--password-change{ cursor: pointer; transition: 300ms ease-in-out; padding: 0.25rem 1.25rem; position: absolute; right: 0; top: 50%; transform: translateY(-50%); background-color: var(--main-color1); color: #fff; border-radius: 0.25rem; }
+.missions__account--password-change:hover{ filter: brightness(1.1); }
 
 .status__wrapper{ display: none; }
 .status__wrapper.active{ display: grid; margin-top: 28px; width: 100%; grid-template-rows: repeat(auto-fit, auto); }

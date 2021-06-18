@@ -15,8 +15,8 @@
         }
         $result = setData($sql);
 
-        
         $sql = "delete from agent where m_id = '$m_id' and ms_id = '$ms_id'"; 
+        $result = setData($sql);
     }
 
     $sql = "update confirm set c_status = '1', c_stamp = '$stamp' where ms_id = '$ms_id'";
