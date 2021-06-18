@@ -7,15 +7,15 @@
 
     if($area === 'none'){
         if($type === 1){
-            $sql = "select * from mission order by ms_lookup desc limit 0, 8";
+            $sql = "select * from mission where ms_status = 0 order by ms_lookup desc limit 0, 8";
         }else if($type === 2){
-            $sql = "select * from mission order by ms_date_end asc limit 0, 8";
+            $sql = "select * from mission where ms_status = 0 order by ms_date_end asc limit 0, 8";
         }
     }else{
         if($type === 1){
-            $sql = "select mission.*, member.* from mission join member on mission.ms_writer = member.m_id where member.m_add1 = '$area' order by mission.ms_lookup desc limit 0, 8";
+            $sql = "select mission.*, member.* from mission join member on mission.ms_writer = member.m_id where member.m_add1 = '$area' and ms_status = 0 order by mission.ms_lookup desc limit 0, 8";
         }else if($type === 2){
-            $sql = "select mission.*, member.* from mission join member on mission.ms_writer = member.m_id where member.m_add1 = '$area' order by mission.ms_date_end asc limit 0, 8";
+            $sql = "select mission.*, member.* from mission join member on mission.ms_writer = member.m_id where member.m_add1 = '$area' and ms_status = 0 order by mission.ms_date_end asc limit 0, 8";
         }
     }
 
