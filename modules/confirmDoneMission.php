@@ -19,7 +19,9 @@
         $result = setData($sql);
     }
 
-    $sql = "update confirm set c_status = '1', c_stamp = '$stamp' where ms_id = '$ms_id'";
+    $sql = "update confirm set c_stamp = '$stamp' where ms_id = '$ms_id'";
+    $result = setData($sql);
+    $sql = "update mission set ms_status = '1' where ms_id = '$ms_id'";
     $result = setData($sql);
     $json = [];
     if($result){

@@ -127,11 +127,13 @@
                 item.classList.add('active');
                 missionsWrapperMission.classList.add('active');
                 missionsSubFunctionAll[0].classList.add('active');
+                missionSelectBox.value = 0;
                 getFulFillMission(0);
             }else if(item.textContent === '같이하기'){
                 item.classList.add('active');
                 missionsWrapperWith.classList.add('active');
                 missionsSubFunctionAll[1].classList.add('active');
+                withSelectBox.value = 0;
                 getWithMission(0);
             }else if(item.textContent === '신청현황'){
                 item.classList.add('active');
@@ -263,6 +265,7 @@
         }).then((respon) => respon.json())
         .then((data) => {
             data = data[0];
+            console.log(data);
 
             const newThum_left = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
             const newImgSrc_left = newThum_left[0] !== '' ? `./upload/${newThum_left[0]}` : '/upload/common.png';
@@ -299,9 +302,8 @@
             doneMissionRightImg.src = newImgSrc_right;
             doneMissionRightTitle.textContent = data['ms_title'];
             doneMissionRightTextArea.textContent = data['c_text'];
-            doneMissionRightCond.textContent = data['ms_done_cond'];
             doneMissionRightDate.textContent = `제출일 : ${data['c_date']}`;
-            doneMissionRightWriter.textContent = `제출자 : ${data[19]}`;
+            doneMissionRightWriter.textContent = `제출자 : ${data[20]}`;
 
             doneStamps.forEach((el, index) => {
                 if(index == data['c_stamp']){

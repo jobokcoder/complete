@@ -208,15 +208,13 @@
 .doneMission__right--hash{ padding: 10px 0px; width: 100%; display: flex; flex-wrap: wrap; overflow: hidden; border-bottom: 1px solid var(--main-black1); }
 .doneMission__right--hash-text{ margin-right: 0.65rem; padding: 0.25rem 1rem; max-width: 10rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0.25rem; background-color: var(--main-color1); color: var(--main-white); font-size: 16px; font-weight: 400; }
 .doneMission__right--textarea{ padding: 10px 0px; border-bottom: 1px solid var(--main-black1); }
-.doneMission__right--textarea-text{ max-width: 100%; height: 144px; background-color: #E9F5F6; overflow-y: auto; }
-.doneMission__right--cond{ padding: 10px 0px; border-bottom: 1px solid var(--main-black1); }
-.doneMission__right--cond-text{ font-size: 16px; font-weight: 400; }
+.doneMission__right--textarea-text{ max-width: 100%; height: 210px; background-color: #E9F5F6; overflow-y: auto; }
 .doneMission__right--done{ padding: 10px 0px; border-bottom: 1px solid var(--main-black1); }
 .doneMission__right--done-text{ font-size: 16px; font-weight: 400; }
-.doneMission__right--writer{ padding: 10px 0px; display: flex; justify-content: flex-end; align-items: center; }
+.doneMission__right--writer{ position: relative; padding: 40px 0px; padding-right: 80px; display: flex; justify-content: flex-end; align-items: center; }
 .doneMission__right--date-text{ font-size: 18px; font-weight: 400; }
 .doneMission__right--writer-text{ font-size: 18px; font-weight: 400; }
-.done__right--stamp{ position: absolute; z-index: 10; display: flex; justify-content: center; align-items: center; width: 90px; height: 90px; background-color: rgba(0, 0, 0, 0); }
+.done__right--stamp{ position: absolute; z-index: 10; right: 0; top: 50%; transform: translateY(-50%); display: flex; justify-content: center; align-items: center; width: 90px; height: 90px; background-color: rgba(0, 0, 0, 0); }
 .done-stamp{ display: none; }
 
 .write__input--tagbox{ padding: 0.65rem 0; width: 100%; display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; border-bottom: 1px solid var(--main-black2); overflow-x: hidden; }

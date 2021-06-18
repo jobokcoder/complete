@@ -61,12 +61,6 @@
                     <p class="doneMission__right--textarea-text">
                     </p>
                 </div>
-
-                <div class="doneMission__right--cond">
-                    <p class="doneMission__right--cond-title">완료조건</p>
-                    <p class="doneMission__right--cond-text">1. 미션완료 적을때, 주문한 가게이름, 피자이름, 음식리뷰, 별점 까지 싹싹 적어주세요.</p>
-                </div>
-
                 <div class="doneMission__right--writer">
                     <div class="doneMission__right--writer-left">
                         <p class="doneMission__right--date-text">마감일 : 2021.05.25</p>

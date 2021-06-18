@@ -6,11 +6,11 @@
     $type = $reciveData['type'];
 
     if($type == 0){
-        $sql = "select * from mission where ms_writer = '$id'";
+        $sql = "select * from mission where ms_writer = '$id' and ms_status = 0";
     }else if($type == 1){
-        $sql = "select mission.*, confirm.* from mission join confirm on mission.ms_id = confirm.ms_id where ms_writer = '$id' and c_status = 0";
+        $sql = "select mission.*, confirm.* from mission join confirm on mission.ms_id = confirm.ms_id where ms_writer = '$id' and ms_status = 0";
     }else if($type == 2){
-        $sql = "select mission.*, confirm.* from mission join confirm on mission.ms_id = confirm.ms_id where ms_writer = '$id' and c_status = 1";
+        $sql = "select * from mission where ms_writer = '$id' and ms_status = 1";
     }
 
     $result = getData($sql);
