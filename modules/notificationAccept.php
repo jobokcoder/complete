@@ -20,8 +20,8 @@
             <div style="display: table-row; width: 100%;">
                 <div style="display: table-cell; box-sizing: border-box; padding-top: 50px; width: 100%; font-size: 18px; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif;">
                     <p style="margin: 0; padding: 0; letter-spacing: -1.2px;">
-                        안녕하세요. [{user}]님, 요원님께서 신청하신 <br><br>
-                        미션 '{mission}'의  <br><br>
+                        안녕하세요. <strong>{user}</strong>님, 요원님께서 신청하신 <br><br>
+                        미션 '<strong>{mission}</strong>'의  <br><br>
                         수행신청이 수락되었습니다. 미션의 완료조건은 다음과 같습니다.<br><br>
                         <strong>{cond}</strong><br><br>
                         즐거운 미션이 되시길 바랍니다.<br><br>

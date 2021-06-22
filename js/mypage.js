@@ -265,7 +265,6 @@
         }).then((respon) => respon.json())
         .then((data) => {
             data = data[0];
-            console.log(data);
 
             const newThum_left = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
             const newImgSrc_left = newThum_left[0] !== '' ? `./upload/${newThum_left[0]}` : '/upload/common.png';
@@ -570,7 +569,7 @@
         const sendRightText = stampModal.querySelector('.send__right--textarea-text');
         const formData = new FormData(sendRightForm);
 
-        if(sendRightTitle.value == '' || sendRightTitle.value == ''){
+        if(sendRightTitle.value == '' || sendRightText.value == ''){
             alert('빈 칸을 채워주세요.');
             return 0;
         }
@@ -615,11 +614,13 @@
             'agents': arr,
         };
 
+        loading.style.display = 'flex';
         fetch('./modules/sendAgents.php', {
             method: 'post',
             body: JSON.stringify(param),
         }).then((respon) => respon.json())
         .then((data) => {
+            loading.style.display = 'none';
             if(data['status'] === 200){
                 location.reload();
             }else if(data['status'] === 100){
