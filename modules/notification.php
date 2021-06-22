@@ -20,9 +20,9 @@
             <div style="display: table-row; width: 100%;">
                 <div style="display: table-cell; box-sizing: border-box; padding-top: 50px; width: 100%; font-size: 18px; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif;">
                     <p style="margin: 0; padding: 0; letter-spacing: -1.2px;">
-                        complete 가입을 위한 단계입니다. 계정을 생성하기 전에<br>
-                        이 이메일 주소가 계정에 쓰일올바른 주소가 맞는지 확인해주세요. <br><br>
-                        complete를 시작하려면 다음 인증 코드를 입력하세요.<br><br>
+                        안녕하세요. [{user_1}]님<br>
+                        요원님께서 신청하신 미션 '{mission}'의 수행신청이 수락되었습니다.  <br><br>
+                        미션의 완료조건은 다음과 같습니다.<br><br>
                         <strong>{code}</strong><br><br>
                         감사합니다.<br>
                         complete
