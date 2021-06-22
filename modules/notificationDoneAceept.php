@@ -11,7 +11,7 @@
         <div style=" border-collapse: collapse; box-sizing: border-box; margin: 0; width: 100% ; max-width: 500px; background-color: #fff; display: table; table-layout: fixed; ">
             <div style="border-collapse: collapse; box-sizing: border-box; margin: 0; padding: 0; width: 100%; height: 50px; display: table-row; border-bottom: 4px solid #0D295D;">
                 <div style="display: table-cell; width: 100%;">
-                    <h1 style="float: left; font-size: 24px; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif;">이메일 인증</h1>
+                    <h1 style="float: left; font-size: 24px; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif;">Complete 알리미</h1>
                     <div style="float: right; width: 30px;  transform: translateY(20%);">
                         <img style="width: 30px;" src="https://user-images.githubusercontent.com/73686581/115854010-c395ee80-a464-11eb-9fc4-4944ab60e19d.png" alt="logo" />
                     </div>
@@ -20,11 +20,10 @@
             <div style="display: table-row; width: 100%;">
                 <div style="display: table-cell; box-sizing: border-box; padding-top: 50px; width: 100%; font-size: 18px; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif;">
                     <p style="margin: 0; padding: 0; letter-spacing: -1.2px;">
-                        Complete 가입을 위한 단계입니다. 계정을 생성하기 전에<br>
-                        이 이메일 주소가 계정에 쓰일올바른 주소가 맞는지 확인해주세요. <br><br>
-                        Complete를 시작하려면 다음 인증 코드를 입력하세요.<br><br>
-                        <strong>{code}</strong><br><br>
-                        감사합니다.<br>
+                        고생하셨습니다!<br><br>
+                        [{user}]님, 요원님께서 완료신청하신 <br><br>
+                        미션 '{mission}'의  <br><br>
+                        완료신청이 확인되었습니다. 즐거운 미션이었길 바랍니다.<br>
                         Complete
                     </p>
                 </div>
