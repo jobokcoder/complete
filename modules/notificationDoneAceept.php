@@ -21,10 +21,10 @@
                 <div style="display: table-cell; box-sizing: border-box; padding-top: 50px; width: 100%; font-size: 18px; font-family:'맑은고딕','Malgun Gothic','나눔고딕','NanumGothic',dotum,'돋움',sans-serif;">
                     <p style="margin: 0; padding: 0; letter-spacing: -1.2px;">
                         고생하셨습니다!<br><br>
-                        [{user}]님, 요원님께서 완료신청하신 <br><br>
-                        미션 '{mission}'의  <br><br>
-                        완료신청이 확인되었습니다. 즐거운 미션이었길 바랍니다.<br>
-                        Complete
+                        <strong>{user}</strong>님, 요원님께서 완료신청하신 <br><br>
+                        미션 '<strong>{mission}</strong>'의  <br><br>
+                        완료신청이 확인되었습니다. 즐거운 미션이었길 바랍니다.<br><br>
+                        <img src="https://user-images.githubusercontent.com/73686581/122913582-94342d00-d394-11eb-906a-b1a8b593abc6.png" alt="logo" />
                     </p>
                 </div>
                 <div></div>

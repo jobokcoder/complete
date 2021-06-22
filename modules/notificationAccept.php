@@ -24,8 +24,8 @@
                         미션 '{mission}'의  <br><br>
                         수행신청이 수락되었습니다. 미션의 완료조건은 다음과 같습니다.<br><br>
                         <strong>{cond}</strong><br><br>
-                        즐거운 미션이 되시길 바랍니다.<br>
-                        Complete
+                        즐거운 미션이 되시길 바랍니다.<br><br>
+                        <img src="https://user-images.githubusercontent.com/73686581/122913582-94342d00-d394-11eb-906a-b1a8b593abc6.png" alt="logo" />
                     </p>
                 </div>
                 <div></div>

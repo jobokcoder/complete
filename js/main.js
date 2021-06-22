@@ -433,7 +433,6 @@
                             })
                             .then((respon2) => respon2.json())
                             .then((data2) => {
-                                console.log();
                                 newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
                                 viewWrapper.appendChild(newView);
                             });
