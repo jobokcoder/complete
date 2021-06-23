@@ -85,8 +85,9 @@
                             const newViewCancelBtn = newView.querySelector('.view__cancel');
                             const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
                             const newViewContentsNum = newView.querySelector('.view__contents--num');
-                            
+        
                             newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
+                            
                             newViewListItem.remove();
                             newView.id = newid;
                             newViewImg.src = newImgSrc;
@@ -98,7 +99,7 @@
                             newViewContent.textContent = data[n]['ms_contents'];
                             if(conds !== ''){
                                 conds.forEach((el) => {
-                                    const copyViewListItem = newViewListItem.cloneNode(true);
+                                    let copyViewListItem = newViewListItem.cloneNode(true);
                                     copyViewListItem.textContent = el;
                                     newViewCondList.appendChild(copyViewListItem);
                                 });
@@ -114,7 +115,7 @@
                             const param2 = {
                                 'ms_id': data[n]['ms_id'],
                             };
-        
+
                             fetch('./modules/getRequestCount.php', {
                                 method: 'post',
                                 body: JSON.stringify(param2),
@@ -124,7 +125,7 @@
                                 newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
                                 viewWrapper.appendChild(newView);
                             });
-
+                            
                             let newMissionthum = newMission.querySelector('.missions__list--image');
                             let newMissionImg = newMission.querySelector('.missions__list--image img');
                             let newMissionTitle = newMission.querySelector('.missions__list--info-title');
@@ -135,7 +136,7 @@
                             newMissionImg.src = newImgSrc;
                             newMissionTitle.textContent = data[n]['ms_title'];
                             newMissionWriter.innerHTML = `의뢰자 : ${data[n]['ms_writer']} <br> 마감일 : ${data[n]['ms_date_end']}`;
-                            missionsWrapper.appendChild(newMission);
+                            newDiv.appendChild(newMission);
                             tags.forEach((el) => {
                                 let newMissionHashTag = newMission.querySelector('.missions__list--hash-text').cloneNode();
                                 newMissionHashText.remove();
@@ -161,6 +162,10 @@
                                 })
                                 .then(respon => respon.json());
                             });
+                            
+                            if(j == 2 || j == 6 || ((total-1) === n)){
+                                missionsWrapper.appendChild(newDiv);
+                            }
                         }
                         n++;
                     }
@@ -209,7 +214,6 @@
                 alert('이미 신청하셨습니다.');
                 return 0;
             }else if(data['status'] === 200){
-                alert('수행 신청되었습니다.');
                 location.reload();
             }
         });
