@@ -113,20 +113,20 @@ export class missionController{
         let cnt = 0;
 
         while(true){ 
-            let newLocation = {};
-
+            const newLocation = {};
+            console.log(this.stageHeight / 2);
             if(cnt == 0){
-                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200));
-                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300) + 90);
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 320));
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 320)) + 90;
             }else if(cnt == 1){
-                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200)) + (this.stageWidth / 2);
-                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300) + 90);
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 320)) + ((this.stageWidth / 2) + 70);
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 320)) + 90;
             }else if(cnt == 2){
-                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200));
-                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300)) + (this.stageHeight / 2);
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 320));
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 320)) + (this.stageHeight / 2);
             }else if(cnt == 3){
-                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 200)) + (this.stageWidth / 2);
-                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 300)) + (this.stageHeight / 2);
+                newLocation['x'] = Math.floor(Math.random() * ((this.stageWidth / 2) - 320)) + ((this.stageWidth / 2) + 70);
+                newLocation['y'] = Math.floor(Math.random() * ((this.stageHeight / 2) - 320)) + (this.stageHeight / 2);
             }
 
             const mission = document.querySelectorAll('.mission');
@@ -211,6 +211,7 @@ export class missionController{
         }).then((respon) => respon.json())
         .then((data) => {
             if(data.length !== 0){
+                console.log(data);
                 data.forEach((item) => {
                     this.createDom(item);
                 });

@@ -75,7 +75,7 @@
         default:
             $param = '제주특별차지도';
     }
-    $sql = "select mission.*, member.m_id from mission join member on mission.ms_writer = member.m_id where m_add1 = '$param' limit 0, 4";
+    $sql = "select mission.*, member.* from mission join member on mission.ms_writer = member.m_id where m_add1 = '$param' limit 0, 4";
     $result = getData($sql);
 
     print_r(json_encode($result));
