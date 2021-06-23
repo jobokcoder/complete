@@ -143,28 +143,40 @@ export class missionController{
     }
 
     createDom(data){
-        let newThum = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
-        let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+        const tags = data['ms_tag'].split(',');
+        const newThum = data['ms_expain_pic'] != undefined ? data['ms_expain_pic'].split(',') : 'common.png';
+        const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
 
         const newMission = document.createElement('div');
         const newMissionFrame = document.createElement('div');
+        const newMissionHash = document.createElement('div');
         const newMissionImg = document.createElement('img');
-        const newMissionTitle = document.createElement('h1');
+        const newMissionTitle = document.createElement('h1'); 
         const newMissionWriter = document.createElement('p');
+
         newMission.style.left = '-1000px';
         newMission.style.top = '-1000px';
-        newMission.style.width = '250px';
-        newMission.style.height = '300px';
+        newMission.style.width = '276px';
+        newMission.style.height = '314px';
+        newMission.classList.add('mission');
 
         newMissionImg.src = newImgSrc;
         newMissionTitle.textContent = data['ms_title'];
-        newMissionWriter.textContent = data['ms_writer'];
+        newMissionWriter.textContent = `의뢰자 : ${data['ms_writer']}`;
 
-        newMission.classList.add('mission');
-        newMissionFrame.appendChild(newMissionImg);
+        tags.forEach((hash) => {
+            const newMissionHashText = document.createElement('p');
+            newMissionHashText.textContent = hash;
+            newMissionHash.appendChild(newMissionHashText);
+        });
+
+        newMission.appendChild(newMissionImg);
         newMission.appendChild(newMissionFrame);
-        newMission.appendChild(newMissionTitle);
-        newMission.appendChild(newMissionWriter);
+
+        newMissionFrame.appendChild(newMissionTitle);
+        newMissionFrame.appendChild(newMissionHash);
+        newMissionFrame.appendChild(newMissionWriter);
+
 
         newMission.addEventListener('mousemove', (e) => { this.isNear(newMission, e) });
         newMission.addEventListener('mouseleave', () => { 

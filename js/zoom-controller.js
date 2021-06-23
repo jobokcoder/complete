@@ -25,6 +25,7 @@ export class zoomController{
     }
     
     resetZoom(){
+        this.backToWorldBtn.style.display = 'none';
         this.missionController.removeMission();
         this.areas.forEach((el) => {
             el.style.transition = '600ms';
@@ -39,6 +40,7 @@ export class zoomController{
         
     areaZoom(dom){
         if(this.mapFlag === false){
+            this.backToWorldBtn.style.display = 'flex';
             this.mapFlag = true;
             this.map.style.left = `0px`;
             this.map.style.top = `0px`;

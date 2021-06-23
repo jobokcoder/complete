@@ -47,7 +47,12 @@
 
         <canvas class="canvas"></canvas>
 
-        <div class="back">Back To Map</div>
+        <div class="back">
+            Back To Map
+            <svg width="23.609" height="27.593" viewBox="0 0 23.609 27.593">
+                <path id="패스_243" data-name="패스 243" d="M22.327,10.186a.873.873,0,0,0,.866.776.9.9,0,0,0,.1-.005l5.429-.606V5.291a.872.872,0,1,0-1.745,0V7.669A12.993,12.993,0,1,0,28.3,27.209a.872.872,0,0,0-1.234-1.234A11.26,11.26,0,0,1,11.147,10.052,11.307,11.307,0,0,1,25.739,8.928L23.1,9.222A.873.873,0,0,0,22.327,10.186Z" transform="translate(-5.611 -3.919)" fill="#fff" stroke="#fff" stroke-width="1"/>
+            </svg>
+        </div>
     </div>
 <script src="./js/common.js"></script>
 <script type="module" src="./js/map.js"></script>
