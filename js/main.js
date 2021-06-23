@@ -233,17 +233,17 @@
                 
                 item.forEach((el, index) => {
                     let tags = el['ms_tag'].split(',', 2);
-                    let newSlideMission = slideMissionOrigin.cloneNode(true);
-                    let newSlideMissionTitle = newSlideMission.querySelector('.slide__mission--title');
-                    let newSlideMissionText = newSlideMission.querySelector('.slide__mission--text');
-                    let newSlideMissionWriter = newSlideMission.querySelector('.slide__mission--writer');
-                    let newSlideMissionDeadline = newSlideMission.querySelector('.slide__mission--deadline');
-                    let newSlideMissionHashBox = newSlideMission.querySelector('.slide__mission--hash');
-                    let newThum = el['ms_expain_pic'] != undefined ? el['ms_expain_pic'].split(',') : 'common.png';
-                    let newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
+                    const newSlideMission = slideMissionOrigin.cloneNode(true);
+                    const newSlideMissionTitle = newSlideMission.querySelector('.slide__mission--title');
+                    const newSlideMissionText = newSlideMission.querySelector('.slide__mission--text');
+                    const newSlideMissionWriter = newSlideMission.querySelector('.slide__mission--writer');
+                    const newSlideMissionDeadline = newSlideMission.querySelector('.slide__mission--deadline');
+                    const newSlideMissionHashBox = newSlideMission.querySelector('.slide__mission--hash');
+                    const newThum = el['ms_expain_pic'] != undefined ? el['ms_expain_pic'].split(',') : 'common.png';
+                    const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
 
-                    let newSlideRightMission = slideRightMission.cloneNode(true);
-                    let newSlideRightMissionImg = newSlideRightMission.querySelector('.slide__right--mission-img');
+                    const newSlideRightMission = slideRightMission.cloneNode(true);
+                    const newSlideRightMissionImg = newSlideRightMission.querySelector('.slide__right--mission-img');
 
                     newSlideRightMissionImg.src = newImgSrc;
                     newSlideMissionTitle.textContent = el['ms_title'];
@@ -252,7 +252,7 @@
                     newSlideMissionDeadline.textContent = `마감일 : ${el['ms_date_end']}`;
                     
                     tags.forEach((el) => {
-                        let newSlideMissionHashTag = slideMissionHash.cloneNode(true);
+                        const newSlideMissionHashTag = slideMissionHash.cloneNode(true);
                         newSlideMissionHashTag.style['background'] = type === 1 ? '#2EA0AA' : type === 2 ? '#F5CE33' : '#1E3470';
                         newSlideMissionHashTag.textContent = el;
                         newSlideMissionHashBox.appendChild(newSlideMissionHashTag);
@@ -265,72 +265,66 @@
 
                     slideMissionWrapper.appendChild(newSlideMission);
                     slideRightMissionWrapper.appendChild(newSlideRightMission);
-                    
-                    const newView = viewContents.cloneNode(true);
                             
                     tags = el['ms_tag'].split(',');
+                    const newView = viewContents.cloneNode(true);
                     const conds = el['ms_done_cond'] !== '' ? el['ms_done_cond'].split(',') : '';
+                    const coms = el['ms_done_com'] !== '' ? el['ms_done_com'].split(',') : '';
+
                     const newid = el['ms_id'];
-                    const newViewImg = newView.querySelector('.view__contents--picture-img');
+                    const newViewId = el['ms_id'];
+                    const newViewImg = newView.querySelector('.view__contents--thum-img');
                     const newViewTitle = newView.querySelector('.view__contents--title');
-                    const newViewTag = newView.querySelector('.view__contents--tag');
-                    const newViewContent = newView.querySelector('.view__contents--content');
-                    const newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
-                    const newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
-                    const newViewListItem = newView.querySelector('.done__list--item');
-                    const newViewDate = newView.querySelector('.view__contents--writer-date');
-                    const newViewWriter = newView.querySelector('.view__contents--writer-user');
-                    const newViewCancelBtn = newView.querySelector('.view__cancel');
-                    const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
-                    const newViewContentsNum = newView.querySelector('.view__contents--num');
+                    const newViewTag = newView.querySelector('.view__contents--hashBox');
+                    const newViewTagText = newView.querySelector('.view__contents--hashBox-hash');
+                    const newViewContent = newView.querySelector('.view__contents--text');
+                    const newViewCondList = newView.querySelector('.view__contents--footer-left');
+                    const newViewComList = newView.querySelector('.view__contents--footer-right');
+                    const newViewCondListItem = newView.querySelector('.view__contents--cond-text');
+                    const newViewComListItem = newView.querySelector('.view__contents--com-text');
+                    const newViewWriter = newView.querySelector('.view__contents--writer');
+                    const newViewCancelBtn = newView.querySelector('.view__cancel--btn');
+                    const newViewRequestBtn = newView.querySelector('.view__request--btn');
+                    const newViewAgent = newView.querySelector('.view__contents--agent');
+                    const newViewAgentNum = newView.querySelector('.view__contents--agent-num');
 
                     newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
-                            
-                    newViewListItem.remove();
-                    newView.id = `slide_${newid}`;
+                    
+                    newViewAgentNum.remove();
+                    newViewTagText.remove();
+                    newViewCondListItem.remove();
+                    newViewComListItem.remove();
+                    newView.id = newid;
                     newViewImg.src = newImgSrc;
                     newViewTitle.textContent = el['ms_title'];
-                    newViewTag.textContent = '';
-                    tags.forEach((el) => {
-                        newViewTag.textContent += `${el} `;
+                    tags.forEach((item) => {
+                        const copyNewViewTagText = newViewTagText.cloneNode(true);
+                        copyNewViewTagText.textContent += `${item} `;
+                        newViewTag.appendChild(copyNewViewTagText);
                     });
                     newViewContent.textContent = el['ms_contents'];
                     if(conds !== ''){
-                        conds.forEach((el) => {
-                            let copyViewListItem = newViewListItem.cloneNode(true);
-                            copyViewListItem.textContent = el;
+                        conds.forEach((item) => {
+                            const copyViewListItem = newViewCondListItem.cloneNode(true);
+                            copyViewListItem.textContent = item;
                             newViewCondList.appendChild(copyViewListItem);
                         });
                     }
-                    newViewDoneList.textContent = el['ms_done_com'];
-                    newViewDate.textContent = `${el['ms_date_start']} ~ ${el['ms_date_end']}`;
-                    newViewWriter.textContent = el['ms_nick'];
+                    if(coms !== ''){
+                        coms.forEach((item) => {
+                            const copyViewListItem = newViewComListItem.cloneNode(true);
+                            copyViewListItem.textContent = item;
+                            newViewComList.appendChild(copyViewListItem);
+                        });
+                    }
+                    newViewWriter.textContent = `의뢰자 : ${el['ms_writer']}　　마감일 : ${el['ms_date_end']}`;
                     newViewCancelBtn.addEventListener('click', (e) => {
                         e.preventDefault();
                         newView.parentNode.classList.remove('active');
                     });
-                    newSlideRightMissionImg.addEventListener('click', () => {
-                        const originMissionView = document.querySelectorAll(`.view__contents`);
-                        originMissionView.forEach((el) => {
-                            el.classList.remove('active');
-                        });
-                        viewWrapper.classList.add('active');
-                        newView.classList.add('active');
 
-                        const viewInfo = {
-                            'id': newid,
-                        };
-
-                        fetch('./modules/okView.php', {
-                            method: 'POST',
-                            body: JSON.stringify(viewInfo),
-                        })
-                        .then(respon => respon.json());
-                    });
-
-                    const ms_id = el['ms_id'];
                     const param2 = {
-                        'ms_id': ms_id,
+                        'ms_id': el['ms_id'],
                     };
 
                     fetch('./modules/getRequestCount.php', {
@@ -339,9 +333,37 @@
                     })
                     .then((respon2) => respon2.json())
                     .then((data2) => {
-                        newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
-                        viewWrapper.appendChild(newView);
+                        if(data2.length > 0){
+                            data2.forEach((item, index) => {
+                                if(index < 3){
+                                    const copyNewViewAgentNum = newViewAgentNum.cloneNode(true);
+                                    newViewAgent.appendChild(copyNewViewAgentNum);
+                                }
+                                // newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
+                            });
+                        }
                     });
+
+                    newSlideRightMissionImg.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const originMissionView = document.querySelectorAll(`.view__contents`);
+                        originMissionView.forEach((el) => {
+                            el.classList.remove('active');
+                        });
+                        viewWrapper.classList.add('active');
+                        newView.classList.add('active');
+
+                        const viewInfo = {
+                            'id': newViewId,
+                        };
+
+                        fetch('./modules/okView.php', {
+                            method: 'POST',
+                            body: JSON.stringify(viewInfo),
+                        })
+                        .then(respon => respon.json());
+                    });
+                    viewWrapper.appendChild(newView);
                 });
             }
         });
@@ -364,7 +386,6 @@
                 const total = data.length;
                 const block = Math.ceil(total / 7);
                 let newDiv;
-                let newMission;
                 
                 for(let n=0, i=0; i < block; i++){
                     for(let j=0; j < 7; j++){
@@ -374,7 +395,7 @@
                                 removeChild(newDiv);
                             }
 
-                            newMission = missionsList.cloneNode(true);
+                            const newMission = missionsList.cloneNode(true);
                             const newView = viewContents.cloneNode(true);
                             const newViewId = data[n]['ms_id'];
                             
@@ -382,42 +403,54 @@
                             const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
                             const tags = data[n]['ms_tag'].split(',');
                             const conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
+                            const coms = data[n]['ms_done_com'] !== '' ? data[n]['ms_done_com'].split(',') : '';
 
                             const newid = data[n]['ms_id'];
-                            const newViewImg = newView.querySelector('.view__contents--picture-img');
+                            const newViewImg = newView.querySelector('.view__contents--thum-img');
                             const newViewTitle = newView.querySelector('.view__contents--title');
-                            const newViewTag = newView.querySelector('.view__contents--tag');
-                            const newViewContent = newView.querySelector('.view__contents--content');
-                            const newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
-                            const newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
-                            const newViewListItem = newView.querySelector('.done__list--item');
-                            const newViewDate = newView.querySelector('.view__contents--writer-date');
-                            const newViewWriter = newView.querySelector('.view__contents--writer-user');
-                            const newViewCancelBtn = newView.querySelector('.view__cancel');
-                            const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
-                            const newViewContentsNum = newView.querySelector('.view__contents--num');
+                            const newViewTag = newView.querySelector('.view__contents--hashBox');
+                            const newViewTagText = newView.querySelector('.view__contents--hashBox-hash');
+                            const newViewContent = newView.querySelector('.view__contents--text');
+                            const newViewCondList = newView.querySelector('.view__contents--footer-left');
+                            const newViewComList = newView.querySelector('.view__contents--footer-right');
+                            const newViewCondListItem = newView.querySelector('.view__contents--cond-text');
+                            const newViewComListItem = newView.querySelector('.view__contents--com-text');
+                            const newViewWriter = newView.querySelector('.view__contents--writer');
+                            const newViewCancelBtn = newView.querySelector('.view__cancel--btn');
+                            const newViewRequestBtn = newView.querySelector('.view__request--btn');
+                            const newViewAgent = newView.querySelector('.view__contents--agent');
+                            const newViewAgentNum = newView.querySelector('.view__contents--agent-num');
         
                             newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
-                            newViewListItem.remove();
+                            newViewAgentNum.remove();
+                            newViewTagText.remove();
+                            newViewCondListItem.remove();
+                            newViewComListItem.remove();
                             newView.id = newid;
                             newViewImg.src = newImgSrc;
                             newViewTitle.textContent = data[n]['ms_title'];
-                            newViewTag.textContent = '';
                             tags.forEach((el) => {
-                                newViewTag.textContent += `${el} `;
+                                const copyNewViewTagText = newViewTagText.cloneNode(true);
+                                copyNewViewTagText.textContent += `${el} `;
+                                newViewTag.appendChild(copyNewViewTagText);
                             });
                             newViewContent.textContent = data[n]['ms_contents'];
                             if(conds !== ''){
                                 conds.forEach((el) => {
-                                    let copyViewListItem = newViewListItem.cloneNode(true);
+                                    const copyViewListItem = newViewCondListItem.cloneNode(true);
                                     copyViewListItem.textContent = el;
                                     newViewCondList.appendChild(copyViewListItem);
                                 });
                             }
-                            newViewDoneList.textContent = data[n]['ms_done_com'];
-                            newViewDate.textContent = `${data[n]['ms_date_start']} ~ ${data[n]['ms_date_end']}`;
-                            newViewWriter.textContent = data[n]['ms_writer'];
+                            if(coms !== ''){
+                                coms.forEach((el) => {
+                                    const copyViewListItem = newViewComListItem.cloneNode(true);
+                                    copyViewListItem.textContent = el;
+                                    newViewComList.appendChild(copyViewListItem);
+                                });
+                            }
+                            newViewWriter.textContent = `의뢰자 : ${data[n]['ms_writer']}　　마감일 : ${data[n]['ms_date_end']}`;
                             newViewCancelBtn.addEventListener('click', (e) => {
                                 e.preventDefault();
                                 newView.parentNode.classList.remove('active');
@@ -433,9 +466,17 @@
                             })
                             .then((respon2) => respon2.json())
                             .then((data2) => {
-                                newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
-                                viewWrapper.appendChild(newView);
+                                if(data2.length > 0){
+                                    data2.forEach((el, index) => {
+                                        if(index < 3){
+                                            const copyNewViewAgentNum = newViewAgentNum.cloneNode(true);
+                                            newViewAgent.appendChild(copyNewViewAgentNum);
+                                        }
+                                        // newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
+                                    });
+                                }
                             });
+                            viewWrapper.appendChild(newView);
                             
                             let newMissionthum = newMission.querySelector('.missions__list--image');
                             let newMissionImg = newMission.querySelector('.missions__list--image img');

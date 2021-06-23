@@ -63,7 +63,7 @@
                                 removeChild(newDiv);
                             }
 
-                            newMission = missionsList.cloneNode(true);
+                            const newMission = missionsList.cloneNode(true);
                             const newView = viewContents.cloneNode(true);
                             const newViewId = data[n]['ms_id'];
                             
@@ -71,42 +71,54 @@
                             const newImgSrc = newThum[0] !== '' ? `./upload/${newThum[0]}` : '/upload/common.png';
                             const tags = data[n]['ms_tag'].split(',');
                             const conds = data[n]['ms_done_cond'] !== '' ? data[n]['ms_done_cond'].split(',') : '';
+                            const coms = data[n]['ms_done_com'] !== '' ? data[n]['ms_done_com'].split(',') : '';
 
                             const newid = data[n]['ms_id'];
-                            const newViewImg = newView.querySelector('.view__contents--picture-img');
+                            const newViewImg = newView.querySelector('.view__contents--thum-img');
                             const newViewTitle = newView.querySelector('.view__contents--title');
-                            const newViewTag = newView.querySelector('.view__contents--tag');
-                            const newViewContent = newView.querySelector('.view__contents--content');
-                            const newViewCondList = newView.querySelector('.view__contents--done-conditionlist');
-                            const newViewDoneList = newView.querySelector('.view__contents--done-compensationlist');
-                            const newViewListItem = newView.querySelector('.done__list--item');
-                            const newViewDate = newView.querySelector('.view__contents--writer-date');
-                            const newViewWriter = newView.querySelector('.view__contents--writer-user');
-                            const newViewCancelBtn = newView.querySelector('.view__cancel');
-                            const newViewRequestBtn = newView.querySelector('.view__contents--request-button');
-                            const newViewContentsNum = newView.querySelector('.view__contents--num');
+                            const newViewTag = newView.querySelector('.view__contents--hashBox');
+                            const newViewTagText = newView.querySelector('.view__contents--hashBox-hash');
+                            const newViewContent = newView.querySelector('.view__contents--text');
+                            const newViewCondList = newView.querySelector('.view__contents--footer-left');
+                            const newViewComList = newView.querySelector('.view__contents--footer-right');
+                            const newViewCondListItem = newView.querySelector('.view__contents--cond-text');
+                            const newViewComListItem = newView.querySelector('.view__contents--com-text');
+                            const newViewWriter = newView.querySelector('.view__contents--writer');
+                            const newViewCancelBtn = newView.querySelector('.view__cancel--btn');
+                            const newViewRequestBtn = newView.querySelector('.view__request--btn');
+                            const newViewAgent = newView.querySelector('.view__contents--agent');
+                            const newViewAgentNum = newView.querySelector('.view__contents--agent-num');
         
                             newViewRequestBtn.addEventListener('click', () => { requestAgent(newid); });
                             
-                            newViewListItem.remove();
+                            newViewAgentNum.remove();
+                            newViewTagText.remove();
+                            newViewCondListItem.remove();
+                            newViewComListItem.remove();
                             newView.id = newid;
                             newViewImg.src = newImgSrc;
                             newViewTitle.textContent = data[n]['ms_title'];
-                            newViewTag.textContent = '';
                             tags.forEach((el) => {
-                                newViewTag.textContent += `${el} `;
+                                const copyNewViewTagText = newViewTagText.cloneNode(true);
+                                copyNewViewTagText.textContent += `${el} `;
+                                newViewTag.appendChild(copyNewViewTagText);
                             });
                             newViewContent.textContent = data[n]['ms_contents'];
                             if(conds !== ''){
                                 conds.forEach((el) => {
-                                    let copyViewListItem = newViewListItem.cloneNode(true);
+                                    const copyViewListItem = newViewCondListItem.cloneNode(true);
                                     copyViewListItem.textContent = el;
                                     newViewCondList.appendChild(copyViewListItem);
                                 });
                             }
-                            newViewDoneList.textContent = data[n]['ms_done_com'];
-                            newViewDate.textContent = `${data[n]['ms_date_start']} ~ ${data[n]['ms_date_end']}`;
-                            newViewWriter.textContent = data[n]['ms_writer'];
+                            if(coms !== ''){
+                                coms.forEach((el) => {
+                                    const copyViewListItem = newViewComListItem.cloneNode(true);
+                                    copyViewListItem.textContent = el;
+                                    newViewComList.appendChild(copyViewListItem);
+                                });
+                            }
+                            newViewWriter.textContent = `의뢰자 : ${data[n]['ms_writer']}　　마감일 : ${data[n]['ms_date_end']}`;
                             newViewCancelBtn.addEventListener('click', (e) => {
                                 e.preventDefault();
                                 newView.parentNode.classList.remove('active');
@@ -122,9 +134,17 @@
                             })
                             .then((respon2) => respon2.json())
                             .then((data2) => {
-                                newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
-                                viewWrapper.appendChild(newView);
+                                if(data2.length > 0){
+                                    data2.forEach((el, index) => {
+                                        if(index < 3){
+                                            const copyNewViewAgentNum = newViewAgentNum.cloneNode(true);
+                                            newViewAgent.appendChild(copyNewViewAgentNum);
+                                        }
+                                        // newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
+                                    });
+                                }
                             });
+                            viewWrapper.appendChild(newView);
                             
                             let newMissionthum = newMission.querySelector('.missions__list--image');
                             let newMissionImg = newMission.querySelector('.missions__list--image img');
