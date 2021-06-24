@@ -72,6 +72,15 @@
     const writeHashTag = document.querySelector('.write__input--hidden');
     const tagArr = [];
 
+    let flagCheckPW = false;
+    const passchangeModal = document.querySelector('.passchange__modal');
+    const passchangeModalOpenBtn = document.querySelector('.missions__account--password-change');
+    const passchangeModalCancelBtn = document.querySelector('.passchange__form--select-cancel');
+    const passchangeModalDoneBtn = document.querySelector('.passchange__form--select-done');
+    const passchangeModalChangePass = document.querySelector('.passchange__form--change-pass');
+    const passchangeModalChangePassText = document.querySelector('.passchange__form--change-text');
+    const passchangeModalNowPassText = document.querySelector('.passchange__form--now-pass');
+
     let user = '';
 
     window.addEventListener('load', () => {
@@ -147,6 +156,8 @@
         });
     });
 
+    passchangeModalOpenBtn.addEventListener('click', () => { toggleModal(passchangeModal); });
+    passchangeModalCancelBtn.addEventListener('click', () => { toggleModal(passchangeModal); });
     agentModalCancel.addEventListener('click', () => { toggleModal(agentModal); });
     agentModalSubmit.addEventListener('click', () => { sendAgents(); });
     fileLabel.addEventListener('click', () => { fileInput.click(); });
@@ -157,6 +168,7 @@
     sendRightSumbit.addEventListener('click', () => { sendDoneMisson(); });
     doneModalCancel.addEventListener('click', () => { toggleModal(doneModal); });
     doneRightSumbit.addEventListener('click', () => { confirmDoneMission(); });
+    doneMissionModalClose.addEventListener('click', () => { doneMissionModal.style.display = 'none'; });
 
     doneRightStampItem.addEventListener('click', (e) => { 
         e.preventDefault();
@@ -219,8 +231,6 @@
         }
     });
 
-    doneMissionModalClose.addEventListener('click', () => { doneMissionModal.style.display = 'none'; });
-    
     tagInput.addEventListener('keyup', (e) => {
         if(e.key === ','){
             hash(e.target.value);
@@ -232,6 +242,52 @@
             removehash();
         }
     });
+
+    passchangeModalChangePass.addEventListener('keydown', (e) => {
+        flagCheckPW = CheckPW(e.target.value);
+        passchangeModalChangePassText.style.display = flagCheckPW ? 'none' : 'block';
+    });
+
+    passchangeModalDoneBtn.addEventListener('click', () => {
+        if(flagCheckPW && passchangeModalNowPassText.value !== '' && passchangeModalChangePass.value !== ''){
+
+            const param = {
+                'now_pass': passchangeModalNowPassText.value,
+                'change_pass': passchangeModalChangePass.value,
+            };
+
+
+            fetch('./modules/passwordChange.php', {
+                method: 'post',
+                body: JSON.stringify(param),
+            }).then((respon) => respon.json())
+            .then((data) => {
+                if(data['status'] == 404){
+                    alert('잘못된 비밀번호 입니다.');
+                    return 0;
+                }
+                loading.style.display = 'flex';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    if(data['status'] == 200){
+                        location.reload();
+                    }
+                }, 1000);
+            });
+        }
+    });
+    
+    function CheckPW(str){     
+        const regPW = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4,20}$/;
+        if(str == ''){          
+            return true;    
+        }
+        if(!regPW.test(str)) {
+            return false;
+        }else {                      
+            return true;         
+        }           
+    }
 
     function hash(str){
         if(tagArr.length < 5){

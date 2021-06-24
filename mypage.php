@@ -18,6 +18,31 @@
 <body>
     <div class="wrapper">
 
+        <div class="passchange__modal">
+            <div class="passchange__form">
+                <div class="passchange__form--title">
+                    <h1 class="passchange__form--title-text">비밀번호 변경</h1>
+                </div>
+
+                <div class="passchange__form--inputBox">
+                    <p class="passchange__form--inputBox-title">현재 비밀번호 :</p>
+                    <input class="passchange__form--now-pass" type="password" placeholder="현재 비밀번호를 적어주세요." />
+                </div>
+
+                <div class="passchange__form--inputBox">
+                    <p class="passchange__form--inputBox-title">변경 비밀번호 :</p>
+                    <input class="passchange__form--change-pass" type="password" placeholder="변경할 비밀번호를 적어주세요." />
+                </div>
+
+                <p class="passchange__form--change-text">비밀번호는 영문 대소문자와 숫자 4~20자리로 입력해야합니다!</p>
+
+                <div class="passchange__form--select">
+                    <button class="passchange__form--select-cancel" type="button">취소</button>
+                    <button class="passchange__form--select-done" type="button">완료</button>
+                </div>
+            </div>
+        </div>
+
         <div class="mypage__modal">
             <div class="mypage__modal--contents">
                 <div class="mypage__modal--picture">
