@@ -8,7 +8,7 @@
     const findIDConfirm = document.querySelector('.findID__input--confirm');
     const findIDEmailCheck = document.querySelector('.findID__input--email-check');
 
-    findIDEmail.addEventListener('keydown', () => {
+    findIDEmail.addEventListener('keyup', () => {
         const flag = CheckEmail(findIDEmail.value);
         findIDEmailCheck.style.display = flag ? 'none' : 'block';
     });
