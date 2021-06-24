@@ -902,6 +902,7 @@
                 userComment.textContent = data[0]['m_comment'];
                 mypageModalNick.value = data[0]['m_nick'];
                 mypageModalComment.value = data[0]['m_comment'];
+                userImg.src = userModalImg.src;
             }
             loading.style.display = 'none';
             mypageModal.style.display = 'none';
