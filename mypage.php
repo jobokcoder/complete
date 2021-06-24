@@ -94,11 +94,34 @@
                     </div>
 
                     <div class="mypage__user--status">
-                        <p class="mypage__user--status-complete"></p>
-                        <div class="mypage__user--status-bar">
-                            <div class="mypage__user--status-number"></div>
+                        <div class="mypage__user--status-box">
+                            <p class="mypage__user--status-title">성공</p>
+                            <p class="mypage__user--status-complete"></p>
                         </div>
-                        <p class="mypage__user--status-fail"></p>
+                        <div class="mypage__user--status-center">
+                            <div class="mypage__user--status-bar">
+                                <div class="mypage__user--status-number">
+                                    <p class="mypage__user--complete-percent"></p>
+                                    <p class="mypage__user--fail-percent"></p>
+                                </div>
+                                <div class="mypage__user--status-grid">
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                    <div class="mypage__user--status-grids"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mypage__user--status-box">
+                            <p class="mypage__user--status-title">실패</p>
+                            <p class="mypage__user--status-fail"></p>
+                        </div>
                     </div>
                 </div>
                 

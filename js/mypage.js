@@ -417,6 +417,8 @@
             const statusComplete = document.querySelector('.mypage__user--status-complete');
             const statusFail = document.querySelector('.mypage__user--status-fail');
             const statusNumber = document.querySelector('.mypage__user--status-number');
+            const statusCompletePercent = document.querySelector('.mypage__user--complete-percent');
+            const statusFailPercent = document.querySelector('.mypage__user--fail-percent');
             const complete = Number(data['m_complete']);
             const fail = Number(data['m_fail']);
             const total = complete + fail;
@@ -425,9 +427,25 @@
                 completePercent = (complete / total) * 100;
             }
 
-            statusComplete.textContent = `성공 : ${complete}개 `;
-            statusFail.textContent = ` 실패 : ${fail}개`;
+            statusComplete.textContent = `${complete}개 `;
+            statusFail.textContent = `${fail}개`;
             statusNumber.style.width = `${completePercent}%`;
+            numberPerAnimation(statusCompletePercent, completePercent, '%')
+            .then(() => numberPerAnimation(statusFailPercent, (100 - completePercent), '%'))
+            .then(() => numberPerAnimation(statusComplete, complete, '개'))
+            .then(() => numberPerAnimation(statusFail, fail, '개'));
+        });
+    }
+
+    function numberPerAnimation(dom, num, text){
+        return new Promise((res, rej) => {
+            for(let i=0,time=((num/2)/2); i<=num; i++){
+                setTimeout(() => {
+                    dom.textContent = `${i}${text}`;
+                    time = time - 1;
+                }, i * (-10 + time));
+            }
+            res();
         });
     }
 
