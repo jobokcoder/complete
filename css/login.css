@@ -1,12 +1,11 @@
 /* 로그인 CSS */
 .contents{ padding-top: 2.25rem; position: relative; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; }
-.login__logo{ position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%) scale(0.85); }
+.login__logo{ position: fixed; z-index: -1; left: 0; top: 96px; width: 100%; height: calc(100vh - 96px); display: flex; justify-content: center; align-items: center; }
 .login__form{ display: flex; flex-direction: column; justify-content: center; align-items: center; transform: translateY(-5%); }
 .login__form--input{ margin-top: 3.125rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .login__form--input-text{ margin: 0.5rem 0px; padding: 0.75rem 1.25rem; width: 400px; border-radius: 0.125rem; background-color: #F3F9FA; }
 .login__form--input-pass{ margin: 0.5rem 0px; padding: 0.75rem 1.25rem; width: 400px; border-radius: 0.125rem; background-color: #F3F9FA; }
 .login__form--input-button{ transition: 600ms ease-in-out; margin-top: 1.25rem; padding: 0.75rem 0px; width: 100%; background-color: var(--main-color2); border-radius: 0.125rem; cursor: pointer; font-size: 1.125rem; font-weight: 500; }
 .login__form--input-button:hover{ filter: brightness(1.1); }
-/* hue-rotate(90deg); */
 .login__form--input-link{ margin-top: 0.625rem; font-size: 0.875rem; font-weight: 300; }
 .login__form--input-link b{ font-size: 0.875rem; font-weight: 300; }

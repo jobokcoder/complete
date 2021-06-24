@@ -17,25 +17,25 @@
     let idStatus = false, pwStatus = false, nickStatus = false, 
     sendStatus = false, emailStatus = false;
 
-    joinFormID.addEventListener('keydown', () => {
+    joinFormID.addEventListener('keyup', () => {
         const flag = CheckID(joinFormID.value);
         joinFormNotID.style.display = flag ? 'none' : 'block';
         idStatus = flag ? true : false;
     });
     
-    joinFormPW.addEventListener('keydown', () => {
+    joinFormPW.addEventListener('keyup', () => {
         const flag = CheckPW(joinFormPW.value);
         joinFormNotPW.style.display = flag ? 'none' : 'block';
         pwStatus = flag ? true : false;
     });
 
-    joinFormNick.addEventListener('keydown', () => {
+    joinFormNick.addEventListener('keyup', () => {
         const flag = CheckNick(joinFormNick.value);
         joinFormNotNick.style.display = flag ? 'none' : 'block';
         nickStatus = flag ? true : false;
     });
     
-    joinFormEmail.addEventListener('keydown', () => {
+    joinFormEmail.addEventListener('keyup', () => {
         const flag = CheckEmail(joinFormEmail.value);
         joinFormNotEmail.style.display = flag ? 'none' : 'block';
         sendStatus = flag ? true : false;
@@ -64,13 +64,13 @@
                 method: 'post',
                 body: JSON.stringify(userInfo)
             }).then(respon => respon.json())
-            .then(result => {
+            .then((result) => {
                 loading.style.display = 'none';
                 if(result['status'] === 300){
                     alert('이미 있는 이메일 입니다.');
                 }else if(result['status'] === 400){
                     alert('이미 있는 아이디 입니다.');
-                }else{
+                }else if(result['status'] === 200){
                     alert('정상적으로 회원가입 되었습니다.');
                     location.href = './login.php';
                 }

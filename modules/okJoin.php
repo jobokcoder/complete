@@ -13,12 +13,14 @@
         $response['status'] = 300;
         print_r(json_encode($response));
     }else{
-
         $sql = "INSERT INTO member VALUES('".$userInfo['user_id']."', '".$userInfo['user_pw']."', '".$userInfo['user_nick']."', 
-        '".$addArr[0]."', '".$addArr[1]."', '".$addArr[2]."', '".$userInfo['user_email']."', '1', '0')";
-
+        '".$addArr[0]."', '".$addArr[1]."', '".$addArr[2]."', '1','".$userInfo['user_email']."', '0', '0')";
         $result = setData($sql);
         if($result){
+            $commonImg = '../images/common/agent.png';
+            $uploadBase = '../agents/';
+            $uploadFile = $uploadBase.$userInfo['user_id'].'.png';
+            copy($commonImg, $uploadFile);
             $response['status'] = 200;
         }else{
             $response['status'] = 400;
@@ -26,5 +28,5 @@
 
         print_r(json_encode($response));
     }
-
+ 
 ?>

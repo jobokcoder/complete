@@ -44,19 +44,20 @@
         </div>
 
         <div class="mypage__modal">
-            <div class="mypage__modal--contents">
+            <form class="mypage__modal--contents" method="post" enctype="multipart/form-data">
                 <div class="mypage__modal--picture">
-                    <img class="mypage__modal--picture-img" src="./images/common/common.png" alt="profile" />
+                    <img class="mypage__modal--picture-img" src="#" alt="profile" />
+                    <input class="mypage__modal--picture-file" type="file" name="modalFilePic" accept=".gif, .jpg, .png" />
                 </div>
 
-                <input class="mypage__modal--nick" type="text" placeholder="닉네임" />
-                <textarea class="mypage__modal--comment" type="text" placeholder="자신을 소개해주세요."></textarea>
+                <input class="mypage__modal--nick" type="text" name="modalNickText" placeholder="닉네임" />
+                <textarea class="mypage__modal--comment" type="text" name="modalCommentText" placeholder="자신을 소개해주세요."></textarea>
 
                 <div class="mypage__modal--select">
                     <button class="mypage__modal--select-cancel" type="button">취소</button>
                     <button class="mypage__modal--select-done" type="button">완료</button>
                 </div>
-            </div>
+            </form>
         </div>
 
         <div class="agent__modal">
@@ -65,7 +66,7 @@
                     <div class="agent__users">
                         <div class="agent__users--user">
                             <div class="agent__users--user-pic">
-                                <img src="./images/common/common.png" alt="user_pic"/>
+                                <img src="#" alt="user_pic"/>
                             </div>
                             <p class="agent__users--user-name">과제에 찌든 놈</p>
                         </div>
@@ -97,7 +98,7 @@
             <div class="mypage">
                 <div class="mypage__header">
                     <div class="mypage__user--pic">
-                        <img class="mypage__user--pic-img" src="./images/common/common.png" alt="user_profile" />
+                        <img class="mypage__user--pic-img" src="#" alt="user_profile" />
                     </div>
 
                     <div class="mypage__user--info">

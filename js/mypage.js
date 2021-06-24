@@ -1,6 +1,10 @@
 {
     const loading = document.querySelector('.loading');
 
+    const userModalFrame = document.querySelector('.mypage__modal--picture');
+    const userModalFile = document.querySelector('.mypage__modal--picture-file');
+    const userModalImg = document.querySelector('.mypage__modal--picture-img');
+    const userImg = document.querySelector('.mypage__user--pic-img');
     const userNick = document.querySelector('.mypage__user--nick');
     const userAdd = document.querySelector('.mypage__user--add');
     const userComment = document.querySelector('.mypage__user--comment');
@@ -11,6 +15,7 @@
     const accountItemAddress = document.querySelector('.missions__account--item-add');
 
     const mypageModal = document.querySelector('.mypage__modal');
+    const mypageModalForm = document.querySelector('.mypage__modal--contents');
     const mypageModalNick = document.querySelector('.mypage__modal--nick');
     const mypageModalComment = document.querySelector('.mypage__modal--comment');
     const mypageModalOpenBtn = document.querySelector('.mypage__user--edit');
@@ -92,6 +97,9 @@
         .then((data) => {
             missions.remove();
             user = data['id'];
+            const newImgSrc = `./agents/${data['id']}.png`;
+            userImg.src = newImgSrc;
+            userModalImg.src = newImgSrc;
             userNick.textContent = data['nick'];
             userComment.textContent = data['comment'];
             userAdd.textContent = `${data['m_add1']} ${data['m_add2']}`;
@@ -156,6 +164,8 @@
         });
     });
 
+    userModalFile.addEventListener("change", e => { readImage(e.target); });
+    userModalFrame.addEventListener('click', () => { userModalFile.click(); });
     passchangeModalOpenBtn.addEventListener('click', () => { toggleModal(passchangeModal); });
     passchangeModalCancelBtn.addEventListener('click', () => { toggleModal(passchangeModal); });
     agentModalCancel.addEventListener('click', () => { toggleModal(agentModal); });
@@ -256,7 +266,6 @@
                 'change_pass': passchangeModalChangePass.value,
             };
 
-
             fetch('./modules/passwordChange.php', {
                 method: 'post',
                 body: JSON.stringify(param),
@@ -276,6 +285,18 @@
             });
         }
     });
+
+    function readImage(input) {
+        if(input.files && input.files[0]) {
+            const reader = new FileReader() 
+
+            reader.onload = e => {
+                userModalImg.src = e.target.result
+            }
+            
+            reader.readAsDataURL(input.files[0])
+        }
+    }
     
     function CheckPW(str){     
         const regPW = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{4,20}$/;
@@ -340,7 +361,6 @@
             const doneMissionRightImg = doneMissionModal.querySelector('.doneMission__right--thum-img');
             const doneMissionRightTitle = doneMissionModal.querySelector('.doneMission__right--title-text');
             const doneMissionRightTextArea = doneMissionModal.querySelector('.doneMission__right--textarea-text');
-            const doneMissionRightCond = doneMissionModal.querySelector('.doneMission__right--cond-text');
             const doneMissionRightDate = doneMissionModal.querySelector('.doneMission__right--date-text');
             const doneMissionRightWriter = doneMissionModal.querySelector('.doneMission__right--writer-text');
 
@@ -485,9 +505,9 @@
 
             statusComplete.textContent = `${complete}개 `;
             statusFail.textContent = `${fail}개`;
-            statusNumber.style.width = `${completePercent}%`;
+            statusNumber.style.width = `${(completePercent == 0 ? 50 : completePercent)}%`;
             numberPerAnimation(statusCompletePercent, completePercent, '%')
-            .then(() => numberPerAnimation(statusFailPercent, (100 - completePercent), '%'))
+            .then(() => numberPerAnimation(statusFailPercent, (completePercent == 0 ? 0 : 100 - completePercent), '%'))
             .then(() => numberPerAnimation(statusComplete, complete, '개'))
             .then(() => numberPerAnimation(statusFail, fail, '개'));
         });
@@ -830,7 +850,7 @@
 
                 agentUser.id = item['m_id'];
                 agentUserNick.textContent = item['m_nick'];
-                agentUserPicImg.src = './images/common/common.png';
+                agentUserPicImg.src = `./agents/${user}.png`;
                 agentUserPic.appendChild(agentUserPicImg);
                 agentUser.appendChild(agentUserPic);
                 agentUser.appendChild(agentUserNick);
@@ -869,15 +889,11 @@
 
     function mypageModalDone(){
         loading.style.display = 'flex';
-        const param = {
-            'id': user,
-            'nick': mypageModalNick.value,
-            'comment': document.querySelector('.mypage__modal--comment').value,
-        };
 
+        const form = new FormData(mypageModalForm);
         fetch('./modules/editProfile.php', {
             method: 'post',
-            body: JSON.stringify(param),
+            body: form,
         }).then((respon) => respon.json())
         .then((data) => {
             if(data['status'] === 200){

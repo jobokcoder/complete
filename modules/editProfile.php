@@ -1,11 +1,12 @@
 <?php
     include('./modules.php');
+    header('Content-Type: application/json; charset=utf-8');
 
-    $reciveData = json_decode(file_get_contents('php://input'), true, 512, JSON_THROW_ON_ERROR);
-    $obj;
-    $id = $reciveData['id'];
-    $nick = $reciveData['nick'];
-    $comment = $reciveData['comment'];
+    $id = $_SESSION['m_id'];
+    $nick = $_POST['modalNickText'];
+    $comment = $_POST['modalCommentText'];
+    $path = "../agents/$id.png";
+    move_uploaded_file($_FILES['modalFilePic']['tmp_name'], $path);
 
     $sql = "update member set m_nick = '$nick', m_comment = '$comment' where m_id = '$id'";
     $result = setData($sql);
