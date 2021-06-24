@@ -53,8 +53,9 @@ svg{ overflow: visible; }
 .view.active{ display: flex; }
 .view__contents{ position: relative; padding: 24px 32px; border-radius: 20px; transform: translateY(-2%); position: relative; display: none; flex-direction: column; justify-content: flex-start; align-items: center; row-gap: 14px; width: 750px; height: 780px; background-color: #ffffff; }
 .view__contents.active{ display: flex; }
-.view__request{ position: absolute; right: 0; bottom: -20px; transform: translateY(100%); }
-.view__request--btn{ padding: 14px 44px; cursor: pointer; font-size: 16px; font-weight: 500; border-radius: 6px; background-color: var(--main-color2); }
+.view__request{ position: absolute; right: -24px; top: 0; transform: translate(100%, 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.view__request--btn{ display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; cursor: pointer; font-size: 16px; font-weight: 500; border-radius: 70%; background-color: var(--main-color2); }
+.view__request--text{ cursor: default; font-size: 14px; font-weight: 300; color: #fff; }
 .view__cancel{ position: absolute; right: -24px; top: 0; transform: translateX(100%); }
 .view__cancel--btn{ cursor: pointer; }
 .view__contents--header{ width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; row-gap: 12px; }

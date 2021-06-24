@@ -97,7 +97,8 @@
         .then((data) => {
             missions.remove();
             user = data['id'];
-            const newImgSrc = `./agents/${data['id']}.png`;
+            const time = new Date().getTime();
+            const newImgSrc = `./agents/${data['id']}.png?time=${time}`;
             userImg.src = newImgSrc;
             userModalImg.src = newImgSrc;
             userNick.textContent = data['nick'];
