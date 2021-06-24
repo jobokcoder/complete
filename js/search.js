@@ -9,6 +9,7 @@
     const viewContents = document.querySelector('.view__contents');
 
     let userAdd = '';
+    let missionCount = 0;
 
     window.addEventListener('load', () => {
         missions.remove();
@@ -39,6 +40,7 @@
         const param = {
             'area': userAdd,
             'keyword': keyword,
+            'count': missionCount,
         };
 
         fetch('./modules/getSearchMission.php', {
@@ -48,12 +50,11 @@
         .then(respon => respon.json())
         .then(data => {
             if(data.length > 0){
+                missionCount++;
                 const total = data.length;
                 const block = Math.ceil(total / 7);
+                searchTitle.textContent = `'${keyword}'를(을) 검색한 결과 ${total}개가 나왔습니다.`;
                 let newDiv;
-                let newMission;
-
-                searchTitle.textContent = `'${keyword}' 검색 결과 ${total}개`;
                 
                 for(let n=0, i=0; i < block; i++){
                     for(let j=0; j < 7; j++){
@@ -140,7 +141,6 @@
                                             const copyNewViewAgentNum = newViewAgentNum.cloneNode(true);
                                             newViewAgent.appendChild(copyNewViewAgentNum);
                                         }
-                                        // newViewContentsNum.textContent = `모집인원 : ${data2['count']}명`;
                                     });
                                 }
                             });
@@ -190,6 +190,22 @@
                         n++;
                     }
                 }
+
+                const allMissions = document.querySelectorAll('.missions__list');
+                const newMissions = [];
+                allMissions.forEach((el) => {   
+                    if(el.classList.contains('active') === false){
+                        newMissions.push(el);
+                    }
+                });
+
+                newMissions.forEach((el, index) => {
+                    el.classList.add('active');
+                    setTimeout(() => {
+                        el.style.opacity = 1;
+                        el.style.transform = 'translateY(0)';
+                    },200 * index);
+                });
             }else{
                 searchTitle.textContent = `검색 결과가 존재하지 않습니다.`;
             }
