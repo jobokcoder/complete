@@ -516,7 +516,7 @@
 
     function numberPerAnimation(dom, num, text){
         return new Promise((res, rej) => {
-            for(let i=0,time=((num/2)/2); i<=num; i++){
+            for(let i=0,time=((num/2)); i<=num; i++){
                 setTimeout(() => {
                     dom.textContent = `${i}${text}`;
                     time = time - 1;

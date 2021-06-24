@@ -49,8 +49,8 @@ svg{ overflow: visible; }
 .search__form--button:hover #path_4{ transition: 600ms ease-in-out; transform: scale(1.25); stroke: var(--main-white); }
 
 /* 미션 보기 CSS */
-.view{ position: fixed; left: 0; top: 0; z-index: 50; width: 100%; height: 100vh; overflow: hidden; background-color: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px); }
-.view.active{ display: flex; }
+.view{ position: fixed; left: 0; top: 0; z-index: 50; width: 100%; height: 100vh; overflow: hidden; background-color: rgba(0, 0, 0, 0.5); display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px); opacity: 0; transform: translateY(10px); }
+.view.active{ animation: fadeUp 600ms ease-out forwards; display: flex; }
 .view__contents{ position: relative; padding: 24px 32px; border-radius: 20px; transform: translateY(-2%); position: relative; display: none; flex-direction: column; justify-content: flex-start; align-items: center; row-gap: 14px; width: 750px; height: 780px; background-color: #ffffff; }
 .view__contents.active{ display: flex; }
 .view__request{ position: absolute; right: -24px; top: 0; transform: translate(100%, 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; }
@@ -115,6 +115,17 @@ svg{ overflow: visible; }
 @keyframes fade {
     to {
         opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
